@@ -161,12 +161,12 @@ body.kingster-boxed .kingster-body-wrapper{ margin-top: 0px; margin-bottom: 0px;
 .kingster-body-background{ opacity: 1; } 
 .kingster-background-pattern .kingster-body-outer-wrapper{ background-image: url(../../../../demo.goodlayers.com/kingster/wp-content/plugins/goodlayers-core/include/images/pattern/pattern-1.html); } 
 .kingster-item-pdlr, .gdlr-core-item-pdlr{ padding-left: 20px; padding-right: 20px; }.kingster-item-rvpdlr, .gdlr-core-item-rvpdlr{ margin-left: -20px; margin-right: -20px; }.gdlr-core-metro-rvpdlr{ margin-top: -20px; margin-right: -20px; margin-bottom: -20px; margin-left: -20px; }.kingster-item-mglr, .gdlr-core-item-mglr, .kingster-navigation .sf-menu > .kingster-mega-menu .sf-mega,.sf-menu.kingster-top-bar-menu > .kingster-mega-menu .sf-mega{ margin-left: 20px; margin-right: 20px; }.kingster-body .gdlr-core-personnel-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport, .kingster-body .gdlr-core-hover-box-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport,.kingster-body .gdlr-core-blog-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport{ padding-top: 20px; margin-top: -20px; padding-right: 20px; margin-right: -20px; padding-left: 20px; margin-left: -20px; padding-bottom: 20px; margin-bottom: -20px; }.gdlr-core-twitter-item .gdlr-core-block-item-title-nav{ margin-right: 20px; } 
-.kingster-container, .gdlr-core-container, body.kingster-boxed .kingster-body-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-footer-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-copyright-wrapper{ max-width: 1360px; } 
-.kingster-body-front .gdlr-core-container, .kingster-body-front .kingster-container{ padding-left: 20px; padding-right: 20px; }.kingster-body-front .kingster-container .kingster-container, .kingster-body-front .kingster-container .gdlr-core-container, .kingster-body-front .gdlr-core-container .gdlr-core-container{ padding-left: 0px; padding-right: 0px; } 
+.kingster-container, .gdlr-core-container, body.kingster-boxed .kingster-body-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-footer-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-copyright-wrapper{ max-width: 1360px; } .kingster-container-fluid{max-width: 100%;}
+.kingster-body-front .gdlr-core-container, .kingster-body-front .kingster-container{ padding-left: 20px; padding-right: 20px; }.kingster-container-fluid{padding-left: 100px; padding-right: 20px;}.kingster-body-front .kingster-container .kingster-container, .kingster-body-front .kingster-container .gdlr-core-container, .kingster-body-front .gdlr-core-container .gdlr-core-container{ padding-left: 0px; padding-right: 0px; } 
 .kingster-top-bar-container.kingster-top-bar-custom-container{ max-width: 1140px; } 
 .kingster-top-bar-container.kingster-top-bar-full{ padding-right: 15px; padding-left: 15px; } 
-.kingster-top-bar{ padding-top: 18px; }.kingster-top-bar-right-button{ padding-top: 18px; margin-top: -18px; } 
-.kingster-top-bar{ padding-bottom: 18px; }.kingster-top-bar .kingster-top-bar-menu > li > a{ padding-bottom: 18px; }.sf-menu.kingster-top-bar-menu > .kingster-mega-menu .sf-mega, .sf-menu.kingster-top-bar-menu > .kingster-normal-menu ul{ margin-top: 18px; } 
+.kingster-top-bar{ padding-top: 8px; }.kingster-top-bar-right-button{ padding-top: 18px; margin-top: -18px; } 
+.kingster-top-bar{ padding-bottom: 8px; }.kingster-top-bar .kingster-top-bar-menu > li > a{ padding-bottom: 18px; }.sf-menu.kingster-top-bar-menu > .kingster-mega-menu .sf-mega, .sf-menu.kingster-top-bar-menu > .kingster-normal-menu ul{ margin-top: 18px; } 
 .kingster-top-bar{ font-size: 15px; } 
 .kingster-top-bar{ border-bottom-width: 0px; } 
 .kingster-header-style-plain{ border-bottom-width: 0px; } 
@@ -270,7 +270,7 @@ body.single-post .kingster-sidebar-style-none, body.blog .kingster-sidebar-style
 .kingster-top-bar{ color: #96a2b8; } 
 .kingster-body .kingster-top-bar a{ color: #919bad; } 
 .kingster-body .kingster-top-bar a:hover{ color: #ffffff; } 
-.kingster-body .kingster-top-bar .kingster-top-bar-right-button{ background-color: #3db166; } 
+.kingster-body .kingster-top-bar .kingster-top-bar-right-button{ background-color: #202a63; } 
 .kingster-top-bar .kingster-top-bar-right-social a{ color: #ffffff; } 
 .kingster-top-bar .kingster-top-bar-right-social a:hover{ color: #3db166; } 
 .kingster-header-background, .kingster-sticky-menu-placeholder, .kingster-header-style-boxed.kingster-fixed-navigation{ background-color: #ffffff; } 
