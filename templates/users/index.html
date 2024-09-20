@@ -1,24 +1,7 @@
 {% extends 'users/base/base.html' %}
 {% load static %}
 {% block content %}
-<style>
-.kingster-logo-inner {
-    display: flex;
-    align-items: center; /* Bu vertikal markazlash uchun */
-}
-.kingster-logo-inner a img {
-    width: 60px;
-    height: 60px;
-}
-.kingster-logo-inner a {
-    margin-right: 15px; /* Tasvir bilan matn orasidagi masofa */
-}
 
-.kingster-logo-inner p {
-    margin: 0; /* Matn tegi atrofidagi bo'shliqni olib tashlash */
-    font-size: 10px;
-}
-</style>
 <div class="kingster-mobile-header-wrap">
     <div class="kingster-mobile-header kingster-header-background kingster-style-slide kingster-sticky-mobile-navigation " id="kingster-mobile-header">
         <div class="kingster-mobile-header-container kingster-container clearfix">
@@ -197,17 +180,23 @@
                     </div>
                     <div class="kingster-top-bar-left kingster-item-pdlr"><i class="fa fa-envelope-open-o" id="i_fd84_0"></i> info@samtuit.uz <i class="fa fa-phone" id="i_fd84_1"></i> +998 (66) 232 2929</div>
                     <div class="kingster-top-bar-right kingster-item-pdlr">
-                        <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="facebook">
-                            <i class="fa fa-facebook" ></i>
+                        <a href="#" class="gdlr-core-social-network-icon" title="adjust" id="toggle-black-white">
+                            <i class="fa fa-adjust" ></i>
                         </a>
-                        <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="facebook">
-                            <i class="fa fa-facebook" ></i>
+                        <a href="#" class="gdlr-core-social-network-icon" title="adjust" id="toggle-yellow-black">
+                            <i class="fa fa-adjust" style="color: rgb(255, 174, 0);" ></i>
                         </a>
-                        <ul id="kingster-top-bar-menu" class="sf-menu kingster-top-bar-menu kingster-top-bar-right-menu">
+                        <a href="#" class="gdlr-core-social-network-icon" title="font" id="decrease-font">-
+                            <i class="fa fa-font" ></i>
+                        </a>
+                        <a href="#" class="gdlr-core-social-network-icon" title="font" id="decrease-font-pilus">+
+                            <i class="fa fa-font"></i>
+                        </a>
+                        <!-- <ul id="kingster-top-bar-menu" class="sf-menu kingster-top-bar-menu kingster-top-bar-right-menu">
                             <li class="menu-item kingster-normal-menu"><a href="#">Hemis student</a></li>
                             <li class="menu-item kingster-normal-menu"><a href="#">Hemis OTM</a></li>
                             <li class="menu-item kingster-normal-menu"><a href="#">LMS</a></li>
-                        </ul>
+                        </ul> -->
                         <div class="kingster-top-bar-right-social"></div>
                         <select class="kingster-top-bar-right-button" name="" id="">
                             <option value="1">O'zbek</option>
@@ -1294,4 +1283,5 @@
         {% include 'users/base/footer.html' %}
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock content %}

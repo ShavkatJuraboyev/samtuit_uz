@@ -266,3 +266,25 @@
         document.getElementsByTagName('head')[0].appendChild(htmlDiv.childNodes[0]);
     } /*]]>*/
 </script>
+
+<script>
+    document.getElementById("toggle-black-white").addEventListener("click", function() {
+        document.body.classList.toggle("black-white-mode");
+    });
+
+    document.getElementById("toggle-yellow-black").addEventListener("click", function() {
+        document.body.classList.toggle("yellow-black-mode");
+    });
+
+    $("#decrease-font").click(function() {
+        $("h1, h2, h3, h4, h5, h6, p, li, a, div").css("font-size", function() {
+            return parseFloat($(this).css("font-size")) - 1 + "px";
+        });
+    });
+
+    $("#decrease-font-pilus").click(function() {
+        $("h1, h2, h3, h4, h5, h6, p, li, a, div").css("font-size", function() {
+            return parseFloat($(this).css("font-size")) + 1 + "px";
+        });
+    });
+</script>
