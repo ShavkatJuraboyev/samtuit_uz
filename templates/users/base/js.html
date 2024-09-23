@@ -130,7 +130,7 @@
 
 <script type='text/javascript' src="{% static 'users/js/jquery/ui/effect.min.js' %}"></script>
 <script type='text/javascript'>
-    var kingster_script_core = {
+    var samtuit_script_core = {
         "home_url": "https:\/\/demo.goodlayers.com\/kingster\/"
     };
 </script>
@@ -287,4 +287,21 @@
             return parseFloat($(this).css("font-size")) + 1 + "px";
         });
     });
+
+
+    document.querySelector(".select-selected").addEventListener("click", function() {
+    this.classList.toggle("select-arrow-active");
+    var dropdown = this.nextElementSibling;
+    dropdown.classList.toggle("select-hide");
+    });
+
+    document.querySelectorAll(".select-items div").forEach(function(item) {
+        item.addEventListener("click", function() {
+            var selected = document.querySelector(".select-selected");
+            selected.innerHTML = this.innerHTML;
+            selected.classList.remove("select-arrow-active");
+            this.parentElement.classList.add("select-hide");
+        });
+    });
+
 </script>

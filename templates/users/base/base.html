@@ -18,21 +18,22 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CABeeZee%3Aregular%2Citalic&amp;subset=latin%2Clatin-ext%2Cdevanagari&amp;ver=5.0.3' type='text/css' media='all' />
     <style>
-        .kingster-logo-inner {
+        .samtuit-logo-inner {
             display: flex;
             align-items: center; /* Bu vertikal markazlash uchun */
         }
-        .kingster-logo-inner a img {
+        .samtuit-logo-inner a img {
             width: 60px;
             height: 60px;
         }
-        .kingster-logo-inner a {
+        .samtuit-logo-inner a {
             margin-right: 15px; /* Tasvir bilan matn orasidagi masofa */
         }
         
-        .kingster-logo-inner p {
+        .samtuit-logo-inner p {
             margin: 0; /* Matn tegi atrofidagi bo'shliqni olib tashlash */
-            font-size: 10px;
+            font-size: 8.5px;
+            font-weight: 500;
         }
         .gdlr-core-social-network-icon{
             border-right: 1px solid rgb(14, 13, 13);
@@ -59,12 +60,221 @@
         .yellow-black-mode {
             filter: sepia(100%) hue-rotate(20deg) saturate(500%) brightness(70%);
         }
+
+        /* 1153px dan kichik ekranlar uchun */
+@media (max-width: 1153px) {
+    body {
+        font-size: 14px;
+    }
+
+    /* Rasmlar uchun format */
+    .top-bar-icon, .social-icon {
+        display: inline-block;
+        width: 22px; 
+        height: 22px;
+        margin: 0 5px; /* Rasmlar orasidagi masofa */
+    }
+
+    /* Aloqa ma'lumotlari */
+    .samtuit-top-bar-left, .samtuit-top-bar-right {
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* Ikonalar va matn */
+    .samtuit-top-bar-left i,
+    .samtuit-top-bar-right i {
+        margin-right: 5px;
+    }
+
+    /* Tilni tanlash select dizayni */
+    .language-select {
+        width: 120px; 
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 12px;
+        appearance: none;
+        background-color: #f9f9f9;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
+    }
+
+    /* Ijtimoiy tarmoqlar ikonlari */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Barcha elementlar uchun o'rtada joylashish */
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    /* Tugma dizayni */
+    .btn {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007BFF; /* Tugma rangini o'zgartirish */
+        color: white;
+        text-decoration: none;
+        margin: 0 5px; /* Tugmalar orasidagi masofa */
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3; /* Tugma hover holati */
+    }
+}
+
+/* Custom Select Container */
+.custom-select {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+/* Selected option (initial visible state) */
+.select-selected {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Flag icons */
+.flag-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+}
+
+/* Dropdown items */
+.select-items {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 99;
+    width: 100%;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.select-items div {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.select-items div:hover {
+    background-color: #f1f1f1;
+}
+
+/* When open */
+.select-selected.select-arrow-active + .select-items {
+    display: block;
+}
+
+/* Hide dropdown */
+.select-hide {
+    display: none;
+}
+
     </style>
 </head>
-<body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-    {% block content %}
-    {% endblock content %}
+<body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js samtuit-body samtuit-body-front samtuit-full  samtuit-with-sticky-navigation  samtuit-blockquote-style-1 gdlr-core-link-to-lightbox">
+    
+    
+    <div class="samtuit-body-outer-wrapper ">
+        <div class="samtuit-body-wrapper clearfix samtuit-with-frame">
+            <div class="samtuit-top-bar">
+                <div class="samtuit-top-bar-background"></div>
+                <div class="samtuit-top-bar-container samtuit-container-fluid ">
+                    <div class="samtuit-top-bar-container-inner clearfix">
+                        <div class="samtuit-top-bar-left samtuit-item-pdlr centered-container">
+                            <a href="" title="Bayroq"><img class="top-bar-icon" src="{% static 'users/images/bayroq.png' %}" alt="bayroq" style="width: 28px; height: 20px;"></a>
+                            <a href=""><img class="top-bar-icon" src="{% static 'users/images/gerib1.png' %}" alt="bayroq" style="width: 40px; height: 25px;"></a>
+                            <a href=""><img class="top-bar-icon" src="{% static 'users/images/mucik2.png' %}" alt="bayroq" style="width: 30px; height: 30px;"></a>
+                            
+                        </div>
+                        <div class="samtuit-top-bar-left samtuit-item-pdlr center-iconc">
+                            <i class="fa fa-envelope-open-o" id="i_fd84_0"></i>info@samtuit.uz     
+                            <i class="fa fa-phone" id="i_fd84_1"></i> +998 (66) 232 2929
+                        </div>
+                        <div class="samtuit-top-bar-right samtuit-item-pdlr">
+                            <a href="#" class="gdlr-core-social-network-icon" title="adjust" id="toggle-black-white">
+                                <i class="fa fa-adjust" ></i>
+                            </a>
+                            <a href="#" class="gdlr-core-social-network-icon" title="adjust" id="toggle-yellow-black">
+                                <i class="fa fa-adjust" style="color: rgb(255, 174, 0);" ></i>
+                            </a>
+                            <a href="#" class="gdlr-core-social-network-icon" title="font" id="decrease-font">-
+                                <i class="fa fa-font" ></i>
+                            </a>
+                            <a href="#" class="gdlr-core-social-network-icon" title="font" id="decrease-font-pilus">+
+                                <i class="fa fa-font"></i>
+                            </a>
+                            <div class="samtuit-top-bar-right-social"></div>
 
+                            
+                            
+                            
+                        </div>
+                        <div class="custom-select">
+                            <div class="select-selected">
+                                <img src="{% static 'users/img-slider/uzb.png' %}" alt="O'zbek" class="flag-icon">
+                                O'zbek
+                            </div>
+                            <div class="select-items select-hide">
+                                <div data-value="1">
+                                    <img src="{% static 'users/img-slider/uzb.png' %}" alt="O'zbek" class="flag-icon"> O'zbek
+                                </div>
+                                <div data-value="2">
+                                    <img src="{% static 'users/img-slider/rus.png' %}" alt="Rus" class="flag-icon"> Rus
+                                </div>
+                                <div data-value="3">
+                                    <img src="{% static 'users/img-slider/eng.png' %}" alt="English" class="flag-icon"> English
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a class="samtuit-top-bar-right-button btn" href="" target="_blank">Qabul-2024</a>
+                        <div class="samtuit-copyright-right samtuit-item-pdlr">
+                            <div class="social-links gdlr-core-social-network-item gdlr-core-item-pdb  gdlr-core-none-align" id="div_1dd7_112">
+                                <a href=""><img class="social-icon" src="{% static 'users/images/telegram.png' %}" alt="telegram" style="width: 25px; height: 22px;"></a>
+                                <a href=""><img class="social-icon" src="{% static 'users/images/youtube.png' %}" alt="youtube" style="width: 22px; height: 22px;"></a>
+                                <a href=""><img class="social-icon" src="{% static 'users/images/insto.png' %}" alt="insto" style="width: 23px; height: 23px;"></a>
+                                <a href=""><img class="social-icon" src="{% static 'users/images/facebook1.png' %}" alt="facebook" style="width: 25px; height: 22px;"></a>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'users/base/navbar.html' %}
+            {% include 'users/base/sidbare.html' %}
+            {% block content %}
+            {% endblock content %}
+            
+            {% include 'users/base/footer.html' %}
+        </div>
+    </div>
    {% include 'users/base/js.html' %}
 </body>
 </html>
