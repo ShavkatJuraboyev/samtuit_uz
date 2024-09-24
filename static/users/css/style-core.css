@@ -1669,7 +1669,9 @@ body.admin-bar .samtuit-overlay-menu-content {
 }
 
 .samtuit-header-style-plain.samtuit-style-menu-right .samtuit-navigation {
-	float: right;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .samtuit-header-style-plain.samtuit-style-menu-right .samtuit-main-menu {
@@ -6155,7 +6157,7 @@ body .tribe-bar-views-inner {
 }
 
 .megaimg {
-	background-image: url('../upload/mega-menu-bg.jpg');  
+	/* background-image: url('../upload/mega-menu-bg.jpg');   */
 	background-position: bottom right;  
 	background-repeat: no-repeat;
 }

@@ -5,183 +5,199 @@
         <div class="samtuit-header-container-inner clearfix">
             <div class="samtuit-logo  samtuit-item-pdlr">
                 <div class="samtuit-logo-inner">
-                    <a class="" href=""><img src="{% static 'users/images/logo.png' %}" width="100" height="100" alt="Logo" /></a>
+                    <a class="" href="/"><img src="{% static 'users/images/logo.png' %}" width="100" height="100" alt="Logo" /></a>
                     <p>Muhammad al-Xorazmiy<br> nomidagi  Toshkent Axborot <br>Texnologiyalari Universiteti <br> Samarqand filiali</p>
                 </div>
             </div>
             <div class="samtuit-navigation samtuit-item-pdlr clearfix ">
                 <div class="samtuit-main-menu" id="samtuit-main-menu">
                     <ul id="menu-main-navigation-1" class="sf-menu">
-                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="#" class="sf-with-ul-pre">Yangiliklar</a>
+                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="{% url 'news' %}" class="sf-with-ul-pre">Yangiliklar</a>
                             <ul class="sub-menu">
-                                <li class="menu-item" data-size="60"><a href="about-us.html">Oliy ta'lim muassasi yangiliklari</a></li>
+                                <li class="menu-item" data-size="60"><a href="{% url 'news' %}">Oliy ta'lim muassasi yangiliklari</a></li>
                                 <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Ommaviy tadbirlar</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog Full</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="blog-full-right-sidebar-with-frame.html">Blog Full Right Sidebar With Frame</a></li>
-                                                <li class="menu-item"><a href="blog-full-left-sidebar-with-frame.html">Blog Full Left Sidebar With Frame</a></li>
-                                                <li class="menu-item"><a href="blog-full-both-sidebar-with-frame.html">Blog Full Both Sidebar With Frame</a></li>
-                                                <li class="menu-item"><a href="blog-full-right-sidebar.html">Blog Full Right Sidebar</a></li>
-                                                <li class="menu-item"><a href="blog-full-left-sidebar.html">Blog Full Left Sidebar</a></li>
-                                                <li class="menu-item"><a href="blog-full-both-sidebar.html">Blog Full Both Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children"><a href="blog-grid-3-columns-no-space.html" class="sf-with-ul-pre">Blog Grid</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="blog-grid-2-columns.html">Blog Grid 2 Columns</a></li>
-                                                <li class="menu-item"><a href="blog-grid-3-columns.html">Blog Grid 3 Columns</a></li>
-                                                <li class="menu-item"><a href="blog-grid-4-columns.html">Blog Grid 4 Columns</a></li>
-                                                <li class="menu-item"><a href="blog-grid-2-columns-no-space.html">Blog Grid 2 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="blog-grid-3-columns-no-space.html">Blog Grid 3 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="blog-grid-4-columns-no-space.html">Blog Grid 4 Columns No Space</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="menu-item"><a href="standard-post-type.html">Single Post</a></li>
+                                        <li class="menu-item"><a href="">Yig'ilishlar</a></li>
+                                        <li class="menu-item"><a href="">Uchrashuvlar</a></li>
+                                        <li class="menu-item"><a href="">Matbuot konfrensiyalar</a></li>
+                                        <li class="menu-item"><a href="">Seminarlar</a></li>
+                                        <li class="menu-item"><a href="">Davra suxbatlari</a></li>
+                                        <li class="menu-item"><a href="">Single Post</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item menu-item-has-children" data-size="60"><a href="#" class="sf-with-ul-pre">Contact</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="contact.html">Contact</a></li>
-                                        <li class="menu-item"><a href="contact-2.html">Contact 2</a></li>
-                                        <li class="menu-item"><a href="contact-3.html">Contact 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-has-children" data-size="60"><a href="portfolio-3-columns.html" class="sf-with-ul-pre">Portfolio</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre">Portfolio Grid</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="portfolio-2-columns.html">Portfolio 2 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-3-columns.html">Portfolio 3 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-4-columns.html">Portfolio 4 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-5-columns.html">Portfolio 5 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-2-columns-with-frame.html">Portfolio 2 Columns With Frame</a></li>
-                                                <li class="menu-item"><a href="portfolio-3-columns-with-frame.html">Portfolio 3 Columns With Frame</a></li>
-                                                <li class="menu-item"><a href="portfolio-4-columns-with-frame.html">Portfolio 4 Columns With Frame</a></li>
-                                                <li class="menu-item"><a href="portfolio-2-columns-no-space.html">Portfolio 2 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="portfolio-3-columns-no-space.html">Portfolio 3 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="portfolio-4-columns-no-space.html">Portfolio 4 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="portfolio-5-columns-no-space.html">Portfolio 5 Columns No Space</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre">Portfolio Masonry</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="portfolio-masonry-4-columns.html">Masonry 4 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-masonry-3-columns.html">Masonry 3 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-masonry-2-columns.html">Masonry 2 Columns</a></li>
-                                                <li class="menu-item"><a href="portfolio-masonry-4-columns-no-space.html">Masonry 4 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="portfolio-masonry-3-columns-no-space.html">Masonry 3 Columns No Space</a></li>
-                                                <li class="menu-item"><a href="portfolio-masonry-2-columns-no-space.html">Masonry 2 Columns No Space</a></li>
-                                            </ul>
-                                        </li>
-
-                                     <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre" href="singleportfolio.html">Single Portfolio</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item" data-size="60"><a href="gallery.html">Gallery</a></li>
-                                <li class="menu-item" data-size="60"><a href="price-table.html">Price Table</a></li>
-                                <li class="menu-item" data-size="60"><a href="maintenance.html">Maintenance</a></li>
-                                <li class="menu-item" data-size="60"><a href="coming-soon.html">Coming Soon</a></li>
-                                <li class="menu-item" data-size="60"><a href="404.html">404 Page</a></li>
+                                <li class="menu-item" data-size="60"><a href="">E'lonlar</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="apply-to-samtuit.html" class="sf-with-ul-pre">Tuzilmalar</a>
+                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="" class="sf-with-ul-pre">Tuzilmalar</a>
                             <ul class="sub-menu">
-                                <li class="menu-item" data-size="60"><a href="apply-to-samtuit.html">Apply To samtuit</a></li>
-                                <li class="menu-item" data-size="60"><a href="campus-tour.html">Campus Tour</a></li>
-                                <li class="menu-item" data-size="60"><a href="scholarships.html">Scholarships</a></li>
-                                <li class="menu-item" data-size="60"><a href="athletics.html">Athletics</a></li>
-                                <li class="menu-item" data-size="60"><a href="give-to-samtuit.html">Give To samtuit</a></li>
-                                <li class="menu-item" data-size="60"><a href="alumni.html">Alumni</a></li>
-                                <li class="menu-item" data-size="60"><a href="event-calendar.html">Event Calendar</a></li>
+                                <li class="menu-item" data-size="60"><a href="">Filial nizomi</a></li>
+                                <li class="menu-item" data-size="60"><a href="">Filial haqida</a></li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Raxbariyat</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Direktor</a></li>
+                                        <li class="menu-item"><a href="">Prorektorlar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item" data-size="60"><a href="">Fakultetlar</a></li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Kafedralar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Professor o'qituvchilar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Markaz va Bo'limlar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Professor o'qituvchilar</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         
-                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="apply-to-samtuit.html" class="sf-with-ul-pre">Faoliyat</a>
+                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="" class="sf-with-ul-pre">Faoliyat</a>
                             <ul class="sub-menu">
-                                <li class="menu-item" data-size="60"><a href="apply-to-samtuit.html">Apply To samtuit</a></li>
-                                <li class="menu-item" data-size="60"><a href="campus-tour.html">Campus Tour</a></li>
-                                <li class="menu-item" data-size="60"><a href="scholarships.html">Scholarships</a></li>
-                                <li class="menu-item" data-size="60"><a href="athletics.html">Athletics</a></li>
-                                <li class="menu-item" data-size="60"><a href="give-to-samtuit.html">Give To samtuit</a></li>
-                                <li class="menu-item" data-size="60"><a href="alumni.html">Alumni</a></li>
-                                <li class="menu-item" data-size="60"><a href="event-calendar.html">Event Calendar</a></li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Ilmiy faoliyat</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Filial kengashi</a></li>
+                                        <li class="menu-item"><a href="">Xalqaro jurnallarda chop etilgan maqolalar</a></li>
+                                        <li class="menu-item"><a href="">Ilmiy jurnal</a></li>
+                                        <li class="menu-item"><a href="">Ustoz-shogirt maktabi</a></li>
+                                        <li class="menu-item"><a href="">Istiqbol rejalar</a></li>
+                                        <li class="menu-item"><a href="">Ilmiy tadqiqot faoliyati</a></li>
+                                        <li class="menu-item"><a href="">Ilmiy tadqiqot yo`nalishlar</a></li>
+                                        <li class="menu-item"><a href="">PhD va DSc dissertatsiyasi himoyasi</a></li>
+                                        <li class="menu-item"><a href="">Ilmiy tadbirlar</a></li>
+                                        <li class="menu-item"><a href="">Ilmiy tadqiqotga oid e'lonlar  </a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Xalqaro aloqalar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Xalqaro hamkor tashkilotlar</a></li>
+                                        <li class="menu-item"><a href="">Xorijda malaka oshirish va ta'lim</a></li>
+                                        <li class="menu-item"><a href="">Jalb etilgan sarmoyalar va grandlar</a></li>
+                                        <li class="menu-item"><a href="">Amaldagi loyihalar</a></li>
+                                        <li class="menu-item"><a href="">Mening innovatsion g`oyam</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Moliyaviy faoliyat</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Shartnomalar na'munasi</a></li>
+                                        <li class="menu-item"><a href="">Kasaba uyushmasi</a></li>
+                                        <li class="menu-item"><a href="">Bitiruvchilar monitoringi</a></li>
+                                        <li class="menu-item"><a href="">Moliyaviy hisobot 2022</a></li>
+                                        <li class="menu-item"><a href="">Smeta ijrosi 2023 yil  2 chorak</a></li>
+                                        <li class="menu-item"><a href="">Davlat_xaridlari_to'g'risida_ma'lumot_2023_yil_2_chorak</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Ma'naviy-ma'rifiy faoliyat</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Ma'naviy-ma'rifiy tadbirlar</a></li>
+                                        <li class="menu-item"><a href="">Xotin-qizlar maslahat kengashi</a></li>
+                                        <li class="menu-item"><a href="">Talabalar hayoti</a></li>
+                                        <li class="menu-item"><a href="">Sport tadbirlari</a></li>
+                                        <li class="menu-item"><a href="">Yoshlar ittifoqi tomonidan o`tkazilgan tadbirlar</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
-                        <li class="menu-item menu-item-has-children samtuit-mega-menu"><a href="bachelor-of-science-in-business-administration.html" class="sf-with-ul-pre">Abutrentlar</a>
+                        <li class="menu-item menu-item-has-children samtuit-mega-menu"><a href="" class="sf-with-ul-pre">Abutrentlar</a>
                             <div class="sf-mega sf-mega-full megaimg">
                                 <ul class="sub-menu">
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a class="sf-with-ul-pre">Bakalavur</a>
+                                    <li class="menu-item menu-item-has-children" data-size="30"><a class="sf-with-ul-pre">Bakalavur</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Business Administration</a></li>
-                                            <li class="menu-item"><a href="school-of-law.html">School Of Law</a></li>
-                                            <li class="menu-item"><a href="engineering.html">Engineering</a></li>
-                                            <li class="menu-item"><a href="medicine.html">Medicine</a></li>
-                                            <li class="menu-item"><a href="art-science.html">Art &#038; Science</a></li>
+                                            <li class="menu-item"><a href="">Eslatma</a></li>
+                                            <li class="menu-item"><a href="">Qabul nizomi</a></li>
+                                            <li class="menu-item"><a href="">Qabul kvotasi</a></li>
+                                            <li class="menu-item"><a href="">Imtixon fanlari ro'yxat</a></li>
+                                            <li class="menu-item"><a href="">Qabul komissiyasi</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Magistratura</a>
+                                    <li class="menu-item menu-item-has-children" data-size="30"><a href="#" class="sf-with-ul-pre">Magistratura</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="hospitality-management.html">Hospitality Management</a></li>
-                                            <li class="menu-item"><a href="physics.html">Physics</a></li>
-                                            <li class="menu-item"><a href="#">Chemistry</a></li>
-                                            <li class="menu-item"><a href="#">Music</a></li>
-                                            <li class="menu-item"><a href="#">Computer Science</a></li>
+                                            <li class="menu-item"><a href="">Eslatma</a></li>
+                                            <li class="menu-item"><a href="">Qabul nizomi</a></li>
+                                            <li class="menu-item"><a href="#">Qabul kvotasi</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Resources</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Department Page</a></li>
-                                            <li class="menu-item"><a href="finance.html">Major Page</a></li>
-                                            <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                            <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                            <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item" data-size="15">
-                                        <div class="samtuit-mega-menu-section-content"><img src="upload/mega-menu-logo.png" id="img_fd84_0" alt="" /> <span id="span_fd84_0">Academic offerings include 95 majors, 86 minors, and more than 100 in-major specializations</span></div>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu-item menu-item-has-children samtuit-mega-menu"><a href="bachelor-of-science-in-business-administration.html" class="sf-with-ul-pre">Talabalar</a>
+                        <li class="menu-item menu-item-has-children samtuit-mega-menu"><a href="" class="sf-with-ul-pre">Talabalar</a>
                             <div class="sf-mega sf-mega-full megaimg">
                                 <ul class="sub-menu">
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a class="sf-with-ul-pre">Bakalavur</a>
+                                    <li class="menu-item menu-item-has-children" data-size="20"><a class="sf-with-ul-pre">Bakalavur</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Business Administration</a></li>
-                                            <li class="menu-item"><a href="school-of-law.html">School Of Law</a></li>
-                                            <li class="menu-item"><a href="engineering.html">Engineering</a></li>
-                                            <li class="menu-item"><a href="medicine.html">Medicine</a></li>
-                                            <li class="menu-item"><a href="art-science.html">Art &#038; Science</a></li>
+                                            <li class="menu-item"><a href="">Yo`riqnoma</a></li>
+                                            <li class="menu-item"><a href="">Bitiruvchilar taqsimoti</a></li>
+                                            <li class="menu-item"><a href="">Bitiruvchilar ma'lumoti</a></li>
+                                            <li class="menu-item"><a href="">Dars jadvali</a></li>
+                                            <li class="menu-item"><a href="">O`zlashtirish</a></li>
+                                            <li class="menu-item"><a href="">Talabalar turar joyiga ariza yuborish</a></li>
+                                            <li class="menu-item"><a href="">Talabalar turar joyiga my.gov.uz tizimi orqali ariza berish</a></li>
+                                            <li class="menu-item"><a href="">Iqtidorli talabalar</a></li>
+                                            <li class="menu-item"><a href="">Talabalar turar joylari</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Magistratura</a>
+                                    <li class="menu-item menu-item-has-children" data-size="20"><a href="#" class="sf-with-ul-pre">Magistratura</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="hospitality-management.html">Hospitality Management</a></li>
-                                            <li class="menu-item"><a href="physics.html">Physics</a></li>
-                                            <li class="menu-item"><a href="#">Chemistry</a></li>
-                                            <li class="menu-item"><a href="#">Music</a></li>
-                                            <li class="menu-item"><a href="#">Computer Science</a></li>
+                                            <li class="menu-item"><a href="">Yo`riqnoma</a></li>
+                                            <li class="menu-item"><a href="">Dars jadval</a></li>
+                                            <li class="menu-item"><a href="#">O`zlashtirish</a></li>
+                                            <li class="menu-item"><a href="#">Iqtidorli talabalari</a></li>
+                                            <li class="menu-item"><a href="#">Talabalar turar joylari</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Resources</a>
+                                    <li class="menu-item menu-item-has-children" data-size="20"><a href="#" class="sf-with-ul-pre">Xorijiy talabalar</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Department Page</a></li>
-                                            <li class="menu-item"><a href="finance.html">Major Page</a></li>
-                                            <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                            <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                            <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
+                                            <li class="menu-item"><a href="">Xorijlik talabalar qabuli</a></li>
+                                            <li class="menu-item"><a href="">Shartnoma narxlari</a></li>
+                                            <li class="menu-item"><a href="">Talabalar xavfsizligi</a></li>
+                                            <li class="menu-item"><a href="">Single Instructor</a></li>
+                                            <li class="menu-item"><a href="">Video</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="menu-item" data-size="15">
-                                        <div class="samtuit-mega-menu-section-content"><img src="upload/mega-menu-logo.png" id="img_fd84_0" alt="" /> <span id="span_fd84_0">Academic offerings include 95 majors, 86 minors, and more than 100 in-major specializations</span></div>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu-item samtuit-normal-menu"><a href="athletics.html">Interaktiv xizmatlar</a></li>
+                        <li class="menu-item menu-item-has-children samtuit-normal-menu"><a href="" class="sf-with-ul-pre">Interaktiv xizmatlar</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Interaktiv Xizmatlar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Oliy ma'lumot haqidagi diplomni tasdiqlash</a></li>
+                                        <li class="menu-item"><a href="">Ish joyidan ma'lumotnoma olish</a></li>
+                                        <li class="menu-item"><a href="">Talabalik haqida ma'lumotnoma olish</a></li>
+                                        <li class="menu-item"><a href="">Abiturientlarning hujjatlar to`plamini qaytarib olish uchun</a></li>
+                                        <li class="menu-item"><a href="">Oliy ta'lim muassasidagi vakant lavozimlar</a></li>
+                                        <li class="menu-item"><a href="">Abiturientlar arizasini elektron qabul qilish(Bakalavriant)</a></li>
+                                        <li class="menu-item"><a href="">Talabalar arizasini elektron qabul qilish(Magistratura)</a></li>
+                                        <li class="menu-item"><a href="">Rahbar qabuliga yozilish</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Me'yoriy-huquqiy hujjatlar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">O'zbekiston Respublikasi qonunlari</a></li>
+                                        <li class="menu-item"><a href="">O'zbekiston Respublikasi Prezidentining qarorlari</a></li>
+                                        <li class="menu-item"><a href="">O'zbekiston Respublikasi Vazirlar Mahkamisining qarorlari</a></li>
+                                        <li class="menu-item"><a href="">Hukumat qaror va dasturlari</a></li>
+                                        <li class="menu-item"><a href="">OTM tomonidan qabul qilingan normativ - huquqiy, ijro hujjatlari</a></li>
+                                        <li class="menu-item"><a href="">OTM tomonidan qabul qilingan "Istiqbolli rejalar"</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">Ochiq ma'lumotlar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">Cheklab qo`yilgan ma'lumotlar</a></li>
+                                        <li class="menu-item"><a href="">E'lon qilinishi lozim bo`lgan ma'lumotlar</a></li>
+                                        <li class="menu-item"><a href="">Mas'ul shaxslar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children" data-size="60"><a href="" class="sf-with-ul-pre">O'quv me'yoriy hujjatlar</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">1-KURS</a></li>
+                                        <li class="menu-item"><a href="">2-KURS</a></li>
+                                        <li class="menu-item"><a href="">3-KURS</a></li>
+                                        <li class="menu-item"><a href="">4-KURS</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="menu-item samtuit-normal-menu"><a href="university-life.html">Bog'lanish</a></li>
                     </ul>
                     <div class="samtuit-navigation-slide-bar" id="samtuit-navigation-slide-bar"></div>
