@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,9 +37,35 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
     
     'samtuit',
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # to'liq CKEditor qurollarini qo'shish
+        'height': 300,
+        'width': '100%',
+        'extraPlugins': 'colorbutton,colordialog',  # Rang plaginlarini qo'shamiz
+        'allowedContent': True,  # Barcha HTML teglariga ruxsat beradi
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ['TextColor', 'BGColor'],  # Matn va orqa fon ranglari uchun tugmalar
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat'],
+            ['Source'],
+        ],
+        'removePlugins': 'stylesheetparser',  # Stil bilan bog'liq filtrlarni olib tashlaymiz
+        'extraAllowedContent': 'h1 h2 h3 h4 h5 h6 p blockquote; span[style]; a[!href]; img[!src,width,height];',  # 'span' tegini va style atributini qo'shish
+    },
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,11 +143,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
 
-MEDIA_ROOT = BASE_DIR.joinpath("media")
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
