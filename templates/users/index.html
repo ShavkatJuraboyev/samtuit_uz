@@ -14,12 +14,10 @@
                                     <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
                                         <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8">
                                             <ul>
-                                                <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{% static 'users/img-slider/img-12.jpg' %}" alt="" title="slider-1" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+                                                {% for picture in pictures %}
+                                                <li data-index="rs-{{picture.id}}" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{{picture.image.url}}" alt="" title="slider-1" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
                                                 </li>
-                                                <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{% static 'users/img-slider/img-8.jpg' %}" alt="" title="slider-2" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
-                                                <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{% static 'users/img-slider/img-3.jpg' %}" alt="" title="slider-3" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
-                                                <li data-index="rs-4" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{% static 'users/img-slider/img-6.jpg' %}" alt="" title="slider-4" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
-                                                <li data-index="rs-5" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{% static 'users/img-slider/img-10.jpg' %}" alt="" title="slider-4" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
+                                                {% endfor %}
                                             </ul>
                                             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
                                         </div>
@@ -44,36 +42,18 @@
                                             <div class="gdlr-core-block-item-title-divider" style="font-size: 24px ;border-bottom-width: 2px ;"></div>
                                         </div><a class="gdlr-core-block-item-read-more" href="{% url 'news' %}" target="_self" style="color: #3db166 ;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Barcha yangiliklarni o'qing</font></font></a></div>
                                     <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
+                                        {% for post in posts %}
                                         <div class="gdlr-core-item-list  gdlr-core-item-pdlr gdlr-core-column-20">
                                             <div class="gdlr-core-blog-grid ">
                                                 <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                    <a href="{% url 'new' %}"><img src="{% static 'users/upload/shutterstock_218235004-600x333.jpg' %}" width="900" height="500" alt=""></a>
+                                                    <a href="{% url 'new' pk=post.id %}"><img src="{{post.image.url}}" style="width: 100%; height: 250px;" alt=""></a>
                                                 </div>
                                                 <div class="gdlr-core-blog-grid-content-wrap">
-                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2016 yil 6 iyun</font></font></a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="{% url 'new' %}" rel="tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duvarcılık</font></font></a></span></div>
-                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 17px ;font-weight: 600 ;letter-spacing: 0px ;"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Biznes rahbarlarining keyingi avlodi uchun Global MBA</font></font></a></h3></div>
+                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' pk=post.id %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.created_at}}</font></font></a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="{% url 'new' pk=post.id %}" rel="tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.created_by}}</font></font></a></span></div>
+                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 17px ;font-weight: 600 ;letter-spacing: 0px ;"><a href="{% url 'new' pk=post.id %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.title}}</font></font></a></h3></div>
                                             </div>
                                         </div>
-                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr gdlr-core-column-20">
-                                            <div class="gdlr-core-blog-grid ">
-                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                    <a href="{% url 'new' %}"><img src="{% static 'users/upload/shutterstock_218235004-600x333.jpg' %}" width="900" height="500" alt=""></a>
-                                                </div>
-                                                <div class="gdlr-core-blog-grid-content-wrap">
-                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2016 yil 6 iyun</font></font></a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="{% url 'new' %}" rel="tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duvarcılık</font></font></a></span></div>
-                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 17px ;font-weight: 600 ;letter-spacing: 0px ;"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Biznes rahbarlarining keyingi avlodi uchun Global MBA</font></font></a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr gdlr-core-column-20">
-                                            <div class="gdlr-core-blog-grid ">
-                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                    <a href="{% url 'new' %}"><img src="{% static 'users/upload/shutterstock_218235004-600x333.jpg' %}" width="900" height="500" alt=""></a>
-                                                </div>
-                                                <div class="gdlr-core-blog-grid-content-wrap">
-                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2016 yil 6 iyun</font></font></a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="{% url 'new' %}" rel="tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duvarcılık</font></font></a></span></div>
-                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 17px ;font-weight: 600 ;letter-spacing: 0px ;"><a href="{% url 'new' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Biznes rahbarlarining keyingi avlodi uchun Global MBA</font></font></a></h3></div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
