@@ -6,13 +6,13 @@ from django.http import JsonResponse
 
 def home(request):
     pictures = PictureSlider.objects.all()
-    posts = Post.objects.all().order_by('-id')[:3]
-    context = {'pictures':pictures, 'posts':posts}
+    posts = Post.objects.all().order_by('-id')[:6]
+    context = {'pictures':pictures, 'posts':posts} 
     return render(request, 'users/index.html', context)
 
 def news(request):
     post = Post.objects.all().order_by('-created_at')
-    paginator = Paginator(post, 8) 
+    paginator = Paginator(post, 6) 
 
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)

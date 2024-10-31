@@ -1,583 +1,1599 @@
 {% extends 'users/base/base.html' %}
 {% load static %}
 {% block content %}
-        <div class="samtuit-page-wrapper" id="samtuit-page-wrapper">
-            <div class="gdlr-core-page-builder-body">
-                <!-- slayt rasm -->
-                <div class="gdlr-core-pbf-wrapper " style="padding: 0px 0px 0px 0px;">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #192f59 ;"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-pbf-wrapper-full-no-space">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-revolution-slider-item gdlr-core-item-pdlr gdlr-core-item-pdb " style="padding-bottom: 0px ;">
 
-                                    <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
-                                        <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8">
-                                            <ul>
-                                                {% for picture in pictures %}
-                                                <li data-index="rs-{{picture.id}}" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"> <img src="{{picture.image.url}}" alt="" title="slider-1" width="100%" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
-                                            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+
+    <section id="yt_spotlight1" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="slideshow" class="col-sm-12">
+                    <div id="sj_k2slickslider346" class="sj-k2slickslider  slide slickslider-right"
+                        data-interval="5000" data-pause="hover">
+                        <!-- Carousel items -->
+                        <div class="slickslider-items bg-style1">
+                            <div class="slickslider-item item clearfix active ">
+
+                                <div class="images-slideshow">
+                                    <img alt="A Responsive Education Joomla Theme"
+                                        src="{% static 'users/cache/resized/0e03762b3348aa5c67ef95664efe9479.jpg' %}" />
+                                </div>
+
+                                <div class="item-content">
+                                    <div class="item-content-inner">
+
+                                        <h3 class="item-title">
+                                            <a href=""
+                                                title="A Responsive Education Joomla Theme" target="_blank">
+                                                <span>A </span><span>Responsive </span><span>Education
+                                                </span><span>Joomla </span><span>Theme</span>
+                                            </a>
+                                            <span class="line"></span>
+                                        </h3>
+                                        <div class="item-description">
+                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
+                                            Aliquam eget arcu magna, vel congue dui. Aenean </div>
+                                        <div class="item-readmore">
+                                            <a href=""
+                                                title="A Responsive Education Joomla Theme" target="_blank">
+                                                find out more </a>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- slayt rasm -->
-                 <!-- Yangiliklar -->
-                <div class="gdlr-core-pbf-wrapper " style="padding: 80px 0px 30px 0px;" data-skin="Blut Title Column Service">
-                    <div class="gdlr-core-pbf-background-wrap"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-column" style="padding-bottom: 0px ;">
-                                    <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" style="margin-bottom: 40px ;">
-                                        <div class="gdlr-core-block-item-title-inner clearfix">
-                                            <h3 class="gdlr-core-block-item-title" style="font-size: 24px ;font-style: normal ;text-transform: none ;letter-spacing: 0px ;color: #163269 ;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yangiliklar va yangilanishlar</font></font></h3>
-                                            <div class="gdlr-core-block-item-title-divider" style="font-size: 24px ;border-bottom-width: 2px ;"></div>
-                                        </div><a class="gdlr-core-block-item-read-more" href="{% url 'news' %}" target="_self" style="color: #3db166 ;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Barcha yangiliklarni o'qing</font></font></a></div>
-                                    <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                        {% for post in posts %}
-                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr gdlr-core-column-20">
-                                            <div class="gdlr-core-blog-grid ">
-                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                    <a href="{% url 'new' pk=post.id %}"><img src="{{post.image.url}}" style="width: 100%; height: 250px;" alt=""></a>
-                                                </div>
-                                                <div class="gdlr-core-blog-grid-content-wrap">
-                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' pk=post.id %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.created_at}}</font></font></a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="{% url 'new' pk=post.id %}" rel="tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.created_by}}</font></font></a></span></div>
-                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 17px ;font-weight: 600 ;letter-spacing: 0px ;"><a href="{% url 'new' pk=post.id %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{post.title}}</font></font></a></h3></div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-event-item gdlr-core-item-pdb" style="padding-bottom: 25px ;">
-                                    <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" style="margin-bottom: 37px ;">
-                                        <div class="gdlr-core-block-item-title-inner clearfix">
-                                            <h3 class="gdlr-core-block-item-title" style="font-size: 24px ;font-style: normal ;text-transform: none ;letter-spacing: 0px ;color: #163269 ;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E'lonlar va tadbirlar</font></font></h3>
-                                            <div class="gdlr-core-block-item-title-divider" style="font-size: 24px ;border-bottom-color: #dcdcdc ;border-bottom-width: 2px ;"></div>
-                                        </div>
-                                        <a class="gdlr-core-block-item-read-more" href="#" target="_self" style="color: #3db166 ;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Barcha voqealarni ko'rish</font></font></a>
-                                    </div>
-                                    <div class="gdlr-core-event-item-holder clearfix">
-                                        <div class="gdlr-core-event-item-list gdlr-core-style-grid gdlr-core-item-pdlr gdlr-core-column-20  clearfix">
-                                            <div class="gdlr-core-event-item-thumbnail">
-                                                <a href="#"><img src="{% static 'users/upload/ellehem-693-unsplash-600x333.jpg' %}" width="900" height="500" alt=""></a>
-                                            </div><span class="gdlr-core-event-item-info gdlr-core-type-start-date-month"><span class="gdlr-core-date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">01</font></font></span><span class="gdlr-core-month"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yanvar</font></font></span></span>
-                                            <div class="gdlr-core-event-item-content-wrap">
-                                                <h3 class="gdlr-core-event-item-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster bitiruvchilari Turkiyadagi issiq havo ballon sayohati</font></font></a></h3>
-                                                <div class="gdlr-core-event-item-info-wrap"><span class="gdlr-core-event-item-info gdlr-core-type-time"><span class="gdlr-core-head"><i class="icon_clock_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10:00 dan 16:30 gacha</font></font></span></span><span class="gdlr-core-event-item-info gdlr-core-type-location"><span class="gdlr-core-head"><i class="icon_pin_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster katta zali</font></font></span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-event-item-list gdlr-core-style-grid gdlr-core-item-pdlr gdlr-core-column-20  clearfix">
-                                            <div class="gdlr-core-event-item-thumbnail">
-                                                <a href="#"><img src="{% static 'users/upload/ellehem-693-unsplash-600x333.jpg' %}" width="900" height="500" alt=""></a>
-                                            </div><span class="gdlr-core-event-item-info gdlr-core-type-start-date-month"><span class="gdlr-core-date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">01</font></font></span><span class="gdlr-core-month"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yanvar</font></font></span></span>
-                                            <div class="gdlr-core-event-item-content-wrap">
-                                                <h3 class="gdlr-core-event-item-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster bitiruvchilari Turkiyadagi issiq havo ballon sayohati</font></font></a></h3>
-                                                <div class="gdlr-core-event-item-info-wrap"><span class="gdlr-core-event-item-info gdlr-core-type-time"><span class="gdlr-core-head"><i class="icon_clock_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10:00 dan 16:30 gacha</font></font></span></span><span class="gdlr-core-event-item-info gdlr-core-type-location"><span class="gdlr-core-head"><i class="icon_pin_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster katta zali</font></font></span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-event-item-list gdlr-core-style-grid gdlr-core-item-pdlr gdlr-core-column-20  clearfix">
-                                            <div class="gdlr-core-event-item-thumbnail">
-                                                <a href="#"><img src="{% static 'users/upload/ellehem-693-unsplash-600x333.jpg' %}" width="900" height="500" alt=""></a>
-                                            </div><span class="gdlr-core-event-item-info gdlr-core-type-start-date-month"><span class="gdlr-core-date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">01</font></font></span><span class="gdlr-core-month"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yanvar</font></font></span></span>
-                                            <div class="gdlr-core-event-item-content-wrap">
-                                                <h3 class="gdlr-core-event-item-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster bitiruvchilari Turkiyadagi issiq havo ballon sayohati</font></font></a></h3>
-                                                <div class="gdlr-core-event-item-info-wrap"><span class="gdlr-core-event-item-info gdlr-core-type-time"><span class="gdlr-core-head"><i class="icon_clock_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10:00 dan 16:30 gacha</font></font></span></span><span class="gdlr-core-event-item-info gdlr-core-type-location"><span class="gdlr-core-head"><i class="icon_pin_alt"></i></span><span class="gdlr-core-tail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kingster katta zali</font></font></span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <!-- Yangiliklar -->
-                <!-- Unversitet haqida -->
-                <div class="gdlr-core-pbf-wrapper " id="div_1dd7_21">
-                    <div class="gdlr-core-pbf-background-wrap">
-                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_22" data-parallax-speed="0.2"></div>
-                    </div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
-                            <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-image-item gdlr-core-item-pdlr gdlr-core-item-pdb  gdlr-core-left-align" id="div_1dd7_23">
-                                                <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" id="div_1dd7_24"><img src="{% static 'users/images/logo.png' %}" alt="" width="262" height="35" title="logo-white" /></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_25">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_5">Universitet haqida</h3></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gdlr-core-pbf-column gdlr-core-column-40">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" id="div_1dd7_26">
-                                                <div class="gdlr-core-text-box-item-content" id="div_1dd7_27">
-                                                    <p>Muhammad al-Xorazmiy nomidagi TATU Samarqand filiali O‘zbekiston Respublikasi Prezidentining 2005-yil 2-iyundagi "Axborot kommunikasiya texnologiyalari sohasida kadrlar tayyorlash tizimini yanada takomillashtirish chora-tadbirlari to‘g‘risida”gi 91-son qarori asosida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" id="div_1dd7_28">
-                                                <div class="gdlr-core-text-box-item-content" id="div_1dd7_29">
-                                                    <p>Toshkent axborot texnologiyalari universiteti Samarqand filiali tashkil etilib, filial tarkibiy tuzilmasida 2ta fakultet “Kompyuter injiniringi” va "Telekommunikasiya texnologiyalari va kasb ta’limi” fakulteti o‘z faoliyatini boshladi.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align"><a class="gdlr-core-button  gdlr-core-button-transparent gdlr-core-button-no-border" href="#" id="gdlr-core-button-id-66813"><span class="gdlr-core-content" >Ko'proq o'qish</span><i class="gdlr-core-pos-right fa fa-long-arrow-right" id="i_1dd7_0"  ></i></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Unversitet haqida -->
-                <!-- Yangiliklar2 -->
-                <div class="gdlr-core-pbf-wrapper " id="div_1dd7_44">
-                    <div class="gdlr-core-pbf-background-wrap"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
-                            <div class="gdlr-core-pbf-column gdlr-core-column-40 gdlr-core-column-first">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_45" data-sync-height="height-2">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-widget">
-                                                <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_46">
-                                                    <div class="gdlr-core-block-item-title-inner clearfix">
-                                                        <h3 class="gdlr-core-block-item-title" id="h3_1dd7_10">Yangiliklar va Yangilanishlar</h3>
-                                                        <div class="gdlr-core-block-item-title-divider" id="div_1dd7_47"></div>
-                                                    </div>
-                                                    <a class="gdlr-core-block-item-read-more" href="#" target="_self" id="a_1dd7_5">Barcha yangiliklarni o'qing</a>
-                                                </div>
-                                                <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                    <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
-                                                        <div class="gdlr-core-item-list-inner gdlr-core-item-mglr">
-                                                            <div class="gdlr-core-blog-grid ">
-                                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                                    <a href="#">
-                                                                        <img src="{% static 'users/upload/shutterstock_135948689-400x245.jpg' %}" width="700" height="430" alt="" />
-                                                                    </a>
-                                                                </div>
-                                                                <div class="gdlr-core-blog-grid-content-wrap">
-                                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                                            <a href="#">June 6, 2016</a>
-                                                                        </span>
-                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                                                                            <a href="#" rel="tag">Hot</a>
-                                                                            <span class="gdlr-core-sep">,</span>
-                                                                            <a href="#" rel="tag">Updates</a>
-                                                                        </span>
-                                                                    </div>
-                                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
-                                                                        <a href="#" >Professor Albert joint research on mobile money in Tanzania</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
-                                                        <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
-                                                            <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                                <a href="#">
-                                                                    <img src="{% static 'users/upload/shutterstock_135948689-400x245.jpg' %}" alt="" width="150" height="150" title="Student" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="gdlr-core-blog-widget-content">
-                                                                <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                                        <a href="#">June 6, 2016</a>
-                                                                    </span>
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                                                                        <a href="#" rel="tag">Hot</a>
-                                                                        <span class="gdlr-core-sep">,</span>
-                                                                        <a href="#" rel="tag">Updates</a>
-                                                                    </span>
-                                                                </div>
-                                                                <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_12">
-                                                                    <a href="#" >A Global MBA for the next generation of business leaders</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
-                                                            <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                                <a href="#">
-                                                                    <img src="{% static 'users/upload/shutterstock_135948689-400x245.jpg' %}" alt="" width="150" height="150" title="shutterstock_481869205" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="gdlr-core-blog-widget-content">
-                                                                <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                                        <a href="#">June 6, 2016</a>
-                                                                    </span>
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                                                                        <a href="#" rel="tag">Hot</a>
-                                                                        <span class="gdlr-core-sep">,</span>
-                                                                        <a href="#" rel="tag">Updates</a>
-                                                                    </span>
-                                                                </div>
-                                                                <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_13">
-                                                                    <a href="#" >Professor Tom comments on voluntary recalls by snack brands</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
-                                                            <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                                                <a href="#">
-                                                                    <img src="{% static 'users/upload/shutterstock_135948689-400x245.jpg' %}" alt="" width="150" height="150" title="shutterstock_361397258" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="gdlr-core-blog-widget-content">
-                                                                <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                                        <a href="#">June 6, 2016</a>
-                                                                    </span>
-                                                                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                                                                        <a href="#" rel="tag">Article</a>
-                                                                        <span class="gdlr-core-sep">,</span>
-                                                                        <a href="#" rel="tag">Research</a>
-                                                                    </span>
-                                                                </div>
-                                                                <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_14">
-                                                                    <a href="#" >Professor Alexa is interviewed about Twitter&#8217;s valuation</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-8">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js  gdlr-core-column-extend-right" id="div_1dd7_48" data-sync-height="height-2">
-                                    <div class="gdlr-core-pbf-background-wrap">
-                                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_49" data-parallax-speed="0"></div>
-                                    </div>
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" id="div_1dd7_50">
-                                                <div class="gdlr-core-title-item-left-icon" id="div_1dd7_51"><i class="icon_link_alt" id="i_1dd7_1"></i></div>
-                                                <div class="gdlr-core-title-item-left-icon-wrap">
-                                                    <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_15">Tez havolalar</h3></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-66469">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="#" target="_self" >Fakultetlar
-                                                    </a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_52">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_53"></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-42777">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="#" target="_self" >Kafedralar</a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_54">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_55"></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-51281">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_18"><a href="#" target="_self" >Bo'lim va markazlar</a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_56">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_57"></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-78243">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_19"><a href="#" target="_self" >Bo'sh ish o'rinlari</a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_58">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_59"></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-14842">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_20"><a href="#" target="_self" >Abituriyent</a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_60">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_61"></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-33183">
-                                                <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_21"><a href="#" target="_self" >Talabalar</a></h3></div>
-                                            </div>
-                                        </div>
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_62">
-                                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_63"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Yangiliklar2 -->
 
-                <div class="gdlr-core-pbf-wrapper hp1-col-services " id="div_1dd7_30" data-skin="Column Service">
-                    <div class="gdlr-core-pbf-background-wrap" id="div_1dd7_31"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
-                            <div class="gdlr-core-pbf-column gdlr-core-column-15 gdlr-core-column-first">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-top gdlr-core-no-caption gdlr-core-item-pdlr" id="div_1dd7_32">
-                                                <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_1dd7_33"><img src="{% static 'users/upload/col-icon-1.png' %}" alt="" width="41" height="41" title="col-icon-1" /></div>
-                                                <div class="gdlr-core-column-service-content-wrapper">
-                                                    <div class="gdlr-core-column-service-title-wrap">
-                                                        <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_6">Education Services</h3></div>
-                                                    <div class="gdlr-core-column-service-content" id="div_1dd7_34">
-                                                        <p>samtuit University was established by John Smith in 1920 for the public benefit and it is recognized.</p> <a class="gdlr-core-column-service-read-more gdlr-core-info-font" href="#" id="a_1dd7_1">Learn More</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-5">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-top gdlr-core-no-caption gdlr-core-item-pdlr" id="div_1dd7_35">
-                                                <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_1dd7_36"><img src="{% static 'users/upload/col-icon-2.png' %}" alt="" width="43" height="45" title="col-icon-2" /></div>
-                                                <div class="gdlr-core-column-service-content-wrapper">
-                                                    <div class="gdlr-core-column-service-title-wrap">
-                                                        <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_7">International Hubs</h3></div>
-                                                    <div class="gdlr-core-column-service-content" id="div_1dd7_37">
-                                                        <p>samtuit University was established by John Smith in 1920 for the public benefit and it is recognized.</p> <a class="gdlr-core-column-service-read-more gdlr-core-info-font" href="#" id="a_1dd7_2">Learn More</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-6">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-top gdlr-core-no-caption gdlr-core-item-pdlr" id="div_1dd7_38">
-                                                <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_1dd7_39"><img src="{% static 'users/upload/col-icon-3.png' %}" alt="" width="40" height="43" title="col-icon-3" /></div>
-                                                <div class="gdlr-core-column-service-content-wrapper">
-                                                    <div class="gdlr-core-column-service-title-wrap">
-                                                        <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_8">Bachelor’s and Master’s</h3></div>
-                                                    <div class="gdlr-core-column-service-content" id="div_1dd7_40">
-                                                        <p>samtuit University was established by John Smith in 1920 for the public benefit and it is recognized.</p> <a class="gdlr-core-column-service-read-more gdlr-core-info-font" href="#" id="a_1dd7_3">Learn More</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-7">
-                                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
-                                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                        <div class="gdlr-core-pbf-element">
-                                            <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-top gdlr-core-no-caption gdlr-core-item-pdlr" id="div_1dd7_41">
-                                                <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_1dd7_42"><img src="{% static 'users/upload/col-icon-4.png' %}" alt="" width="47" height="47" title="col-icon-4" /></div>
-                                                <div class="gdlr-core-column-service-content-wrapper">
-                                                    <div class="gdlr-core-column-service-title-wrap">
-                                                        <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_9">University Life</h3></div>
-                                                    <div class="gdlr-core-column-service-content" id="div_1dd7_43">
-                                                        <p>samtuit University was established by John Smith in 1920 for the public benefit and it is recognized.</p> <a class="gdlr-core-column-service-read-more gdlr-core-info-font" href="#" id="a_1dd7_4">Learn More</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                 <!-- statistika -->
-                 <div class="gdlr-core-pbf-wrapper  hp1-col-services"  data-skin="Blue Title" id="gdlr-core-wrapper-1">
-                    <div class="gdlr-core-pbf-background-wrap"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-pbf-wrapper-full-no-space">
-                            <div class=" gdlr-core-pbf-wrapper-container-inner gdlr-core-item-mglr clearfix" id="div_1dd7_0">
-                                <div class="gdlr-core-pbf-column gdlr-core-column-15 gdlr-core-column-first">
-                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_1">
-                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                            <div class="gdlr-core-pbf-element">
-                                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-with-caption gdlr-core-item-pdlr" id="div_1dd7_2">
-                                                    <div class="gdlr-core-column-service-media gdlr-core-media-image"><img src="{% static 'users/iconc-png/talaba.png' %}" alt="" width="40" height="40" title="icon-1" /></div>
-                                                    <div class="gdlr-core-column-service-content-wrapper">
-                                                        <div class="gdlr-core-column-service-title-wrap">
-                                                            <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_0">Talabalar</h3>
-                                                            <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_3">3351</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-1">
-                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_4">
-                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                            <div class="gdlr-core-pbf-element">
-                                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-with-caption gdlr-core-item-pdlr" id="div_1dd7_5">
-                                                    <div class="gdlr-core-column-service-media gdlr-core-media-image"><img src="{% static 'users/iconc-png/oqituvchi.png' %}" alt="" width="44" height="40" title="icon-2" /></div>
-                                                    <div class="gdlr-core-column-service-content-wrapper">
-                                                        <div class="gdlr-core-column-service-title-wrap">
-                                                            <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_1">O'qituvchilar</h3>
-                                                            <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_6">113</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-2">
-                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_7">
-                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                            <div class="gdlr-core-pbf-element">
-                                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-with-caption gdlr-core-item-pdlr" id="div_1dd7_8">
-                                                    <div class="gdlr-core-column-service-media gdlr-core-media-image"><img src="{% static 'users/iconc-png/bitiruvchi.png' %}" alt="" width="44" height="39" title="icon-3" /></div>
-                                                    <div class="gdlr-core-column-service-content-wrapper">
-                                                        <div class="gdlr-core-column-service-title-wrap">
-                                                            <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_2">Bitiruvchilar</h3>
-                                                            <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_9">5508</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-3">
-                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_10">
-                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                            <div class="gdlr-core-pbf-element">
-                                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-with-caption gdlr-core-item-pdlr" id="div_1dd7_11">
-                                                    <div class="gdlr-core-column-service-media gdlr-core-media-image"><img src="{% static 'users/iconc-png/kitob.png' %}" alt="" width="41" height="41" title="icon-4" /></div>
-                                                    <div class="gdlr-core-column-service-content-wrapper">
-                                                        <div class="gdlr-core-column-service-title-wrap">
-                                                            <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_3">Kitovblar</h3>
-                                                            <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_12">19610</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- statistika -->
+                            <div class="slickslider-item item clearfix  ">
 
-                <div class="gdlr-core-pbf-wrapper " id="div_1dd7_72">
-                    <div class="gdlr-core-pbf-background-wrap">
-                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_73" data-parallax-speed="0.2"></div>
-                    </div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container-custom" id="div_1dd7_74">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-image-item gdlr-core-item-pdlr gdlr-core-item-pdb  gdlr-core-center-align" id="div_1dd7_75">
-                                    <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" id="div_1dd7_76">
-                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://www.youtube.com/watch?v=C5pKtnmHTxg"><img src="{% static 'users/upload/icon-play.png' %}" alt="" width="82" height="82" title="icon-play" /></a>
+                                <div class="images-slideshow">
+                                    <img alt="Aenean vehicula vehicula aliquam"
+                                        src="{% static 'users/cache/resized/51f27d2038792dbe67902e507fd3e4a5.jpg' %}" />
+                                </div>
+
+                                <div class="item-content">
+                                    <div class="item-content-inner">
+
+                                        <h3 class="item-title">
+                                            <a href=""
+                                                title="Aenean vehicula vehicula aliquam" target="_blank">
+                                                <span>Aenean </span><span>vehicula </span><span>vehicula
+                                                </span><span>aliquam</span>
+                                            </a>
+                                            <span class="line"></span>
+                                        </h3>
+                                        <div class="item-description">
+                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
+                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
+                                        <div class="item-readmore">
+                                            <a href=""
+                                                title="Aenean vehicula vehicula aliquam" target="_blank">
+                                                find out more </a>
+                                        </div>
+
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr">
-                                    <div class="gdlr-core-title-item-title-wrap clearfix">
-                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_23">Video Tour in samtuit</h3></div>
+                            <div class="slickslider-item item clearfix  ">
+
+                                <div class="images-slideshow">
+                                    <img alt="Aliquam lobortis cursus erat"
+                                        src="{% static 'users/cache/resized/66430aff26b3a6a86a436335c9944b9f.jpg' %}" />
                                 </div>
-                            </div>
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align" id="div_1dd7_77">
-                                    <div class="gdlr-core-text-box-item-content" id="div_1dd7_78">
-                                        <p>Take a tour in samtuit and you will find the best university in the state. The video will take you to every places in this university.</p>
+
+                                <div class="item-content">
+                                    <div class="item-content-inner">
+
+                                        <h3 class="item-title">
+                                            <a href=""
+                                                title="Aliquam lobortis cursus erat" target="_blank">
+                                                <span>Aliquam </span><span>lobortis </span><span>cursus
+                                                </span><span>erat</span>
+                                            </a>
+                                            <span class="line"></span>
+                                        </h3>
+                                        <div class="item-description">
+                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
+                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
+                                        <div class="item-readmore">
+                                            <a href=""
+                                                title="Aliquam lobortis cursus erat" target="_blank">
+                                                find out more </a>
+                                        </div>
+
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="slickslider-item item clearfix  ">
+
+                                <div class="images-slideshow">
+                                    <img alt="Curabitur luctus tortor non quam"
+                                        src="{% static 'users/cache/resized/6185e9ead89f10d94da4aa0fa0ae82bd.jpg' %}" />
+                                </div>
+
+                                <div class="item-content">
+                                    <div class="item-content-inner">
+
+                                        <h3 class="item-title">
+                                            <a href=""
+                                                title="Curabitur luctus tortor non quam" target="_blank">
+                                                <span>Curabitur </span><span>luctus </span><span>tortor
+                                                </span><span>non </span><span>quam</span>
+                                            </a>
+                                            <span class="line"></span>
+                                        </h3>
+                                        <div class="item-description">
+                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
+                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
+                                        <div class="item-readmore">
+                                            <a href=""
+                                                title="Curabitur luctus tortor non quam" target="_blank">
+                                                find out more </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="gdlr-core-pbf-wrapper " id="div_1dd7_107">
-                    <div class="gdlr-core-pbf-background-wrap" id="div_1dd7_108"></div>
-                    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container-custom" id="div_1dd7_109">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-gallery-item gdlr-core-item-pdb clearfix  gdlr-core-gallery-item-style-grid" id="div_1dd7_110">
-                                    <div class="gdlr-core-gallery-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                        <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-column-first gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                            <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{% static 'users/upload/banner-1.png' %}" alt="" width="248" height="120" title="banner-1" /></div>
-                                        </div>
-                                        <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                            <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{% static 'users/upload/banner-2.png' %}" alt="" width="248" height="120" title="banner-2" /></div>
-                                        </div>
-                                        <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                            <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{% static 'users/upload/banner-3.png' %}" alt="" width="248" height="120" title="banner-3" /></div>
-                                        </div>
-                                        <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                            <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{% static 'users/upload/banner-4-1.png' %}" alt="" width="248" height="120" title="banner-4" /></div>
-                                        </div>
-                                        <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                            <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{% static 'users/upload/banner-5.png' %}" alt="" width="248" height="120" title="banner-5" /></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                        <!-- Carousel nav -->
+                        <div class="nav-pagination conner-tl bg-style1">
+                            <a class="left" href="#sj_k2slickslider346" data-jslide="prev">
+                                Prev <span class="over-row"></span>
+                            </a>
+                            <a class="right" href="#sj_k2slickslider346" data-jslide="next">
+                                Next <span class="over-row"></span>
+                            </a>
+                        </div>
+                        <div class="pag-item">
+                            <a class=" sel" href="#sj_k2slickslider346" data-jslide="0">1</a>
+                            <a class=" " href="#sj_k2slickslider346" data-jslide="1">2</a>
+                            <a class=" " href="#sj_k2slickslider346" data-jslide="2">3</a>
+                            <a class=" " href="#sj_k2slickslider346" data-jslide="3">4</a>
                         </div>
                     </div>
+
+                    <script> 					
+                        jQuery(document).ready(function($) {
+                            $('#sj_k2slickslider346').each(function() {
+                                var $this = $(this),
+                                    options = options = !$this.data('modal') && $.extend({}, $this.data());
+                                $this.jcarousel(options);
+                                $this.bind('jslide', function(e) {
+                                    var index = $(this).find(e.relatedTarget).index();
+                                    // process for nav
+                                    $('[data-jslide]').each(function() {
+                                        var $nav = $(this),
+                                            $navData = $nav.data(),
+                                            href, $target = $($nav.attr('data-target') || (href = $nav
+                                                .attr('href')) && href.replace(/.*(?=#[^\s]+$)/, ''));
+                                        if (!$target.is($this)) return;
+                                        if (typeof $navData.jslide == 'number' && $navData.jslide ==
+                                            index) {
+                                            $nav.addClass('sel');
+                                        } else {
+                                            $nav.removeClass('sel');
+                                        }
+                                    });
+                                });
+                                $this.touchSwipeLeft(function() {
+                                    $this.jcarousel('next');
+                                });
+                                $this.touchSwipeRight(function() {
+                                    $this.jcarousel('prev');
+                                });
+                            });
+                            return;
+                        });	
+                    </script>
+
                 </div>
             </div>
         </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    </section>
+
+    <section id="yt_spotlight2" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top3" class="col-sm-12">
+
+                    <div class="module  categories-ii ">
+                        <div class="modcontent clearfix">
+
+                            <div id="category_15065818671729926732" class="sj_category theme4">
+                                <ul class="line items-row1">
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/99_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a
+                                                href="">Fakultetlar</a>
+                                        </h3>
+                                        <p class="des">Kompyuter injiniringi fakulteti <br> Telekommunikatsiya texnologiyalari va kasb ta'limi fakulteti</p>
+
+                                    </li>
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/100_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a
+                                                href="">Kafedralar</a>
+                                        </h3>
+                                        <p class="des">Filialda 9 ta Kafedralar mavjud.</p>
+
+                                    </li>
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/107_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a
+                                                href="">Bo'lim va markazlar</a>
+                                        </h3>
+                                        <p class="des">Filialda jami 17 ta bo'lim va markazlar mavjud.</p>
+
+                                    </li>
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/108_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a
+                                                href="">Bo'sh ish o'rinlari</a>
+                                        </h3>
+                                        <p class="des">Filialda bo'sh ish o'rinlari</p>
+
+                                    </li>
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/109_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a href="">Abituriyent</a></h3>
+                                        <p class="des">O‘zbekiston Respublikasi Vazirlar Mahkamasining 2018 yil 3-apreldagi 261-son qarori... </p>
+
+                                    </li>
+
+                                    <li class="icon-image " style="width: -20px;">
+                                        <a href="">
+                                            <img style="width: -20px; height: 170px;"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/126_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                alt="image" />
+                                        </a>
+                                        <div class="over-image"></div>
+
+                                    </li>
+                                    <li class="content">
+                                        <h3 class="tilte">
+                                            <a
+                                                href="">Talabalar</a>
+                                        </h3>
+                                        <p class="des">O‘zbekiston Respublikasi Vazirlar Mahkamasining 2018 yil 3-apreldagi 261-son qarori...</p>
+
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="content" class="  no-left  no-right block com_content">
+        <div class="container">
+            <div class="row">
+                <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
+                <div id="content_main" class="col-sm-12">
+                    <div id="system-message-container">
+                    </div>
+
+                    <p style="display:none">Asosiy tarkib blokini yashirish</p>
+                </div>
+                <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="yt_spotlight3" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top4" class="col-lg-9 col-sm-8 ">
+
+                    <div class="module  k2-slider-style-one ">
+                        <h3 class="modtitle">Filial yangiliklari</h3>
+                        <div class="modcontent clearfix">
+                            <div id="sj_k2_slider_21093653941729926732" class="sj-k2-container-slider" >
+
+                                <div class="page-button top style">
+                                    <ul class="control-button preload">
+                                        <li class="preview"><i class="fa fa-chevron-left"></i></li>
+                                        <li class="next"><i class="fa fa-chevron-right"></i></li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    class="slider not-js cols-6 preset01-3 preset02-3 preset03-1 preset04-1 preset05-1">
+                                    <div class="vpo-wrap">
+                                        <div class="vp">
+                                            <div class="vpi-wrap">
+                                                {% for post in posts %}
+                                                <div class="item">
+                                                    <div class="item-wrap">
+
+                                                        <div class="item-img item-height">
+                                                            <div class="item-img-info">
+                                                                <a
+                                                                    href="">
+                                                                    <img alt="{{post.title}}" src="{{post.get_post_img}}" style="height: 185px;"/>
+                                                                </a>
+                                                                <div class="over-image"></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="item-info  ">
+                                                            <div class="item-inner">
+                                                                <div class="item-title">
+                                                                    <a href="" title="Lazen miten pakem rasem ">{{post.title}}"</a>
+                                                                </div>
+                                                                <div class="item-content">
+                                                                    <div class="item-des">
+                                                                        {{post.text}}"
+                                                                    </div>
+                                                                    <div class="item-read">
+                                                                        <a href=""
+                                                                            title="Lazen miten pakem rasem ">
+                                                                            <i class="fa fa-check"></i><span>Batafsil</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function($) {
+                                    ;
+                                    (function(element) {
+                                        var $element = $(element);
+                                        var $slider = $('.slider', $element)
+                                        $('.slider', $element).responsiver({
+                                            interval: 0,
+                                            speed: 1000,
+                                            start: 0,
+                                            step: 1,
+                                            circular: true,
+                                            preload: true,
+                                            fx: 'slide',
+                                            pause: 'hover',
+                                            control: {
+                                                prev: '#sj_k2_slider_21093653941729926732 .control-button li[class="preview"]',
+                                                next: '#sj_k2_slider_21093653941729926732 .control-button li[class="next"]'
+                                            },
+                                            getColumns: function(element) {
+                                                var match = $(element).attr('class').match(/cols-(\d+)/);
+                                                if (match[1]) {
+                                                    var column = parseInt(match[1]);
+                                                } else {
+                                                    var column = 1;
+                                                }
+                                                if (!column) column = 1;
+                                                return column;
+                                            }
+                                        });
+                                        $slider.touchSwipeLeft(function() {
+                                            $slider.responsiver('next');
+                                        });
+                                        $slider.touchSwipeRight(function() {
+                                            $slider.responsiver('prev');
+                                        });
+                                        $('.control-button', $element).removeClass('preload');
+                                    })('#sj_k2_slider_21093653941729926732');
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="top5" class="col-lg-3 col-sm-4 ">
+
+                    <div class="module  cus-admissions ">
+                        <div class="modcontent clearfix">
+
+                            <ul>
+                                <li>
+                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-pen.png' %}" alt="" /></div>
+                                    <div class="content">
+                                        <h3 class="title"><a title="" href="#">Admissions</a></h3>
+                                        <a href="#">How To Apply</a>
+                                        <p>FaQ</p>
+                                        <p>Fermentum Labor</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-map.png' %}" alt="" /></div>
+                                    <div class="content">
+                                        <h3 class="title"><a title="" href="#">Local Business</a></h3>
+                                        <p>OX1 2JD, United Kingdom</p>
+                                        <p>Tel: +44 1865 270000</p>
+                                        <a href="#">Check On Map</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-book.png' %}" alt="" /></div>
+                                    <div class="content">
+                                        <h3 class="title"><a title="" href="#">become our teacher</a></h3>
+                                        <p><a href="#" rel="alternate">How to apply</a></p>
+                                        <p>FaQ</p>
+                                        <p>Fermentum laboriosam</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="yt_spotlight4" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top6" class="col-sm-12">
+
+                    <div class="module  extra-upcoming-slider ">
+                        <h3 class="modtitle"> E'lonlar va tadbirlar </h3>
+                        <div class="modcontent clearfix">
+                            <div id="sjextraslider_1821092771729926732"
+                                class="sj-extraslider slide  extra-resp01-3 extra-resp02-3 extra-resp03-1 extra-resp04-1"
+                                data-interval="0" data-pause="hover">
+
+                                <div class="extraslider-inner">
+                                    <div class="item active">
+                                        <div class="line">
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/879f8c33fc4103d764509776abe81d9b.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/879f8c33fc4103d764509776abe81d9b.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>18</span>
+                                                                <span>April</span>
+                                                                <span>2015</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    2:00pm
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    6:00pm
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Zatena mipan facen timas chumas">
+                                                                Zatena mipan facen timas chumas </a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="#">Columbia University</a>
+                                                            <p>116th St & Broadway - New York</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Kimas cupas libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Zatena mipan facen timas chumas">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1"></div>
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/120f8939156bb612d15ba7fe6b4df02a.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/120f8939156bb612d15ba7fe6b4df02a.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>18</span>
+                                                                <span>April</span>
+                                                                <span>2015</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    3:00pm
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    4:00pm
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Gatana mipan chausa take liten">
+                                                                Gatana mipan chausa take liten </a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="#">University of Oxford</a>
+                                                            <p>Oxford OX1 2JD - United Kingdom</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Gazen polas libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Gatana mipan chausa take liten">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1 clr2"></div>
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/b34f99f98c3d5f8be74600bbf6932bbf.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/b34f99f98c3d5f8be74600bbf6932bbf.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>18</span>
+                                                                <span>April</span>
+                                                                <span>2015</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    2:00pm
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    5:00pm
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Pasen takem mitena chuka miren">
+                                                                Pasen takem mitena chuka miren </a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="#">Stanford University</a>
+                                                            <p>CA 94305 - United States</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Kuten mina libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Pasen takem mitena chuka miren">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1 clr3"></div>
+
+                                        </div>
+                                        <!--line-->
+                                    </div>
+                                    <!--end item-->
+                                    <div class="item ">
+                                        <div class="line">
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/709376ccd568365a13c4837937fc952e.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/709376ccd568365a13c4837937fc952e.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>18</span>
+                                                                <span>April</span>
+                                                                <span>2015</span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Timas caten mipan chumas pozane">
+                                                                Timas caten mipan chumas pozane </a>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Kuren mipas libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Timas caten mipan chumas pozane">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1"></div>
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/3c2d71719b072a734ab298cf46202674.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/3c2d71719b072a734ab298cf46202674.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>18</span>
+                                                                <span>April</span>
+                                                                <span>2015</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    5:00pm
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    6:00pm
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Fazen mipan chuka osqua ad litora">
+                                                                Fazen mipan chuka osqua ad litora </a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="#">New York University</a>
+                                                            <p>New York, NY, United States</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Turem maren libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Fazen mipan chuka osqua ad litora">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1 clr2"></div>
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{% static 'users/cache/resized/27efd332984395aeb9639e334db3fb53.jpg' %}"
+                                                            alt="{% static 'users/cache/resized/27efd332984395aeb9639e334db3fb53.jpg' %}" />
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>22</span>
+                                                                <span>March</span>
+                                                                <span>2015</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    5:00pm
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    6:00pm
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Class aptent taciti sociosqu ad litora">
+                                                                Class aptent taciti sociosqu ad litora </a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="#">Princeton University</a>
+                                                            <p>NJ 08544 - United States</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">
+
+                                                                Trenma maren libero porttitor nisi aliquet </div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Class aptent taciti sociosqu ad litora">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1 clr3"></div>
+
+                                        </div>
+                                        <!--line-->
+                                    </div>
+                                    <!--end item-->
+
+                                </div>
+                                <!--end extraslider-inner -->
+
+                                <div class="extraslider-control  ">
+
+                                    <ul class="nav-page">
+                                        <li class="page">
+                                            <a class="button-page sel" href="#sjextraslider_1821092771729926732"
+                                                data-jslide="0"></a>
+                                        </li>
+                                        <li class="page">
+                                            <a class="button-page " href="#sjextraslider_1821092771729926732"
+                                                data-jslide="1"></a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <script>
+                                //<![CDATA[    					
+                                jQuery(document).ready(function($) {
+                                    $('#sjextraslider_1821092771729926732').each(function() {
+                                        var $this = $(this),
+                                            options = options = !$this.data('modal') && $.extend({}, $this.data());
+                                        $this.jcarousel(options);
+                                        $this.bind('jslide', function(e) {
+                                            var index = $(this).find(e.relatedTarget).index();
+                                            // process for nav
+                                            $('[data-jslide]').each(function() {
+                                                var $nav = $(this),
+                                                    $navData = $nav.data(),
+                                                    href, $target = $($nav.attr('data-target') || (href = $nav
+                                                        .attr('href')) && href.replace(/.*(?=#[^\s]+$)/,
+                                                        ''));
+                                                if (!$target.is($this)) return;
+                                                if (typeof $navData.jslide == 'number' && $navData.jslide ==
+                                                    index) {
+                                                    $nav.addClass('sel');
+                                                } else {
+                                                    $nav.removeClass('sel');
+                                                }
+                                            });
+                                        });
+                                        $this.touchwipe({
+                                            wipeLeft: function() {
+                                                $this.jcarousel('next');
+                                                return false;
+                                            },
+                                            wipeRight: function() {
+                                                $this.jcarousel('prev');
+                                                return false;
+                                            },
+                                            wipeUp: function() {
+                                                $this.jcarousel('next');
+                                                return false;
+                                            },
+                                            wipeDown: function() {
+                                                $this.jcarousel('prev');
+                                                return false;
+                                            }
+                                        });
+                                        return;
+                                    });
+                                });
+                                //]]>	
+                            </script>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="yt_spotlight5" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top7" class="col-lg-6 col-sm-12">
+
+                    <div class="module  k2-mega-new-main ">
+                        <h3 class="modtitle">So'ngi yangiliklar</h3>
+                        <div class="modcontent clearfix">
+                            <div id="sj_meganew_13006638141729926732" class="sj-meganew ">
+                                <div
+                                    class="meganew-wrap  meganew-rps01-1 meganew-rps02-1 meganew-rps03-1 meganew-rps04-1">
+                                    <div class="meganew-box">
+                                        <div class="meganew-box-inner">
+
+                                            <div class="meganew-items theme1 ">
+                                                <div class="item-first">
+
+                                                    <div class="item-image">
+                                                        <a href=""
+                                                            title="Aliquam eu justo eu ipsum ultricies">
+                                                            <img src="{% static 'users/cache/resized/c6aeaa70782c07a8adccfbb254e76f6b.jpg' %}"
+                                                                alt="{% static 'users/cache/resized/c6aeaa70782c07a8adccfbb254e76f6b.jpg' %}" />
+                                                        </a>
+                                                        <div class="over-image"></div>
+                                                    </div>
+                                                    <div class="content-main">
+                                                        <div class="item-title">
+                                                            <a href=""
+                                                                title="Aliquam eu justo eu ipsum ultricies">
+                                                                Aliquam eu justo eu ipsum ultricies </a>
+                                                        </div>
+                                                        <ul class="by-date">
+                                                            <li class="athor"><span>Post by</span>&nbsp;</li>
+                                                            <li>&ndash;</li>
+                                                            <!-- Date created -->
+                                                            <li class="time-ago">
+                                                                9 years ago </li>
+                                                        </ul>
+                                                        <div class="item-description">
+                                                            Laren paten bero porttitor nisi aliquet vulputate vitae
+                                                            at velit. Aliquam eget arcu magna, vel </div>
+
+                                                        <div class="item-readmore">
+                                                            <a href=""
+                                                                title="Aliquam eu justo eu ipsum ultricies">
+                                                                <i class="fa fa-check"></i><span>Read more</span>
+                                                            </a>
+                                                        </div>
+                                                    </div><!-- end content-main-->
+                                                </div>
+                                                <div class="item-other">
+
+                                                    <ul class="otehr-link">
+                                                        <li class="row">
+                                                            <a href=""
+                                                                class="col-xs-7"
+                                                                title="Curabitur luctus tortor non quam">
+                                                                Curabitur luctus tortor non quam </a>
+                                                            <ul class="by-date col-xs-5">
+                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
+                                                                <li>&ndash;</li>
+                                                                <!-- Date created -->
+                                                                <li class="time-ago">
+                                                                    9 years ago </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="row">
+                                                            <a href=""
+                                                                class="col-xs-7" title="Aliquam eget arcu magna">
+                                                                Aliquam eget arcu magna </a>
+                                                            <ul class="by-date col-xs-5">
+                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
+                                                                <li>&ndash;</li>
+                                                                <!-- Date created -->
+                                                                <li class="time-ago">
+                                                                    9 years ago </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="row">
+                                                            <a href=""
+                                                                class="col-xs-7"
+                                                                title="Vestibulum sit amet libero vel">
+                                                                Vestibulum sit amet libero vel </a>
+                                                            <ul class="by-date col-xs-5">
+                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
+                                                                <li>&ndash;</li>
+                                                                <!-- Date created -->
+                                                                <li class="time-ago">
+                                                                    9 years ago </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clr1"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="top8" class="col-lg-3 col-sm-6">
+
+                    <div class="module  ">
+                        <h3 class="modtitle">Taʼlim haqida soʻz</h3>
+                        <div class="modcontent clearfix">
+
+                            <script type="text/javascript">
+                               
+                                jQuery(document).ready(function($) {
+                                   
+                                    $('#sj_accordion_17299267321842936974').sj_accordion({
+                                        items: '.acd-item',
+                                        heading: '.acd-header',
+                                        content: '.acd-content-wrap',
+                                        active_class: 'selected',
+                                        event: 'click',
+                                        delay: 200,
+                                        duration: 500,
+                                        active: '1'
+                                    });
+                                    var height_content = function() {
+                                        $('.acd-item', '#sj_accordion_17299267321842936974').each(function() {
+                                            var inner = $('.acd-content-wrap-inner', $(this).filter('.selected'));
+                                            if (inner.length) {
+                                                var inner_height = inner.height();
+                                                inner.parent().css('height', inner_height);
+                                            }
+                                        });
+                                    }
+                                    if ($.browser.msie && parseInt($.browser.version, 10) <= 8) {} else {
+                                        $(window).resize(function() {
+                                            height_content();
+                                        });
+                                    }
+                                });
+                                //]]>	
+                            </script>
+                            <div id="sj_accordion_17299267321842936974" class="sj-accordion">
+                                <div class="acd-items">
+                                    <div class="acd-item">
+                                        <div class="acd-header">
+                                            <span>A</span>enean vehicula vehicul </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+
+                                                <div class="acd-description">
+                                                    Meggings next level yr, 90′s small batch four loko brunch wes
+                                                    anderson fixie american apparel flexitarian pitchfork neutra.
+                                                    Constructed in cotton sweat fabric, this lovely piece, lacus eu
+                                                    mattis </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Aenean vehicula vehicula alicaten">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">
+                                            <span>A</span>liquam lobortis cursus </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Class aptent taciti sociosqu ad litora torquent per conubia
+                                                    nostra, per inceptos himenaeos. Aliquam eget arcu magna, vel
+                                                    congue dui. Nunc auctor mauris tempor leo aliquam sodales.
+                                                </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Aliquam lobortis cursus ">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">
+                                            <span>D</span>etus laoreet dignissim </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Detus laoreet dignissim ">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">
+                                            <span>F</span>aucibus eu laoreet nun </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Faucibus eu laoreet nunc">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">
+                                            <span>L</span>acinia Sed convallis </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Lacinia Sed convallis pitena">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="top9" class="col-lg-3 col-sm-6">
+
+                    <div class="module  feature-teachers ">
+                        <h3 class="modtitle">Feature Teachers</h3>
+                        <div class="modcontent clearfix">
+
+                            <div class="carousel-custommer">
+                                <div id="yt-extra-carousel1" style="width:100%; height:100%"
+                                    class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
+                                    data-interval='false'>
+                                    <div class="carousel-inner">
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/customer1.png' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Jillian Aenean</h3>
+                                                    <span class="adred">Asia Researcher</span>
+                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
+                                                        nostrum quas cupiditate risus provident, interdum venenatis?
+                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
+                                                        nihil at, class eleifend sem gravida</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/customer2.png' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Jillian Aenean</h3>
+                                                    <span class="adred">Asia Researcher</span>
+                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
+                                                        nostrum quas cupiditate risus provident, interdum venenatis?
+                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
+                                                        nihil at, class eleifend sem gravida</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Jillian Aenean</h3>
+                                                    <span class="adred">Asia Researcher</span>
+                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
+                                                        nostrum quas cupiditate risus provident, interdum venenatis?
+                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
+                                                        nihil at, class eleifend sem gravida</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Jillian Aenean</h3>
+                                                    <span class="adred">Asia Researcher</span>
+                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
+                                                        nostrum quas cupiditate risus provident, interdum venenatis?
+                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
+                                                        nihil at, class eleifend sem gravida</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Jillian Aenean</h3>
+                                                    <span class="adred">Asia Researcher</span>
+                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
+                                                        nostrum quas cupiditate risus provident, interdum venenatis?
+                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
+                                                        nihil at, class eleifend sem gravida</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><a class="carousel-control left" href="#yt-extra-carousel1"
+                                        data-slide="prev"><i class="fa fa-angle-left"></i></a><a
+                                        class="carousel-control right" href="#yt-extra-carousel1"
+                                        data-slide="next"><i class="fa fa-angle-right"></i></a>
+                                    <ol class="carousel-indicators">
+                                        <li data-slide-to="0" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="1" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="2" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="3" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="4" data-target="#yt-extra-carousel1"></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="yt_spotlight6" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top10" class="col-sm-12">
+
+                    <div class="module  style-me-scattered ">
+                        <div class="modcontent clearfix">
+                            <div id="sj_scatteredgallery_16834689361729926732376" class="sj-sg-gallery ">
+                                <section id="sg_photostack_376" class="sg-photostack  photostack-start "
+                                    style="height: 500px;">
+
+                                    <div class="sg-container">
+                                        <figure>
+                                            <a href=""
+                                                title="Curabitur luctus tortor non quam">
+                                                <img src="{% static 'users/cache/resized/c9252ad58821681fe4a098a21e9c77a4.jpg' %}"
+                                                    alt="Curabitur luctus tortor non quam"
+                                                    title="Curabitur luctus tortor non quam" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Curabitur luctus tortor non quam">
+                                                        Curabitur luctus tortor non quam </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                        <div class="item-description">
+                                                            Suspendisse at libero porttitor nisi aliquet vulputate
+                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Vivamus dictum pulvinar ipsum">
+                                                <img src="{% static 'users/cache/resized/17a56128e766fcd323d1ba0063a7fb67.jpg' %}"
+                                                    alt="Vivamus dictum pulvinar ipsum"
+                                                    title="Vivamus dictum pulvinar ipsum" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Vivamus dictum pulvinar ipsum">
+                                                        Vivamus dictum pulvinar ipsum </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                        <div class="item-description">
+                                                            Suspendisse at libero porttitor nisi aliquet vulputate
+                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Nullam hendrerit tempus tellus">
+                                                <img src="{% static 'users/cache/resized/f77ee990a14754c24d0c24b0348bdf58.jpg' %}"
+                                                    alt="Nullam hendrerit tempus tellus"
+                                                    title="Nullam hendrerit tempus tellus" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Nullam hendrerit tempus tellus">
+                                                        Nullam hendrerit tempus tellus </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Curabitur luctus tortor non quam gravida">
+                                                <img src="{% static 'users/cache/resized/b5b283328ebc04de7e78a477b203842c.jpg' %}"
+                                                    alt="Curabitur luctus tortor non quam gravida"
+                                                    title="Curabitur luctus tortor non quam gravida" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Curabitur luctus tortor non quam gravida">
+                                                        Curabitur luctus tortor non quam gravida </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                        <div class="item-description">
+                                                            Suspendisse at libero porttitor nisi aliquet vulputate
+                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Vestibulum sit amet libero vel neque">
+                                                <img src="{% static 'users/cache/resized/119bb944d45b48b61f4d86ea43d9431d.jpg' %}"
+                                                    alt="Vestibulum sit amet libero vel neque"
+                                                    title="Vestibulum sit amet libero vel neque" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Vestibulum sit amet libero vel neque">
+                                                        Vestibulum sit amet libero vel neque </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Pellentesque sed bibendum velit">
+                                                <img src="{% static 'users/cache/resized/bc56eeaf2c6652cdc7ac0ac544612674.jpg' %}"
+                                                    alt="Pellentesque sed bibendum velit"
+                                                    title="Pellentesque sed bibendum velit" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Pellentesque sed bibendum velit">
+                                                        Pellentesque sed bibendum velit </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Curabitur luctus tortor non quam">
+                                                <img src="{% static 'users/cache/resized/a0adc91f33120854922ac6e81d568eb4.jpg' %}"
+                                                    alt="Curabitur luctus tortor non quam"
+                                                    title="Curabitur luctus tortor non quam" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Curabitur luctus tortor non quam">
+                                                        Curabitur luctus tortor non quam </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href=""
+                                                title="Aliquam eu justo eu ipsum ultricies rutrum non eu">
+                                                <img src="{% static 'users/cache/resized/0fb051664c1ea8f1aada239b2446c756.jpg' %}"
+                                                    alt="Aliquam eu justo eu ipsum ultricies rutrum non eu"
+                                                    title="Aliquam eu justo eu ipsum ultricies rutrum non eu" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Aliquam eu justo eu ipsum ultricies rutrum non eu">
+                                                        Aliquam eu justo eu ipsum ultricies rutrum non eu </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                        <div class="item-description">
+                                                            Suspendisse at libero porttitor nisi aliquet vulputate
+                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <figure data-dummy>
+                                            <a href=""
+                                                title="Maecenas sit amet ligula turpis">
+                                                <img src="{% static 'users/cache/resized/465d815201bb3c062abde4216c7ee075.jpg' %}"
+                                                    alt="Maecenas sit amet ligula turpis"
+                                                    title="Maecenas sit amet ligula turpis" />
+                                            </a>
+                                            <figcaption>
+                                                <div class="sg-title">
+                                                    <a href=""
+                                                        title="Maecenas sit amet ligula turpis">
+                                                        Maecenas sit amet ligula turpis </a>
+                                                </div>
+                                                <div class="sg-back">
+                                                    <div class="sg-back-inner">
+                                                        <div class="item-comment">
+                                                            0&nbsp;comments </div>
+
+                                                        <div class="item-rating">
+                                                            <div class="itemRatingForm">
+                                                                <ul class="itemRatingList">
+                                                                    <li class="itemCurrentRating"
+                                                                        id="itemCurrentRating286" style="width:0%;">
+                                                                    </li>
+                                                                    <li><a href="#" data-id="286"
+                                                                            title="1 star out of 5"
+                                                                            class="one-star">1</a></li>
+                                                                    <li><a href="#" data-id="286"
+                                                                            title="2 stars out of 5"
+                                                                            class="two-stars">2</a></li>
+                                                                    <li><a href="#" data-id="286"
+                                                                            title="3 stars out of 5"
+                                                                            class="three-stars">3</a></li>
+                                                                    <li><a href="#" data-id="286"
+                                                                            title="4 stars out of 5"
+                                                                            class="four-stars">4</a></li>
+                                                                    <li><a href="#" data-id="286"
+                                                                            title="5 stars out of 5"
+                                                                            class="five-stars">5</a></li>
+                                                                </ul>
+                                                                <div id="itemRatingLog286" class="itemRatingLog">(0
+                                                                    votes)</div>
+                                                                <div class="clr"></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="item-date">
+                                                            <span class="item-date">
+                                                                April 20th, 2015 </span>
+                                                        </div>
+
+                                                        <div class="item-postby">
+                                                            By: </div>
+
+                                                        <div class="item-description">
+                                                            Suspendisse at libero porttitor nisi aliquet vulputate
+                                                            vitae at velit. Aliquam eget arcu magna, vel ... </div>
+
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="buttom-click" style="line-height: 500px; "><span>Bizning kampus hayotimizni tekshiring</span> </div>
+                                </section>
+                            </div>
+
+                            <script type="text/javascript">
+                                var tag_id = document.getElementById('sj_scatteredgallery_16834689361729926732376');
+                                new Photostack(tag_id.querySelector('#sg_photostack_376'), {
+                                    callback: function(item) {}
+                                });
+                            </script>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    
+    
+    
+
+    {% include 'users/base/settings.html' %}
+
+</div>
+
 {% endblock content %}

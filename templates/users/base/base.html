@@ -1,91 +1,311 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="uz" class="no-js">
+<html lang="uz">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="SmartAddons.Com - the high quality products!" />
+	<title>SAMTUIT</title>
+	<link href="{% static 'users/components/com_k2/css/k2.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/plugins/content/jw_disqus/jw_disqus/tmpl/css/templateeecd.css' %}" rel="stylesheet"
+		type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/asset/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/system/cpanel.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/system/sticky.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/template-default.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/system/pattern.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/your_css.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/asset/fonts/awesome/css/font-awesome.min.css' %}" rel="stylesheet"
+		type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/asset/minicolors/jquery.miniColors.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_extraslider/assets/css/style.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_extraslider/assets/css/css3.css' %}" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&amp;subset=latin,latin-ext"
+		rel="stylesheet" type="text/css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="{% static 'users/plugins/system/ytshortcodes/assets/css/shortcodes.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/media/com_acymailing/css/module_default341c.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/html/mod_sj_moduletabs/css/moduletabs.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_scattered_gallery/assets/css/style.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/templates/sj_university2/html/mod_sj_content_accordion/css/sj-accordion.css' %}" rel="stylesheet"
+		type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_mega_news/assets/css/styles-responsive.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_slider/assets/css/slider.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_categories_ii/assets/css/category.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_categories_ii/assets/css/theme4.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_slickslider/assets/css/sj-slickslider.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/modules/mod_sj_k2_slickslider/assets/css/slickslider-font-color.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'users/media/mod_languages/css/template.css' %}" rel="stylesheet" type="text/css" />
+	
+    <style>
+        /* Rang sxemalari uchun CSS */
+        /* Qora va oq rang sxemasi */
+        .black-white {
+            background-color: black;  /* Fon rangini qora qilish */
+            color: white;  /* Matn rangini oq qilish */
+        }
+        .black-white img {
+            filter: grayscale(100%);  /* Rasm rangini oq-qora qilish */
+        }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        /* Sariq va qora rang sxemasi */
+        .yellow-black {
+            background-color: yellow;  /* Fon rangini sariq qilish */
+            color: black;  /* Matn rangini qora qilish */
+        }
+        .yellow-black img {
+            filter: sepia(100%);  /* Rasm rangini sariq-qora qilish */
+        }
 
-    <title>TATU &#8211; Samarqand &amp; filiali</title>
 
-    <link rel='stylesheet' href="{% static 'users/plugins/goodlayers-core/plugins/combine/style.css' %}" type='text/css' media='all' />
-    <link rel='stylesheet' href="{% static 'users/plugins/goodlayers-core/include/css/page-builder.css' %}" type='text/css' media='all' />
-    <link rel='stylesheet' href="{% static 'users/plugins/revslider/public/assets/css/settings.css' %}" type='text/css' media='all' />
-    <link rel='stylesheet' href="{% static 'users/css/style-core.css' %}" type='text/css' media='all' />
-    <link rel='stylesheet' href="{% static 'users/css/style.css' %}" type='text/css' media='all' />
-    <link rel='stylesheet' href="{% static 'users/css/kingster-style-custom.css' %}" type='text/css' media='all' />
+		.small-text * { 
+            font-size: 0.98em; /* Matn hajmini kichikroq qiladi */
+        }
 
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CABeeZee%3Aregular%2Citalic&amp;subset=latin%2Clatin-ext%2Cdevanagari&amp;ver=5.0.3' type='text/css' media='all' />
-   
+        .large-text * {
+            font-size: 1.03em; /* Matn hajmini kattalashtiradi */
+        }
+
+        .normal-text * {
+            font-size: 1em; /* Matn hajmini odatiy qiladi */
+        }
+    </style>
+	<style type="text/css">
+		.container {
+			width: 1200px
+		}
+
+		body {
+			font-family: Ubuntu
+		}
+	</style>
+	
+	<!-- LINK FOR FAVICON -->
+	<link rel="icon" type="image/x-icon" href="{% static 'users/images/favicon.ico' %}" />
+	<script src="{% static 'users/media/system/js/mootools-cored65f.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/media/system/js/cored65f.js' %}" type="text/javascript">
+	</script>
+    <script src="{% static 'users/media/jui/js/jquery.mind65f.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/media/jui/js/jquery-noconflictd65f.js' %}" type="text/javascript">
+	</script>
+	<script src="{% static 'users/media/jui/js/jquery-migrate.mind65f.js' %}" type="text/javascript">
+	</script>
+	<script src="{% static 'users/components/com_k2/js/k2eacf.js' %}"
+		type="text/javascript"></script>
+	<script src="{% static 'users/media/jui/js/bootstrap.mind65f.js' %}" type="text/javascript">
+	</script>
+	<script src="{% static 'users/templates/sj_university2/asset/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/js/ytcpanel.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/asset/minicolors/jquery.miniColors.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/js/jquery.prettyPhoto.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/js/ytsticky.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/js/yt-script.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_extraslider/assets/js/jcarousel.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_extraslider/assets/js/jquery.mousewheel.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_extraslider/assets/js/jquery.touchwipe.1.1.1.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/menusys/class/mega/assets/jquery.megamenu.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/templates/sj_university2/menusys/class/common/js/jquery.easing.1.3.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/plugins/system/ytshortcodes/assets/js/prettify.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/plugins/system/ytshortcodes/assets/js/shortcodes.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/plugins/system/ytshortcodes/assets/js/touchswipe.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/media/com_acymailing/js/acymailing_moduled263.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_scattered_gallery/assets/js/modernizr.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_scattered_gallery/assets/js/classie.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_scattered_gallery/assets/js/photostack.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_content_accordion/assets/js/jquery.sj_accordion.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_moduletabs/assets/js/jsmart.moduletabs.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_slider/assets/js/slider.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_slider/assets/js/jquery.cj-swipe.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_slickslider/assets/js/jquery-noconflict.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_slickslider/assets/js/jcarousel.js' %}" type="text/javascript"></script>
+	<script src="{% static 'users/modules/mod_sj_k2_slickslider/assets/js/jquery.cj-swipe.js' %}" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var TMPL_NAME = "sj_university2";
+		var TMPL_COOKIE = ["bgimage", "themecolor", "templateLayout", "menustyle", "activeNotice", "typelayout"];
+	</script>
+
+    <!-- Google Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-3214811-18', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+	
+
+	<style>
+		div#cookieMessageContainer {
+			position: fixed;
+			z-index: 9999;
+			top: 0px;
+			right: 0px;
+			margin: 0px auto;
+
+		}
+
+		table, tr, td {border:0px !important}
+		#cookieMessageContainer table,
+		#cookieMessageContainer td {
+			margin: 0;
+			padding: 0;
+			vertical-align: middle
+		}
+
+		#cookieMessageAgreementForm {
+			margin-left: 10px;
+		}
+
+		#cookieMessageInformationIcon {
+			margin-right: 10px;
+			height: 29px;
+		}
+
+		#info_icon {
+			vertical-align: middle;
+			margin-top: 5px;
+		}
+
+		#buttonbarContainer {
+			height: 29px;
+			margin-bottom: -10px;
+		}
+
+		#cookietable {
+			border: none;
+			padding: 0px;
+		}
+
+		#cookietable td {
+			border: none;
+		}
+
+		#outer table,
+		#outer tr,
+		#outer td {
+			border: none;
+		}
+
+		#outer {
+			padding: 2px;
+		}
+	</style>
+
+
 </head>
-<body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js samtuit-body samtuit-body-front samtuit-full  samtuit-with-sticky-navigation  samtuit-blockquote-style-1 gdlr-core-link-to-lightbox">
-    
-    
-    <div class="samtuit-body-outer-wrapper ">
-        <div class="samtuit-body-wrapper clearfix samtuit-with-frame">
-            <div class="samtuit-top-bar">
-                <div class="samtuit-top-bar-background"></div>
-                <div class="samtuit-top-bar-container samtuit-container-fluid ">
-                    <div class="samtuit-top-bar-container-inner clearfix">
-                        <div class="samtuit-top-bar-left samtuit-item-pdlr center-iconc">
-                            <a href="" title="Bayroq"><img class="top-bar-icon" src="{% static 'users/images/bayroq.png' %}" alt="bayroq" style="width: 28px; height: 20px;"></a>
-                            <a href=""><img class="top-bar-icon" src="{% static 'users/images/gerib1.png' %}" alt="bayroq" style="width: 40px; height: 25px;"></a>
-                            <a href=""><img class="top-bar-icon" src="{% static 'users/images/mucik2.png' %}" alt="bayroq" style="width: 30px; height: 30px;"></a>
-                            &nbsp;&nbsp;
-                            <i class="fa fa-envelope-open-o" id="i_fd84_0"></i>info@samtuit.uz
-                            <i class="fa fa-phone" id="i_fd84_1"></i> +998 (66) 232 2929
-                        </div>
-                        <div class="samtuit-top-bar-right samtuit-item-pdlr">
-                            <a href=""><img class="social-icon" src="{% static 'users/images/telegram.png' %}" alt="telegram" style="width: 25px; height: 22px;"></a>
-                            <a href=""><img class="social-icon" src="{% static 'users/images/youtube.png' %}" alt="youtube" style="width: 22px; height: 22px;"></a>
-                            <a href=""><img class="social-icon" src="{% static 'users/images/insto.png' %}" alt="insto" style="width: 23px; height: 23px;"></a>
-                            <a href=""><img class="social-icon" src="{% static 'users/images/facebook1.png' %}" alt="facebook" style="width: 25px; height: 22px;"></a>
 
-                            <a href="#" class="social-icon" title="adjust" id="toggle-black-white">
-                                <i class="fa fa-adjust" ></i>
-                            </a>
-                            <a href="#" class="social-icon" title="adjust" id="toggle-yellow-black">
-                                <i class="fa fa-adjust" style="color: rgb(255, 174, 0);" ></i>
-                            </a>
-                            <a href="#" class="social-icon" title="font" id="decrease-font">-
-                                <i class="fa fa-font" ></i>
-                            </a>
-                            <a href="#" class="social-icon" title="font" id="decrease-font-pilus">+
-                                <i class="fa fa-font"></i>
-                            </a>
-                            <div class="custom-select">
-                                <div class="select-selected">
-                                    <img src="{% static 'users/img-slider/uzb.png' %}" alt="O'zbek" class="flag-icon">
-                                    O'zbek
-                                </div>
-                                <div class="select-items select-hide">
-                                    <div data-value="1">
-                                        <img src="{% static 'users/img-slider/uzb.png' %}" alt="O'zbek" class="flag-icon"> O'zbek
-                                    </div>
-                                    <div data-value="2">
-                                        <img src="{% static 'users/img-slider/rus.png' %}" alt="Rus" class="flag-icon"> Rus
-                                    </div>
-                                    <div data-value="3">
-                                        <img src="{% static 'users/img-slider/eng.png' %}" alt="English" class="flag-icon"> English
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="samtuit-top-bar-right-button btn" id="qabul" href="" target="_blank">Qabul-2024</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body id="bd" class="homepage home-layout1 res">
 
-            {% include 'users/base/navbar.html' %}
-            {% include 'users/base/sidbare.html' %}
-            {% block content %}
-            {% endblock content %}
-            
-            {% include 'users/base/footer.html' %}
-        </div>
-    </div>
-   {% include 'users/base/js.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    
+
+	<script type="text/javascript" src="{% static 'users/plugins/system/EUCookieDirectiveLite/EUCookieDirectiveLite/EUCookieDirective.js' %}"></script>
+	<script type="text/javascript">
+		function jSelectShortcode(text) {
+			jQuery("#yt_shorcodes").removeClass("open");
+			text = text.replace(/'/g, '"');
+			//1.Editor Content
+			if (document.getElementById('jform_articletext') != null) {
+				jInsertEditorText(text, 'jform_articletext');
+			}
+			if (document.getElementById('jform_description') != null) {
+				jInsertEditorText(text, 'jform_description');
+			}
+			//2.Editor K2
+			if (document.getElementById('description') != null) {
+				jInsertEditorText(text, 'description');
+			}
+			if (document.getElementById('text') != null) {
+				jInsertEditorText(text, 'text');
+			}
+			//3.Editor VirtueMart
+			if (document.getElementById('category_description') != null) {
+				jInsertEditorText(text, 'category_description');
+			}
+			if (document.getElementById('product_desc') != null) {
+				jInsertEditorText(text, 'product_desc');
+			}
+			//4.Editor Contact
+			if (document.getElementById('jform_misc') != null) {
+				jInsertEditorText(text, 'jform_misc');
+			}
+			//5.Editor Easyblog
+			if (document.getElementById('write_content') != null) {
+				jInsertEditorText(text, 'write_content');
+			}
+			//6.Editor Joomshoping
+			if (document.getElementById('description1') != null) {
+				jInsertEditorText(text, 'description1');
+			}
+			//6.Editor HTML
+			if (document.getElementById('jform_content') != null) {
+				jInsertEditorText(text, 'jform_content');
+			}
+			SqueezeBox.close();
+		}
+	</script>
+
+	<!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script> -->
+
+	<script>
+        // Qora-oq rangga o'tkazish
+        document.getElementById('toggle-black-white').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('black-white');
+            document.body.classList.remove('yellow-black');
+        });
+
+        // Original holatga qaytarish
+        document.getElementById('toggle-original').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.remove('black-white', 'yellow-black');
+        });
+
+        // Sariq-qora rangga o'tkazish
+        document.getElementById('toggle-yellow-black').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('yellow-black');
+            document.body.classList.remove('black-white');
+        });
+
+		// Kichik matn
+        document.getElementById('small-text').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('small-text');
+            document.body.classList.remove('normal-text', 'large-text');
+        });
+
+        // Standart matn
+        document.getElementById('normal-text').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('normal-text');
+            document.body.classList.remove('small-text', 'large-text');
+        });
+
+        // Katta matn
+        document.getElementById('large-text').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('large-text');
+            document.body.classList.remove('small-text', 'normal-text');
+        });
+    </script>
 </body>
+
 </html>

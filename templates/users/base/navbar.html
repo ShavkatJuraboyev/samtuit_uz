@@ -1,165 +1,1519 @@
 {% load static %}
-<div class="samtuit-mobile-header-wrap">
-    <div class="samtuit-mobile-header samtuit-header-background samtuit-style-slide samtuit-sticky-mobile-navigation " id="samtuit-mobile-header">
-        <div class="samtuit-mobile-header-container samtuit-container clearfix">
-            <div class="samtuit-logo  samtuit-item-pdlr">
-                <div class="samtuit-logo-inner">
-                    <a class="" href="/" ><img src="{% static 'users/images/logo.png' %}"  alt="" /></a>
-                </div>
+<header id="yt_header" class="block">
+    <div class="container">
+        <div class="row">
+            <div id="top1" class="col-md-8 hidden-sm hidden-xs">
+
+                <ul class="menu ">
+                    <li class="item-1534" ><a href=""><img src="{% static 'users/images/ramzlar/uz.png' %}" alt="bayroq" style="width: 30px; height: 20px;"></a></li>
+                    <li class="item-1535"><a href=""><img src="{% static 'users/images/ramzlar/gerb.png' %}" alt="gerb" style="width: 20px; height: 20px;"></a></li>
+                    <li class="item-1536"><a href=""><img src="{% static 'users/images/ramzlar/nota.png' %}" alt="mathiya" style="width: 20px; height: 20px;"></a></li>
+                    <li class="item-1531 deeper parent"><a href="">Universitet web sayt tizimlari</a>
+                        <ul class="yt-list">
+                            <li class="item-1543"><a href="/">Samtuit.uz</a></li>
+                            <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">Hemis</a></li>
+                            <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">Kutubxona</a></li>
+                        </ul>
+                    </li>
+                    <li class="item-1532"><a href="">Qabul-2024</a></li>
+                    <!-- <li class="item-1533"><a href="">Staff</a></li> -->
+                </ul>
+
             </div>
-            <div class="samtuit-mobile-menu-right">
-                <div class="samtuit-main-menu-search" id="samtuit-mobile-top-search"><i class="fa fa-search"></i></div>
-                <div class="samtuit-top-search-wrap">
-                    <div class="samtuit-top-search-close"></div>
-                    <div class="samtuit-top-search-row">
-                        <div class="samtuit-top-search-cell">
-                            <form role="search" method="get" class="search-form" action="#">
-                                <input type="text" class="search-field samtuit-title-font" placeholder="Search..." value="" name="s">
-                                <div class="samtuit-top-search-submit"><i class="fa fa-search"></i></div>
-                                <input type="submit" class="search-submit" value="Search">
-                                <div class="samtuit-top-search-close"><i class="icon_close"></i></div>
-                            </form>
+            <div id="top2" class="col-md-4 ">
+                <div class="module  me-eye ">
+                    <div class="modcontent clearfix">
+                        <div class="yt-loginform">
+                            <div class="yt-login">
+                                <a class="eye-switch telegram" data-toggle="modal" href="" title=""><i class="bi bi-telegram"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="samtuit-mobile-menu"><a class="samtuit-mm-menu-button samtuit-mobile-menu-button samtuit-mobile-button-hamburger" href="#samtuit-mobile-menu"><span></span></a>
-                    <div class="samtuit-mm-menu-wrap samtuit-navigation-font" id="samtuit-mobile-menu" data-slide="right">
-                        <ul id="menu-main-navigation" class="m-menu">
-                            <li class="menu-item menu-item-home current-menu-item menu-item-has-children"><a href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-home"><a href="index.html">Homepage 1</a></li>
-                                    <li class="menu-item"><a href="homepage-2.html">Homepage 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children"><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="about-us.html">About KU</a></li>
-                                    <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html">Blog Full</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="blog-full-right-sidebar-with-frame.html">Blog Full Right Sidebar With Frame</a></li>
-                                                    <li class="menu-item"><a href="blog-full-left-sidebar-with-frame.html">Blog Full Left Sidebar With Frame</a></li>
-                                                    <li class="menu-item"><a href="blog-full-both-sidebar-with-frame.html">Blog Full Both Sidebar With Frame</a></li>
-                                                    <li class="menu-item"><a href="blog-full-right-sidebar.html">Blog Full Right Sidebar</a></li>
-                                                    <li class="menu-item"><a href="blog-full-left-sidebar.html">Blog Full Left Sidebar</a></li>
-                                                    <li class="menu-item"><a href="blog-full-both-sidebar.html">Blog Full Both Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children"><a href="blog-grid-3-columns-no-space.html">Blog Grid</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="blog-grid-2-columns.html">Blog Grid 2 Columns</a></li>
-                                                    <li class="menu-item"><a href="blog-grid-3-columns.html">Blog Grid 3 Columns</a></li>
-                                                    <li class="menu-item"><a href="blog-grid-4-columns.html">Blog Grid 4 Columns</a></li>
-                                                    <li class="menu-item"><a href="blog-grid-2-columns-no-space.html">Blog Grid 2 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="blog-grid-3-columns-no-space.html">Blog Grid 3 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="blog-grid-4-columns-no-space.html">Blog Grid 4 Columns No Space</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="menu-item"><a href="standard-post-type.html">Single Post</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="#">Contact</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="contact.html">Contact</a></li>
-                                            <li class="menu-item"><a href="contact-2.html">Contact 2</a></li>
-                                            <li class="menu-item"><a href="contact-3.html">Contact 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="portfolio-3-columns.html">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-has-children"><a>Portfolio Grid</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="portfolio-2-columns.html">Portfolio 2 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-3-columns.html">Portfolio 3 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-4-columns.html">Portfolio 4 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-5-columns.html">Portfolio 5 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-2-columns-with-frame.html">Portfolio 2 Columns With Frame</a></li>
-                                                    <li class="menu-item"><a href="portfolio-3-columns-with-frame.html">Portfolio 3 Columns With Frame</a></li>
-                                                    <li class="menu-item"><a href="portfolio-4-columns-with-frame.html">Portfolio 4 Columns With Frame</a></li>
-                                                    <li class="menu-item"><a href="portfolio-2-columns-no-space.html">Portfolio 2 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="portfolio-3-columns-no-space.html">Portfolio 3 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="portfolio-4-columns-no-space.html">Portfolio 4 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="portfolio-5-columns-no-space.html">Portfolio 5 Columns No Space</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children"><a>Portfolio Masonry</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="portfolio-masonry-4-columns.html">Masonry 4 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-masonry-3-columns.html">Masonry 3 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-masonry-2-columns.html">Masonry 2 Columns</a></li>
-                                                    <li class="menu-item"><a href="portfolio-masonry-4-columns-no-space.html">Masonry 4 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="portfolio-masonry-3-columns-no-space.html">Masonry 3 Columns No Space</a></li>
-                                                    <li class="menu-item"><a href="portfolio-masonry-2-columns-no-space.html">Masonry 2 Columns No Space</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre" href="singleportfolio.html">Single Portfolio</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item"><a href="gallery.html">Gallery</a></li>
-                                    <li class="menu-item"><a href="price-table.html">Price Table</a></li>
-                                    <li class="menu-item"><a href="maintenance.html">Maintenance</a></li>
-                                    <li class="menu-item"><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li class="menu-item"><a href="404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children"><a href="bachelor-of-science-in-business-administration.html">Academics</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-has-children"><a>Undergraduate</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Business Administration</a></li>
-                                            <li class="menu-item"><a href="school-of-law.html">School Of Law</a></li>
-                                            <li class="menu-item"><a href="engineering.html">Engineering</a></li>
-                                            <li class="menu-item"><a href="medicine.html">Medicine</a></li>
-                                            <li class="menu-item"><a href="art-science.html">Art &#038; Science</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="#">Graduate Program</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="hospitality-management.html">Hospitality Management</a></li>
-                                            <li class="menu-item"><a href="physics.html">Physics</a></li>
-                                            <li class="menu-item"><a href="#">Chemistry</a></li>
-                                            <li class="menu-item"><a href="#">Music</a></li>
-                                            <li class="menu-item"><a href="#">Computer Science</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="#">Resources</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Department Page</a></li>
-                                            <li class="menu-item"><a href="finance.html">Major Page</a></li>
-                                            <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                            <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                            <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item"><a href="#">Logo</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children"><a href="apply-to-samtuit.html">Admissions</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="apply-to-samtuit.html">Apply To samtuit</a></li>
-                                    <li class="menu-item"><a href="campus-tour.html">Campus Tour</a></li>
-                                    <li class="menu-item"><a href="scholarships.html">Scholarships</a></li>
-                                    <li class="menu-item"><a href="athletics.html">Athletics</a></li>
-                                    <li class="menu-item"><a href="give-to-samtuit.html">Give To samtuit</a></li>
-                                    <li class="menu-item"><a href="alumni.html">Alumni</a></li>
-                                    <li class="menu-item"><a href="event-calendar.html">Event Calendar</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children"><a href="#">Courses</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="course-list-1.html">Course List 1</a></li>
-                                    <li class="menu-item"><a href="course-list-2.html">Course List 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a href="athletics.html">Athletics</a></li>
-                            <li class="menu-item"><a href="university-life.html">University Life</a></li>
-                        </ul>
+                <div class="module  me-eye ">
+                    <div class="modcontent clearfix">
+                        <div class="yt-loginform">
+                            <div class="yt-login">
+                                <a class="eye-switch facebook" data-toggle="modal" href="" title=""><i class="bi bi-facebook"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="module  me-eye ">
+                    <div class="modcontent clearfix">
+                        <div class="yt-loginform">
+                            <div class="yt-login">
+                                <a class="eye-switch youtube" data-toggle="modal" href="" title=""><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module  me-language  ">
+                    <div class="modcontent clearfix">
+                        <div class="mod-languages ">
+
+                            <a class="dropdown-toggle">
+                                <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek " title="Uzbek " />
+                                Uzbek <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu ">
+                                <li class="lang-active">
+                                    <a href="">
+                                        <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek "
+                                            title="Uzbek "/> Uzbek </a>
+                                </li>
+                                <li class="">
+                                    <a href="">
+                                        <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English"
+                                            title="English" /> English </a>
+                                </li>
+                                <li class="">
+                                    <a href="">
+                                        <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha"
+                                            title="Ruscha"/> Ruscha </a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <script type="text/javascript">
+                            jQuery(document).ready(function($) {
+                                var ua = navigator.userAgent,
+                                    _device = (ua.match(/iPad/i) || ua.match(/iPhone/i) || ua.match(/iPod/i)) ? "smartphone" :
+                                    "desktop";
+                                if (_device == "desktop") {
+                                    $(".mod-languages").bind('hover', function() {
+                                        $(this).children(".dropdown-toggle").addClass(function() {
+                                            if ($(this).hasClass("open")) {
+                                                $(this).removeClass("open");
+                                                return "";
+                                            }
+                                            return "open";
+                                        });
+                                        $(this).children(".dropdown-menu").slideToggle();
+                                    });
+                                } else {
+                                    $('.mod-languages .dropdown-toggle').bind('touchstart', function() {
+                                        $('.mod-languages .dropdown-menu').toggle();
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+
+</header>
+
+<nav id="yt_menuwrap" class="block">
+    <div class="container">
+        <div class="row">
+            <div id="yt_logo" class="col-md-3 col-sm-12">
+
+                <a class="logo" href="" title="sj universityii">
+                    <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/univer_TATU.png' %}"
+                        alt="sj universityii" style="width:246px;height:48px;" />
+                </a>
+
+            </div>
+            <div id="yt_mainmenu" class="col-md-9 col-sm-12 ">
+                <ul id="meganavigator" class="clearfix navi ">
+                    <li class="level1 last havechild ">
+                        <a title="Yangiliklar" class="level1 last havechild  item-link"><span class="menu-title">Yangiliklar</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first ">
+                                            <a title="Yangiliklar" class="level2 first  item-link" href="{% url 'news' %}"><span class="">Yangiliklar</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Recent Topics" class="level2  item-link" href=""><span class="menu-title">Recent Topics</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="Search" class="level2 last  item-link" href=""><span class="menu-title">Search</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="level1 havechild ">
+                        <a title="Explore " class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">Explore </span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
+
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first havechild ">
+                                            <div title="Layouts"
+                                                class="level2 first havechild  item-link separator"><span
+                                                    class="menu-title">Layouts</span></div>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="All Sidebar Blocks"
+                                                                    class="level3 first  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">All Sidebar
+                                                                        Blocks</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Left Sidebar "
+                                                                    class="level3  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Left Sidebar
+                                                                    </span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Right Sidebar "
+                                                                    class="level3  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Right Sidebar
+                                                                    </span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Full Width"
+                                                                    class="level3 last  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Full Width</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Menu Style" class="level2 havechild  item-link"
+                                                href="#"><span class="menu-title">Menu Style</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Sider Menu"
+                                                                    class="level3 first  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Sider Menu</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Tree Menu" class="level3  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Tree Menu</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Accordion Menu"
+                                                                    class="level3 last  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Accordion
+                                                                        Menu</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Extensions" class="level2  item-link"
+                                                href=""><span
+                                                    class="menu-title">Extensions</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Module Variations" class="level2  item-link"
+                                                href="index.php/explore/module-variations.html"><span
+                                                    class="menu-title">Module Variations</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="Module Positions" class="level2 last  item-link"
+                                                href="index.php/explore/module-positions.html"><span
+                                                    class="menu-title">Module Positions</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 havechild ">
+                        <a title="Joomla" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">Joomla</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
+
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first havechild ">
+                                            <a title="Blog Content" class="level2 first havechild  item-link"
+                                                href="index.php/joomla-pages-2/blog-joomla.html"><span
+                                                    class="menu-title">Blog Content</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="List All Categories"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/list-all-categories.html"><span
+                                                                        class="menu-title">List All
+                                                                        Categories</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Featured Articles"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/featured-articles.html"><span
+                                                                        class="menu-title">Featured
+                                                                        Articles</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Category List"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/category-list.html"><span
+                                                                        class="menu-title">Category
+                                                                        List</span></a>
+                                                            </li>
+
+                                                            <li class="level3 havechild ">
+                                                                <a title="Category Blog"
+                                                                    class="level3 havechild  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/category-blog.html"><span
+                                                                        class="menu-title">Category
+                                                                        Blog</span></a>
+                                                                <!-- open mega-content div -->
+                                                                <div class="level4 menu mega-content">
+                                                                    <div class="mega-content-inner clearfix">
+
+                                                                        <div class="mega-col first one">
+                                                                            <ul class="subnavi level4">
+                                                                                <li class="level4 first ">
+                                                                                    <a title="Category Blog (1 column)"
+                                                                                        class="level4 first  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-1-column.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (1
+                                                                                            column)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="Category Blog (2 columns)"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-2-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (2
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="Category Blog (3 columns)"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-3-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (3
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 last ">
+                                                                                    <a title="Category Blog (4 columns)"
+                                                                                        class="level4 last  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-4-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (4
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="level3 havechild ">
+                                                                <a title="Category Tag"
+                                                                    class="level3 havechild  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/tags.html"><span
+                                                                        class="menu-title">Category
+                                                                        Tag</span></a>
+                                                                <!-- open mega-content div -->
+                                                                <div class="level4 menu mega-content">
+                                                                    <div class="mega-content-inner clearfix">
+
+                                                                        <div class="mega-col first one">
+                                                                            <ul class="subnavi level4">
+                                                                                <li class="level4 first ">
+                                                                                    <a title="Compact List Of Tagged Items"
+                                                                                        class="level4 first  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/compact-list-of-tagged-items.html"><span
+                                                                                            class="menu-title">Compact
+                                                                                            List Of Tagged
+                                                                                            Items</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="List Of All Tags"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/list-of-all-tags.html"><span
+                                                                                            class="menu-title">List
+                                                                                            Of All
+                                                                                            Tags</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 last ">
+                                                                                    <a title="Tagged Items"
+                                                                                        class="level4 last  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/tagged-items.html"><span
+                                                                                            class="menu-title">Tagged
+                                                                                            Items</span></a>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Single Article"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/single-article.html"><span
+                                                                        class="menu-title">Single
+                                                                        Article</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Search" class="level2 havechild  item-link"
+                                                href="index.php/joomla-pages-2/smart-seach.html"><span
+                                                    class="menu-title">Search</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Search"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/joomla-pages-2/smart-seach/seach.html"><span
+                                                                        class="menu-title">Search</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Smart Search"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/joomla-pages-2/smart-seach/smart-search.html"><span
+                                                                        class="menu-title">Smart
+                                                                        Search</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Login Form" class="level2  item-link"
+                                                href="index.php/joomla-pages-2/login-form.html"><span
+                                                    class="menu-title">Login Form</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Page Breaks" class="level2  item-link"
+                                                href="index.php/joomla-pages-2/page-break-example.html"><span
+                                                    class="menu-title">Page Breaks</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="Iframe Wrapper" class="level2 last  item-link"
+                                                href="index.php/joomla-pages-2/iframe-wrapper.html"><span
+                                                    class="menu-title">Iframe Wrapper</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 havechild ">
+                        <a title="K2" class="level1 havechild  item-link" href="index.php/k2.html"><span
+                                class="menu-title">K2</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
+
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first havechild ">
+                                            <a title="K2 Categories" class="level2 first havechild  item-link"
+                                                href="index.php/k2/k2-categories.html"><span
+                                                    class="menu-title">K2 Categories</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="K2 Listing 1 Column"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/k2/k2-categories/k2-1column.html"><span
+                                                                        class="menu-title">K2 Listing 1
+                                                                        Column</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="K2 Listing 2 Columns"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/k2/k2-categories/k2-2columns.html"><span
+                                                                        class="menu-title">K2 Listing 2
+                                                                        Columns</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="K2 Listing 3 Columns"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/k2/k2-categories/k2-3columns.html"><span
+                                                                        class="menu-title">K2 Listing 3
+                                                                        Columns</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="K2 Listing 4 Columns"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/k2/k2-categories/listing-4-columns.html"><span
+                                                                        class="menu-title">K2 Listing 4
+                                                                        Columns</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="K2 Article" class="level2 havechild  item-link"
+                                                href="index.php/k2/k2-article.html"><span class="menu-title">K2
+                                                    Article</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Article show images"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/k2/k2-article/article-show-images.html"><span
+                                                                        class="menu-title">Article show
+                                                                        images</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Article show Youtube"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/k2/k2-article/article-show-youtube.html"><span
+                                                                        class="menu-title">Article show
+                                                                        Youtube</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Article show Vimeo"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/k2/k2-article/article-show-vimeo.html"><span
+                                                                        class="menu-title">Article show
+                                                                        Vimeo</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="K2 Tags" class="level2  item-link"
+                                                href="index.php/k2/k2-tags.html"><span class="menu-title">K2
+                                                    Tags</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="K2 User" class="level2 last  item-link"
+                                                href="index.php/k2/k2-user.html"><span class="menu-title">K2
+                                                    User</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 havechild mega1">
+                        <a title="Mega Menu" class="level1 havechild mega1 item-link" href="#"><span
+                                class="menu-title">Mega Menu</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 pos mega-content">
+                            <div class="mega-content-inner clearfix" style="width:870px">
+
+                                <div class="mega-col first more" style="width:30%;">
+                                    <div class="mega-module moduletable">
+                                        <div class="mega-module-title">
+                                            <h3>Football</h3>
+                                        </div>
+                                        <div class="mega-module-content">
+
+                                            <ul class="list_mega">
+                                                <li><a href="#">Lasum dolor sit amet</a></li>
+                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
+                                                <li><a href="#">Sed aliquet elit </a></li>
+                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
+                                                <li><a href="#">Sed mattis arcu eros</a></li>
+                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-col last more" style="width:70%;">
+                                    <div
+                                        class="mega-module extra-upcoming-slider moduletable extra-upcoming-slider">
+                                        <div class="mega-module-title">
+                                            <h3>Events </h3>
+                                        </div>
+                                        <div class="mega-module-content">
+                                            <!--[if lt IE 9]><div id="sjextraslider_17614783621729926732" class="sj-extraslider msie lt-ie9 slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"  data-interval="0" data-pause="hover"><![endif]-->
+                                            <!--[if IE 9]><div id="sjextraslider_17614783621729926732" class="sj-extraslider msie slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"  data-interval="0" data-pause="hover"><![endif]-->
+                                            <!--[if gt IE 9]><!-->
+                                            <div id="sjextraslider_17614783621729926732"
+                                                class="sj-extraslider slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"
+                                                data-interval="0" data-pause="hover">
+                                                <!--<![endif]-->
+
+                                                <div class="extraslider-inner">
+                                                    <div class="item active">
+                                                        <div class="line">
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/8c4e7ddecfb739ef5c33c55621b27630.jpg"
+                                                                            alt="media/k2/items/src/8c4e7ddecfb739ef5c33c55621b27630.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>18</span>
+                                                                                <span>April</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+                                                                            <div class="event-time">
+                                                                                <span class="start-time">
+                                                                                    2:00pm
+                                                                                </span>
+                                                                                <span class="end-time">
+                                                                                    6:00pm
+                                                                                </span> </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/280-zatena-mipan-facen-timas-chumas.html"
+                                                                                title="Zatena mipan facen timas chumas">
+                                                                                Zatena mipan facen timas chumas
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="school">
+                                                                            <a href="#">Columbia University</a>
+                                                                            <p>116th St & Broadway - New York
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1"></div>
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/600eb6612b31632f6c618c9c012d873d.jpg"
+                                                                            alt="media/k2/items/src/600eb6612b31632f6c618c9c012d873d.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>18</span>
+                                                                                <span>April</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+                                                                            <div class="event-time">
+                                                                                <span class="start-time">
+                                                                                    3:00pm
+                                                                                </span>
+                                                                                <span class="end-time">
+                                                                                    4:00pm
+                                                                                </span> </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/279-gatana-mipan-chausa-take-liten.html"
+                                                                                title="Gatana mipan chausa take liten">
+                                                                                Gatana mipan chausa take liten
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="school">
+                                                                            <a href="#">University of Oxford</a>
+                                                                            <p>Oxford OX1 2JD - United Kingdom
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1 clr2"></div>
+
+                                                        </div>
+                                                        <!--line-->
+                                                    </div>
+                                                    <!--end item-->
+                                                    <div class="item ">
+                                                        <div class="line">
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/ab98897d60eaa0d05c1862c118538407.jpg"
+                                                                            alt="media/k2/items/src/ab98897d60eaa0d05c1862c118538407.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>18</span>
+                                                                                <span>April</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+                                                                            <div class="event-time">
+                                                                                <span class="start-time">
+                                                                                    2:00pm
+                                                                                </span>
+                                                                                <span class="end-time">
+                                                                                    5:00pm
+                                                                                </span> </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/278-pasen-takem-mitena-chuka-miren.html"
+                                                                                title="Pasen takem mitena chuka miren">
+                                                                                Pasen takem mitena chuka miren
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="school">
+                                                                            <a href="#">Stanford University</a>
+                                                                            <p>CA 94305 - United States</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1"></div>
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/f8a458e18503c86603dc02339a944feb.jpg"
+                                                                            alt="media/k2/items/src/f8a458e18503c86603dc02339a944feb.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>18</span>
+                                                                                <span>April</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/277-timas-caten-mipan-chumas-pozane.html"
+                                                                                title="Timas caten mipan chumas pozane">
+                                                                                Timas caten mipan chumas pozane
+                                                                            </a>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1 clr2"></div>
+
+                                                        </div>
+                                                        <!--line-->
+                                                    </div>
+                                                    <!--end item-->
+                                                    <div class="item ">
+                                                        <div class="line">
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/463052dad9377fe2445d3b1bfb5f62a3.jpg"
+                                                                            alt="media/k2/items/src/463052dad9377fe2445d3b1bfb5f62a3.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>18</span>
+                                                                                <span>April</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+                                                                            <div class="event-time">
+                                                                                <span class="start-time">
+                                                                                    5:00pm
+                                                                                </span>
+                                                                                <span class="end-time">
+                                                                                    6:00pm
+                                                                                </span> </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/276-fazen-mipan-chuka-osqua-ad-litora.html"
+                                                                                title="Fazen mipan chuka osqua ad litora">
+                                                                                Fazen mipan chuka osqua ad
+                                                                                litora </a>
+                                                                        </div>
+                                                                        <div class="school">
+                                                                            <a href="#">New York University</a>
+                                                                            <p>New York, NY, United States</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1"></div>
+                                                            <div class="item-wrap style2">
+                                                                <div class="item-wrap-inner">
+                                                                    <div class="item-image">
+                                                                        <img src="media/k2/items/src/ae265ec8d02add74bcb0f72e47ec001b.jpg"
+                                                                            alt="media/k2/items/src/ae265ec8d02add74bcb0f72e47ec001b.jpg" />
+                                                                        <div class="time-image">
+                                                                            <!-- Date created -->
+                                                                            <div class="item-created">
+                                                                                <span>22</span>
+                                                                                <span>March</span>
+                                                                                <span>2015</span>
+                                                                            </div>
+                                                                            <div class="event-time">
+                                                                                <span class="start-time">
+                                                                                    5:00pm
+                                                                                </span>
+                                                                                <span class="end-time">
+                                                                                    6:00pm
+                                                                                </span> </div>
+
+                                                                        </div>
+                                                                        <div class="over-image"></div>
+
+                                                                    </div>
+                                                                    <div class="item-info">
+                                                                        <div class="item-title">
+                                                                            <a href="index.php/k2-listing/item/227-class-aptent-taciti-sociosqu-ad-litora.html"
+                                                                                title="Class aptent taciti sociosqu ad litora">
+                                                                                Class aptent taciti sociosqu ad
+                                                                                litora </a>
+                                                                        </div>
+                                                                        <div class="school">
+                                                                            <a href="#">Princeton University</a>
+                                                                            <p>NJ 08544 - United States</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr1 clr2"></div>
+
+                                                        </div>
+                                                        <!--line-->
+                                                    </div>
+                                                    <!--end item-->
+
+                                                </div>
+                                                <!--end extraslider-inner -->
+
+                                                <div class="extraslider-control  ">
+
+                                                    <ul class="nav-page">
+                                                        <li class="page">
+                                                            <a class="button-page sel"
+                                                                href="#sjextraslider_17614783621729926732"
+                                                                data-jslide="0"></a>
+                                                        </li>
+                                                        <li class="page">
+                                                            <a class="button-page "
+                                                                href="#sjextraslider_17614783621729926732"
+                                                                data-jslide="1"></a>
+                                                        </li>
+                                                        <li class="page">
+                                                            <a class="button-page "
+                                                                href="#sjextraslider_17614783621729926732"
+                                                                data-jslide="2"></a>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                            <script>
+                                                //<![CDATA[    					
+                                                jQuery(document).ready(function($) {
+                                                    $('#sjextraslider_17614783621729926732').each(function() {
+                                                        var $this = $(this),
+                                                            options = options = !$this.data('modal') && $.extend({}, $this.data());
+                                                        $this.jcarousel(options);
+                                                        $this.bind('jslide', function(e) {
+                                                            var index = $(this).find(e.relatedTarget).index();
+                                                            // process for nav
+                                                            $('[data-jslide]').each(function() {
+                                                                var $nav = $(this),
+                                                                    $navData = $nav.data(),
+                                                                    href, $target = $($nav.attr('data-target') || (href =
+                                                                        $nav.attr('href')) && href.replace(
+                                                                        /.*(?=#[^\s]+$)/, ''));
+                                                                if (!$target.is($this)) return;
+                                                                if (typeof $navData.jslide == 'number' && $navData
+                                                                    .jslide == index) {
+                                                                    $nav.addClass('sel');
+                                                                } else {
+                                                                    $nav.removeClass('sel');
+                                                                }
+                                                            });
+                                                        });
+                                                        $this.touchwipe({
+                                                            wipeLeft: function() {
+                                                                $this.jcarousel('next');
+                                                                return false;
+                                                            },
+                                                            wipeRight: function() {
+                                                                $this.jcarousel('prev');
+                                                                return false;
+                                                            },
+                                                            wipeUp: function() {
+                                                                $this.jcarousel('next');
+                                                                return false;
+                                                            },
+                                                            wipeDown: function() {
+                                                                $this.jcarousel('prev');
+                                                                return false;
+                                                            }
+                                                        });
+                                                        return;
+                                                    });
+                                                });
+                                                //]]>	
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 ">
+                        <a title="Shortcodes " class="level1  item-link" href=""><span
+                                class="menu-title">Shortcodes </span></a>
+                    </li>
+
+                    <li class="level1 havechild ">
+                        <a title="Pages " class="level1 havechild  item-link"
+                            href="index.php/bonus-pages.html"><span class="menu-title">Pages </span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix" style="width:400px">
+
+                                <div class="mega-col first more" style="width:50%;">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first havechild ">
+                                            <a title="About Page" class="level2 first havechild  item-link"
+                                                href="index.php/bonus-pages/about-page.html"><span
+                                                    class="menu-title">About Page</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="About Us"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/bonus-pages/about-page/about-us.html"><span
+                                                                        class="menu-title">About Us</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="About Basic"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/bonus-pages/about-page/about-basic.html"><span
+                                                                        class="menu-title">About
+                                                                        Basic</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Services Page" class="level2 havechild  item-link"
+                                                href="index.php/bonus-pages/our-services.html"><span
+                                                    class="menu-title">Services Page</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Our Services - Layout1"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/bonus-pages/our-services/our-services-layout1.html"><span
+                                                                        class="menu-title">Our Services -
+                                                                        Layout1</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Our Services - Layout2"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/bonus-pages/our-services/our-services-layout2.html"><span
+                                                                        class="menu-title">Our Services -
+                                                                        Layout2</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Contact" class="level2 havechild  item-link"
+                                                href="#"><span class="menu-title">Contact</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Contact - Default"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/bonus-pages/contact/contact-default.html"><span
+                                                                        class="menu-title">Contact -
+                                                                        Default</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Contact - Sidebar"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/bonus-pages/contact/contact-sidebar.html"><span
+                                                                        class="menu-title">Contact -
+                                                                        Sidebar</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Photo Gallery " class="level2 havechild  item-link"
+                                                href="index.php/bonus-pages/photo-gallery.html"><span
+                                                    class="menu-title">Photo Gallery </span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Gallery (2 columns)"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/bonus-pages/photo-gallery/gallery-2-columns.html"><span
+                                                                        class="menu-title">Gallery (2
+                                                                        columns)</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Gallery  (3 columns)"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/bonus-pages/photo-gallery/gallery-3-columns.html"><span
+                                                                        class="menu-title">Gallery (3
+                                                                        columns)</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Gallery  (4 columns)"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/bonus-pages/photo-gallery/gallery-4-columns.html"><span
+                                                                        class="menu-title">Gallery (4
+                                                                        columns)</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Join Now" class="level2  item-link"
+                                                href="index.php/bonus-pages/join-now.html"><span
+                                                    class="menu-title">Join Now</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="FAQ" class="level2 last  item-link"
+                                                href="index.php/bonus-pages/faq.html"><span
+                                                    class="menu-title">FAQ</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="mega-col last more" style="width:50%;">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first ">
+                                            <a title="Page 404" class="level2 first  item-link"
+                                                href="index.php/bonus-pages/page-404.html"><span
+                                                    class="menu-title">Page 404</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Privacy Policy" class="level2  item-link"
+                                                href="index.php/bonus-pages/testimonial2.html"><span
+                                                    class="menu-title">Privacy Policy</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Terms Of Service" class="level2  item-link"
+                                                href="index.php/bonus-pages/terms-of-service.html"><span
+                                                    class="menu-title">Terms Of Service</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Sitemap" class="level2  item-link"
+                                                href="index.php/bonus-pages/sitemap.html"><span
+                                                    class="menu-title">Sitemap</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="Coming Soon" class="level2 last  item-link"
+                                                href="index.php/bonus-pages/2015-01-19-08-45-32.html"><span
+                                                    class="menu-title">Coming Soon</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+                <script type="text/javascript">
+                    jQuery(function($) {
+                        $('#meganavigator').megamenu({
+                            'wrap': '#yt_menuwrap .container',
+                            'easing': 'easeInOutCirc',
+                            'mm_timeout': '250',
+                            'justify': 'left'
+                        });
+                    });
+                </script>
+
+                <div id="yt-responivemenu" class="yt-resmenu ">
+                    <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed"
+                        type="button">
+                        <i class="fa fa-bars"></i> Menu </button>
+                    <div id="resmenu_sidebar" class="nav-collapse collapse">
+                        <ul class="nav resmenu">
+                            <li><a title="Home " href='index.html' class="active">Home </a> </li>
+                            <li class="haveChild level1"><a title="Explore " href='#'>Explore </a> <span
+                                    class="menuress-toggle"></span>
+                                <div class="res-wrapnav">
+                                    <ul class="nav">
+                                        <li class="haveChild level2"><a title="Layouts" href="#1">Layouts</a>
+                                            <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="All Sidebar Blocks"
+                                                            href='index.php/explore/layout/all-sidebar-blocks.html'>All
+                                                            Sidebar Blocks</a> </li>
+                                                    <li><a title="Left Sidebar "
+                                                            href='index.php/explore/layout/left-sidebar.html'>Left
+                                                            Sidebar </a> </li>
+                                                    <li><a title="Right Sidebar "
+                                                            href='index.php/explore/layout/content-right-sidebar.html'>Right
+                                                            Sidebar </a> </li>
+                                                    <li><a title="Full Width"
+                                                            href='index.php/explore/layout/full-width.html'>Full
+                                                            Width</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="Menu Style" href='#'>Menu
+                                                Style</a> <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Sider Menu"
+                                                            href='index.php/explore/menu-style/sider-menu.html'>Sider
+                                                            Menu</a> </li>
+                                                    <li><a title="Tree Menu"
+                                                            href='index.php/explore/menu-style/tree-menu.html'>Tree
+                                                            Menu</a> </li>
+                                                    <li><a title="Accordion Menu"
+                                                            href='index.php/explore/menu-style/accordion-menu.html'>Accordion
+                                                            Menu</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a title="Extensions"
+                                                href='index.php/explore/extenstions.html'>Extensions</a> </li>
+                                        <li><a title="Module Variations"
+                                                href='index.php/explore/module-variations.html'>Module
+                                                Variations</a> </li>
+                                        <li><a title="Module Positions"
+                                                href='index.php/explore/module-positions.html'>Module
+                                                Positions</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="haveChild level1"><a title="Joomla" href='#'>Joomla</a> <span
+                                    class="menuress-toggle"></span>
+                                <div class="res-wrapnav">
+                                    <ul class="nav">
+                                        <li class="haveChild level2"><a title="Blog Content"
+                                                href='index.php/joomla-pages-2/blog-joomla.html'>Blog
+                                                Content</a> <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="List All Categories"
+                                                            href='index.php/joomla-pages-2/blog-joomla/list-all-categories.html'>List
+                                                            All Categories</a> </li>
+                                                    <li><a title="Featured Articles"
+                                                            href='index.php/joomla-pages-2/blog-joomla/featured-articles.html'>Featured
+                                                            Articles</a> </li>
+                                                    <li><a title="Category List"
+                                                            href='index.php/joomla-pages-2/blog-joomla/category-list.html'>Category
+                                                            List</a> </li>
+                                                    <li class="haveChild level3"><a title="Category Blog"
+                                                            href='index.php/joomla-pages-2/blog-joomla/category-blog.html'>Category
+                                                            Blog</a> <span class="menuress-toggle"></span>
+                                                        <div class="res-wrapnav">
+                                                            <ul class="nav">
+                                                                <li><a title="Category Blog (1 column)"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-1-column.html'>Category
+                                                                        Blog (1 column)</a> </li>
+                                                                <li><a title="Category Blog (2 columns)"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-2-columns.html'>Category
+                                                                        Blog (2 columns)</a> </li>
+                                                                <li><a title="Category Blog (3 columns)"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-3-columns.html'>Category
+                                                                        Blog (3 columns)</a> </li>
+                                                                <li><a title="Category Blog (4 columns)"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-4-columns.html'>Category
+                                                                        Blog (4 columns)</a> </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li class="haveChild level3"><a title="Category Tag"
+                                                            href='index.php/joomla-pages-2/blog-joomla/tags.html'>Category
+                                                            Tag</a> <span class="menuress-toggle"></span>
+                                                        <div class="res-wrapnav">
+                                                            <ul class="nav">
+                                                                <li><a title="Compact List Of Tagged Items"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/tags/compact-list-of-tagged-items.html'>Compact
+                                                                        List Of Tagged Items</a> </li>
+                                                                <li><a title="List Of All Tags"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/tags/list-of-all-tags.html'>List
+                                                                        Of All Tags</a> </li>
+                                                                <li><a title="Tagged Items"
+                                                                        href='index.php/joomla-pages-2/blog-joomla/tags/tagged-items.html'>Tagged
+                                                                        Items</a> </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li><a title="Single Article"
+                                                            href='index.php/joomla-pages-2/blog-joomla/single-article.html'>Single
+                                                            Article</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="Search"
+                                                href='index.php/joomla-pages-2/smart-seach.html'>Search</a>
+                                            <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Search"
+                                                            href='index.php/joomla-pages-2/smart-seach/seach.html'>Search</a>
+                                                    </li>
+                                                    <li><a title="Smart Search"
+                                                            href='index.php/joomla-pages-2/smart-seach/smart-search.html'>Smart
+                                                            Search</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a title="Login Form"
+                                                href='index.php/joomla-pages-2/login-form.html'>Login Form</a>
+                                        </li>
+                                        <li><a title="Page Breaks"
+                                                href='index.php/joomla-pages-2/page-break-example.html'>Page
+                                                Breaks</a> </li>
+                                        <li><a title="Iframe Wrapper"
+                                                href='index.php/joomla-pages-2/iframe-wrapper.html'>Iframe
+                                                Wrapper</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="haveChild level1"><a title="K2" href='index.php/k2.html'>K2</a> <span
+                                    class="menuress-toggle"></span>
+                                <div class="res-wrapnav">
+                                    <ul class="nav">
+                                        <li class="haveChild level2"><a title="K2 Categories"
+                                                href='index.php/k2/k2-categories.html'>K2 Categories</a> <span
+                                                class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="K2 Listing 1 Column"
+                                                            href='index.php/k2/k2-categories/k2-1column.html'>K2
+                                                            Listing 1 Column</a> </li>
+                                                    <li><a title="K2 Listing 2 Columns"
+                                                            href='index.php/k2/k2-categories/k2-2columns.html'>K2
+                                                            Listing 2 Columns</a> </li>
+                                                    <li><a title="K2 Listing 3 Columns"
+                                                            href='index.php/k2/k2-categories/k2-3columns.html'>K2
+                                                            Listing 3 Columns</a> </li>
+                                                    <li><a title="K2 Listing 4 Columns"
+                                                            href='index.php/k2/k2-categories/listing-4-columns.html'>K2
+                                                            Listing 4 Columns</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="K2 Article"
+                                                href='index.php/k2/k2-article.html'>K2 Article</a> <span
+                                                class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Article show images"
+                                                            href='index.php/k2/k2-article/article-show-images.html'>Article
+                                                            show images</a> </li>
+                                                    <li><a title="Article show Youtube"
+                                                            href='index.php/k2/k2-article/article-show-youtube.html'>Article
+                                                            show Youtube</a> </li>
+                                                    <li><a title="Article show Vimeo"
+                                                            href='index.php/k2/k2-article/article-show-vimeo.html'>Article
+                                                            show Vimeo</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a title="K2 Tags" href='index.php/k2/k2-tags.html'>K2 Tags</a>
+                                        </li>
+                                        <li><a title="K2 User" href='index.php/k2/k2-user.html'>K2 User</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a title="Mega Menu" href='#'>Mega Menu</a> </li>
+                            <li><a title="Shortcodes " href='index.php/short-codes.html'>Shortcodes </a> </li>
+                            <li class="haveChild level1"><a title="Pages "
+                                    href='index.php/bonus-pages.html'>Pages </a> <span
+                                    class="menuress-toggle"></span>
+                                <div class="res-wrapnav">
+                                    <ul class="nav">
+                                        <li class="haveChild level2"><a title="About Page"
+                                                href='index.php/bonus-pages/about-page.html'>About Page</a>
+                                            <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="About Us"
+                                                            href='index.php/bonus-pages/about-page/about-us.html'>About
+                                                            Us</a> </li>
+                                                    <li><a title="About Basic"
+                                                            href='index.php/bonus-pages/about-page/about-basic.html'>About
+                                                            Basic</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="Services Page"
+                                                href='index.php/bonus-pages/our-services.html'>Services Page</a>
+                                            <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Our Services - Layout1"
+                                                            href='index.php/bonus-pages/our-services/our-services-layout1.html'>Our
+                                                            Services - Layout1</a> </li>
+                                                    <li><a title="Our Services - Layout2"
+                                                            href='index.php/bonus-pages/our-services/our-services-layout2.html'>Our
+                                                            Services - Layout2</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="Contact" href='#'>Contact</a>
+                                            <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Contact - Default"
+                                                            href='index.php/bonus-pages/contact/contact-default.html'>Contact
+                                                            - Default</a> </li>
+                                                    <li><a title="Contact - Sidebar"
+                                                            href='index.php/bonus-pages/contact/contact-sidebar.html'>Contact
+                                                            - Sidebar</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="haveChild level2"><a title="Photo Gallery "
+                                                href='index.php/bonus-pages/photo-gallery.html'>Photo Gallery
+                                            </a> <span class="menuress-toggle"></span>
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    <li><a title="Gallery (2 columns)"
+                                                            href='index.php/bonus-pages/photo-gallery/gallery-2-columns.html'>Gallery
+                                                            (2 columns)</a> </li>
+                                                    <li><a title="Gallery  (3 columns)"
+                                                            href='index.php/bonus-pages/photo-gallery/gallery-3-columns.html'>Gallery
+                                                            (3 columns)</a> </li>
+                                                    <li><a title="Gallery  (4 columns)"
+                                                            href='index.php/bonus-pages/photo-gallery/gallery-4-columns.html'>Gallery
+                                                            (4 columns)</a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a title="Join Now" href='index.php/bonus-pages/join-now.html'>Join
+                                                Now</a> </li>
+                                        <li><a title="FAQ" href='index.php/bonus-pages/faq.html'>FAQ</a> </li>
+                                        <li><a title="Page 404" href='index.php/bonus-pages/page-404.html'>Page
+                                                404</a> </li>
+                                        <li><a title="Privacy Policy"
+                                                href='index.php/bonus-pages/testimonial2.html'>Privacy
+                                                Policy</a> </li>
+                                        <li><a title="Terms Of Service"
+                                                href='index.php/bonus-pages/terms-of-service.html'>Terms Of
+                                                Service</a> </li>
+                                        <li><a title="Sitemap"
+                                                href='index.php/bonus-pages/sitemap.html'>Sitemap</a> </li>
+                                        <li><a title="Coming Soon"
+                                                href='index.php/bonus-pages/2015-01-19-08-45-32.html'>Coming
+                                                Soon</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="haveChild level1"><a title="Kunena"
+                                    href='index.php/forum/index.html'>Kunena</a> <span
+                                    class="menuress-toggle"></span>
+                                <div class="res-wrapnav">
+                                    <ul class="nav">
+                                        <li><a title="Index" href='index.php/kunena/index.html'>Index</a> </li>
+                                        <li><a title="Recent Topics"
+                                                href='index.php/kunena/recent-topics.html'>Recent Topics</a>
+                                        </li>
+                                        <li><a title="Search"
+                                                href='index.php/kunena/search-toppic.html'>Search</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function($) {
+                        $('.btn-navbar').click(function() {
+                            $(this).children().toggleClass('fa-times');
+                        });
+                        $("ul.resmenu li.haveChild").each(function() {
+                            $(this).children(".res-wrapnav").css('display', 'none');
+                            var ua = navigator.userAgent,
+                                event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+                            $(this).children(".menuress-toggle").bind(event, function() {
+                                $(this).siblings(".res-wrapnav").slideDown(350);
+                                $(this).parent().siblings("li").children(".res-wrapnav").slideUp(350);
+                                $(this).parent().siblings("li").removeClass("active");
+                                $(this).parent().addClass(function() {
+                                    if ($(this).hasClass("active")) {
+                                        $(this).removeClass("active");
+                                        $(this).children(".res-wrapnav").slideToggle();
+                                        return "";
+                                    }
+                                    return "active";
+                                });
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+</nav>

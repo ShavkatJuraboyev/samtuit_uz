@@ -1,149 +1,673 @@
 {% extends 'users/base/base.html' %}
 {% load static %}
 {% block content %}
+<div id="yt_wrapper" class="layout-wide">
 
-<div class="samtuit-page-title-wrap  samtuit-style-medium samtuit-center-align" style="background-image: url({% static 'users/img-slider/img-12.jpg' %}) ;">
-    <div class="samtuit-header-transparent-substitute"></div>
-    <div class="samtuit-page-title-overlay"></div>
-    <div class="samtuit-page-title-container samtuit-container">
-        <div class="samtuit-page-title-content samtuit-item-pdlr">
-            <div class="samtuit-page-caption">TATU Samarqand filiali</div>
-            <h2 class="samtuit-page-title">Yangiliklar</h2></div>
-    </div>
-</div>
-<div class="samtuit-page-wrapper" id="samtuit-page-wrapper">
-    <div class="gdlr-core-page-builder-body">
-        <div class="gdlr-core-pbf-sidebar-wrapper ">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+    {% include 'users/base/navbar.html' %}
 
-                <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-40 gdlr-core-pbf-sidebar-padding gdlr-core-line-height gdlr-core-column-extend-left" style="padding: 60px 10px 30px 0px;">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
-                    <div class="gdlr-core-pbf-sidebar-content-inner">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
-                                <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                    {% for post in posts|slice:":4" %}
-                                    <div class="gdlr-core-item-list gdlr-core-blog-full  gdlr-core-item-mglr gdlr-core-style-left">
-                                        <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                            <a href="{% url 'new' pk=post.id %}"><img src="{{ post.image.url }}" style="width: 100%; height: 500px;"  alt="{{ post.titel}}" />
-                                            </a>
-                                        </div>
-                                        <div class="gdlr-core-blog-full-frame gdlr-core-skin-e-background">
-                                            <div class="gdlr-core-blog-full-head clearfix">
-                                                <div class="gdlr-core-blog-full-head-right">
-                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 33px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="{% url 'new' pk=post.id %}" >{{ post.title }}</a></h3>
-                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="{% url 'new' pk=post.id %}">{{ post.created_at }}</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-author"><a href="{% url 'new' pk=post.id %}" title="Posts by John Smith" rel="author">{{ post.created_by.username }}</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-category"><a href="#" rel="tag">Yangilik</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-comment-number"><span class="gdlr-core-head" ><i class="fa fa-eye" ></i></span><a href="##respond">3 </a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gdlr-core-blog-content">{{post.text}}
-                                                <div class="clear"></div>
-                                                <a class="gdlr-core-excerpt-read-more gdlr-core-button gdlr-core-rectangle" href="{% url 'new' pk=post.id %}">Batafsil</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                                <div class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-left-align gdlr-core-item-pdlr">
-                                    {% if posts.has_previous %}
-                                    <a class='page-numbers' href="?page=1">&laquo;</a>
-                                    <a class='page-numbers' href="?page={{ posts.previous_page_number }}"><</a>
-                                    {% endif %}
-                                    
-                                    {% for num in posts.paginator.page_range %}
-                                        {% if posts.number == num %}
-                                            <span aria-current='page' class='page-numbers current'>{{ num }}</span>
-                                        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-                                            <a class='page-numbers' href="?page={{ num }}">{{ num }}</a>
-                                        {% endif %}
-                                    {% endfor %}
-                                    
-                                    {% if posts.has_next %}
-                                        <a class='page-numbers' href="?page={{ posts.next_page_number }}">></a>
-                                        <a class='page-numbers' href="?page={{ posts.paginator.num_pages }}">&raquo;</a>
-                                    {% endif %}
-                                
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section id="yt_breadcrumb" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
 
-                <!-- <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  samtuit-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries samtuit-widget">
-                            <h3 class="samtuit-widget-title">Tezkor menu</h3><span class="clear"></span>
-                            <ul>
-                                <li> <a href="#">Fakultetlar</a></li>
-                                <li> <a href="#">Kafedralar</a></li>
-                                <li> <a href="#">Bo'lim va markazlar</a></li>
-                                <li> <a href="#">Abituriyent</a></li>
-                                <li> <a href="#">Talabalar</a></li>
-                                <li> <a href="#">Ilmiy tadqiqot faoliayti</a></li>
+                    <div class="module">
+                        <div class="modcontent clearfix">
+
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li>
+                                    <a href="/" class="pathway">Bosh saxifa</a>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>Yangiliklar</span>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li class="active"><span>Yangiliklar</span></li>
                             </ul>
                         </div>
-                        <div id="text-6" class="widget widget_text samtuit-widget">
-                            <h3 class="samtuit-widget-title">About Us</h3><span class="clear"></span>
-                            <div class="textwidget">Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.</div>
-                        </div>
                     </div>
-                </div> -->
-                <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-20 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        
-                        <div id="search-3" class="widget widget_search samtuit-widget">
-                            <form role="search" method="get" class="search-form" action="#">
-                                <input type="search" class="search-field" placeholder="Search..." value="" name="s" />
-                                <input type="submit" class="search-submit" value="Search" />
-                            </form>
-                        </div>
 
-                        <div id="text-7" class="widget widget_text samtuit-widget">
-                            <h3 class="samtuit-widget-title">Kun hikmati</h3><span class="clear"></span>
-                            <div class="textwidget">
-                                <p>Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget.</p>
-                            </div>
-                        </div>
-                        {% if posts|slice:"4:" %}
-                        <div id="gdlr-core-recent-post-widget-2" class="widget widget_gdlr-core-recent-post-widget samtuit-widget">
-                            <h3 class="samtuit-widget-title">So'ngi yangiliklar</h3><span class="clear"></span>
-                            <div class="gdlr-core-recent-post-widget-wrap gdlr-core-style-1" id="news-container">
-                                {% for post in posts|slice:"4:" %}
-                                <div class="gdlr-core-recent-post-widget clearfix">
-                                    <div class="gdlr-core-recent-post-widget-thumbnail gdlr-core-media-image">
-                                        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="150" height="150" />
-                                    </div>
-                                    <div class="gdlr-core-recent-post-widget-content">
-                                        <div class="gdlr-core-recent-post-widget-title">
-                                            <a href="{% url 'new' pk=post.id %}">{{ post.title }}</a>
-                                        </div>
-                                        <div class="gdlr-core-recent-post-widget-info">
-                                            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                <a href="{% url 'new' pk=post.id %}">{{ post.created_at }}</a>
-                                            </span>
-                                            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-author">
-                                                <span class="gdlr-core-head">By</span><a href="{% url 'new' pk=post.id %}">{{ post.created_by }}</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        {% endif %}
-                        <div id="tag_cloud-2" class="widget widget_tag_cloud samtuit-widget">
-                            <h3 class="samtuit-widget-title">Tag Cloud</h3><span class="clear"></span>
-                            <div class="tagcloud"><a href="#" class="tag-cloud-link tag-link-7 tag-link-position-1" style="font-size: 12.2pt;" aria-label="Admission (2 items)">Admission</a> <a href="#" class="tag-cloud-link tag-link-5 tag-link-position-2" style="font-size: 8pt;" aria-label="Article (1 item)">Article</a> <a href="#" class="tag-cloud-link tag-link-14 tag-link-position-3" style="font-size: 12.2pt;" aria-label="Event (2 items)">Event</a> <a href="#" class="tag-cloud-link tag-link-103 tag-link-position-4" style="font-size: 8pt;" aria-label="Hot (1 item)">Hot</a> <a href="#" class="tag-cloud-link tag-link-10 tag-link-position-5" style="font-size: 12.2pt;" aria-label="News (2 items)">News</a> <a href="#" class="tag-cloud-link tag-link-12 tag-link-position-6" style="font-size: 22pt;" aria-label="Post Format (7 items)">Post Format</a> <a href="#" class="tag-cloud-link tag-link-6 tag-link-position-7" style="font-size: 15pt;" aria-label="Research (3 items)">Research</a> <a href="#" class="tag-cloud-link tag-link-9 tag-link-position-8" style="font-size: 8pt;" aria-label="Social (1 item)">Social</a> <a href="#" class="tag-cloud-link tag-link-13 tag-link-position-9" style="font-size: 8pt;" aria-label="Sport (1 item)">Sport</a> <a href="#" class="tag-cloud-link tag-link-8 tag-link-position-10" style="font-size: 12.2pt;" aria-label="Student (2 items)">Student</a> <a href="#" class="tag-cloud-link tag-link-11 tag-link-position-11" style="font-size: 12.2pt;" aria-label="Updates (2 items)">Updates</a></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </section>
+
+    <section id="content" class="  no-left  block com_content">
+        <div class="container">
+            <div class="row">
+                <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
+                <div id="content_main" class="col-md-9">
+                    <div id="system-message-container">
+                    </div>
+
+                    <div id="yt_component">
+
+                        <div class="blog">
+                            <h2 class="heading-category"> 
+                                <span class="subheading-category">Yangiliklar</span>
+                            </h2>
+
+                            <div class="items-leading row">
+                                {% for post in posts %}
+                                <div class="item col-sm-6 leading-0">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{{post.get_post_img}}" alt="{{post.title}}"/>
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="" itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a href="">{{post.title}}</a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>23744</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>{{post.text}}</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                {% endfor %}
+                                <div class="item col-sm-6 leading-1">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{% static 'users/cache/sj_university2/1bd53d1b29d61a81d58fde73f744fc00.jpg' %}"
+                                            alt="" />
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="http://schema.org/Person">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="category-blog-2-columns.html"
+                                                        itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a href="../single-article.html">
+                                                    Aenean vehicula vehicula alicaten</a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>6091</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>Meggings next level yr, 90′s small batch four loko brunch wes
+                                                anderson fixie american apparel flexitarian pitchfork neutra.
+                                                Constructed in cotton sweat fabric, this lovely piece, lacus eu
+                                                mattis auctor, dolor lectus venenatis nullante.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="item col-sm-6 leading-2">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{% static 'users/cache/sj_university2/526753130cce36c37e370ef698b5b958.jpg' %}"
+                                            alt="" />
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="http://schema.org/Person">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="category-blog-2-columns.html"
+                                                        itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a href="category-blog-4-columns/85-aliquam-lobortis-cursus-erat.html">
+                                                    Aliquam lobortis cursus </a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>36241</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                                                per inceptos himenaeos. Aliquam eget arcu magna, vel congue dui.
+                                                Nunc auctor mauris tempor leo aliquam sodales.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="item col-sm-6 leading-3">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{% static 'users/cache/sj_university2/bda29c5e25b4e25a3dfd94921d4f386f.jpg' %}"
+                                            alt="" />
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="http://schema.org/Person">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="category-blog-2-columns.html"
+                                                        itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a
+                                                    href="category-blog-4-columns/87-ursus-senectus-aliquet-pretium.html">
+                                                    Ursus senectus gazen mipan</a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>779</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>Smaraddons Suspendisse at libero porttitor nisi aliquet vulputate
+                                                vitae at velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                mauris tempor leo aliquam vel porta ante sodales. Nulla facilisi. In
+                                                accumsan mattis odio vel luctus.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="item col-sm-6 leading-4">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{% static 'users/cache/sj_university2/de0f8d27d7bd070d04e2e186cb7af4b6.jpg' %}"
+                                            alt="" />
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="http://schema.org/Person">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="category-blog-2-columns.html"
+                                                        itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a href="category-blog-4-columns/83-mauris-ut-mauris-vel-libero.html">
+                                                    Mauris ut mauris gaten mika</a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>778</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor mauris
+                                                tempor leo aliquam vel porta ante sodales. Nulla facilisi. In
+                                                accumsan mattis odio vel luctus.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="item col-sm-6 leading-5">
+
+                                    <figure class="pull-none item-image">
+
+                                        <img src="{% static 'users/cache/sj_university2/f2efcc9411b6c55d1f99ce421ce47b9e.jpg' %}"
+                                            alt="" />
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dt></dt>
+                                                <dd class="createdby" itemprop="author" itemscope
+                                                    itemtype="http://schema.org/Person">
+                                                    <i class="fa fa-user"></i>
+                                                    <span itemprop="name">Super User</span> </dd>
+
+                                                <dt></dt>
+                                                <dd class="category-name">
+                                                    Category: <a href="category-blog-2-columns.html"
+                                                        itemprop="genre">Content Category 1</a>
+                                                </dd>
+
+                                            </dl>
+
+                                        </aside>
+                                    </figure>
+
+                                    <div class="article-text">
+
+                                        <header class="article-header">
+
+                                            <h2>
+                                                <a href="category-blog-4-columns/82-mes-pede-elit-nibh.html">
+                                                    Pitren mite hazen sumas kite</a>
+                                            </h2>
+
+                                        </header>
+
+                                        <div class="icons">
+
+                                        </div>
+
+                                        <aside class="article-aside">
+
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
+                                                <dd class="hits"><i class="ico-hits"></i>719</dd>
+                                            </dl>
+                                        </aside>
+
+                                        <div class="article-intro">
+                                            <p>Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor mauris
+                                                tempor leo aliquam vel porta ante sodales. Nulla facilisi. In
+                                                accumsan mattis odio vel luctus.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="pagination">
+                                <ul class="pagination">
+                                    <li class="active"><span>1</span></li>
+                                    <li><a title="2" href="" class="pagenav">2</a></li>
+                                    <li><a title="Next" href="" class="pagenav"><i
+                                                class="fa fa-long-arrow-right l-hiden"></i> <i
+                                                class="fa fa-long-arrow-left r-hiden"></i></a></li>
+                                    <li><a title="End" href="" class="pagenav">End</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <aside id="content_right" class="col-md-3 col-sm-12">
+                    <div id="right" class="col-sm-12">
+
+                        <div class="module k2-categories ">
+                            <h3 class="modtitle">Tezkor menyular</h3>
+                            <div class="modcontent clearfix">
+
+                                <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
+                                    <ul class="level0">
+                                        <li><a href=""><span class="catTitle">K2 listing</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Accounting</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Finance</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Management</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Medical</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Art & Design</span><span
+                                                    class="catCounter"></span></a></li>
+                                        <li><a href=""><span class="catTitle">Programming</span><span
+                                                    class="catCounter"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="module  module_tabs ">
+                            <div class="modcontent clearfix">
+
+                                <div id="moduletabs_11308236401729926773" class="moduletabs top-position clearfix">
+
+                                    <div class="tabs-container">
+                                        <ul class="tabs row">
+                                            <li class="col-sm-6 col-xs-6">
+                                                <div class="tab selected">Recent</div>
+                                            </li>
+                                            <li class="col-sm-6 col-xs-6">
+                                                <div class="tab">Comments</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tabs-content-wrap">
+                                        <div class="tabs-content">
+                                            <div class="tabs-content-inner">
+                                                <div class="tab-content selected">
+
+                                                    <div id="k2ModuleBox347" class="k2ItemsBlock k2-content-recent">
+
+                                                        <ul>
+                                                            <li class="even">
+                                                                <div class="moduleItemIntrotext">
+                                                                    <a class="moduleItemImage" href=""
+                                                                        title="Continue reading &quot;Curabitur luctus tortor non quam&quot;">
+                                                                        <img src="{% static 'users/media/k2/items/cache/ea82697ed9755e975f3c7d735db2070c_XS.jpg' %}"
+                                                                            alt="Curabitur luctus tortor non quam" />
+                                                                    </a>
+                                                                    <div class="main">
+                                                                        <a class="moduleItemTitle" href="">Curabitur
+                                                                            luctus tortor non quam</a>
+                                                                        <span class="moduleItemDateCreated">Apr 20,
+                                                                            2015</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clr"></div>
+                                                                <div class="clr"></div>
+                                                                <div class="clr"></div>
+                                                            </li>
+                                                            <li class="odd">
+                                                                <div class="moduleItemIntrotext">
+                                                                    <a class="moduleItemImage"
+                                                                        href=""
+                                                                        title="Continue reading &quot;Vivamus dictum pulvinar ipsum&quot;">
+                                                                        <img src="{% static 'users/media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XS.jpg' %}"
+                                                                            alt="Vivamus dictum pulvinar ipsum" />
+                                                                    </a>
+                                                                    <div class="main">
+                                                                        <a class="moduleItemTitle"
+                                                                            href="">Vivamus
+                                                                            dictum pulvinar ipsum</a>
+                                                                        <span class="moduleItemDateCreated">Apr 20,
+                                                                            2015</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+                                                            </li>
+                                                            <li class="even">
+
+                                                                <div class="moduleItemIntrotext">
+                                                                    <a class="moduleItemImage"
+                                                                        href=""
+                                                                        title="Continue reading &quot;Nullam hendrerit tempus tellus&quot;">
+                                                                        <img src="{% static 'users/media/k2/items/cache/dbe05350458c15fa6c802fb686391131_XS.jpg' %}"
+                                                                            alt="Nullam hendrerit tempus tellus" />
+                                                                    </a>
+                                                                    <div class="main">
+                                                                        <a class="moduleItemTitle"
+                                                                            href="">Nullam
+                                                                            hendrerit tempus tellus</a>
+                                                                        <span class="moduleItemDateCreated">Apr 20,
+                                                                            2015</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+                                                            </li>
+                                                            <li class="odd lastItem">
+
+                                                                <div class="moduleItemIntrotext">
+                                                                    <a class="moduleItemImage"
+                                                                        href=""
+                                                                        title="Continue reading &quot;Curabitur luctus tortor non quam gravida&quot;">
+                                                                        <img src="{% static 'users/media/k2/items/cache/63955aa9869cf7707ada1662dbfb31e2_XS.jpg' %}"
+                                                                            alt="Curabitur luctus tortor non quam gravida" />
+                                                                    </a>
+                                                                    <div class="main">
+                                                                        <a class="moduleItemTitle"
+                                                                            href="">Curabitur
+                                                                            luctus tortor non quam gravida</a>
+                                                                        <span class="moduleItemDateCreated">Apr 20,
+                                                                            2015</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+
+                                                                <div class="clr"></div>
+                                                            </li>
+                                                            <li class="clearList"></li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                                <div class="tab-content">
+
+                                                    <div id="k2ModuleBox350"
+                                                        class="k2LatestCommentsBlock  tab-comments">
+
+                                                    </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                </div>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function($) {
+                                        $('#moduletabs_11308236401729926773').jsmart_moduletabs({
+                                            sj_module: 'mod_sj_moduletabs',
+                                            sj_module_id: '360',
+                                            ajax_url: '',
+                                            ajaxUpdate: function(element, options) {
+                                                var loading = $('.ajax_loading', element);
+                                                if (loading.length) {
+                                                    // show ajax indicator
+                                                    var category_id = $(element).attr('title')
+                                                        .replace('sj_module_2load:',
+                                                            '');
+                                                    ajax_options = {
+                                                        sj_module_2load: category_id,
+                                                        sj_module_id: options.sj_module_id,
+                                                        sj_module: options.sj_module
+                                                    };
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: options.ajax_url,
+                                                        data: ajax_options,
+                                                        success: function(data, status,
+                                                            jqXHR) {
+                                                            $(element).html(data);
+                                                            $(element).data('fx2height',
+                                                                $(element).height());
+                                                            $(element).attr('title',
+                                                            '');
+                                                        },
+                                                        dataType: 'html'
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+
+                        <div class="module  tags-k2 ">
+                            <h3 class="modtitle">K2 Tags</h3>
+                            <div class="modcontent clearfix">
+
+                                <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
+                                    <a href="" style="font-size:100%" title="15 items tagged with Creative">
+                                        Creative </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with css">
+                                        css </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with HTML5">
+                                        HTML5 </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with joomla">
+                                        joomla </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with Photoshop">
+                                        Photoshop </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with responsive">
+                                        responsive </a>
+                                    <a href="" style="font-size:100%" title="15 items tagged with Text">
+                                        Text </a>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </section>
+
+    {% include 'users/base/settings.html' %}
+</div>
 {% endblock content %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django_ckeditor_5.fields import CKEditor5Field
+from django.templatetags.static import static
 
 class PictureSlider(models.Model):
     image = models.ImageField(upload_to="silder/")
@@ -17,6 +18,10 @@ class Post(models.Model):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
+    def get_post_img(self):
+        return self.image.url if self.image else static('')
+    
     def __str__(self):
         return self.title
     
+     
