@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <header id="yt_header" class="block">
     <div class="container">
         <div class="row">
@@ -8,14 +9,14 @@
                     <li class="item-1534" ><a href=""><img src="{% static 'users/images/ramzlar/uz.png' %}" alt="bayroq" style="width: 30px; height: 20px;"></a></li>
                     <li class="item-1535"><a href=""><img src="{% static 'users/images/ramzlar/gerb.png' %}" alt="gerb" style="width: 20px; height: 20px;"></a></li>
                     <li class="item-1536"><a href=""><img src="{% static 'users/images/ramzlar/nota.png' %}" alt="mathiya" style="width: 20px; height: 20px;"></a></li>
-                    <li class="item-1531 deeper parent"><a href="">Universitet web sayt tizimlari</a>
+                    <li class="item-1531 deeper parent"><a href="">{% trans "Universitet web sayt tizimlari" %}</a>
                         <ul class="yt-list">
-                            <li class="item-1543"><a href="/">Samtuit.uz</a></li>
-                            <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">Hemis</a></li>
-                            <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">Kutubxona</a></li>
+                            <li class="item-1543"><a href="https://hemis.samtuit.uz/">{% trans "Hemis o'qituvchi" %}</a></li>
+                            <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">{% trans "Hemis talaba" %}</a></li>
+                            <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">{% trans "Kutubxona" %}</a></li>
                         </ul>
                     </li>
-                    <li class="item-1532"><a href="">Qabul-2024</a></li>
+                    <li class="item-1532"><a href="">{% trans "Qabul-2024" %}</a></li>
                     <!-- <li class="item-1533"><a href="">Staff</a></li> -->
                 </ul>
 
@@ -52,26 +53,57 @@
                 <div class="module  me-language  ">
                     <div class="modcontent clearfix">
                         <div class="mod-languages ">
+                            <!-- <a class="dropdown-toggle">
+                                {% if LANGUAGE_CODE == 'uz' %}
+                                    <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" /> Uzbek
+                                {% elif LANGUAGE_CODE == 'en' %}
+                                    <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" /> English
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                    <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Русский" title="Русский" /> Русский
+                                {% endif %}
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <form method="post" action="{% url 'set_language' %}">
+                                    {% csrf_token %}
+                                    <li>
+                                        <button type="submit" name="language" value="uz" style="border: none; background: none; padding: 0; margin: 0;">
+                                            <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" /> Uzbek
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="submit" name="language" value="en" style="border: none; background: none; padding: 0; margin: 0;">
+                                            <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" /> English
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="submit" name="language" value="ru" style="border: none; background: none; padding: 0; margin: 0;">
+                                            <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Русский" title="Русский" /> Русский
+                                        </button>
+                                    </li>
+                                </form>
+                            </ul> -->
+                            
 
                             <a class="dropdown-toggle">
                                 <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek " title="Uzbek " />
                                 Uzbek <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu ">
-                                <li class="lang-active">
-                                    <a href="">
+                                <li class="-actilangve">
+                                    <a href="{% url 'set_language' %}?lang=uz">
                                         <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek "
                                             title="Uzbek "/> Uzbek </a>
                                 </li>
                                 <li class="">
-                                    <a href="">
+                                    <a href="{% url 'set_language' %}?lang=en">
                                         <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English"
                                             title="English" /> English </a>
                                 </li>
                                 <li class="">
-                                    <a href="">
+                                    <a href="{% url 'set_language' %}?lang=ru">
                                         <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha"
-                                            title="Ruscha"/> Ruscha </a>
+                                            title="Ruscha"/> Русский </a>
                                 </li>
                             </ul>
 
@@ -110,11 +142,11 @@
 </header>
 
 <nav id="yt_menuwrap" class="block">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div id="yt_logo" class="col-md-3 col-sm-12">
 
-                <a class="logo" href="" title="sj universityii">
+                <a class="logo" href="/" title="sj universityii">
                     <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/univer_TATU.png' %}"
                         alt="sj universityii" style="width:246px;height:48px;" />
                 </a>
@@ -123,22 +155,34 @@
             <div id="yt_mainmenu" class="col-md-9 col-sm-12 ">
                 <ul id="meganavigator" class="clearfix navi ">
                     <li class="level1 last havechild ">
-                        <a title="Yangiliklar" class="level1 last havechild  item-link"><span class="menu-title">Yangiliklar</span></a>
+                        <a href="" title="Yangiliklar" class="level1 last havechild  item-link"><span class="menu-title">{% trans "Yangiliklar" %}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
                                 <div class="mega-col first one">
                                     <ul class="subnavi level2">
                                         <li class="level2 first ">
-                                            <a title="Yangiliklar" class="level2 first  item-link" href="{% url 'news' %}"><span class="">Yangiliklar</span></a>
+                                            <a title="Yangiliklar" class="level2 first  item-link" href="{% url 'news' %}"><span class="">{% trans "Yangiliklar" %}</span></a>
                                         </li>
 
-                                        <li class="level2 ">
-                                            <a title="Recent Topics" class="level2  item-link" href=""><span class="menu-title">Recent Topics</span></a>
+                                        <li class="level2">
+                                            <a title="Yig'ilishlar" class="level2  item-link" href="{% url 'meetings' %}"><span class="menu-title">Yig'ilishlar</span></a>
                                         </li>
 
-                                        <li class="level2 last ">
-                                            <a title="Search" class="level2 last  item-link" href=""><span class="menu-title">Search</span></a>
+                                        <li class="level2">
+                                            <a title="E'lonlar" class="level2 last  item-link" href="{% url 'elonlar' %}"><span class="menu-title">E'lonlar</span></a>
+                                        </li>
+                                        <li class="level2">
+                                            <a title="Uchrashuvlar" class="level2 last  item-link" href=""><span class="menu-title">Uchrashuvlar</span></a>
+                                        </li>
+                                        <li class="level2">
+                                            <a title="Matbuot anjumanlari" class="level2 last  item-link" href=""><span class="menu-title">Matbuot anjumanlari</span></a>
+                                        </li>
+                                        <li class="level2">
+                                            <a title="Seminarlar" class="level2 last  item-link" href=""><span class="menu-title">Seminarlar</span></a>
+                                        </li>
+                                        <li class="level2">
+                                            <a title="Davra suhbatlari" class="level2 last  item-link" href=""><span class="menu-title">Davra suhbatlari</span></a>
                                         </li>
 
                                     </ul>
@@ -148,8 +192,8 @@
                         </div>
                     </li>
                     <li class="level1 havechild ">
-                        <a title="Explore " class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">Explore </span></a>
+                        <a title="Tuzilma" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">Tuzilma </span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -267,8 +311,322 @@
                     </li>
 
                     <li class="level1 havechild ">
-                        <a title="Joomla" class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">Joomla</span></a>
+                        <a title="Faoliyat" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">Faoliyat</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
+
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        <li class="level2 first havechild ">
+                                            <a title="Blog Content" class="level2 first havechild  item-link"
+                                                href="index.php/joomla-pages-2/blog-joomla.html"><span
+                                                    class="menu-title">Blog Content</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="List All Categories"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/list-all-categories.html"><span
+                                                                        class="menu-title">List All
+                                                                        Categories</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Featured Articles"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/featured-articles.html"><span
+                                                                        class="menu-title">Featured
+                                                                        Articles</span></a>
+                                                            </li>
+
+                                                            <li class="level3 ">
+                                                                <a title="Category List"
+                                                                    class="level3  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/category-list.html"><span
+                                                                        class="menu-title">Category
+                                                                        List</span></a>
+                                                            </li>
+
+                                                            <li class="level3 havechild ">
+                                                                <a title="Category Blog"
+                                                                    class="level3 havechild  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/category-blog.html"><span
+                                                                        class="menu-title">Category
+                                                                        Blog</span></a>
+                                                                <!-- open mega-content div -->
+                                                                <div class="level4 menu mega-content">
+                                                                    <div class="mega-content-inner clearfix">
+
+                                                                        <div class="mega-col first one">
+                                                                            <ul class="subnavi level4">
+                                                                                <li class="level4 first ">
+                                                                                    <a title="Category Blog (1 column)"
+                                                                                        class="level4 first  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-1-column.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (1
+                                                                                            column)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="Category Blog (2 columns)"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-2-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (2
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="Category Blog (3 columns)"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-3-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (3
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 last ">
+                                                                                    <a title="Category Blog (4 columns)"
+                                                                                        class="level4 last  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/category-blog/category-blog-4-columns.html"><span
+                                                                                            class="menu-title">Category
+                                                                                            Blog (4
+                                                                                            columns)</span></a>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="level3 havechild ">
+                                                                <a title="Category Tag"
+                                                                    class="level3 havechild  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/tags.html"><span
+                                                                        class="menu-title">Category
+                                                                        Tag</span></a>
+                                                                <!-- open mega-content div -->
+                                                                <div class="level4 menu mega-content">
+                                                                    <div class="mega-content-inner clearfix">
+
+                                                                        <div class="mega-col first one">
+                                                                            <ul class="subnavi level4">
+                                                                                <li class="level4 first ">
+                                                                                    <a title="Compact List Of Tagged Items"
+                                                                                        class="level4 first  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/compact-list-of-tagged-items.html"><span
+                                                                                            class="menu-title">Compact
+                                                                                            List Of Tagged
+                                                                                            Items</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 ">
+                                                                                    <a title="List Of All Tags"
+                                                                                        class="level4  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/list-of-all-tags.html"><span
+                                                                                            class="menu-title">List
+                                                                                            Of All
+                                                                                            Tags</span></a>
+                                                                                </li>
+
+                                                                                <li class="level4 last ">
+                                                                                    <a title="Tagged Items"
+                                                                                        class="level4 last  item-link"
+                                                                                        href="index.php/joomla-pages-2/blog-joomla/tags/tagged-items.html"><span
+                                                                                            class="menu-title">Tagged
+                                                                                            Items</span></a>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Single Article"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/joomla-pages-2/blog-joomla/single-article.html"><span
+                                                                        class="menu-title">Single
+                                                                        Article</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 havechild ">
+                                            <a title="Search" class="level2 havechild  item-link"
+                                                href="index.php/joomla-pages-2/smart-seach.html"><span
+                                                    class="menu-title">Search</span></a>
+                                            <!-- open mega-content div -->
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
+
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            <li class="level3 first ">
+                                                                <a title="Search"
+                                                                    class="level3 first  item-link"
+                                                                    href="index.php/joomla-pages-2/smart-seach/seach.html"><span
+                                                                        class="menu-title">Search</span></a>
+                                                            </li>
+
+                                                            <li class="level3 last ">
+                                                                <a title="Smart Search"
+                                                                    class="level3 last  item-link"
+                                                                    href="index.php/joomla-pages-2/smart-seach/smart-search.html"><span
+                                                                        class="menu-title">Smart
+                                                                        Search</span></a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Login Form" class="level2  item-link"
+                                                href="index.php/joomla-pages-2/login-form.html"><span
+                                                    class="menu-title">Login Form</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Page Breaks" class="level2  item-link"
+                                                href="index.php/joomla-pages-2/page-break-example.html"><span
+                                                    class="menu-title">Page Breaks</span></a>
+                                        </li>
+
+                                        <li class="level2 last ">
+                                            <a title="Iframe Wrapper" class="level2 last  item-link"
+                                                href="index.php/joomla-pages-2/iframe-wrapper.html"><span
+                                                    class="menu-title">Iframe Wrapper</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 havechild mega1">
+                        <a title="Abituriyent" class="level1 havechild mega1 item-link" href="#"><span
+                                class="menu-title">Abituriyent</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 pos mega-content">
+                            <div class="mega-content-inner clearfix" style="width:500px">
+
+                                <div class="mega-col first more" style="width:50%;">
+                                    <div class="mega-module moduletable">
+                                        <div class="mega-module-title">
+                                            <h3>Bakalavriat</h3>
+                                        </div>
+                                        <div class="mega-module-content">
+
+                                            <ul class="list_mega">
+                                                <li><a href="#">Lasum dolor sit amet</a></li>
+                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
+                                                <li><a href="#">Sed aliquet elit </a></li>
+                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
+                                                <li><a href="#">Sed mattis arcu eros</a></li>
+                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-col last more" style="width:50%;">
+                                    <div
+                                        class="mega-module extra-upcoming-slider moduletable extra-upcoming-slider">
+                                        <div class="mega-module-title">
+                                            <h3>Magistratura </h3>
+                                        </div>
+                                        <div class="mega-module-content">
+
+                                            <ul class="list_mega">
+                                                <li><a href="#">Lasum dolor sit amet</a></li>
+                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
+                                                <li><a href="#">Sed aliquet elit </a></li>
+                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
+                                                <li><a href="#">Sed mattis arcu eros</a></li>
+                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="level1 havechild mega1">
+                        <a title="Talabalar" class="level1 havechild mega1 item-link" href="#"><span
+                                class="menu-title">Talabalar</span></a>
+                        <!-- open mega-content div -->
+                        <div class="level2 pos mega-content">
+                            <div class="mega-content-inner clearfix" style="width:500px">
+
+                                <div class="mega-col first more" style="width:50%;">
+                                    <div class="mega-module moduletable">
+                                        <div class="mega-module-title">
+                                            <h3>Bakalavriat</h3>
+                                        </div>
+                                        <div class="mega-module-content">
+
+                                            <ul class="list_mega">
+                                                <li><a href="#">Lasum dolor sit amet</a></li>
+                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
+                                                <li><a href="#">Sed aliquet elit </a></li>
+                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
+                                                <li><a href="#">Sed mattis arcu eros</a></li>
+                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-col last more" style="width:50%;">
+                                    <div
+                                        class="mega-module extra-upcoming-slider moduletable extra-upcoming-slider">
+                                        <div class="mega-module-title">
+                                            <h3>Magistratura </h3>
+                                        </div>
+                                        <div class="mega-module-content">
+
+                                            <ul class="list_mega">
+                                                <li><a href="#">Lasum dolor sit amet</a></li>
+                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
+                                                <li><a href="#">Sed aliquet elit </a></li>
+                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
+                                                <li><a href="#">Sed mattis arcu eros</a></li>
+                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="level1 havechild ">
+                        <a title="Xorijiy talabalar" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">Xorijiy talabalar</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -482,8 +840,8 @@
                     </li>
 
                     <li class="level1 havechild ">
-                        <a title="K2" class="level1 havechild  item-link" href="index.php/k2.html"><span
-                                class="menu-title">K2</span></a>
+                        <a title="INTERAKTIV XIZMATLAR" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">INTERAKTIV XIZMATLAR </span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -491,9 +849,9 @@
                                 <div class="mega-col first one">
                                     <ul class="subnavi level2">
                                         <li class="level2 first havechild ">
-                                            <a title="K2 Categories" class="level2 first havechild  item-link"
-                                                href="index.php/k2/k2-categories.html"><span
-                                                    class="menu-title">K2 Categories</span></a>
+                                            <div title="Layouts"
+                                                class="level2 first havechild  item-link separator"><span
+                                                    class="menu-title">Layouts</span></div>
                                             <!-- open mega-content div -->
                                             <div class="level3 menu mega-content">
                                                 <div class="mega-content-inner clearfix">
@@ -501,35 +859,34 @@
                                                     <div class="mega-col first one">
                                                         <ul class="subnavi level3">
                                                             <li class="level3 first ">
-                                                                <a title="K2 Listing 1 Column"
+                                                                <a title="All Sidebar Blocks"
                                                                     class="level3 first  item-link"
-                                                                    href="index.php/k2/k2-categories/k2-1column.html"><span
-                                                                        class="menu-title">K2 Listing 1
-                                                                        Column</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">All Sidebar
+                                                                        Blocks</span></a>
                                                             </li>
 
                                                             <li class="level3 ">
-                                                                <a title="K2 Listing 2 Columns"
+                                                                <a title="Left Sidebar "
                                                                     class="level3  item-link"
-                                                                    href="index.php/k2/k2-categories/k2-2columns.html"><span
-                                                                        class="menu-title">K2 Listing 2
-                                                                        Columns</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">Left Sidebar
+                                                                    </span></a>
                                                             </li>
 
                                                             <li class="level3 ">
-                                                                <a title="K2 Listing 3 Columns"
+                                                                <a title="Right Sidebar "
                                                                     class="level3  item-link"
-                                                                    href="index.php/k2/k2-categories/k2-3columns.html"><span
-                                                                        class="menu-title">K2 Listing 3
-                                                                        Columns</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">Right Sidebar
+                                                                    </span></a>
                                                             </li>
 
                                                             <li class="level3 last ">
-                                                                <a title="K2 Listing 4 Columns"
+                                                                <a title="Full Width"
                                                                     class="level3 last  item-link"
-                                                                    href="index.php/k2/k2-categories/listing-4-columns.html"><span
-                                                                        class="menu-title">K2 Listing 4
-                                                                        Columns</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">Full Width</span></a>
                                                             </li>
 
                                                         </ul>
@@ -540,9 +897,8 @@
                                         </li>
 
                                         <li class="level2 havechild ">
-                                            <a title="K2 Article" class="level2 havechild  item-link"
-                                                href="index.php/k2/k2-article.html"><span class="menu-title">K2
-                                                    Article</span></a>
+                                            <a title="Menu Style" class="level2 havechild  item-link"
+                                                href="#"><span class="menu-title">Menu Style</span></a>
                                             <!-- open mega-content div -->
                                             <div class="level3 menu mega-content">
                                                 <div class="mega-content-inner clearfix">
@@ -550,27 +906,24 @@
                                                     <div class="mega-col first one">
                                                         <ul class="subnavi level3">
                                                             <li class="level3 first ">
-                                                                <a title="Article show images"
+                                                                <a title="Sider Menu"
                                                                     class="level3 first  item-link"
-                                                                    href="index.php/k2/k2-article/article-show-images.html"><span
-                                                                        class="menu-title">Article show
-                                                                        images</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">Sider Menu</span></a>
                                                             </li>
 
                                                             <li class="level3 ">
-                                                                <a title="Article show Youtube"
-                                                                    class="level3  item-link"
-                                                                    href="index.php/k2/k2-article/article-show-youtube.html"><span
-                                                                        class="menu-title">Article show
-                                                                        Youtube</span></a>
+                                                                <a title="Tree Menu" class="level3  item-link"
+                                                                    href=""><span
+                                                                        class="menu-title">Tree Menu</span></a>
                                                             </li>
 
                                                             <li class="level3 last ">
-                                                                <a title="Article show Vimeo"
+                                                                <a title="Accordion Menu"
                                                                     class="level3 last  item-link"
-                                                                    href="index.php/k2/k2-article/article-show-vimeo.html"><span
-                                                                        class="menu-title">Article show
-                                                                        Vimeo</span></a>
+                                                                    href=""><span
+                                                                        class="menu-title">Accordion
+                                                                        Menu</span></a>
                                                             </li>
 
                                                         </ul>
@@ -581,15 +934,21 @@
                                         </li>
 
                                         <li class="level2 ">
-                                            <a title="K2 Tags" class="level2  item-link"
-                                                href="index.php/k2/k2-tags.html"><span class="menu-title">K2
-                                                    Tags</span></a>
+                                            <a title="Extensions" class="level2  item-link"
+                                                href=""><span
+                                                    class="menu-title">Extensions</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Module Variations" class="level2  item-link"
+                                                href="index.php/explore/module-variations.html"><span
+                                                    class="menu-title">Module Variations</span></a>
                                         </li>
 
                                         <li class="level2 last ">
-                                            <a title="K2 User" class="level2 last  item-link"
-                                                href="index.php/k2/k2-user.html"><span class="menu-title">K2
-                                                    User</span></a>
+                                            <a title="Module Positions" class="level2 last  item-link"
+                                                href="index.php/explore/module-positions.html"><span
+                                                    class="menu-title">Module Positions</span></a>
                                         </li>
 
                                     </ul>
@@ -599,587 +958,11 @@
                         </div>
                     </li>
 
-                    <li class="level1 havechild mega1">
-                        <a title="Mega Menu" class="level1 havechild mega1 item-link" href="#"><span
-                                class="menu-title">Mega Menu</span></a>
-                        <!-- open mega-content div -->
-                        <div class="level2 pos mega-content">
-                            <div class="mega-content-inner clearfix" style="width:870px">
-
-                                <div class="mega-col first more" style="width:30%;">
-                                    <div class="mega-module moduletable">
-                                        <div class="mega-module-title">
-                                            <h3>Football</h3>
-                                        </div>
-                                        <div class="mega-module-content">
-
-                                            <ul class="list_mega">
-                                                <li><a href="#">Lasum dolor sit amet</a></li>
-                                                <li><a href="#">Praesent convallis nisi sit amet</a></li>
-                                                <li><a href="#">Sed aliquet elit </a></li>
-                                                <li><a href="#">Duis aliquet arcu vel nibh</a></li>
-                                                <li><a href="#">Sed mattis arcu eros</a></li>
-                                                <li><a href="#" rel="alternate">Bibendum felis</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mega-col last more" style="width:70%;">
-                                    <div
-                                        class="mega-module extra-upcoming-slider moduletable extra-upcoming-slider">
-                                        <div class="mega-module-title">
-                                            <h3>Events </h3>
-                                        </div>
-                                        <div class="mega-module-content">
-                                            <!--[if lt IE 9]><div id="sjextraslider_17614783621729926732" class="sj-extraslider msie lt-ie9 slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"  data-interval="0" data-pause="hover"><![endif]-->
-                                            <!--[if IE 9]><div id="sjextraslider_17614783621729926732" class="sj-extraslider msie slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"  data-interval="0" data-pause="hover"><![endif]-->
-                                            <!--[if gt IE 9]><!-->
-                                            <div id="sjextraslider_17614783621729926732"
-                                                class="sj-extraslider slide  extra-resp01-2 extra-resp02-2 extra-resp03-2 extra-resp04-2"
-                                                data-interval="0" data-pause="hover">
-                                                <!--<![endif]-->
-
-                                                <div class="extraslider-inner">
-                                                    <div class="item active">
-                                                        <div class="line">
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/8c4e7ddecfb739ef5c33c55621b27630.jpg"
-                                                                            alt="media/k2/items/src/8c4e7ddecfb739ef5c33c55621b27630.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>18</span>
-                                                                                <span>April</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-                                                                            <div class="event-time">
-                                                                                <span class="start-time">
-                                                                                    2:00pm
-                                                                                </span>
-                                                                                <span class="end-time">
-                                                                                    6:00pm
-                                                                                </span> </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/280-zatena-mipan-facen-timas-chumas.html"
-                                                                                title="Zatena mipan facen timas chumas">
-                                                                                Zatena mipan facen timas chumas
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="school">
-                                                                            <a href="#">Columbia University</a>
-                                                                            <p>116th St & Broadway - New York
-                                                                            </p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1"></div>
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/600eb6612b31632f6c618c9c012d873d.jpg"
-                                                                            alt="media/k2/items/src/600eb6612b31632f6c618c9c012d873d.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>18</span>
-                                                                                <span>April</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-                                                                            <div class="event-time">
-                                                                                <span class="start-time">
-                                                                                    3:00pm
-                                                                                </span>
-                                                                                <span class="end-time">
-                                                                                    4:00pm
-                                                                                </span> </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/279-gatana-mipan-chausa-take-liten.html"
-                                                                                title="Gatana mipan chausa take liten">
-                                                                                Gatana mipan chausa take liten
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="school">
-                                                                            <a href="#">University of Oxford</a>
-                                                                            <p>Oxford OX1 2JD - United Kingdom
-                                                                            </p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1 clr2"></div>
-
-                                                        </div>
-                                                        <!--line-->
-                                                    </div>
-                                                    <!--end item-->
-                                                    <div class="item ">
-                                                        <div class="line">
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/ab98897d60eaa0d05c1862c118538407.jpg"
-                                                                            alt="media/k2/items/src/ab98897d60eaa0d05c1862c118538407.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>18</span>
-                                                                                <span>April</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-                                                                            <div class="event-time">
-                                                                                <span class="start-time">
-                                                                                    2:00pm
-                                                                                </span>
-                                                                                <span class="end-time">
-                                                                                    5:00pm
-                                                                                </span> </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/278-pasen-takem-mitena-chuka-miren.html"
-                                                                                title="Pasen takem mitena chuka miren">
-                                                                                Pasen takem mitena chuka miren
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="school">
-                                                                            <a href="#">Stanford University</a>
-                                                                            <p>CA 94305 - United States</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1"></div>
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/f8a458e18503c86603dc02339a944feb.jpg"
-                                                                            alt="media/k2/items/src/f8a458e18503c86603dc02339a944feb.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>18</span>
-                                                                                <span>April</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/277-timas-caten-mipan-chumas-pozane.html"
-                                                                                title="Timas caten mipan chumas pozane">
-                                                                                Timas caten mipan chumas pozane
-                                                                            </a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1 clr2"></div>
-
-                                                        </div>
-                                                        <!--line-->
-                                                    </div>
-                                                    <!--end item-->
-                                                    <div class="item ">
-                                                        <div class="line">
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/463052dad9377fe2445d3b1bfb5f62a3.jpg"
-                                                                            alt="media/k2/items/src/463052dad9377fe2445d3b1bfb5f62a3.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>18</span>
-                                                                                <span>April</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-                                                                            <div class="event-time">
-                                                                                <span class="start-time">
-                                                                                    5:00pm
-                                                                                </span>
-                                                                                <span class="end-time">
-                                                                                    6:00pm
-                                                                                </span> </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/276-fazen-mipan-chuka-osqua-ad-litora.html"
-                                                                                title="Fazen mipan chuka osqua ad litora">
-                                                                                Fazen mipan chuka osqua ad
-                                                                                litora </a>
-                                                                        </div>
-                                                                        <div class="school">
-                                                                            <a href="#">New York University</a>
-                                                                            <p>New York, NY, United States</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1"></div>
-                                                            <div class="item-wrap style2">
-                                                                <div class="item-wrap-inner">
-                                                                    <div class="item-image">
-                                                                        <img src="media/k2/items/src/ae265ec8d02add74bcb0f72e47ec001b.jpg"
-                                                                            alt="media/k2/items/src/ae265ec8d02add74bcb0f72e47ec001b.jpg" />
-                                                                        <div class="time-image">
-                                                                            <!-- Date created -->
-                                                                            <div class="item-created">
-                                                                                <span>22</span>
-                                                                                <span>March</span>
-                                                                                <span>2015</span>
-                                                                            </div>
-                                                                            <div class="event-time">
-                                                                                <span class="start-time">
-                                                                                    5:00pm
-                                                                                </span>
-                                                                                <span class="end-time">
-                                                                                    6:00pm
-                                                                                </span> </div>
-
-                                                                        </div>
-                                                                        <div class="over-image"></div>
-
-                                                                    </div>
-                                                                    <div class="item-info">
-                                                                        <div class="item-title">
-                                                                            <a href="index.php/k2-listing/item/227-class-aptent-taciti-sociosqu-ad-litora.html"
-                                                                                title="Class aptent taciti sociosqu ad litora">
-                                                                                Class aptent taciti sociosqu ad
-                                                                                litora </a>
-                                                                        </div>
-                                                                        <div class="school">
-                                                                            <a href="#">Princeton University</a>
-                                                                            <p>NJ 08544 - United States</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clr1 clr2"></div>
-
-                                                        </div>
-                                                        <!--line-->
-                                                    </div>
-                                                    <!--end item-->
-
-                                                </div>
-                                                <!--end extraslider-inner -->
-
-                                                <div class="extraslider-control  ">
-
-                                                    <ul class="nav-page">
-                                                        <li class="page">
-                                                            <a class="button-page sel"
-                                                                href="#sjextraslider_17614783621729926732"
-                                                                data-jslide="0"></a>
-                                                        </li>
-                                                        <li class="page">
-                                                            <a class="button-page "
-                                                                href="#sjextraslider_17614783621729926732"
-                                                                data-jslide="1"></a>
-                                                        </li>
-                                                        <li class="page">
-                                                            <a class="button-page "
-                                                                href="#sjextraslider_17614783621729926732"
-                                                                data-jslide="2"></a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-                                            <script>
-                                                //<![CDATA[    					
-                                                jQuery(document).ready(function($) {
-                                                    $('#sjextraslider_17614783621729926732').each(function() {
-                                                        var $this = $(this),
-                                                            options = options = !$this.data('modal') && $.extend({}, $this.data());
-                                                        $this.jcarousel(options);
-                                                        $this.bind('jslide', function(e) {
-                                                            var index = $(this).find(e.relatedTarget).index();
-                                                            // process for nav
-                                                            $('[data-jslide]').each(function() {
-                                                                var $nav = $(this),
-                                                                    $navData = $nav.data(),
-                                                                    href, $target = $($nav.attr('data-target') || (href =
-                                                                        $nav.attr('href')) && href.replace(
-                                                                        /.*(?=#[^\s]+$)/, ''));
-                                                                if (!$target.is($this)) return;
-                                                                if (typeof $navData.jslide == 'number' && $navData
-                                                                    .jslide == index) {
-                                                                    $nav.addClass('sel');
-                                                                } else {
-                                                                    $nav.removeClass('sel');
-                                                                }
-                                                            });
-                                                        });
-                                                        $this.touchwipe({
-                                                            wipeLeft: function() {
-                                                                $this.jcarousel('next');
-                                                                return false;
-                                                            },
-                                                            wipeRight: function() {
-                                                                $this.jcarousel('prev');
-                                                                return false;
-                                                            },
-                                                            wipeUp: function() {
-                                                                $this.jcarousel('next');
-                                                                return false;
-                                                            },
-                                                            wipeDown: function() {
-                                                                $this.jcarousel('prev');
-                                                                return false;
-                                                            }
-                                                        });
-                                                        return;
-                                                    });
-                                                });
-                                                //]]>	
-                                            </script>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
 
                     <li class="level1 ">
-                        <a title="Shortcodes " class="level1  item-link" href=""><span
-                                class="menu-title">Shortcodes </span></a>
+                        <a title="Aloqa " class="level1  item-link" href=""><span
+                                class="menu-title">Aloqa </span></a>
                     </li>
-
-                    <li class="level1 havechild ">
-                        <a title="Pages " class="level1 havechild  item-link"
-                            href="index.php/bonus-pages.html"><span class="menu-title">Pages </span></a>
-                        <!-- open mega-content div -->
-                        <div class="level2 menu mega-content">
-                            <div class="mega-content-inner clearfix" style="width:400px">
-
-                                <div class="mega-col first more" style="width:50%;">
-                                    <ul class="subnavi level2">
-                                        <li class="level2 first havechild ">
-                                            <a title="About Page" class="level2 first havechild  item-link"
-                                                href="index.php/bonus-pages/about-page.html"><span
-                                                    class="menu-title">About Page</span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="About Us"
-                                                                    class="level3 first  item-link"
-                                                                    href="index.php/bonus-pages/about-page/about-us.html"><span
-                                                                        class="menu-title">About Us</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="About Basic"
-                                                                    class="level3 last  item-link"
-                                                                    href="index.php/bonus-pages/about-page/about-basic.html"><span
-                                                                        class="menu-title">About
-                                                                        Basic</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="level2 havechild ">
-                                            <a title="Services Page" class="level2 havechild  item-link"
-                                                href="index.php/bonus-pages/our-services.html"><span
-                                                    class="menu-title">Services Page</span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="Our Services - Layout1"
-                                                                    class="level3 first  item-link"
-                                                                    href="index.php/bonus-pages/our-services/our-services-layout1.html"><span
-                                                                        class="menu-title">Our Services -
-                                                                        Layout1</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Our Services - Layout2"
-                                                                    class="level3 last  item-link"
-                                                                    href="index.php/bonus-pages/our-services/our-services-layout2.html"><span
-                                                                        class="menu-title">Our Services -
-                                                                        Layout2</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="level2 havechild ">
-                                            <a title="Contact" class="level2 havechild  item-link"
-                                                href="#"><span class="menu-title">Contact</span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="Contact - Default"
-                                                                    class="level3 first  item-link"
-                                                                    href="index.php/bonus-pages/contact/contact-default.html"><span
-                                                                        class="menu-title">Contact -
-                                                                        Default</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Contact - Sidebar"
-                                                                    class="level3 last  item-link"
-                                                                    href="index.php/bonus-pages/contact/contact-sidebar.html"><span
-                                                                        class="menu-title">Contact -
-                                                                        Sidebar</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="level2 havechild ">
-                                            <a title="Photo Gallery " class="level2 havechild  item-link"
-                                                href="index.php/bonus-pages/photo-gallery.html"><span
-                                                    class="menu-title">Photo Gallery </span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="Gallery (2 columns)"
-                                                                    class="level3 first  item-link"
-                                                                    href="index.php/bonus-pages/photo-gallery/gallery-2-columns.html"><span
-                                                                        class="menu-title">Gallery (2
-                                                                        columns)</span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Gallery  (3 columns)"
-                                                                    class="level3  item-link"
-                                                                    href="index.php/bonus-pages/photo-gallery/gallery-3-columns.html"><span
-                                                                        class="menu-title">Gallery (3
-                                                                        columns)</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Gallery  (4 columns)"
-                                                                    class="level3 last  item-link"
-                                                                    href="index.php/bonus-pages/photo-gallery/gallery-4-columns.html"><span
-                                                                        class="menu-title">Gallery (4
-                                                                        columns)</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Join Now" class="level2  item-link"
-                                                href="index.php/bonus-pages/join-now.html"><span
-                                                    class="menu-title">Join Now</span></a>
-                                        </li>
-
-                                        <li class="level2 last ">
-                                            <a title="FAQ" class="level2 last  item-link"
-                                                href="index.php/bonus-pages/faq.html"><span
-                                                    class="menu-title">FAQ</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="mega-col last more" style="width:50%;">
-                                    <ul class="subnavi level2">
-                                        <li class="level2 first ">
-                                            <a title="Page 404" class="level2 first  item-link"
-                                                href="index.php/bonus-pages/page-404.html"><span
-                                                    class="menu-title">Page 404</span></a>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Privacy Policy" class="level2  item-link"
-                                                href="index.php/bonus-pages/testimonial2.html"><span
-                                                    class="menu-title">Privacy Policy</span></a>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Terms Of Service" class="level2  item-link"
-                                                href="index.php/bonus-pages/terms-of-service.html"><span
-                                                    class="menu-title">Terms Of Service</span></a>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Sitemap" class="level2  item-link"
-                                                href="index.php/bonus-pages/sitemap.html"><span
-                                                    class="menu-title">Sitemap</span></a>
-                                        </li>
-
-                                        <li class="level2 last ">
-                                            <a title="Coming Soon" class="level2 last  item-link"
-                                                href="index.php/bonus-pages/2015-01-19-08-45-32.html"><span
-                                                    class="menu-title">Coming Soon</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-
 
                 </ul>
                 <script type="text/javascript">

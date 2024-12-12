@@ -1,5 +1,6 @@
 {% extends 'users/base/base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
 <div id="yt_wrapper" class="layout-wide">
@@ -11,142 +12,32 @@
             <div class="row">
                 <div id="slideshow" class="col-sm-12">
                     <div id="sj_k2slickslider346" class="sj-k2slickslider  slide slickslider-right"
-                        data-interval="5000" data-pause="hover">
+                        data-interval="5000" data-pause="hover" >
                         <!-- Carousel items -->
                         <div class="slickslider-items bg-style1">
-                            <div class="slickslider-item item clearfix active ">
-
+                            <div class="slickslider-item item clearfix active">
                                 <div class="images-slideshow">
                                     <img alt="A Responsive Education Joomla Theme"
-                                        src="{% static 'users/cache/resized/0e03762b3348aa5c67ef95664efe9479.jpg' %}" />
+                                        src="{% static 'users/images/image.png' %}" />
                                 </div>
-
-                                <div class="item-content">
-                                    <div class="item-content-inner">
-
-                                        <h3 class="item-title">
-                                            <a href=""
-                                                title="A Responsive Education Joomla Theme" target="_blank">
-                                                <span>A </span><span>Responsive </span><span>Education
-                                                </span><span>Joomla </span><span>Theme</span>
-                                            </a>
-                                            <span class="line"></span>
-                                        </h3>
-                                        <div class="item-description">
-                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
-                                            Aliquam eget arcu magna, vel congue dui. Aenean </div>
-                                        <div class="item-readmore">
-                                            <a href=""
-                                                title="A Responsive Education Joomla Theme" target="_blank">
-                                                find out more </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="slickslider-item item clearfix  ">
-
-                                <div class="images-slideshow">
-                                    <img alt="Aenean vehicula vehicula aliquam"
-                                        src="{% static 'users/cache/resized/51f27d2038792dbe67902e507fd3e4a5.jpg' %}" />
+                            {% for picture in pictures %}
+                            <div class="slickslider-item item clearfix">
+                                <div class="images-slideshow" >
+                                    <img alt="{{ picture.get_silder_img }}"
+                                        src="{{ picture.get_silder_img }}" />
                                 </div>
-
-                                <div class="item-content">
-                                    <div class="item-content-inner">
-
-                                        <h3 class="item-title">
-                                            <a href=""
-                                                title="Aenean vehicula vehicula aliquam" target="_blank">
-                                                <span>Aenean </span><span>vehicula </span><span>vehicula
-                                                </span><span>aliquam</span>
-                                            </a>
-                                            <span class="line"></span>
-                                        </h3>
-                                        <div class="item-description">
-                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
-                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
-                                        <div class="item-readmore">
-                                            <a href=""
-                                                title="Aenean vehicula vehicula aliquam" target="_blank">
-                                                find out more </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="slickslider-item item clearfix  ">
-
-                                <div class="images-slideshow">
-                                    <img alt="Aliquam lobortis cursus erat"
-                                        src="{% static 'users/cache/resized/66430aff26b3a6a86a436335c9944b9f.jpg' %}" />
-                                </div>
-
-                                <div class="item-content">
-                                    <div class="item-content-inner">
-
-                                        <h3 class="item-title">
-                                            <a href=""
-                                                title="Aliquam lobortis cursus erat" target="_blank">
-                                                <span>Aliquam </span><span>lobortis </span><span>cursus
-                                                </span><span>erat</span>
-                                            </a>
-                                            <span class="line"></span>
-                                        </h3>
-                                        <div class="item-description">
-                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
-                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
-                                        <div class="item-readmore">
-                                            <a href=""
-                                                title="Aliquam lobortis cursus erat" target="_blank">
-                                                find out more </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="slickslider-item item clearfix  ">
-
-                                <div class="images-slideshow">
-                                    <img alt="Curabitur luctus tortor non quam"
-                                        src="{% static 'users/cache/resized/6185e9ead89f10d94da4aa0fa0ae82bd.jpg' %}" />
-                                </div>
-
-                                <div class="item-content">
-                                    <div class="item-content-inner">
-
-                                        <h3 class="item-title">
-                                            <a href=""
-                                                title="Curabitur luctus tortor non quam" target="_blank">
-                                                <span>Curabitur </span><span>luctus </span><span>tortor
-                                                </span><span>non </span><span>quam</span>
-                                            </a>
-                                            <span class="line"></span>
-                                        </h3>
-                                        <div class="item-description">
-                                            Suspendisse at libero porttitor nisi aliquet vulputate vitae at velit.
-                                            Aliquam eget arcu magna, vel congue dui. Nunc </div>
-                                        <div class="item-readmore">
-                                            <a href=""
-                                                title="Curabitur luctus tortor non quam" target="_blank">
-                                                find out more </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
+                            {% endfor %}
                         </div>
 
                         <!-- Carousel nav -->
                         <div class="nav-pagination conner-tl bg-style1">
                             <a class="left" href="#sj_k2slickslider346" data-jslide="prev">
-                                Prev <span class="over-row"></span>
+                                 <span class="over-row"></span>
                             </a>
                             <a class="right" href="#sj_k2slickslider346" data-jslide="next">
-                                Next <span class="over-row"></span>
+                                 <span class="over-row"></span>
                             </a>
                         </div>
                         <div class="pag-item">
@@ -154,6 +45,7 @@
                             <a class=" " href="#sj_k2slickslider346" data-jslide="1">2</a>
                             <a class=" " href="#sj_k2slickslider346" data-jslide="2">3</a>
                             <a class=" " href="#sj_k2slickslider346" data-jslide="3">4</a>
+                            <a class=" " href="#sj_k2slickslider346" data-jslide="4">5</a>
                         </div>
                     </div>
 
@@ -265,7 +157,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/108_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bosh-ish.jpg' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -283,7 +175,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/109_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/abuturent.jpg' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -299,7 +191,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/126_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/talabalar.jpg' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -326,14 +218,13 @@
 
     </section>
 
-    <section id="content" class="  no-left  no-right block com_content">
+    <section id="content" class="no-left  no-right block com_content">
         <div class="container">
             <div class="row">
                 <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
                 <div id="content_main" class="col-sm-12">
                     <div id="system-message-container">
                     </div>
-
                     <p style="display:none">Asosiy tarkib blokini yashirish</p>
                 </div>
                 <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
@@ -342,13 +233,481 @@
 
     </section>
 
+    <section id="yt_spotlight5" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top7" class="col-lg-6 col-sm-12">
+
+                    <div class="module  k2-mega-new-main ">
+                        <h3 class="modtitle">Filial so'ngi yangiliklari</h3>
+                        <div class="modcontent clearfix">
+                            <div id="sj_meganew_13006638141729926732" class="sj-meganew ">
+                                <div
+                                    class="meganew-wrap  meganew-rps01-1 meganew-rps02-1 meganew-rps03-1 meganew-rps04-1">
+                                    <div class="meganew-box">
+                                        <div class="meganew-box-inner">
+                                            <div class="meganew-items theme1 ">
+                                                <div class="item-first">
+
+                                                    <div class="item-image">
+                                                        <a href=""
+                                                            title="Aliquam eu justo eu ipsum ultricies">
+                                                            <img src="{{post_one.get_post_img}}" alt="{{post_one.get_post_img}}" />
+                                                        </a>
+                                                        <div class="over-image"></div>
+                                                    </div>
+                                                    <div class="content-main">
+                                                        <div class="item-title">
+                                                            <a href="" title="Aliquam eu justo eu ipsum ultricies">{{ post_one.translated_title }}</a>
+                                                        </div>
+                                                        <ul class="by-date">
+                                                            <!-- <li class="athor"><span>Post by</span>&nbsp;</li> -->
+                                                            <!-- <li>&ndash;</li> -->
+                                                            <li class="time-ago">{{post_one.created_at}}</li>
+                                                        </ul>
+                                                        <div class="item-description">{{ post_one.translated_text }}</div>
+
+                                                        <div class="item-readmore">
+                                                            <a href=""
+                                                                title="Aliquam eu justo eu ipsum ultricies">
+                                                                <i class="fa fa-check"></i><span>Batafsil</span>
+                                                            </a>
+                                                        </div>
+                                                    </div><!-- end content-main-->
+                                                </div>
+                                                <div class="item-other">
+
+                                                    <ul class="otehr-link">
+                                                        {% for post in post_three %}
+                                                        <li class="row">
+                                                            <a href=""
+                                                                class="col-xs-7"
+                                                                title="Curabitur luctus tortor non quam">{{post.title_uz}}</a>
+                                                            <ul class="by-date col-xs-5">
+                                                                <li class="time-ago">{{post.created_at}}</li>
+                                                            </ul>
+                                                        </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clr1"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="top8" class="col-lg-3 col-sm-6">
+
+                    <div class="module  ">
+                        <h3 class="modtitle">Taʼlim haqida soʻz</h3>
+                        <div class="modcontent clearfix">
+
+                            <script type="text/javascript">
+                               
+                                jQuery(document).ready(function($) {
+                                   
+                                    $('#sj_accordion_17299267321842936974').sj_accordion({
+                                        items: '.acd-item',
+                                        heading: '.acd-header',
+                                        content: '.acd-content-wrap',
+                                        active_class: 'selected',
+                                        event: 'click',
+                                        delay: 200,
+                                        duration: 500,
+                                        active: '1'
+                                    });
+                                    var height_content = function() {
+                                        $('.acd-item', '#sj_accordion_17299267321842936974').each(function() {
+                                            var inner = $('.acd-content-wrap-inner', $(this).filter('.selected'));
+                                            if (inner.length) {
+                                                var inner_height = inner.height();
+                                                inner.parent().css('height', inner_height);
+                                            }
+                                        });
+                                    }
+                                    if ($.browser.msie && parseInt($.browser.version, 10) <= 8) {} else {
+                                        $(window).resize(function() {
+                                            height_content();
+                                        });
+                                    }
+                                });
+                                //]]>	
+                            </script>
+                            <div id="sj_accordion_17299267321842936974" class="sj-accordion">
+                                <div class="acd-items">
+                                    <div class="acd-item">
+                                        <div class="acd-header">Aenean vehicula vehicul </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+
+                                                <div class="acd-description">
+                                                    Meggings next level yr, 90′s small batch four loko brunch wes
+                                                    anderson fixie american apparel flexitarian pitchfork neutra.
+                                                    Constructed in cotton sweat fabric, this lovely piece, lacus eu
+                                                    mattis </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Aenean vehicula vehicula alicaten">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">Aliquam lobortis cursus </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Class aptent taciti sociosqu ad litora torquent per conubia
+                                                    nostra, per inceptos himenaeos. Aliquam eget arcu magna, vel
+                                                    congue dui. Nunc auctor mauris tempor leo aliquam sodales.
+                                                </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Aliquam lobortis cursus ">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">Detus laoreet dignissim </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Detus laoreet dignissim ">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">Faucibus eu laoreet nun </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Faucibus eu laoreet nunc">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="acd-item">
+                                        <div class="acd-header">Lacinia Sed convallis </div>
+                                        <div class="acd-content-wrap ">
+                                            <div class="acd-content-wrap-inner ">
+
+                                                <div class="acd-description">
+                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
+                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
+                                                    facilisi. In </div>
+
+                                                <div class="acd-readmore">
+                                                    <a href=""
+                                                        title="Lacinia Sed convallis pitena">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="top9" class="col-lg-3 col-sm-6">
+
+                    <div class="module  feature-teachers ">
+                        <h3 class="modtitle">Mashxurlar aytgan so'zlari</h3>
+                        <div class="modcontent clearfix">
+
+                            <div class="carousel-custommer">
+                                <div id="yt-extra-carousel1" style="width:100%; height:100%"
+                                    class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
+                                    data-interval='false'>
+                                    <div class="carousel-inner">
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/al-xorazmiy.jpg' %}"
+                                                        alt="" style="width: 100%; height: 100%;" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Abu Abdulloh Muhammad ibn <br>
+                                                        Muso al-Xorazmiy</h3>
+                                                    <span class="adred"> </span>
+                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/i.webp' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Abu Ali ibn Sino</h3>
+                                                    <span class="adred"></span>
+                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='item'>
+                                            <div class="customslider">
+                                                <div class="item-image"><img src="{% static 'users/images/demo/alisher-navoiy.jpg' %}"
+                                                        alt="" /></div>
+                                                <div class="content-main">
+                                                    <h3 class="title">Alisher Navoiy</h3>
+                                                    <span class="adred"></span>
+                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><a class="carousel-control left" href="#yt-extra-carousel1"
+                                        data-slide="prev"><i class="fa fa-angle-left"></i></a><a
+                                        class="carousel-control right" href="#yt-extra-carousel1"
+                                        data-slide="next"><i class="fa fa-angle-right"></i></a>
+                                    <ol class="carousel-indicators">
+                                        <li data-slide-to="0" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="1" data-target="#yt-extra-carousel1"></li>
+                                        <li data-slide-to="2" data-target="#yt-extra-carousel1"></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="yt_spotlight4" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top6" class="col-sm-12">
+
+                    <div class="module  extra-upcoming-slider ">
+                        <h3 class="modtitle"> E'lonlar va tadbirlar </h3>
+                        <div class="modcontent clearfix">
+                            <div id="sjextraslider_1821092771729926732"
+                                class="sj-extraslider slide  extra-resp01-3 extra-resp02-3 extra-resp03-1 extra-resp04-1"
+                                data-interval="0" data-pause="hover">
+
+                                <div class="extraslider-inner">
+                                    <div class="item active">
+                                        <div class="line">
+                                            {% for anno in annos %}
+                                            <div class="item-wrap style2">
+                                                <div class="item-wrap-inner">
+                                                    <div class="item-image">
+                                                        <img src="{{anno.get_elon_img}}"
+                                                            alt="{{anno.title}}" style="height: 20em;"/>
+                                                        <div class="time-image">
+                                                            <!-- Date created -->
+                                                            <div class="item-created">
+                                                                <span>{{anno.day.day}}</span>
+                                                                <span>{{anno.day|date:"F"}}</span>
+                                                                <span>{{anno.day.year}}</span>
+                                                            </div>
+                                                            <div class="event-time">
+                                                                <span class="start-time">
+                                                                    {{anno.start_time}}
+                                                                </span>
+                                                                <span class="end-time">
+                                                                    {{anno.end_time}}
+                                                                </span> </div>
+
+                                                        </div>
+                                                        <div class="over-image"></div>
+
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="item-title">
+                                                            <a href="" title="Zatena mipan facen timas chumas">{{anno.title}}</a>
+                                                        </div>
+                                                        <div class="school">
+                                                            <a href="">{{anno.location}}</a>
+                                                            <p>{{anno.build}}</p>
+                                                        </div>
+
+                                                        <div class="item-content">
+                                                            <div class="item-description">{{anno.text}}</div>
+                                                            <div class="item-readmore">
+                                                                <a href=""
+                                                                    title="Zatena mipan facen timas chumas">
+                                                                    <i class="fa fa-long-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr1"></div>
+                                            {% endfor %}
+                                        </div>
+                                        <!--line-->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section  class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="itemVideoBlock">
+                        <div class="itemVideoEmbedded">
+                            <iframe width="90%" height="500" src="https://www.youtube.com/embed/kiqljm5Iru0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="yt_spotlight3" class="block">
         <div class="container">
             <div class="row">
-                <div id="top4" class="col-lg-9 col-sm-8 ">
-
+                <div id="top4" class="col-lg-12 col-sm-12 ">
+                    <br>
                     <div class="module  k2-slider-style-one ">
-                        <h3 class="modtitle">Filial yangiliklari</h3>
+                        <h3 class="modtitle">Bizning hamkorlar</h3>
+                        <div class="modcontent clearfix">
+                            <div id="sj_k2_slider_210936539417299267323" class="sj-k2-container-slider" >
+
+                                <div class="page-button top style">
+                                    <ul class="control-button preload">
+                                        <li class="preview"><i class="fa fa-chevron-left"></i></li>
+                                        <li class="next"><i class="fa fa-chevron-right"></i></li>
+                                    </ul>
+                                </div>
+
+                                <div class="slider not-js cols-6 preset01-3 preset02-3 preset03-1 preset04-1 preset05-1">
+                                    <div class="vpo-wrap">
+                                        <div class="vp">
+                                            <div class="vpi-wrap">
+                                                {% for partner in partners %}
+                                                <div class="item" style="height: 200px; width: 200px;">
+                                                    <div class="item-wrap">
+
+                                                        <div class="item-img item-height">
+                                                            <div class="item-img-info">
+                                                                <a href="{{partner.link}}">
+                                                                    <img alt="{{partner.name}}" src="{{partner.get_hamk_img}}" style="height: 100px;"/>
+                                                                </a>
+                                                                <div class="over-image"></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="item-info  ">
+                                                            <div class="item-inner">
+                                                                <div class="item-title">
+                                                                    <a href="{{partner.link}}" title="Batafsil ">{{partner.name}}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function($) {
+                                    ;
+                                    (function(element) {
+                                        var $element = $(element);
+                                        var $slider = $('.slider', $element)
+                                        $('.slider', $element).responsiver({
+                                            interval: 0,
+                                            speed: 1000,
+                                            start: 0,
+                                            step: 1,
+                                            circular: true,
+                                            preload: true,
+                                            fx: 'slide',
+                                            pause: 'hover',
+                                            control: {
+                                                prev: '#sj_k2_slider_210936539417299267323 .control-button li[class="preview"]',
+                                                next: '#sj_k2_slider_210936539417299267323 .control-button li[class="next"]'
+                                            },
+                                            getColumns: function(element) {
+                                                var match = $(element).attr('class').match(/cols-(\d+)/);
+                                                if (match[1]) {
+                                                    var column = parseInt(match[1]);
+                                                } else {
+                                                    var column = 1;
+                                                }
+                                                if (!column) column = 1;
+                                                return column;
+                                            }
+                                        });
+                                        $slider.touchSwipeLeft(function() {
+                                            $slider.responsiver('next');
+                                        });
+                                        $slider.touchSwipeRight(function() {
+                                            $slider.responsiver('prev');
+                                        });
+                                        $('.control-button', $element).removeClass('preload');
+                                    })('#sj_k2_slider_210936539417299267323');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- <section id="yt_spotlight3" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="top4" class="col-lg-9 col-sm-8 ">
+                    <br>
+                    <div class="module  k2-slider-style-one ">
+                        <h3 class="modtitle">So'ngi yangiliklar </h3>
                         <div class="modcontent clearfix">
                             <div id="sj_k2_slider_21093653941729926732" class="sj-k2-container-slider" >
 
@@ -371,7 +730,7 @@
                                                         <div class="item-img item-height">
                                                             <div class="item-img-info">
                                                                 <a
-                                                                    href="">
+                                                                    href="{% url 'new' pk=post.id %}">
                                                                     <img alt="{{post.title}}" src="{{post.get_post_img}}" style="height: 185px;"/>
                                                                 </a>
                                                                 <div class="over-image"></div>
@@ -381,20 +740,19 @@
                                                         <div class="item-info  ">
                                                             <div class="item-inner">
                                                                 <div class="item-title">
-                                                                    <a href="" title="Lazen miten pakem rasem ">{{post.title}}"</a>
+                                                                    <a href="{% url 'new' pk=post.id %}" title="Batafsil ">{{post.title}}"</a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-des">
-                                                                        {{post.text}}"
+                                                                        {{post.text}}
                                                                     </div>
                                                                     <div class="item-read">
-                                                                        <a href=""
-                                                                            title="Lazen miten pakem rasem ">
+                                                                        <a href="{% url 'new' pk=post.id %}"
+                                                                            title="Batafsil ">
                                                                             <i class="fa fa-check"></i><span>Batafsil</span>
                                                                         </a>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -449,7 +807,6 @@
                             </script>
                         </div>
                     </div>
-
                 </div>
                 <div id="top5" class="col-lg-3 col-sm-4 ">
 
@@ -460,28 +817,24 @@
                                 <li>
                                     <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-pen.png' %}" alt="" /></div>
                                     <div class="content">
-                                        <h3 class="title"><a title="" href="#">Admissions</a></h3>
-                                        <a href="#">How To Apply</a>
-                                        <p>FaQ</p>
-                                        <p>Fermentum Labor</p>
+                                        <h3 class="title"><a title="" href="#">Murojaat qilish</a></h3>
+                                        <a href="#">Aloqa</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-map.png' %}" alt="" /></div>
                                     <div class="content">
-                                        <h3 class="title"><a title="" href="#">Local Business</a></h3>
-                                        <p>OX1 2JD, United Kingdom</p>
-                                        <p>Tel: +44 1865 270000</p>
-                                        <a href="#">Check On Map</a>
+                                        <h3 class="title"><a title="" href="#">Joylashuv manzilimiz</a></h3>
+                                        <p>Samarqand shahar Ibn Sino <br> ko'chasi 2 A uy </p>
+                                        <p>Tel: +998 (66) 232 2929</p>
+                                        <a href="#">Xaritada tekshiring</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-book.png' %}" alt="" /></div>
                                     <div class="content">
-                                        <h3 class="title"><a title="" href="#">become our teacher</a></h3>
-                                        <p><a href="#" rel="alternate">How to apply</a></p>
-                                        <p>FaQ</p>
-                                        <p>Fermentum laboriosam</p>
+                                        <h3 class="title"><a title="" href="#">O'qituvchimiz bo'ling</a></h3>
+                                        <p><a href="#" rel="alternate">Qanday murojaat qilish <br> kerak</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -492,766 +845,9 @@
             </div>
         </div>
 
-    </section>
-
-    <section id="yt_spotlight4" class="block">
-        <div class="container">
-            <div class="row">
-                <div id="top6" class="col-sm-12">
-
-                    <div class="module  extra-upcoming-slider ">
-                        <h3 class="modtitle"> E'lonlar va tadbirlar </h3>
-                        <div class="modcontent clearfix">
-                            <div id="sjextraslider_1821092771729926732"
-                                class="sj-extraslider slide  extra-resp01-3 extra-resp02-3 extra-resp03-1 extra-resp04-1"
-                                data-interval="0" data-pause="hover">
-
-                                <div class="extraslider-inner">
-                                    <div class="item active">
-                                        <div class="line">
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/879f8c33fc4103d764509776abe81d9b.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/879f8c33fc4103d764509776abe81d9b.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>18</span>
-                                                                <span>April</span>
-                                                                <span>2015</span>
-                                                            </div>
-                                                            <div class="event-time">
-                                                                <span class="start-time">
-                                                                    2:00pm
-                                                                </span>
-                                                                <span class="end-time">
-                                                                    6:00pm
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Zatena mipan facen timas chumas">
-                                                                Zatena mipan facen timas chumas </a>
-                                                        </div>
-                                                        <div class="school">
-                                                            <a href="#">Columbia University</a>
-                                                            <p>116th St & Broadway - New York</p>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Kimas cupas libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Zatena mipan facen timas chumas">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1"></div>
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/120f8939156bb612d15ba7fe6b4df02a.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/120f8939156bb612d15ba7fe6b4df02a.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>18</span>
-                                                                <span>April</span>
-                                                                <span>2015</span>
-                                                            </div>
-                                                            <div class="event-time">
-                                                                <span class="start-time">
-                                                                    3:00pm
-                                                                </span>
-                                                                <span class="end-time">
-                                                                    4:00pm
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Gatana mipan chausa take liten">
-                                                                Gatana mipan chausa take liten </a>
-                                                        </div>
-                                                        <div class="school">
-                                                            <a href="#">University of Oxford</a>
-                                                            <p>Oxford OX1 2JD - United Kingdom</p>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Gazen polas libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Gatana mipan chausa take liten">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1 clr2"></div>
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/b34f99f98c3d5f8be74600bbf6932bbf.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/b34f99f98c3d5f8be74600bbf6932bbf.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>18</span>
-                                                                <span>April</span>
-                                                                <span>2015</span>
-                                                            </div>
-                                                            <div class="event-time">
-                                                                <span class="start-time">
-                                                                    2:00pm
-                                                                </span>
-                                                                <span class="end-time">
-                                                                    5:00pm
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Pasen takem mitena chuka miren">
-                                                                Pasen takem mitena chuka miren </a>
-                                                        </div>
-                                                        <div class="school">
-                                                            <a href="#">Stanford University</a>
-                                                            <p>CA 94305 - United States</p>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Kuten mina libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Pasen takem mitena chuka miren">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1 clr3"></div>
-
-                                        </div>
-                                        <!--line-->
-                                    </div>
-                                    <!--end item-->
-                                    <div class="item ">
-                                        <div class="line">
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/709376ccd568365a13c4837937fc952e.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/709376ccd568365a13c4837937fc952e.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>18</span>
-                                                                <span>April</span>
-                                                                <span>2015</span>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Timas caten mipan chumas pozane">
-                                                                Timas caten mipan chumas pozane </a>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Kuren mipas libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Timas caten mipan chumas pozane">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1"></div>
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/3c2d71719b072a734ab298cf46202674.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/3c2d71719b072a734ab298cf46202674.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>18</span>
-                                                                <span>April</span>
-                                                                <span>2015</span>
-                                                            </div>
-                                                            <div class="event-time">
-                                                                <span class="start-time">
-                                                                    5:00pm
-                                                                </span>
-                                                                <span class="end-time">
-                                                                    6:00pm
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Fazen mipan chuka osqua ad litora">
-                                                                Fazen mipan chuka osqua ad litora </a>
-                                                        </div>
-                                                        <div class="school">
-                                                            <a href="#">New York University</a>
-                                                            <p>New York, NY, United States</p>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Turem maren libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Fazen mipan chuka osqua ad litora">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1 clr2"></div>
-                                            <div class="item-wrap style2">
-                                                <div class="item-wrap-inner">
-                                                    <div class="item-image">
-                                                        <img src="{% static 'users/cache/resized/27efd332984395aeb9639e334db3fb53.jpg' %}"
-                                                            alt="{% static 'users/cache/resized/27efd332984395aeb9639e334db3fb53.jpg' %}" />
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
-                                                            <div class="item-created">
-                                                                <span>22</span>
-                                                                <span>March</span>
-                                                                <span>2015</span>
-                                                            </div>
-                                                            <div class="event-time">
-                                                                <span class="start-time">
-                                                                    5:00pm
-                                                                </span>
-                                                                <span class="end-time">
-                                                                    6:00pm
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Class aptent taciti sociosqu ad litora">
-                                                                Class aptent taciti sociosqu ad litora </a>
-                                                        </div>
-                                                        <div class="school">
-                                                            <a href="#">Princeton University</a>
-                                                            <p>NJ 08544 - United States</p>
-                                                        </div>
-
-                                                        <div class="item-content">
-                                                            <div class="item-description">
-
-                                                                Trenma maren libero porttitor nisi aliquet </div>
-                                                            <div class="item-readmore">
-                                                                <a href=""
-                                                                    title="Class aptent taciti sociosqu ad litora">
-                                                                    <i class="fa fa-long-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clr1 clr3"></div>
-
-                                        </div>
-                                        <!--line-->
-                                    </div>
-                                    <!--end item-->
-
-                                </div>
-                                <!--end extraslider-inner -->
-
-                                <div class="extraslider-control  ">
-
-                                    <ul class="nav-page">
-                                        <li class="page">
-                                            <a class="button-page sel" href="#sjextraslider_1821092771729926732"
-                                                data-jslide="0"></a>
-                                        </li>
-                                        <li class="page">
-                                            <a class="button-page " href="#sjextraslider_1821092771729926732"
-                                                data-jslide="1"></a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <script>
-                                //<![CDATA[    					
-                                jQuery(document).ready(function($) {
-                                    $('#sjextraslider_1821092771729926732').each(function() {
-                                        var $this = $(this),
-                                            options = options = !$this.data('modal') && $.extend({}, $this.data());
-                                        $this.jcarousel(options);
-                                        $this.bind('jslide', function(e) {
-                                            var index = $(this).find(e.relatedTarget).index();
-                                            // process for nav
-                                            $('[data-jslide]').each(function() {
-                                                var $nav = $(this),
-                                                    $navData = $nav.data(),
-                                                    href, $target = $($nav.attr('data-target') || (href = $nav
-                                                        .attr('href')) && href.replace(/.*(?=#[^\s]+$)/,
-                                                        ''));
-                                                if (!$target.is($this)) return;
-                                                if (typeof $navData.jslide == 'number' && $navData.jslide ==
-                                                    index) {
-                                                    $nav.addClass('sel');
-                                                } else {
-                                                    $nav.removeClass('sel');
-                                                }
-                                            });
-                                        });
-                                        $this.touchwipe({
-                                            wipeLeft: function() {
-                                                $this.jcarousel('next');
-                                                return false;
-                                            },
-                                            wipeRight: function() {
-                                                $this.jcarousel('prev');
-                                                return false;
-                                            },
-                                            wipeUp: function() {
-                                                $this.jcarousel('next');
-                                                return false;
-                                            },
-                                            wipeDown: function() {
-                                                $this.jcarousel('prev');
-                                                return false;
-                                            }
-                                        });
-                                        return;
-                                    });
-                                });
-                                //]]>	
-                            </script>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="yt_spotlight5" class="block">
-        <div class="container">
-            <div class="row">
-                <div id="top7" class="col-lg-6 col-sm-12">
-
-                    <div class="module  k2-mega-new-main ">
-                        <h3 class="modtitle">So'ngi yangiliklar</h3>
-                        <div class="modcontent clearfix">
-                            <div id="sj_meganew_13006638141729926732" class="sj-meganew ">
-                                <div
-                                    class="meganew-wrap  meganew-rps01-1 meganew-rps02-1 meganew-rps03-1 meganew-rps04-1">
-                                    <div class="meganew-box">
-                                        <div class="meganew-box-inner">
-
-                                            <div class="meganew-items theme1 ">
-                                                <div class="item-first">
-
-                                                    <div class="item-image">
-                                                        <a href=""
-                                                            title="Aliquam eu justo eu ipsum ultricies">
-                                                            <img src="{% static 'users/cache/resized/c6aeaa70782c07a8adccfbb254e76f6b.jpg' %}"
-                                                                alt="{% static 'users/cache/resized/c6aeaa70782c07a8adccfbb254e76f6b.jpg' %}" />
-                                                        </a>
-                                                        <div class="over-image"></div>
-                                                    </div>
-                                                    <div class="content-main">
-                                                        <div class="item-title">
-                                                            <a href=""
-                                                                title="Aliquam eu justo eu ipsum ultricies">
-                                                                Aliquam eu justo eu ipsum ultricies </a>
-                                                        </div>
-                                                        <ul class="by-date">
-                                                            <li class="athor"><span>Post by</span>&nbsp;</li>
-                                                            <li>&ndash;</li>
-                                                            <!-- Date created -->
-                                                            <li class="time-ago">
-                                                                9 years ago </li>
-                                                        </ul>
-                                                        <div class="item-description">
-                                                            Laren paten bero porttitor nisi aliquet vulputate vitae
-                                                            at velit. Aliquam eget arcu magna, vel </div>
-
-                                                        <div class="item-readmore">
-                                                            <a href=""
-                                                                title="Aliquam eu justo eu ipsum ultricies">
-                                                                <i class="fa fa-check"></i><span>Read more</span>
-                                                            </a>
-                                                        </div>
-                                                    </div><!-- end content-main-->
-                                                </div>
-                                                <div class="item-other">
-
-                                                    <ul class="otehr-link">
-                                                        <li class="row">
-                                                            <a href=""
-                                                                class="col-xs-7"
-                                                                title="Curabitur luctus tortor non quam">
-                                                                Curabitur luctus tortor non quam </a>
-                                                            <ul class="by-date col-xs-5">
-                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
-                                                                <li>&ndash;</li>
-                                                                <!-- Date created -->
-                                                                <li class="time-ago">
-                                                                    9 years ago </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="row">
-                                                            <a href=""
-                                                                class="col-xs-7" title="Aliquam eget arcu magna">
-                                                                Aliquam eget arcu magna </a>
-                                                            <ul class="by-date col-xs-5">
-                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
-                                                                <li>&ndash;</li>
-                                                                <!-- Date created -->
-                                                                <li class="time-ago">
-                                                                    9 years ago </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="row">
-                                                            <a href=""
-                                                                class="col-xs-7"
-                                                                title="Vestibulum sit amet libero vel">
-                                                                Vestibulum sit amet libero vel </a>
-                                                            <ul class="by-date col-xs-5">
-                                                                <li class="athor"><span>Post by</span>&nbsp;</li>
-                                                                <li>&ndash;</li>
-                                                                <!-- Date created -->
-                                                                <li class="time-ago">
-                                                                    9 years ago </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clr1"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div id="top8" class="col-lg-3 col-sm-6">
-
-                    <div class="module  ">
-                        <h3 class="modtitle">Taʼlim haqida soʻz</h3>
-                        <div class="modcontent clearfix">
-
-                            <script type="text/javascript">
-                               
-                                jQuery(document).ready(function($) {
-                                   
-                                    $('#sj_accordion_17299267321842936974').sj_accordion({
-                                        items: '.acd-item',
-                                        heading: '.acd-header',
-                                        content: '.acd-content-wrap',
-                                        active_class: 'selected',
-                                        event: 'click',
-                                        delay: 200,
-                                        duration: 500,
-                                        active: '1'
-                                    });
-                                    var height_content = function() {
-                                        $('.acd-item', '#sj_accordion_17299267321842936974').each(function() {
-                                            var inner = $('.acd-content-wrap-inner', $(this).filter('.selected'));
-                                            if (inner.length) {
-                                                var inner_height = inner.height();
-                                                inner.parent().css('height', inner_height);
-                                            }
-                                        });
-                                    }
-                                    if ($.browser.msie && parseInt($.browser.version, 10) <= 8) {} else {
-                                        $(window).resize(function() {
-                                            height_content();
-                                        });
-                                    }
-                                });
-                                //]]>	
-                            </script>
-                            <div id="sj_accordion_17299267321842936974" class="sj-accordion">
-                                <div class="acd-items">
-                                    <div class="acd-item">
-                                        <div class="acd-header">
-                                            <span>A</span>enean vehicula vehicul </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-
-                                                <div class="acd-description">
-                                                    Meggings next level yr, 90′s small batch four loko brunch wes
-                                                    anderson fixie american apparel flexitarian pitchfork neutra.
-                                                    Constructed in cotton sweat fabric, this lovely piece, lacus eu
-                                                    mattis </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Aenean vehicula vehicula alicaten">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">
-                                            <span>A</span>liquam lobortis cursus </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Class aptent taciti sociosqu ad litora torquent per conubia
-                                                    nostra, per inceptos himenaeos. Aliquam eget arcu magna, vel
-                                                    congue dui. Nunc auctor mauris tempor leo aliquam sodales.
-                                                </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Aliquam lobortis cursus ">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">
-                                            <span>D</span>etus laoreet dignissim </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Detus laoreet dignissim ">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">
-                                            <span>F</span>aucibus eu laoreet nun </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Faucibus eu laoreet nunc">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">
-                                            <span>L</span>acinia Sed convallis </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Lacinia Sed convallis pitena">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div id="top9" class="col-lg-3 col-sm-6">
-
-                    <div class="module  feature-teachers ">
-                        <h3 class="modtitle">Feature Teachers</h3>
-                        <div class="modcontent clearfix">
-
-                            <div class="carousel-custommer">
-                                <div id="yt-extra-carousel1" style="width:100%; height:100%"
-                                    class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
-                                    data-interval='false'>
-                                    <div class="carousel-inner">
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/customer1.png' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Jillian Aenean</h3>
-                                                    <span class="adred">Asia Researcher</span>
-                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
-                                                        nostrum quas cupiditate risus provident, interdum venenatis?
-                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
-                                                        nihil at, class eleifend sem gravida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/customer2.png' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Jillian Aenean</h3>
-                                                    <span class="adred">Asia Researcher</span>
-                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
-                                                        nostrum quas cupiditate risus provident, interdum venenatis?
-                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
-                                                        nihil at, class eleifend sem gravida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Jillian Aenean</h3>
-                                                    <span class="adred">Asia Researcher</span>
-                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
-                                                        nostrum quas cupiditate risus provident, interdum venenatis?
-                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
-                                                        nihil at, class eleifend sem gravida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Jillian Aenean</h3>
-                                                    <span class="adred">Asia Researcher</span>
-                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
-                                                        nostrum quas cupiditate risus provident, interdum venenatis?
-                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
-                                                        nihil at, class eleifend sem gravida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/customer3.png' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Jillian Aenean</h3>
-                                                    <span class="adred">Asia Researcher</span>
-                                                    <p class="post-commnets">Etiam, assumenda illo ipsa magnis
-                                                        nostrum quas cupiditate risus provident, interdum venenatis?
-                                                        Porro reprehenderit fames delectus ab mi dignissimos eaque
-                                                        nihil at, class eleifend sem gravida</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><a class="carousel-control left" href="#yt-extra-carousel1"
-                                        data-slide="prev"><i class="fa fa-angle-left"></i></a><a
-                                        class="carousel-control right" href="#yt-extra-carousel1"
-                                        data-slide="next"><i class="fa fa-angle-right"></i></a>
-                                    <ol class="carousel-indicators">
-                                        <li data-slide-to="0" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="1" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="2" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="3" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="4" data-target="#yt-extra-carousel1"></li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </section>
+    </section> -->
+    
+   
 
     <section id="yt_spotlight6" class="block">
         <div class="container">
@@ -1265,310 +861,26 @@
                                     style="height: 500px;">
 
                                     <div class="sg-container">
+                                        {% for student in students %}
                                         <figure>
                                             <a href=""
-                                                title="Curabitur luctus tortor non quam">
-                                                <img src="{% static 'users/cache/resized/c9252ad58821681fe4a098a21e9c77a4.jpg' %}"
-                                                    alt="Curabitur luctus tortor non quam"
-                                                    title="Curabitur luctus tortor non quam" />
+                                                title="{{student.frist_name}}">
+                                                <img src="{{student.get_student_img}}"
+                                                    alt="{{student.frist_name}}"
+                                                    title="{{student.frist_name}}" />
                                             </a>
                                             <figcaption>
                                                 <div class="sg-title">
                                                     <a href=""
-                                                        title="Curabitur luctus tortor non quam">
-                                                        Curabitur luctus tortor non quam </a>
+                                                        title="{{student.frist_name}}">{{student.frist_name}} {{student.last_name}} <br>
+                                                    <span>{{student.candidate}}</span></a>
                                                 </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                        <div class="item-description">
-                                                            Suspendisse at libero porttitor nisi aliquet vulputate
-                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
-
-                                                    </div>
-                                                </div>
+                                                <div class="sg-back"><div class="sg-back-inner"></div></div>
                                             </figcaption>
                                         </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Vivamus dictum pulvinar ipsum">
-                                                <img src="{% static 'users/cache/resized/17a56128e766fcd323d1ba0063a7fb67.jpg' %}"
-                                                    alt="Vivamus dictum pulvinar ipsum"
-                                                    title="Vivamus dictum pulvinar ipsum" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Vivamus dictum pulvinar ipsum">
-                                                        Vivamus dictum pulvinar ipsum </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                        <div class="item-description">
-                                                            Suspendisse at libero porttitor nisi aliquet vulputate
-                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Nullam hendrerit tempus tellus">
-                                                <img src="{% static 'users/cache/resized/f77ee990a14754c24d0c24b0348bdf58.jpg' %}"
-                                                    alt="Nullam hendrerit tempus tellus"
-                                                    title="Nullam hendrerit tempus tellus" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Nullam hendrerit tempus tellus">
-                                                        Nullam hendrerit tempus tellus </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Curabitur luctus tortor non quam gravida">
-                                                <img src="{% static 'users/cache/resized/b5b283328ebc04de7e78a477b203842c.jpg' %}"
-                                                    alt="Curabitur luctus tortor non quam gravida"
-                                                    title="Curabitur luctus tortor non quam gravida" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Curabitur luctus tortor non quam gravida">
-                                                        Curabitur luctus tortor non quam gravida </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                        <div class="item-description">
-                                                            Suspendisse at libero porttitor nisi aliquet vulputate
-                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Vestibulum sit amet libero vel neque">
-                                                <img src="{% static 'users/cache/resized/119bb944d45b48b61f4d86ea43d9431d.jpg' %}"
-                                                    alt="Vestibulum sit amet libero vel neque"
-                                                    title="Vestibulum sit amet libero vel neque" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Vestibulum sit amet libero vel neque">
-                                                        Vestibulum sit amet libero vel neque </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Pellentesque sed bibendum velit">
-                                                <img src="{% static 'users/cache/resized/bc56eeaf2c6652cdc7ac0ac544612674.jpg' %}"
-                                                    alt="Pellentesque sed bibendum velit"
-                                                    title="Pellentesque sed bibendum velit" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Pellentesque sed bibendum velit">
-                                                        Pellentesque sed bibendum velit </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Curabitur luctus tortor non quam">
-                                                <img src="{% static 'users/cache/resized/a0adc91f33120854922ac6e81d568eb4.jpg' %}"
-                                                    alt="Curabitur luctus tortor non quam"
-                                                    title="Curabitur luctus tortor non quam" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Curabitur luctus tortor non quam">
-                                                        Curabitur luctus tortor non quam </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href=""
-                                                title="Aliquam eu justo eu ipsum ultricies rutrum non eu">
-                                                <img src="{% static 'users/cache/resized/0fb051664c1ea8f1aada239b2446c756.jpg' %}"
-                                                    alt="Aliquam eu justo eu ipsum ultricies rutrum non eu"
-                                                    title="Aliquam eu justo eu ipsum ultricies rutrum non eu" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Aliquam eu justo eu ipsum ultricies rutrum non eu">
-                                                        Aliquam eu justo eu ipsum ultricies rutrum non eu </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                        <div class="item-description">
-                                                            Suspendisse at libero porttitor nisi aliquet vulputate
-                                                            vitae at velit. Aliquam eget arcu magna, vel </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                        <figure data-dummy>
-                                            <a href=""
-                                                title="Maecenas sit amet ligula turpis">
-                                                <img src="{% static 'users/cache/resized/465d815201bb3c062abde4216c7ee075.jpg' %}"
-                                                    alt="Maecenas sit amet ligula turpis"
-                                                    title="Maecenas sit amet ligula turpis" />
-                                            </a>
-                                            <figcaption>
-                                                <div class="sg-title">
-                                                    <a href=""
-                                                        title="Maecenas sit amet ligula turpis">
-                                                        Maecenas sit amet ligula turpis </a>
-                                                </div>
-                                                <div class="sg-back">
-                                                    <div class="sg-back-inner">
-                                                        <div class="item-comment">
-                                                            0&nbsp;comments </div>
-
-                                                        <div class="item-rating">
-                                                            <div class="itemRatingForm">
-                                                                <ul class="itemRatingList">
-                                                                    <li class="itemCurrentRating"
-                                                                        id="itemCurrentRating286" style="width:0%;">
-                                                                    </li>
-                                                                    <li><a href="#" data-id="286"
-                                                                            title="1 star out of 5"
-                                                                            class="one-star">1</a></li>
-                                                                    <li><a href="#" data-id="286"
-                                                                            title="2 stars out of 5"
-                                                                            class="two-stars">2</a></li>
-                                                                    <li><a href="#" data-id="286"
-                                                                            title="3 stars out of 5"
-                                                                            class="three-stars">3</a></li>
-                                                                    <li><a href="#" data-id="286"
-                                                                            title="4 stars out of 5"
-                                                                            class="four-stars">4</a></li>
-                                                                    <li><a href="#" data-id="286"
-                                                                            title="5 stars out of 5"
-                                                                            class="five-stars">5</a></li>
-                                                                </ul>
-                                                                <div id="itemRatingLog286" class="itemRatingLog">(0
-                                                                    votes)</div>
-                                                                <div class="clr"></div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="item-date">
-                                                            <span class="item-date">
-                                                                April 20th, 2015 </span>
-                                                        </div>
-
-                                                        <div class="item-postby">
-                                                            By: </div>
-
-                                                        <div class="item-description">
-                                                            Suspendisse at libero porttitor nisi aliquet vulputate
-                                                            vitae at velit. Aliquam eget arcu magna, vel ... </div>
-
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
+                                        {% endfor %}
                                     </div>
-                                    <div class="buttom-click" style="line-height: 500px; "><span>Bizning kampus hayotimizni tekshiring</span> </div>
+                                    <div class="buttom-click" style="line-height: 500px; "><span>Bizning iftxorlarimiz</span> </div>
                                 </section>
                             </div>
 
@@ -1587,11 +899,6 @@
         </div>
 
     </section>
-
-    
-    
-    
-
     {% include 'users/base/settings.html' %}
 
 </div>

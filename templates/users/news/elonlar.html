@@ -30,7 +30,7 @@
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>Yangiliklar</span></li>
+                                <li class="active"><span>E'lonlar</span></li>
                             </ul>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
 
     </section>
 
-    <section id="content" class="  no-left  block com_content">
+    <section id="content" class="  no-left  block com_k2">
         <div class="container">
             <div class="row">
                 <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
@@ -51,62 +51,86 @@
 
                     <div id="yt_component">
 
-                        <div class="blog">
-                            <h2 class="heading-category"> 
-                                <span class="subheading-category">Yangiliklar</span>
-                            </h2>
+                        <!-- Start K2 Category Layout -->
+                        <div id="k2Container" class="itemListView gridview">
+                            <div class="itemListCategoriesBlock">
+                                <div class="itemListCategory">
+                                    <h2>E'lonlar</h2>
+                                </div>
 
-                            <div class="items-leading row">
-                                {% for post in posts %}
-                                <div class="item col-sm-6 leading-0">
+                            </div>
 
-                                    <figure class="pull-none item-image">
+                            <!-- Item list -->
+                            <div class="itemList">
 
-                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" style="width: 370px; height: 280px;"/>
-                                        <aside class="article-aside">
-                                            <dl class="article-info  muted">
-                                                <dt></dt>
-                                                <dd class="createdby" itemprop="author" itemscope
-                                                    itemtype="">
-                                                    <i class="fa fa-user"></i>
-                                                    <span itemprop="name">{{post.created_by}}</span> </dd>
-                                                <dt></dt>
-                                                <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre"> Yangiliklar</a>
-                                                </dd>
-                                            </dl>
-                                        </aside>
-                                    </figure>
-                                    <div class="article-text" style="height: 12cm;">
-                                        <header class="article-header">
-                                            <h2>
-                                                <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
-                                            </h2>
-                                        </header>
-                                        <div class="icons">
-                                        </div>
-                                        <aside class="article-aside">
-                                            <dl class="article-info  muted">
-                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
-                                                <dd class="hits"><i class="ico-hits"></i>23744</dd>
-                                            </dl>
-                                        </aside>
-                                        <div class="article-intro">
-                                            <p>{{ post.translated_text }}</p>
+                                <!-- Leading items -->
+                                <div id="itemListLeading">
+                                    {% for anno in annos %}
+                                    <div class="itemContainer col-sm-12  itemContainerLast">
+                                        <div class="catItemView groupLeading">
+                                            <div class="catItemImageBlock">
+                                                <a href="" title="{{anno.title}}"> 
+                                                    <img src="{{anno.get_elon_img}}" alt="{{anno.title}}" style="width: 350px; height: 200px;" />
+                                                </a>
+                                                <a data-rel="prettyPhoto" href="{{anno.get_elon_img}}" class="zoom_img"></a>
+                                                <div class="over-image"></div>
+                                            </div>
+                                            <div class="main-item">
+                                                <div class="catItemHeader">
+                                                    <h3 class="catItemTitle">
+                                                        <a href="">{{anno.title}}</a>
+                                                    </h3>
+                                                    <aside class="article-aside">
+                                                        <dl class="article-info  muted">
+                                                            <dt></dt>
+                                                            <dd class="create">{{anno.created_at}}</dd>
+                                                            
+                                                            <dd class="catItemCategory">
+                                                                <a href="">E'lonlarda</a>
+                                                                <span>Chop etilgan</span>
+                                                            </dd>
+                                                        </dl>
+                                                    </aside>
+
+                                                </div>
+
+                                                <div class="catItemBody">
+                                                    <div class="catItemIntroText">
+                                                        <p>{{anno.text}}</p>
+                                                    </div>
+
+                                                    <div class="clr"></div>
+                                                    <div class="clr"></div>
+                                                    <div class="catItemReadMore">
+                                                        <a class="k2ReadMore button" href=""> Batafsil</a>
+                                                    </div>
+                                                    <div class="clr"></div>
+                                                </div>
+
+                                            </div>
+                                            <div class="clr"></div>
+
+                                            <div class="clr"></div>
+                                            <div class="clr"></div>
                                         </div>
                                     </div>
+                                    <div class="clr"></div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
-                            <div class="pagination">
+                            <!-- Pagination -->
+                            <div class="k2Pagination">
                                 <ul class="pagination">
                                     <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="" class="pagenav">2</a></li>
-                                    <li><a title="Next" href="" class="pagenav"><i
+                                    <li><a title="2" href="k2-1column0c72.html?start=4" class="pagenav">2</a></li>
+                                    <li><a title="3" href="k2-1column14fa.html?start=8" class="pagenav">3</a></li>
+                                    <li><a title="Next" href="k2-1column0c72.html?start=4" class="pagenav"><i
                                                 class="fa fa-long-arrow-right l-hiden"></i> <i
                                                 class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="" class="pagenav">End</a></li>
+                                    <li><a title="End" href="k2-1column14fa.html?start=8" class="pagenav">End</a>
+                                    </li>
                                 </ul>
+                                Page 1 of 3
                             </div>
                         </div>
 
@@ -340,7 +364,7 @@
                         </div>
 
                     </div>
-                </aside>
+                </aside>>
             </div>
         </div>
 

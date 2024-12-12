@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -236,6 +237,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('uz', _('O‘zbek')),  # O‘zbek tili
+    ('en', _('English')),  # Ingliz tili
+    ('ru', _('Русский')),  # Rus tili
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',  # Tarjima fayllarini saqlash uchun joy
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

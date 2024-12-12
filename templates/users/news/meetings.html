@@ -30,7 +30,7 @@
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>Yangiliklar</span></li>
+                                <li class="active"><span>Yig'ilishlar</span></li>
                             </ul>
                         </div>
                     </div>
@@ -38,7 +38,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <section id="content" class="  no-left  block com_content">
@@ -52,60 +51,87 @@
                     <div id="yt_component">
 
                         <div class="blog">
-                            <h2 class="heading-category"> 
-                                <span class="subheading-category">Yangiliklar</span>
+                            <h2 class="heading-category"> <span class="subheading-category">Yig'ilishlar</span>
                             </h2>
 
-                            <div class="items-leading row">
-                                {% for post in posts %}
-                                <div class="item col-sm-6 leading-0">
+                            <div class="items-row cols-1 row-0 row">
+
+                                <div class="item col-sm-12 column-1">
 
                                     <figure class="pull-none item-image">
 
-                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" style="width: 370px; height: 280px;"/>
+                                        <img src="../../../cache/sj_university2/6494c566369d3bf0607b63116407a288.jpg"
+                                            alt="" />
                                         <aside class="article-aside">
+
                                             <dl class="article-info  muted">
                                                 <dt></dt>
                                                 <dd class="createdby" itemprop="author" itemscope
-                                                    itemtype="">
+                                                    itemtype="http://schema.org/Person">
                                                     <i class="fa fa-user"></i>
-                                                    <span itemprop="name">{{post.created_by}}</span> </dd>
+                                                    <span itemprop="name">Super User</span> </dd>
+
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre"> Yangiliklar</a>
+                                                    Category: <a href="category-blog.html" itemprop="genre">Content
+                                                        Category 1</a>
                                                 </dd>
+
                                             </dl>
+
                                         </aside>
                                     </figure>
-                                    <div class="article-text" style="height: 12cm;">
+
+                                    <div class="article-text">
+
                                         <header class="article-header">
+
                                             <h2>
-                                                <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
+                                                <a
+                                                    href="category-blog/category-blog-4-columns/91-haretra-faucibus-eu-laoreet-nunc.html">
+                                                    Faucibus eu laoreet nunc</a>
                                             </h2>
+
                                         </header>
+
                                         <div class="icons">
+
                                         </div>
+
                                         <aside class="article-aside">
+
                                             <dl class="article-info  muted">
-                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
+                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+
                                                 <dd class="hits"><i class="ico-hits"></i>23744</dd>
                                             </dl>
                                         </aside>
+
                                         <div class="article-intro">
-                                            <p>{{ post.translated_text }}</p>
+                                            <p>Suspendisse at libero porttitor nisi aliquet vulputate vitae at
+                                                velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor mauris
+                                                tempor leo aliquam vel porta ante sodales. Nulla facilisi. In
+                                                accumsan mattis odio vel luctus.</p>
                                         </div>
+
                                     </div>
+
                                 </div>
-                                {% endfor %}
+
                             </div>
+
                             <div class="pagination">
                                 <ul class="pagination">
                                     <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="" class="pagenav">2</a></li>
-                                    <li><a title="Next" href="" class="pagenav"><i
+                                    <li><a title="2" href="category-blog0c72.html?start=4" class="pagenav">2</a>
+                                    </li>
+                                    <li><a title="3" href="category-blog14fa.html?start=8" class="pagenav">3</a>
+                                    </li>
+                                    <li><a title="Next" href="category-blog0c72.html?start=4" class="pagenav"><i
                                                 class="fa fa-long-arrow-right l-hiden"></i> <i
                                                 class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="" class="pagenav">End</a></li>
+                                    <li><a title="End" href="category-blog14fa.html?start=8" class="pagenav">End</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -340,7 +366,7 @@
                         </div>
 
                     </div>
-                </aside>
+                </aside>>
             </div>
         </div>
 

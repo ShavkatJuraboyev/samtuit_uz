@@ -14,6 +14,7 @@
                                     action=""
                                     onsubmit="return submitacymailingform('optin','formAcymailing72291')"
                                     method="post" name="formAcymailing72291">
+                                    {% csrf_token %}
                                     <div class="acymailing_module_form">
                                         <table class="acymailing_form">
                                             <tr>
@@ -230,7 +231,7 @@
     </div>
 
 </footer>
-<div id="yt_sticky_right" class="yt-slidePanel hidden-sm hidden-xs">
+<div id="yt_sticky_right" class="yt-slidePanel">
     <div class="yt-sticky">
 
         <div class="module ">
@@ -287,7 +288,7 @@
     });
 </script>
 
-<div id="cpanel_wrapper" style="direction:ltr" class="hidden-sm hidden-xs">
+<div id="cpanel_wrapper" style="direction:ltr">
     <div class="accordion" id="ytcpanel_accordion">
         <div class="cpanel-head">
             Sozlamalar
@@ -301,7 +302,7 @@
         <div class="cpanel-theme">
 
             <!-- Style Color -->
-            <div class="panel-group">
+            <!-- <div class="panel-group">
                 <h4 class="panel-heading">Mavzu ranglari</h4>
 
                 <div class="panel-theme-color">
@@ -313,12 +314,11 @@
                     <span data-placement="top" title="Binafsha" class="theme-color violet">Binafsha</span>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- Layouts -->
             <div class="panel-group ">
                 <h4 class="panel-heading">Tartib</h4>
-                <!-- Layout Style -->
                 <div class="panel-layout typeLayout">
                     <span data-value="layout-wide" class="layout-item btn  active">Keng</span>
                     <span data-value="layout-boxed" class="layout-item btn ">Qutili</span>
@@ -327,7 +327,7 @@
                 </div>
             </div>
 
-            <div class="panel-group nomarginbottom">
+            <!-- <div class="panel-group nomarginbottom">
                 <div class="panel-desc" style="margin:10px 0 3px;"> Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq
                 </div>
                 <div class="body-bg">
@@ -342,7 +342,7 @@
                 </div>
                 <input type="hidden" name="ytcpanel_bgimage" value="" />
 
-            </div>
+            </div> -->
 
         </div>
 

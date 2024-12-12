@@ -1,6 +1,6 @@
-.clearfix {
+/* .clearfix {
   *zoom: 1;
-}
+} */
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -20,7 +20,7 @@
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: ;
+  /* min-height: ; */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -3882,7 +3882,7 @@ div.sj-accordion .acd-items .acd-item.selected .acd-content-wrap .acd-content-wr
   font-size: 14px;
 }
 .style-me-scattered .sj-sg-gallery .sg-photostack {
-  background: url(../images/bg/bg-3.jpg) no-repeat 0 0 fixed;
+  background: url(../images/bg/bg-2.jpg) no-repeat 0 0 fixed;
   background-size: 100% 100%;
 }
 .style-me-scattered .sj-sg-gallery .sg-photostack .sg-container figure {
@@ -4613,6 +4613,7 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slid
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
   max-width: none;
+  height: 60em;
 }
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title {
@@ -7747,7 +7748,7 @@ ul.c-step li span {
 }
 #k2Container.itemView .itemVideoBlock h3 {
   font-size: 151.4%;
-  font-family: ;
+  /* font-family: ; */
 }
 #k2Container.itemView .itemVideoBlock .itemVideoEmbedded {
   text-align: center;
@@ -7766,7 +7767,7 @@ ul.c-step li span {
 }
 #k2Container.itemView .itemImageGallery h3 {
   font-size: 151.4%;
-  font-family: ;
+  /* font-family: ; */
 }
 #k2Container.itemView .itemImageGallery ul.sigProClassic li.sigProThumb span.sigProLinkWrapper {
   margin: 0;

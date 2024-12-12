@@ -62,42 +62,60 @@
 
                                     <figure class="pull-none item-image">
 
-                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" style="width: 370px; height: 280px;"/>
+                                        <img src="{{post.get_post_img}}" alt="{{post.title}}" style="width: 370px; height: 280px;"/>
                                         <aside class="article-aside">
+
                                             <dl class="article-info  muted">
                                                 <dt></dt>
                                                 <dd class="createdby" itemprop="author" itemscope
                                                     itemtype="">
                                                     <i class="fa fa-user"></i>
-                                                    <span itemprop="name">{{post.created_by}}</span> </dd>
+                                                    <span itemprop="name">Super User</span> </dd>
+
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre"> Yangiliklar</a>
+                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre">Content Category 1</a>
                                                 </dd>
+
                                             </dl>
+
                                         </aside>
                                     </figure>
+
                                     <div class="article-text" style="height: 12cm;">
+
                                         <header class="article-header">
+
                                             <h2>
-                                                <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
+                                                <a href="{% url 'new' pk=post.id %}">{{post.title}}</a>
                                             </h2>
+
                                         </header>
+
                                         <div class="icons">
+
                                         </div>
+
                                         <aside class="article-aside">
+
                                             <dl class="article-info  muted">
                                                 <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
+
                                                 <dd class="hits"><i class="ico-hits"></i>23744</dd>
                                             </dl>
                                         </aside>
+
                                         <div class="article-intro">
-                                            <p>{{ post.translated_text }}</p>
+                                            <p>{{post.text}}</p>
                                         </div>
+
                                     </div>
+
                                 </div>
                                 {% endfor %}
+
                             </div>
+
                             <div class="pagination">
                                 <ul class="pagination">
                                     <li class="active"><span>1</span></li>
