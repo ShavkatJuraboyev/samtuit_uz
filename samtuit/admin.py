@@ -1,128 +1,47 @@
 from django.contrib import admin
-from samtuit.models.models import PictureSlider, Post, Meeting,  Announcements, Designation, PressConference, Seminar, Conversation, Partners, Students
+from samtuit.models.models import PictureSlider, Partners, Students, Menu
+
+class MenuAdmin(admin.ModelAdmin):
+    # Formda ko'rsatiladigan ustunlar
+    list_display = ('title_uz', 'title_ru', 'title_en', 'parent', 'is_active')
+    list_filter = ('is_active', 'parent')
+    search_fields = ('title_uz', 'title_ru', 'title_en')
+    list_editable = ('is_active',)
+
+    # Admin sahifasida menyu nomini tanlash
+    def get_menu_title(self, obj):
+        # 'language' orqali tilni tanlab, menyu nomini olish
+        # Adminda, faqat tilni ko'rsatamiz, masalan 'title_uz'
+        language = 'uz'  # Agar hohlasangiz, bu o'zgaruvchiga `request`dan tilni olib qo'yishingiz mumkin
+        return obj.get_menu_title(language)
+    get_menu_title.short_description = 'Menyu nomi'
+
+    # Menyu nomini ko'rsatadigan ustunni qo'shamiz
+    readonly_fields = ('get_menu_title',)
+
+    # Qidirish va tartibga solish uchun foydalanish mumkin bo'lgan maydonlar
+    fieldsets = (
+        (None, {
+            'fields': ('title_uz', 'title_ru', 'title_en', 'url', 'parent', 'is_active')
+        }),
+        ('Tarjimalar', {
+            'fields': ('get_menu_title',)
+        }),
+    )
+
+    # Menyu nomini admin panelida o'zgartirish uchun maxsus xususiyat
+    def save_model(self, request, obj, form, change):
+        # Hozirgi tilni hisobga olib, menyu nomini saqlash
+        super().save_model(request, obj, form, change)
+
+# Admin paneliga Menu modelini qo'shamiz
+admin.site.register(Menu, MenuAdmin)
 
 admin.site.register(PictureSlider)
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('title_uz', 'created_at', 'created_by')
-    search_fields = ('title_uz',)
-
-    def save_model(self, request, obj, form, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk:  # Ob'ekt yangi bo'lsa
-            obj.created_by = request.user
-        super(PostAdmin, self).save_model(request, obj, form, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-
-
-@admin.register(Meeting)
-class MeetingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-@admin.register(Announcements)
-class Announc(admin.ModelAdmin):
-    list_display = ('title', 'location', 'build', 'day')
-    list_filter = ('day',)
-    search_fields = ('name',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-@admin.register(Designation)
-class DesignationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-    
-@admin.register(PressConference)
-class PressConferenceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-@admin.register(Seminar)
-class SeminarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-@admin.register(Conversation)
-class ConversationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk: 
-            obj.created_by = request.user  
-        super().save_model(request, obj, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-   
 @admin.register(Partners)
 class PartnersAdmin(admin.ModelAdmin):
     list_display = ('name', 'link')
-
 
 @admin.register(Students)
 class StudentAdmin(admin.ModelAdmin):

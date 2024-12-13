@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
-    'ckeditor',
     
     'samtuit',
+    'news',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -99,7 +99,7 @@ CKEDITOR_5_CONFIGS = {
             ]
         },
     },
-    'extends': {
+    'extends_uz': {
         'blockToolbar': [
             'paragraph', 'heading1', 'heading2', 'heading3', 
             '|', 'bulletedList', 'numberedList', 
@@ -154,6 +154,119 @@ CKEDITOR_5_CONFIGS = {
             'types': ['png', 'jpg', 'jpeg', 'gif']
         }
     },
+    
+    'extends_en': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3', 
+            '|', 'bulletedList', 'numberedList', 
+            '|', 'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|', 'outdent', 'indent', '|', 
+            'bold', 'italic', 'link', 'underline', 'strikethrough',
+            'code', 'subscript', 'superscript', 'highlight', '|', 
+            'codeBlock', 'sourceEditing', 'insertImage',
+            'bulletedList', 'numberedList', 'todoList', '|', 
+            'blockQuote', 'imageUpload', '|',
+            'fontSize', 'fontFamily', 'fontColor', 
+            'fontBackgroundColor', 'mediaEmbed', 
+            'removeFormat', 'insertTable', 'insertHorizontalRule',
+            'alignment'  # Alignment qo'shildi
+        ],
+        'image': {
+            'toolbar': [
+                'imageTextAlternative', '|', 'imageStyle:alignLeft',
+                'imageStyle:alignRight', 'imageStyle:alignCenter', 
+                'imageStyle:side', '|'
+            ],
+            'styles': [
+                'full', 'side', 'alignLeft', 
+                'alignRight', 'alignCenter',
+            ]
+        },
+        'table': {
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells',
+                'tableProperties', 'tableCellProperties'
+            ],
+            'tableProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            },
+            'tableCellProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            }
+        },
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+            ]
+        },
+        'upload': {
+            'types': ['png', 'jpg', 'jpeg', 'gif']
+        }
+    },
+    
+    'extends_ru': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3', 
+            '|', 'bulletedList', 'numberedList', 
+            '|', 'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|', 'outdent', 'indent', '|', 
+            'bold', 'italic', 'link', 'underline', 'strikethrough',
+            'code', 'subscript', 'superscript', 'highlight', '|', 
+            'codeBlock', 'sourceEditing', 'insertImage',
+            'bulletedList', 'numberedList', 'todoList', '|', 
+            'blockQuote', 'imageUpload', '|',
+            'fontSize', 'fontFamily', 'fontColor', 
+            'fontBackgroundColor', 'mediaEmbed', 
+            'removeFormat', 'insertTable', 'insertHorizontalRule',
+            'alignment'  # Alignment qo'shildi
+        ],
+        'image': {
+            'toolbar': [
+                'imageTextAlternative', '|', 'imageStyle:alignLeft',
+                'imageStyle:alignRight', 'imageStyle:alignCenter', 
+                'imageStyle:side', '|'
+            ],
+            'styles': [
+                'full', 'side', 'alignLeft', 
+                'alignRight', 'alignCenter',
+            ]
+        },
+        'table': {
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells',
+                'tableProperties', 'tableCellProperties'
+            ],
+            'tableProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            },
+            'tableCellProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            }
+        },
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+            ]
+        },
+        'upload': {
+            'types': ['png', 'jpg', 'jpeg', 'gif']
+        }
+    },
+    
     'list': {
         'properties': {
             'styles': 'true',
@@ -169,11 +282,15 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Ushbu middlewareni qo'shing
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LANGUAGE_COOKIE_NAME = 'django_language'  # Til cookie'ining nomi
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 ROOT_URLCONF = 'samtuit_uz.urls'
 
@@ -230,11 +347,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'uz'
-
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = [
@@ -246,6 +362,7 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',  # Tarjima fayllarini saqlash uchun joy
 ]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

@@ -9,14 +9,14 @@
                     <li class="item-1534" ><a href=""><img src="{% static 'users/images/ramzlar/uz.png' %}" alt="bayroq" style="width: 30px; height: 20px;"></a></li>
                     <li class="item-1535"><a href=""><img src="{% static 'users/images/ramzlar/gerb.png' %}" alt="gerb" style="width: 20px; height: 20px;"></a></li>
                     <li class="item-1536"><a href=""><img src="{% static 'users/images/ramzlar/nota.png' %}" alt="mathiya" style="width: 20px; height: 20px;"></a></li>
-                    <li class="item-1531 deeper parent"><a href="">{% trans "Universitet web sayt tizimlari" %}</a>
+                    <li class="item-1531 deeper parent"><a href="">{{ menu_text.web_systems }}</a>
                         <ul class="yt-list">
-                            <li class="item-1543"><a href="https://hemis.samtuit.uz/">{% trans "Hemis o'qituvchi" %}</a></li>
-                            <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">{% trans "Hemis talaba" %}</a></li>
-                            <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">{% trans "Kutubxona" %}</a></li>
+                            <li class="item-1543"><a href="https://hemis.samtuit.uz/">{{ menu_text.hemis_teacher }}</a></li>
+                            <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">{{ menu_text.hemis_student }}</a></li>
+                            <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">{{ menu_text.library }}</a></li>
                         </ul>
                     </li>
-                    <li class="item-1532"><a href="">{% trans "Qabul-2024" %}</a></li>
+                    <li class="item-1532"><a href="">{{ menu_text.admission }}</a></li>                    
                     <!-- <li class="item-1533"><a href="">Staff</a></li> -->
                 </ul>
 
@@ -53,41 +53,21 @@
                 <div class="module  me-language  ">
                     <div class="modcontent clearfix">
                         <div class="mod-languages ">
-                            <!-- <a class="dropdown-toggle">
-                                {% if LANGUAGE_CODE == 'uz' %}
-                                    <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" /> Uzbek
-                                {% elif LANGUAGE_CODE == 'en' %}
-                                    <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" /> English
-                                {% elif LANGUAGE_CODE == 'ru' %}
-                                    <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Русский" title="Русский" /> Русский
+                            <a class="dropdown-toggle">
+                                {% if request.LANGUAGE_CODE == 'uz' %}
+                                    <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" />
+                                    Uzbek
+                                {% elif request.LANGUAGE_CODE == 'en' %}
+                                    <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" />
+                                    English
+                                {% elif request.LANGUAGE_CODE == 'ru' %}
+                                    <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha" title="Ruscha" />
+                                    Русский
+                                {% else %}
+                                    <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" />
+                                    Uzbek
                                 {% endif %}
                                 <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <form method="post" action="{% url 'set_language' %}">
-                                    {% csrf_token %}
-                                    <li>
-                                        <button type="submit" name="language" value="uz" style="border: none; background: none; padding: 0; margin: 0;">
-                                            <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" /> Uzbek
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="submit" name="language" value="en" style="border: none; background: none; padding: 0; margin: 0;">
-                                            <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" /> English
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="submit" name="language" value="ru" style="border: none; background: none; padding: 0; margin: 0;">
-                                            <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Русский" title="Русский" /> Русский
-                                        </button>
-                                    </li>
-                                </form>
-                            </ul> -->
-                            
-
-                            <a class="dropdown-toggle">
-                                <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek " title="Uzbek " />
-                                Uzbek <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu ">
                                 <li class="-actilangve">
@@ -154,8 +134,9 @@
             </div>
             <div id="yt_mainmenu" class="col-md-9 col-sm-12 ">
                 <ul id="meganavigator" class="clearfix navi ">
+                    
                     <li class="level1 last havechild ">
-                        <a href="" title="Yangiliklar" class="level1 last havechild  item-link"><span class="menu-title">{% trans "Yangiliklar" %}</span></a>
+                        <a href="" title="{{ menu_text.news }}" class="level1 last havechild  item-link"><span class="menu-title">{{ menu_text.news }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -192,8 +173,8 @@
                         </div>
                     </li>
                     <li class="level1 havechild ">
-                        <a title="Tuzilma" class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">Tuzilma </span></a>
+                        <a title="{{ menu_text.structure }}" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">{{ menu_text.structure }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -201,106 +182,35 @@
                                 <div class="mega-col first one">
                                     <ul class="subnavi level2">
                                         <li class="level2 first havechild ">
-                                            <div title="Layouts"
-                                                class="level2 first havechild  item-link separator"><span
-                                                    class="menu-title">Layouts</span></div>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="All Sidebar Blocks"
-                                                                    class="level3 first  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">All Sidebar
-                                                                        Blocks</span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Left Sidebar "
-                                                                    class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Left Sidebar
-                                                                    </span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Right Sidebar "
-                                                                    class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Right Sidebar
-                                                                    </span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Full Width"
-                                                                    class="level3 last  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Full Width</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                            <a title="Filial haqida" class="level2 first havechild  item-link" href=""><span class="menu-title">Filial haqida</span></a>
                                         </li>
 
                                         <li class="level2 havechild ">
-                                            <a title="Menu Style" class="level2 havechild  item-link"
-                                                href="#"><span class="menu-title">Menu Style</span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="Sider Menu"
-                                                                    class="level3 first  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Sider Menu</span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Tree Menu" class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Tree Menu</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Accordion Menu"
-                                                                    class="level3 last  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Accordion
-                                                                        Menu</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                            <a title="Filial nizomi" class="level2 havechild  item-link" href=""><span class="menu-title">Filial nizomi</span></a>
                                         </li>
 
                                         <li class="level2 ">
-                                            <a title="Extensions" class="level2  item-link"
-                                                href=""><span
-                                                    class="menu-title">Extensions</span></a>
+                                            <a title="Direktor tabrigi" class="level2  item-link" href=""><span class="menu-title">Direktor tabrigi</span></a>
                                         </li>
 
                                         <li class="level2 ">
-                                            <a title="Module Variations" class="level2  item-link"
-                                                href="index.php/explore/module-variations.html"><span
-                                                    class="menu-title">Module Variations</span></a>
+                                            <a title="Rahbariyat" class="level2  item-link" href=""><span class="menu-title">Rahbariyat</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Fakultetlar" class="level2  item-link" href=""><span class="menu-title">Fakultetlar</span></a>
+                                        </li>
+
+                                        <li class="level2 ">
+                                            <a title="Page Breaks" class="level2  item-link"
+                                                href="index.php/joomla-pages-2/page-break-example.html"><span
+                                                    class="menu-title">Page Breaks</span></a>
                                         </li>
 
                                         <li class="level2 last ">
-                                            <a title="Module Positions" class="level2 last  item-link"
-                                                href="index.php/explore/module-positions.html"><span
-                                                    class="menu-title">Module Positions</span></a>
+                                            <a title="Iframe Wrapper" class="level2 last  item-link"
+                                                href="index.php/joomla-pages-2/iframe-wrapper.html"><span
+                                                    class="menu-title">Iframe Wrapper</span></a>
                                         </li>
 
                                     </ul>
@@ -311,8 +221,8 @@
                     </li>
 
                     <li class="level1 havechild ">
-                        <a title="Faoliyat" class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">Faoliyat</span></a>
+                        <a title="{{ menu_text.activity }}" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">{{ menu_text.activity }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -526,8 +436,8 @@
                     </li>
 
                     <li class="level1 havechild mega1">
-                        <a title="Abituriyent" class="level1 havechild mega1 item-link" href="#"><span
-                                class="menu-title">Abituriyent</span></a>
+                        <a title="{{ menu_text.applicant }}" class="level1 havechild mega1 item-link" href="#"><span
+                                class="menu-title">{{ menu_text.applicant }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 pos mega-content">
                             <div class="mega-content-inner clearfix" style="width:500px">
@@ -576,8 +486,8 @@
 
 
                     <li class="level1 havechild mega1">
-                        <a title="Talabalar" class="level1 havechild mega1 item-link" href="#"><span
-                                class="menu-title">Talabalar</span></a>
+                        <a title="{{ menu_text.students }}" class="level1 havechild mega1 item-link" href="#"><span
+                                class="menu-title">{{ menu_text.students }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 pos mega-content">
                             <div class="mega-content-inner clearfix" style="width:500px">
@@ -625,8 +535,8 @@
                     </li>
 
                     <li class="level1 havechild ">
-                        <a title="Xorijiy talabalar" class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">Xorijiy talabalar</span></a>
+                        <a title="{{ menu_text.foreign_students }}" class="level1 havechild  item-link" href="#"><span
+                                class="menu-title">{{ menu_text.foreign_students }}</span></a>
                         <!-- open mega-content div -->
                         <div class="level2 menu mega-content">
                             <div class="mega-content-inner clearfix">
@@ -838,130 +748,36 @@
                             </div>
                         </div>
                     </li>
-
-                    <li class="level1 havechild ">
-                        <a title="INTERAKTIV XIZMATLAR" class="level1 havechild  item-link" href="#"><span
-                                class="menu-title">INTERAKTIV XIZMATLAR </span></a>
-                        <!-- open mega-content div -->
-                        <div class="level2 menu mega-content">
-                            <div class="mega-content-inner clearfix">
-
-                                <div class="mega-col first one">
-                                    <ul class="subnavi level2">
-                                        <li class="level2 first havechild ">
-                                            <div title="Layouts"
-                                                class="level2 first havechild  item-link separator"><span
-                                                    class="menu-title">Layouts</span></div>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="All Sidebar Blocks"
-                                                                    class="level3 first  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">All Sidebar
-                                                                        Blocks</span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Left Sidebar "
-                                                                    class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Left Sidebar
-                                                                    </span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Right Sidebar "
-                                                                    class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Right Sidebar
-                                                                    </span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Full Width"
-                                                                    class="level3 last  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Full Width</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
+                    {% for menu in menus %}
+                        {% if not menu.parent %} 
+                            <li class="level1 havechild">
+                                <a href="#" class="level1 item-link">
+                                    <span class="menu-title">{{ menu.translated_title }}</span> <!-- Dinamik tarjima -->
+                                </a>
+                                {% if menu.children.exists %}
+                                    <div class="level2 menu mega-content">
+                                        <div class="mega-content-inner clearfix">
+                                            <div class="mega-col first one">
+                                                <ul class="subnavi level2">
+                                                    {% for sub_menu in menu.children.all %}
+                                                        <li class="level2">
+                                                            <a href="{{ sub_menu.url }}" class="level2 item-link">
+                                                                <span class="menu-title">{{ sub_menu }}</span> <!-- Dinamik tarjima -->
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
                                             </div>
-                                        </li>
-
-                                        <li class="level2 havechild ">
-                                            <a title="Menu Style" class="level2 havechild  item-link"
-                                                href="#"><span class="menu-title">Menu Style</span></a>
-                                            <!-- open mega-content div -->
-                                            <div class="level3 menu mega-content">
-                                                <div class="mega-content-inner clearfix">
-
-                                                    <div class="mega-col first one">
-                                                        <ul class="subnavi level3">
-                                                            <li class="level3 first ">
-                                                                <a title="Sider Menu"
-                                                                    class="level3 first  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Sider Menu</span></a>
-                                                            </li>
-
-                                                            <li class="level3 ">
-                                                                <a title="Tree Menu" class="level3  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Tree Menu</span></a>
-                                                            </li>
-
-                                                            <li class="level3 last ">
-                                                                <a title="Accordion Menu"
-                                                                    class="level3 last  item-link"
-                                                                    href=""><span
-                                                                        class="menu-title">Accordion
-                                                                        Menu</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Extensions" class="level2  item-link"
-                                                href=""><span
-                                                    class="menu-title">Extensions</span></a>
-                                        </li>
-
-                                        <li class="level2 ">
-                                            <a title="Module Variations" class="level2  item-link"
-                                                href="index.php/explore/module-variations.html"><span
-                                                    class="menu-title">Module Variations</span></a>
-                                        </li>
-
-                                        <li class="level2 last ">
-                                            <a title="Module Positions" class="level2 last  item-link"
-                                                href="index.php/explore/module-positions.html"><span
-                                                    class="menu-title">Module Positions</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
 
                     <li class="level1 ">
-                        <a title="Aloqa " class="level1  item-link" href=""><span
-                                class="menu-title">Aloqa </span></a>
+                        <a title="{{ menu_text.contact }}" class="level1  item-link" href=""><span
+                                class="menu-title">{{ menu_text.contact }}</span></a>
                     </li>
 
                 </ul>
