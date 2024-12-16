@@ -15,18 +15,18 @@
                             <ul class="breadcrumb ">
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
-                                <li><a href="/" class="pathway">Bosh saxifa</a><span
+                                <li><a href="/" class="pathway">{{menu_text.home}}</a><span
                                         class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li><span>Yangiliklar</span><span class="divider"><img
+                                <li><span>{{menu_text.news}}</span><span class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li><a href="{% url 'news' %}" class="pathway">Yangiliklar</a><span
+                                <li><a href="{% url 'news' %}" class="pathway">{{menu_text.news}}</a><span
                                         class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li class="active"><span>Yangilik</span></li>
+                                <li class="active"><span>{{post.translated_title}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <article class="item-page">
 
                             <header class="article-header">
-                                <h2><a href=""><span class="title-color">{{post.title}}</span></a></h2>
+                                <h2><a href=""><span class="title-color">{{post.translated_title}}</span></a></h2>
                             </header>
 
                             <aside class="article-aside">
@@ -62,95 +62,52 @@
                                     <dd class="createdby" itemprop="author" itemscope
                                         itemtype="">
                                         <span class="fa fa-user"></span>
-                                        <span itemprop="name">Super User</span> </dd>
+                                        <span itemprop="name">{{post.created_by}}</span> </dd>
 
                                     <dd class="category-name">
-                                        Category: <a href=""
-                                            itemprop="genre">Content Category 1</a> </dd>
+                                        {{menu_text.categories}}: <a href=""
+                                            itemprop="genre">{{menu_text.news}}</a> </dd>
 
                                     <dd class="hits">
                                         <span class="icon-eye-open"></span>
                                         <meta itemprop="interactionCount" content="UserPageVisits:6092" />
-                                        Hits: 6092 </dd>
+                                        <span class="fa fa-eye"></span> 6092 </dd>
 
                                 </dl>
                             </aside>
 
                             <figure class="img-fulltext pull-none">
                                 <a href="" title="">
-                                    <img src="{{post.get_post_img}}" alt="" /> </a>
+                                    <img src="{{post.get_post_img}}" alt="{{post.translated_title}}"/> </a>
                             </figure>
 
-                            <div class="tags">
-                                <span class="tag-4 tag-list0">
-                                    <a href="" class="label label-info">
-                                        SJ-Plus </a>
-                                </span>&nbsp;
-                                <span class="tag-5 tag-list1">
-                                    <a href="" class="label label-info">
-                                        Responsive </a>
-                                </span>&nbsp;
-                                <span class="tag-6 tag-list2">
-                                    <a href="" class="label label-info">
-                                        Design </a>
-                                </span>&nbsp;
-                            </div>
 
-
-                            <a id="startOfPage"></a>
-                            {{post.content}}
-                            <div>
-                                <p>Meggings next level yr, 90′s small batch four loko brunch wes anderson fixie american
-                                    apparel flexitarian pitchfork neutra. Constructed in cotton sweat fabric, this
-                                    lovely piece, lacus eu mattis auctor, dolor lectus venenatis nullante.</p>
-    
-                                <div class="image">Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                                    per inceptos himenaeos. Aenean fringilla laoreet mauris lectus pellentesque eu.
-                                </div>
-                                <div style='clear:both; height:20px;'></div>
-                                <h3>Lorem ipsum dolor sit amet Class aptent</h3>
-                                <ul class="yt-list type-check" style="color:#6B82A2">
-                                    <li><span><span style="color: #999999;">Me and my girlfriend stayed here last year
-                                                and it was great.</span> </span></li>
-                                    <li><span><span style="color: #999999;">We grew fast to appreciate this place even
-                                                more ow that we have tried Sanctuary Cap Cana.</span></span></li>
-                                    <li><span><span style="color: #999999;">Secrets The Vine was a gorgeous place to
-                                                stay, period lorem ipsum dolor sit amet!</span> </span></li>
-                                </ul>
-                                <h3>Constructed in cotton sweat fabric</h3>
-                                <p>Meggings next level yr, 90′s small batch four loko brunch wes anderson fixie american
-                                    apparel flexitarian pitchfork neutra. Constructed in cotton sweat fabric, this
-                                    lovely piece, lacus eu mattis auctor, dolor lectus venenatis nullante.</p>
-                                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-                                    himenaeos. Aenean fringilla laoreet mauris lectus pellentesque eu.</p>
-                                <div class="notice">Suspendisse blandit ligula turpis, ac convallis risus fermentum non.
-                                    Duis vestibulum quis nisl quam vel accumsan. Nunc a vulputate lectus. Vestib ulum
-                                    eleifendsed massa sagittis vestibulum.</div>
-                                <p>Mauris rhoncus pretium porttitor. Cras scelerisque commodo odio. Phasellus dolor
-                                    enim, faucibus egestas scelerisque hendrerit, aliquet sed lorem celerisque commodo
-                                    odio. Phasellus dolor enim, faucibus egestas scelerisque hendrerit, aliquet sed
-                                    lorem auris rhoncus pretium porttitor. Cras scelerisque commodo odio. Phasellus
-                                    dolor enim, faucibus egestas scelerisque hendrerit, aliquet sed lorem</p>
-                                
-                            </div>
+                            <a id="startOfPage"></a>                                
+                            {{post.translated_content|safe}}
                            
                             <ul class="pager pagenav">
+                                {% if previous_post %}
                                 <li class="previous">
                                     <a class="hasTooltip" title="Faucibus eu laoreet nunc"
                                         aria-label="Previous article: Faucibus eu laoreet nunc"
-                                        href=""
+                                        href="{% url 'new' previous_post.id %}"
                                         rel="prev">
                                         <span class="icon-chevron-left" aria-hidden="true"></span> <span
-                                            aria-hidden="true">Oldingi</span> </a>
+                                            aria-hidden="true">{{menu_text.previous_post}}</span> </a>
                                 </li>
+                                {% else %}
+                                {% endif %}
+                                {% if next_post %}
                                 <li class="next">
                                     <a class="hasTooltip" title="Aliquam lobortis cursus "
                                         aria-label="Next article: Aliquam lobortis cursus "
-                                        href=""
+                                        href="{% url 'new' next_post.id %}"
                                         rel="next">
-                                        <span aria-hidden="true">Keyingi</span> <span class="icon-chevron-right"
+                                        <span aria-hidden="true">{{menu_text.next_post}}</span> <span class="icon-chevron-right"
                                             aria-hidden="true"></span> </a>
                                 </li>
+                                {% else %}
+                                {% endif %}
                             </ul>
 
                         </article>
@@ -161,31 +118,24 @@
                     <div id="right" class="col-sm-12">
 
                         <div class="module k2-categories ">
-                            <h3 class="modtitle">Categories</h3>
+                            <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
                                     <ul class="level0">
-                                        <li><a href="../../k2/k2-categories/k2-1column.html"><span
-                                                    class="catTitle">K2 listing</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.faculties}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2-listing/itemlist/category/99-accounting.html"><span
-                                                    class="catTitle">Accounting</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.departments}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2-listing/itemlist/category/100-finance.html"><span
-                                                    class="catTitle">Finance</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.centers}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2-listing/itemlist/category/107-management.html"><span
-                                                    class="catTitle">Management</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.applicant}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2-listing/itemlist/category/108-medical.html"><span
-                                                    class="catTitle">Medical</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.students}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2-listing/itemlist/category/109-art-design.html"><span
-                                                    class="catTitle">Art & Design</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.scientific_research_activity}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href="../../k2/itemlist/category/126-programming.html"><span
-                                                    class="catTitle">Programming</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.interactive_services}}</span><span
                                                     class="catCounter"></span></a></li>
                                     </ul>
                                 </div>
@@ -195,15 +145,15 @@
                         <div class="module  module_tabs ">
                             <div class="modcontent clearfix">
 
-                                <div id="moduletabs_15875248111729926777" class="moduletabs top-position clearfix">
+                                <div id="moduletabs_11308236401729926773" class="moduletabs top-position clearfix">
 
                                     <div class="tabs-container">
                                         <ul class="tabs row">
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab selected">Recent</div>
+                                                <div class="tab selected">{{menu_text.news}}</div>
                                             </li>
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab">Comments</div>
+                                                <div class="tab">{{menu_text.categories}}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -216,47 +166,38 @@
 
                                                         <ul>
                                                             <li class="even">
-
                                                                 <div class="moduleItemIntrotext">
-                                                                    <a class="moduleItemImage"
-                                                                        href="../../k2-listing/item/294-curabitur-luctus-tortor-non-quam.html"
+                                                                    <a class="moduleItemImage" href=""
                                                                         title="Continue reading &quot;Curabitur luctus tortor non quam&quot;">
-                                                                        <img src="../../../media/k2/items/cache/ea82697ed9755e975f3c7d735db2070c_XS.jpg"
+                                                                        <img src="{% static 'users/media/k2/items/cache/ea82697ed9755e975f3c7d735db2070c_XS.jpg' %}"
                                                                             alt="Curabitur luctus tortor non quam" />
                                                                     </a>
                                                                     <div class="main">
-                                                                        <a class="moduleItemTitle"
-                                                                            href="../../k2-listing/item/294-curabitur-luctus-tortor-non-quam.html">Curabitur
+                                                                        <a class="moduleItemTitle" href="">Curabitur
                                                                             luctus tortor non quam</a>
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
-                                                                    </div><!-- end main-->
-
+                                                                    </div>
                                                                 </div>
-
                                                                 <div class="clr"></div>
-
                                                                 <div class="clr"></div>
-
                                                                 <div class="clr"></div>
                                                             </li>
                                                             <li class="odd">
-
                                                                 <div class="moduleItemIntrotext">
                                                                     <a class="moduleItemImage"
-                                                                        href="../../k2-listing/item/293-vivamus-dictum-pulvinar-ipsum.html"
+                                                                        href=""
                                                                         title="Continue reading &quot;Vivamus dictum pulvinar ipsum&quot;">
-                                                                        <img src="../../../media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XS.jpg"
+                                                                        <img src="{% static 'users/media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XS.jpg' %}"
                                                                             alt="Vivamus dictum pulvinar ipsum" />
                                                                     </a>
                                                                     <div class="main">
                                                                         <a class="moduleItemTitle"
-                                                                            href="../../k2-listing/item/293-vivamus-dictum-pulvinar-ipsum.html">Vivamus
+                                                                            href="">Vivamus
                                                                             dictum pulvinar ipsum</a>
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
-                                                                    </div><!-- end main-->
-
+                                                                    </div>
                                                                 </div>
 
                                                                 <div class="clr"></div>
@@ -269,18 +210,18 @@
 
                                                                 <div class="moduleItemIntrotext">
                                                                     <a class="moduleItemImage"
-                                                                        href="../../k2-listing/item/292-nullam-hendrerit-tempus-tellus.html"
+                                                                        href=""
                                                                         title="Continue reading &quot;Nullam hendrerit tempus tellus&quot;">
-                                                                        <img src="../../../media/k2/items/cache/dbe05350458c15fa6c802fb686391131_XS.jpg"
+                                                                        <img src="{% static 'users/media/k2/items/cache/dbe05350458c15fa6c802fb686391131_XS.jpg' %}"
                                                                             alt="Nullam hendrerit tempus tellus" />
                                                                     </a>
                                                                     <div class="main">
                                                                         <a class="moduleItemTitle"
-                                                                            href="../../k2-listing/item/292-nullam-hendrerit-tempus-tellus.html">Nullam
+                                                                            href="">Nullam
                                                                             hendrerit tempus tellus</a>
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
-                                                                    </div><!-- end main-->
+                                                                    </div>
 
                                                                 </div>
 
@@ -294,18 +235,18 @@
 
                                                                 <div class="moduleItemIntrotext">
                                                                     <a class="moduleItemImage"
-                                                                        href="../../k2-listing/item/291-curabitur-luctus-tortor-non-quam-gravida.html"
+                                                                        href=""
                                                                         title="Continue reading &quot;Curabitur luctus tortor non quam gravida&quot;">
-                                                                        <img src="../../../media/k2/items/cache/63955aa9869cf7707ada1662dbfb31e2_XS.jpg"
+                                                                        <img src="{% static 'users/media/k2/items/cache/63955aa9869cf7707ada1662dbfb31e2_XS.jpg' %}"
                                                                             alt="Curabitur luctus tortor non quam gravida" />
                                                                     </a>
                                                                     <div class="main">
                                                                         <a class="moduleItemTitle"
-                                                                            href="../../k2-listing/item/291-curabitur-luctus-tortor-non-quam-gravida.html">Curabitur
+                                                                            href="">Curabitur
                                                                             luctus tortor non quam gravida</a>
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
-                                                                    </div><!-- end main-->
+                                                                    </div>
 
                                                                 </div>
 
@@ -336,18 +277,18 @@
                                 </div>
 
                                 <script type="text/javascript">
-                                    //<![CDATA[
                                     jQuery(document).ready(function($) {
-                                        $('#moduletabs_15875248111729926777').jsmart_moduletabs({
+                                        $('#moduletabs_11308236401729926773').jsmart_moduletabs({
                                             sj_module: 'mod_sj_moduletabs',
                                             sj_module_id: '360',
-                                            ajax_url: 'https://demo.smartaddons.com/templates/joomla3/sj-universityii/index.php/joomla-pages-2/blog-joomla/single-article',
+                                            ajax_url: '',
                                             ajaxUpdate: function(element, options) {
                                                 var loading = $('.ajax_loading', element);
                                                 if (loading.length) {
                                                     // show ajax indicator
-                                                    var category_id = $(element).attr('title').replace('sj_module_2load:',
-                                                    '');
+                                                    var category_id = $(element).attr('title')
+                                                        .replace('sj_module_2load:',
+                                                            '');
                                                     ajax_options = {
                                                         sj_module_2load: category_id,
                                                         sj_module_id: options.sj_module_id,
@@ -357,10 +298,13 @@
                                                         type: 'POST',
                                                         url: options.ajax_url,
                                                         data: ajax_options,
-                                                        success: function(data, status, jqXHR) {
+                                                        success: function(data, status,
+                                                            jqXHR) {
                                                             $(element).html(data);
-                                                            $(element).data('fx2height', $(element).height());
-                                                            $(element).attr('title', '');
+                                                            $(element).data('fx2height',
+                                                                $(element).height());
+                                                            $(element).attr('title',
+                                                            '');
                                                         },
                                                         dataType: 'html'
                                                     });
@@ -368,37 +312,29 @@
                                             }
                                         });
                                     });
-                                    //]]>
                                 </script>
 
                             </div>
                         </div>
 
                         <div class="module  tags-k2 ">
-                            <h3 class="modtitle">K2 Tags</h3>
+                            <h3 class="modtitle">{{menu_text.categories}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
-                                    <a href="../../component/k2/itemlist/tag/Creative.html" style="font-size:100%"
-                                        title="15 items tagged with Creative">
+                                    <a href="" style="font-size:100%" title="">
                                         Creative </a>
-                                    <a href="../../component/k2/itemlist/tag/css.html" style="font-size:100%"
-                                        title="15 items tagged with css">
+                                    <a href="" style="font-size:100%" title="">
                                         css </a>
-                                    <a href="../../component/k2/itemlist/tag/HTML5.html" style="font-size:100%"
-                                        title="15 items tagged with HTML5">
+                                    <a href="" style="font-size:100%" title="">
                                         HTML5 </a>
-                                    <a href="../../component/k2/itemlist/tag/joomla.html" style="font-size:100%"
-                                        title="15 items tagged with joomla">
+                                    <a href="" style="font-size:100%" title="">
                                         joomla </a>
-                                    <a href="../../component/k2/itemlist/tag/Photoshop.html" style="font-size:100%"
-                                        title="15 items tagged with Photoshop">
+                                    <a href="" style="font-size:100%" title="">
                                         Photoshop </a>
-                                    <a href="../../k2/k2-tags.html" style="font-size:100%"
-                                        title="15 items tagged with responsive">
+                                    <a href="" style="font-size:100%" title="">
                                         responsive </a>
-                                    <a href="../../component/k2/itemlist/tag/Text.html" style="font-size:100%"
-                                        title="15 items tagged with Text">
+                                    <a href="" style="font-size:100%" title="">
                                         Text </a>
                                     <div class="clr"></div>
                                 </div>

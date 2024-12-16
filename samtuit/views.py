@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from samtuit.models.models import PictureSlider, Students, Partners, Menu
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities
 from django.shortcuts import get_object_or_404
-from news.models import Post, Announcements, Meeting
+from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
 from django.db.models import Prefetch
@@ -32,15 +32,21 @@ def home(request):
     post_one.translated_text = post_one.get_post_text(language)
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     
-    menus = Menu.objects.all()
-    for menu in menus:
-        menu.translated_title = menu.get_menu_title(language)
+    wisdoms = Wisdom.objects.all().order_by("-id")[:5]
+    for wisdom in wisdoms:
+        wisdom.translated_title = wisdom.get_wis_title(language)
+        wisdom.translated_text = wisdom.get_wis_text(language)
+    
+    celebrities = Celebrities.objects.all().order_by("-id")[:3]
+    for celebritie in celebrities:
+        celebritie.translated_title = celebritie.get_cel_title(language)
+        celebritie.translated_text = celebritie.get_cel_text(language)
 
     context = {
         'pictures':pictures, 'posts':posts, 
         'post_one':post_one, 'post_three':post_three, 
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
-        'menus':menus
+        'wisdoms':wisdoms, 'celebrities':celebrities,
         } 
     return render(request, 'users/index.html', context)

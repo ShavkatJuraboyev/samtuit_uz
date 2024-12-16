@@ -17,20 +17,20 @@
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
                                 <li>
-                                    <a href="/" class="pathway">Bosh saxifa</a>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
                                 <li>
-                                    <span>Yangiliklar</span>
+                                    <span>{{menu_text.news}}</span>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>Yangiliklar</span></li>
+                                <li class="active"><span>{{menu_text.news}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
 
                         <div class="blog">
                             <h2 class="heading-category"> 
-                                <span class="subheading-category">Yangiliklar</span>
+                                <span class="subheading-category">{{menu_text.news}}</span>
                             </h2>
 
                             <div class="items-leading row">
@@ -72,7 +72,7 @@
                                                     <span itemprop="name">{{post.created_by}}</span> </dd>
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre"> Yangiliklar</a>
+                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>
                                             </dl>
                                         </aside>
@@ -100,14 +100,72 @@
                             </div>
                             <div class="pagination">
                                 <ul class="pagination">
-                                    <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="" class="pagenav">2</a></li>
-                                    <li><a title="Next" href="" class="pagenav"><i
-                                                class="fa fa-long-arrow-right l-hiden"></i> <i
-                                                class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="" class="pagenav">End</a></li>
+                                    <!-- Birinchi sahifa tugmasi -->
+                                    {% if posts.number != 1 %}
+                                        <li>
+                                            <a title="First" href="?page=1" class="pagenav"><i class="icon-chevron-left" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-left" aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
+                                    <!-- Oldingi sahifa tugmasi -->
+                                    {% if posts.has_previous %}
+                                        <li>
+                                            <a title="Previous" href="?page={{ posts.previous_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-left"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Sahifa raqamlari -->
+                                    {% for page in posts.paginator.page_range %}
+                                        {% if page == posts.number %}
+                                            <li class="active"><span>{{ page }}</span></li>
+                                        {% elif page > posts.number|add:'-3' and page < posts.number|add:'3' %}
+                                            <li>
+                                                <a title="{{ page }}" href="?page={{ page }}" class="pagenav">{{ page }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                            
+                                    <!-- Keyingi sahifa tugmasi -->
+                                    {% if posts.has_next %}
+                                        <li>
+                                            <a title="Next" href="?page={{ posts.next_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Oxirgi sahifa tugmasi -->
+                                    {% if posts.paginator.num_pages > 1 and posts.number != posts.paginator.num_pages %}
+                                        <li>
+                                            <a title="End" href="?page={{ posts.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
+                                                aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-right"
+                                                aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
+                            
                         </div>
 
                     </div>
@@ -116,24 +174,24 @@
                     <div id="right" class="col-sm-12">
 
                         <div class="module k2-categories ">
-                            <h3 class="modtitle">Tezkor menyular</h3>
+                            <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
                                     <ul class="level0">
-                                        <li><a href=""><span class="catTitle">Fakultetlar</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.faculties}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Kafedralar</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.departments}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Bo'lim va markazlar</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.centers}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Abituriyent</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.applicant}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Talabalar</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.students}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Ilmiy tadqiqiot faolyati</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.scientific_research_activity}}</span><span
                                                     class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Interaktiv xizmatlar</span><span
+                                        <li><a href=""><span class="catTitle">{{menu_text.interactive_services}}</span><span
                                                     class="catCounter"></span></a></li>
                                     </ul>
                                 </div>
@@ -148,10 +206,10 @@
                                     <div class="tabs-container">
                                         <ul class="tabs row">
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab selected">Yangiliklar</div>
+                                                <div class="tab selected">{{menu_text.news}}</div>
                                             </li>
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab">Kategoriyalar</div>
+                                                <div class="tab">{{menu_text.categories}}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -316,7 +374,7 @@
                         </div>
 
                         <div class="module  tags-k2 ">
-                            <h3 class="modtitle">Kategoriyalar</h3>
+                            <h3 class="modtitle">{{menu_text.categories}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
@@ -347,5 +405,5 @@
     </section>
 
     {% include 'users/base/settings.html' %}
-</div>
+</div> 
 {% endblock content %}

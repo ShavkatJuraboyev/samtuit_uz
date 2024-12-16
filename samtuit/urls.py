@@ -1,5 +1,5 @@
 from django.urls import path
-from samtuit.views.views import home, set_language
+from samtuit.views import home, set_language
 
 urlpatterns = [
     path('', home, name="home"),

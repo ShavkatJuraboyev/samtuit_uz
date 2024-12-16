@@ -22,13 +22,13 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
+    list_display = ('title_uz', 'created_at', 'created_by')
+    search_fields = ('title_uz',)
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
@@ -38,14 +38,14 @@ class MeetingAdmin(admin.ModelAdmin):
  
 @admin.register(Announcements)
 class Announc(admin.ModelAdmin):
-    list_display = ('title', 'location', 'build', 'day')
+    list_display = ('title_uz', 'location', 'build', 'day')
     list_filter = ('day',)
     search_fields = ('name',)
-    def save_model(self, request, obj, change):
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
@@ -55,13 +55,13 @@ class Announc(admin.ModelAdmin):
 
 @admin.register(Designation)
 class DesignationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
+    list_display = ('title_uz', 'created_at', 'created_by')
+    search_fields = ('title_uz',)
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
@@ -71,13 +71,13 @@ class DesignationAdmin(admin.ModelAdmin):
     
 @admin.register(PressConference)
 class PressConferenceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
+    list_display = ('title_uz', 'created_at', 'created_by')
+    search_fields = ('title_uz',)
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
@@ -87,13 +87,13 @@ class PressConferenceAdmin(admin.ModelAdmin):
 
 @admin.register(Seminar)
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
+    list_display = ('title_uz', 'created_at', 'created_by')
+    search_fields = ('title_uz',)
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
@@ -103,13 +103,13 @@ class SeminarAdmin(admin.ModelAdmin):
 
 @admin.register(Conversation)
 class ConversationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'created_by')
-    search_fields = ('title',)
-    def save_model(self, request, obj, change):
+    list_display = ('title_uz', 'created_at', 'created_by')
+    search_fields = ('title_uz',)
+    def save_model(self, request, obj, form, change):
         """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
         if not obj.pk: 
             obj.created_by = request.user  
-        super().save_model(request, obj, change)
+        super().save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""

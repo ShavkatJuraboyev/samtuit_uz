@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
-    
+
     'samtuit',
     'news',
 ]
@@ -73,8 +73,8 @@ customColorPalette = [
         },
     ]
 
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
-CKEDITOR_5_FILE_STORAGE = "path_to_storage.CustomStorage" # optional
+CKEDITOR_5_CUSTOM_CSS = 'static/users/css/custom_ckeditor.css'
+CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
 CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif', 'pdf', 'zip', 'mp4'] # optional
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB
@@ -149,6 +149,12 @@ CKEDITOR_5_CONFIGS = {
                 {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
                 {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
             ]
+        },
+        'fontSize': {
+            'options': [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48]
+        },
+        'alignment': {
+            'options': ['left', 'center', 'right', 'justify']
         },
         'upload': {
             'types': ['png', 'jpg', 'jpeg', 'gif']
@@ -275,7 +281,6 @@ CKEDITOR_5_CONFIGS = {
         }
     }
 }
-
 
 
 MIDDLEWARE = [

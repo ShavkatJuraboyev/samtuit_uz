@@ -17,7 +17,7 @@
                         <div class="slickslider-items bg-style1">
                             <div class="slickslider-item item clearfix active">
                                 <div class="images-slideshow">
-                                    <img alt="A Responsive Education Joomla Theme"
+                                    <img alt="rasm"
                                         src="{% static 'users/images/image.png' %}" />
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-    </section>
+    </section> 
 
     <section id="yt_spotlight2" class="block">
         <div class="container">
@@ -112,9 +112,9 @@
                                     <li class="content">
                                         <h3 class="tilte">
                                             <a
-                                                href="">Fakultetlar</a>
+                                                href="">{{ menu_text.faculties }}</a>
                                         </h3>
-                                        <p class="des">Kompyuter injiniringi fakulteti <br> Telekommunikatsiya texnologiyalari va kasb ta'limi fakulteti</p>
+                                        <p class="des">{{ menu_text.facultie_text }}</p>
 
                                     </li>
 
@@ -130,9 +130,9 @@
                                     <li class="content">
                                         <h3 class="tilte">
                                             <a
-                                                href="">Kafedralar</a>
+                                                href="">{{ menu_text.departments }}</a>
                                         </h3>
-                                        <p class="des">Filialda 9 ta Kafedralar mavjud.</p>
+                                        <p class="des">{{ menu_text.department_text }}</p>
 
                                     </li>
 
@@ -148,9 +148,9 @@
                                     <li class="content">
                                         <h3 class="tilte">
                                             <a
-                                                href="">Bo'lim va markazlar</a>
+                                                href="">{{ menu_text.centers }}</a>
                                         </h3>
-                                        <p class="des">Filialda jami 17 ta bo'lim va markazlar mavjud.</p>
+                                        <p class="des">{{ menu_text.center_text }}</p>
 
                                     </li>
 
@@ -166,9 +166,9 @@
                                     <li class="content">
                                         <h3 class="tilte">
                                             <a
-                                                href="">Bo'sh ish o'rinlari</a>
+                                                href="">{{ menu_text.vacancies }}</a>
                                         </h3>
-                                        <p class="des">Filialda bo'sh ish o'rinlari</p>
+                                        <p class="des">{{ menu_text.vacancie_text }}</p>
 
                                     </li>
 
@@ -183,8 +183,8 @@
                                     </li>
                                     <li class="content">
                                         <h3 class="tilte">
-                                            <a href="">Abituriyent</a></h3>
-                                        <p class="des">O‘zbekiston Respublikasi Vazirlar Mahkamasining 2018 yil 3-apreldagi 261-son qarori... </p>
+                                            <a href="">{{ menu_text.applicant }}</a></h3>
+                                        <p class="des">{{ menu_text.applicant_text }} </p>
 
                                     </li>
 
@@ -200,9 +200,9 @@
                                     <li class="content">
                                         <h3 class="tilte">
                                             <a
-                                                href="">Talabalar</a>
+                                                href="">{{ menu_text.students }}</a>
                                         </h3>
-                                        <p class="des">O‘zbekiston Respublikasi Vazirlar Mahkamasining 2018 yil 3-apreldagi 261-son qarori...</p>
+                                        <p class="des">{{ menu_text.student_text }}</p>
 
                                     </li>
                                 </ul>
@@ -303,7 +303,7 @@
                 <div id="top8" class="col-lg-3 col-sm-6">
 
                     <div class="module  ">
-                        <h3 class="modtitle">Taʼlim haqida soʻz</h3>
+                        <h3 class="modtitle">{{ menu_text.wisdom }}</h3>
                         <div class="modcontent clearfix">
 
                             <script type="text/javascript">
@@ -339,103 +339,24 @@
                             </script>
                             <div id="sj_accordion_17299267321842936974" class="sj-accordion">
                                 <div class="acd-items">
+                                    {% for wisdom in wisdoms %}
                                     <div class="acd-item">
-                                        <div class="acd-header">Aenean vehicula vehicul </div>
+                                        <div class="acd-header">{{wisdom.translated_title}} </div>
                                         <div class="acd-content-wrap ">
                                             <div class="acd-content-wrap-inner ">
 
-                                                <div class="acd-description">
-                                                    Meggings next level yr, 90′s small batch four loko brunch wes
-                                                    anderson fixie american apparel flexitarian pitchfork neutra.
-                                                    Constructed in cotton sweat fabric, this lovely piece, lacus eu
-                                                    mattis </div>
+                                                <div class="acd-description">{{wisdom.translated_text}}</div>
 
                                                 <div class="acd-readmore">
                                                     <a href=""
-                                                        title="Aenean vehicula vehicula alicaten">
+                                                        title="{{wisdom.translated_title}}">
                                                     </a>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">Aliquam lobortis cursus </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Class aptent taciti sociosqu ad litora torquent per conubia
-                                                    nostra, per inceptos himenaeos. Aliquam eget arcu magna, vel
-                                                    congue dui. Nunc auctor mauris tempor leo aliquam sodales.
-                                                </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Aliquam lobortis cursus ">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">Detus laoreet dignissim </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Detus laoreet dignissim ">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">Faucibus eu laoreet nun </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Faucibus eu laoreet nunc">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="acd-item">
-                                        <div class="acd-header">Lacinia Sed convallis </div>
-                                        <div class="acd-content-wrap ">
-                                            <div class="acd-content-wrap-inner ">
-
-                                                <div class="acd-description">
-                                                    Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                    velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor
-                                                    mauris tempor leo aliquam vel porta ante sodales. Nulla
-                                                    facilisi. In </div>
-
-                                                <div class="acd-readmore">
-                                                    <a href=""
-                                                        title="Lacinia Sed convallis pitena">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -445,7 +366,7 @@
                 <div id="top9" class="col-lg-3 col-sm-6">
 
                     <div class="module  feature-teachers ">
-                        <h3 class="modtitle">Mashxurlar aytgan so'zlari</h3>
+                        <h3 class="modtitle">{{ menu_text.famous_quotes }}</h3>
                         <div class="modcontent clearfix">
 
                             <div class="carousel-custommer">
@@ -453,40 +374,19 @@
                                     class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
                                     data-interval='false'>
                                     <div class="carousel-inner">
+                                        {% for celebritie in celebrities %}
                                         <div class='item'>
                                             <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/al-xorazmiy.jpg' %}"
+                                                <div class="item-image"><img src="{{celebritie.get_cel_img}}"
                                                         alt="" style="width: 100%; height: 100%;" /></div>
                                                 <div class="content-main">
-                                                    <h3 class="title">Abu Abdulloh Muhammad ibn <br>
-                                                        Muso al-Xorazmiy</h3>
+                                                    <h3 class="title">{{celebritie.translated_title}}</h3>
                                                     <span class="adred"> </span>
-                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
+                                                    <p class="post-commnets">{{celebritie.translated_text}}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/i.webp' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Abu Ali ibn Sino</h3>
-                                                    <span class="adred"></span>
-                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{% static 'users/images/demo/alisher-navoiy.jpg' %}"
-                                                        alt="" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">Alisher Navoiy</h3>
-                                                    <span class="adred"></span>
-                                                    <p class="post-commnets">Insonlarni doimiy tobe bo‘lib yashashlari, boshqalar tomoni-dan o‘z nafsini masxara qilinishga chidash, jabr-zulmga toqat qilish, yetishmovchilik kabilar kishini qiziqqon bo‘lishiga sabab bo‘ladi.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div><a class="carousel-control left" href="#yt-extra-carousel1"
                                         data-slide="prev"><i class="fa fa-angle-left"></i></a><a
                                         class="carousel-control right" href="#yt-extra-carousel1"
@@ -513,7 +413,7 @@
                 <div id="top6" class="col-sm-12">
 
                     <div class="module  extra-upcoming-slider ">
-                        <h3 class="modtitle"> E'lonlar va tadbirlar </h3>
+                        <h3 class="modtitle"> {{menu_text.announcements_and_events}}</h3>
                         <div class="modcontent clearfix">
                             <div id="sjextraslider_1821092771729926732"
                                 class="sj-extraslider slide  extra-resp01-3 extra-resp02-3 extra-resp03-1 extra-resp04-1"
@@ -607,7 +507,7 @@
                 <div id="top4" class="col-lg-12 col-sm-12 ">
                     <br>
                     <div class="module  k2-slider-style-one ">
-                        <h3 class="modtitle">Bizning hamkorlar</h3>
+                        <h3 class="modtitle">{{menu_text.our_partners}}</h3>
                         <div class="modcontent clearfix">
                             <div id="sj_k2_slider_210936539417299267323" class="sj-k2-container-slider" >
 
@@ -862,16 +762,14 @@
                                     <div class="sg-container">
                                         {% for student in students %}
                                         <figure>
-                                            <a href=""
-                                                title="{{student.frist_name}}">
+                                            <a title="{{student.frist_name}}">
                                                 <img src="{{student.get_student_img}}"
                                                     alt="{{student.frist_name}}"
                                                     title="{{student.frist_name}}" />
                                             </a>
                                             <figcaption>
                                                 <div class="sg-title">
-                                                    <a href=""
-                                                        title="{{student.frist_name}}">{{student.frist_name}} {{student.last_name}} <br>
+                                                    <a title="{{student.frist_name}}">{{student.frist_name}} {{student.last_name}} <br>
                                                     <span>{{student.candidate}}</span></a>
                                                 </div>
                                                 <div class="sg-back"><div class="sg-back-inner"></div></div>
@@ -879,7 +777,7 @@
                                         </figure>
                                         {% endfor %}
                                     </div>
-                                    <div class="buttom-click" style="line-height: 500px; "><span>Bizning iftxorlarimiz</span> </div>
+                                    <div class="buttom-click" style="line-height: 500px; "><span>{{menu_text.our_pride}}</span> </div>
                                 </section>
                             </div>
 

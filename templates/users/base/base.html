@@ -8,6 +8,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="SmartAddons.Com - the high quality products!" />
 	<title>SAMTUIT</title>
+	<link rel="stylesheet" href="users/css/styles.css">
 	<link href="{% static 'users/components/com_k2/css/k2.css' %}" rel="stylesheet" type="text/css" />
 	<link href="{% static 'users/plugins/content/jw_disqus/jw_disqus/tmpl/css/templateeecd.css' %}" rel="stylesheet"
 		type="text/css" />
@@ -189,6 +190,9 @@
 </head>
 
 <body id="bd" class="homepage home-layout1 res">
+	<!-- <div id="season-effects"></div> -->
+	<div id="season-effects"></div>
+
 
 
     {% block content %}
@@ -196,7 +200,7 @@
     {% endblock content %}
 
     
-
+	<script src="{% static 'users/js/script.js' %}"></script>
 	<script type="text/javascript" src="{% static 'users/plugins/system/EUCookieDirectiveLite/EUCookieDirectiveLite/EUCookieDirective.js' %}"></script>
 	<script type="text/javascript">
 		function jSelectShortcode(text) {
