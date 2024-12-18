@@ -1,12 +1,32 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu, MenuItem
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu
 from django.shortcuts import get_object_or_404
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
 from django.db.models import Prefetch
+from django.apps import apps
+from django.http import JsonResponse
 
+# Model ro'yxatini qaytarish
+def get_models(request):
+    models = []
+    for model in apps.get_models():
+        models.append({
+            'model_name': model._meta.model_name
+        })
+    return JsonResponse({'models': models})
+
+# Obyektlarni qaytarish
+def get_objects(request):
+    model_name = request.GET.get('model')
+    if not model_name:
+        return JsonResponse({'objects': []})
+
+    model = apps.get_model(app_label='your_app_name', model_name=model_name)
+    objects = model.objects.values('id', 'name')  # Obyektlardan id va name maydonlarini olish
+    return JsonResponse({'objects': list(objects)})
 
 
 def set_language(request):
@@ -41,15 +61,6 @@ def home(request):
     for celebritie in celebrities:
         celebritie.translated_title = celebritie.get_cel_title(language)
         celebritie.translated_text = celebritie.get_cel_text(language)
-
-    # Menyularni olish va ularning tarjimasi
-    menus = Menu.objects.filter(is_active=True)
-    for menu in menus:
-        menu.translated_title = menu.get_menu_title(language)
-        # Har bir menyu uchun MenuItemlarni olish
-        menu_items = MenuItem.objects.filter(menu=menu)
-        # Menu elementlarini (MenuItemlarni) qo'shish
-        menu.menu_items = menu_items
 
     context = {
         'pictures':pictures, 'posts':posts, 

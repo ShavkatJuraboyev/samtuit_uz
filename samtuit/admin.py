@@ -1,17 +1,18 @@
+from django import forms
 from django.contrib import admin
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Celebrities, Menu, MenuItem
-
-class MenuItemInline(admin.TabularInline):
-    model = MenuItem
-    extra = 1
+from django.contrib.contenttypes.models import ContentType
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Celebrities, Menu
+from samtuit.forms import MenuAdminForm
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ('title_uz', 'menu_type', 'is_active')
-    list_filter = ('menu_type', 'is_active')
-    prepopulated_fields = {'slug': ('title_uz',)}
-    inlines = [MenuItemInline]
+    form = MenuAdminForm
+    class Media:
+        js = ('users/js/admin.js',)
 
+    list_display = ['title_uz', 'menu_type', 'parent', 'linked_model', 'linked_object', 'order']
+    list_filter = ['parent', 'menu_type']
+    list_editable = ['order']
 
 admin.site.register(PictureSlider)
 

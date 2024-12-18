@@ -7,26 +7,39 @@ from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
-MENU_TYPE_CHOICES = (
-    ('list', 'List Ko‘rinishda'),
-    ('detail', 'Detail Ko‘rinishda'),
-)
+
 class Menu(models.Model):
-    title_uz = models.CharField(max_length=255, verbose_name='Uzbek tilida sarlavha')
-    title_ru = models.CharField(max_length=255, verbose_name='Rus tilida sarlavha')
-    title_en = models.CharField(max_length=255, verbose_name='Ingliz tilida sarlavha')
+    MENU_TYPE_CHOICES = (
+        ('list', 'List'),
+        ('detail', 'Detail'),
+    )
+    title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
+    title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
+    title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
     slug = models.SlugField(unique=True, blank=True, verbose_name="Slug")
-    menu_type = models.CharField(
-        max_length=10,
-        choices=MENU_TYPE_CHOICES,
-        default='list',
-        verbose_name="Menyu turi"
+    menu_type = models.CharField(max_length=10, choices=MENU_TYPE_CHOICES, verbose_name="Menyu turi")
+    linked_model = models.CharField(max_length=100, blank=True, null=True, verbose_name="Bog'liq model")
+    linked_object = models.PositiveIntegerField(blank=True, null=True, verbose_name="Bog'liq obyekt ID")
+    parent = models.ForeignKey(
+        'self', 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True, 
+        related_name='children', 
+        verbose_name="Ota menyu"
     )
     is_active = models.BooleanField(default=True, verbose_name="Faolmi?")
+    order = models.PositiveIntegerField(default=0, verbose_name="Tartib")
+    def get_linked_model_instance(self):
+        if self.linked_model and self.linked_object:
+            model = apps.get_model(app_label='news', model_name=self.linked_model)
+            return model.objects.filter(pk=self.linked_object).first()
+        return None
 
     class Meta:
         verbose_name = "Menyu"
         verbose_name_plural = "Menyular"
+        ordering = ['parent__id', 'order']
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -34,35 +47,15 @@ class Menu(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title_uz  # Bu erda siz o'zingiz xohlagan tilni ko'rsatishingiz mumkin
+        return self.title_uz
     
     def get_translation(self, field_name, language):
         """Berilgan tilga mos tarjimani qaytaradi."""
-        language_suffix = f"_{language}"  # Masalan: '_en'
-        translated_field = f"{field_name}{language_suffix}"  # Masalan: 'title_en'
-        # Agar kerakli til bo'yicha ma'lumot topilmasa, O'zbek tilini qaytaradi
+        translated_field = f"{field_name}{language_suffix}"
         return getattr(self, translated_field, getattr(self, f"{field_name}_uz", ''))
 
     def get_menu_title(self, language):
         return self.get_translation('title', language)
-
-
-class MenuItem(models.Model):
-    menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='items', verbose_name="Menyu")
-    content_type = models.ForeignKey(
-        ContentType, 
-        on_delete=models.CASCADE, 
-        verbose_name="Bog‘lanadigan Model (Ma'lumot turi)"
-    )
-    object_id = models.PositiveIntegerField(verbose_name="Bog‘lanadigan ID (optional)", null=True, blank=True)
-    content_object = GenericForeignKey('content_type', 'object_id')
-
-    def __str__(self):
-        return f"{self.menu.title_uz} - {self.content_type}"
-
-    class Meta:
-        verbose_name = "Menyu elementi"
-        verbose_name_plural = "Menyu elementlari"
 
 
 class PictureSlider(models.Model):

@@ -1,3 +1,5 @@
+let leafCount = 0; // Joriy barglar soni
+const maxLeaves = 20; // Maksimal barglar soni
 // Snowflake yaratish funksiyasi
 function createSnowflake() {
     const snowContainer = document.getElementById('snowContainer');
@@ -36,6 +38,9 @@ setInterval(createSnowflake, 200);
 
 
 function createRaindrop() {
+    if (leafCount >= maxLeaves) {
+        return;
+    }
     const rainContainer = document.getElementById('rainContainer');
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
@@ -48,7 +53,7 @@ function createRaindrop() {
     raindrop.style.left = Math.random() * window.innerWidth + 'px';
 
     // Tasodifiy tushish davomiyligi
-    const fallDuration = Math.random() * 4 + 2 + 's';
+    const fallDuration = Math.random() * 2 + 1 + 's';
     raindrop.style.animationDuration = fallDuration;
 
     // Tasodifiy kechikish
@@ -61,13 +66,19 @@ function createRaindrop() {
     raindrop.addEventListener('animationend', () => {
         raindrop.remove();
     });
+     // Animatsiya tugaganda elementni o'chirish
+    raindrop.addEventListener('animationend', () => {
+        raindrop.remove();
+        leafCount--; // Har bir barg o'chirilganda sonni kamaytirish
+    });
+
+    leafCount++;
 }
 
 // Har 100ms da yangi yomg'ir tomchilarini qo'shish
 setInterval(createRaindrop, 250);
 
-let leafCount = 0; // Joriy barglar soni
-const maxLeaves = 20; // Maksimal barglar soni
+
 
 function createLeafdrop() {
     if (leafCount >= maxLeaves) {
