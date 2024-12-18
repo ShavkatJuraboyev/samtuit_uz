@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu, MenuItem
 from django.shortcuts import get_object_or_404
 from news.models import Post, Announcements
 from django.utils.translation import activate
@@ -42,11 +42,21 @@ def home(request):
         celebritie.translated_title = celebritie.get_cel_title(language)
         celebritie.translated_text = celebritie.get_cel_text(language)
 
+    # Menyularni olish va ularning tarjimasi
+    menus = Menu.objects.filter(is_active=True)
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)
+        # Har bir menyu uchun MenuItemlarni olish
+        menu_items = MenuItem.objects.filter(menu=menu)
+        # Menu elementlarini (MenuItemlarni) qo'shish
+        menu.menu_items = menu_items
+
     context = {
         'pictures':pictures, 'posts':posts, 
         'post_one':post_one, 'post_three':post_three, 
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
         'wisdoms':wisdoms, 'celebrities':celebrities,
+        'menus': menus,
         } 
     return render(request, 'users/index.html', context)

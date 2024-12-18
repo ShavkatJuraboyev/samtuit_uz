@@ -749,43 +749,29 @@
                         </div>
                     </li>
 
-                    <li class="level1 last havechild ">
-                        <a href="" title="{{ menu_text.interactive_services }}" class="level1 last havechild  item-link"><span class="menu-title">{{ menu_text.interactive_services }}</span></a>
-                        <!-- open mega-content div -->
-                        <div class="level2 menu mega-content">
-                            <div class="mega-content-inner clearfix">
-                                <div class="mega-col first one">
-                                    <ul class="subnavi level2">
-                                        <li class="level2 first ">
-                                            <a title="Yangiliklar" class="level2 first  item-link" href="{% url 'news' %}"><span class="">{% trans "Yangiliklar" %}</span></a>
-                                        </li>
-
-                                        <li class="level2">
-                                            <a title="Yig'ilishlar" class="level2  item-link" href="{% url 'meetings' %}"><span class="menu-title">Yig'ilishlar</span></a>
-                                        </li>
-
-                                        <li class="level2">
-                                            <a title="E'lonlar" class="level2 last  item-link" href="{% url 'elonlar' %}"><span class="menu-title">E'lonlar</span></a>
-                                        </li>
-                                        <li class="level2">
-                                            <a title="Uchrashuvlar" class="level2 last  item-link" href=""><span class="menu-title">Uchrashuvlar</span></a>
-                                        </li>
-                                        <li class="level2">
-                                            <a title="Matbuot anjumanlari" class="level2 last  item-link" href=""><span class="menu-title">Matbuot anjumanlari</span></a>
-                                        </li>
-                                        <li class="level2">
-                                            <a title="Seminarlar" class="level2 last  item-link" href=""><span class="menu-title">Seminarlar</span></a>
-                                        </li>
-                                        <li class="level2">
-                                            <a title="Davra suhbatlari" class="level2 last  item-link" href=""><span class="menu-title">Davra suhbatlari</span></a>
-                                        </li>
-
-                                    </ul>
+                    {% for menu in menus %}
+                        <li class="level1 last havechild">
+                            <a href="#" title="{{ menu.translated_title }}" class="level1 last havechild item-link">
+                                <span class="menu-title">{{ menu.translated_title }}</span>
+                            </a>
+                            <!-- open mega-content div -->
+                            <div class="level2 menu mega-content">
+                                <div class="mega-content-inner clearfix">
+                                    <div class="mega-col first one">
+                                        <ul class="subnavi level2">
+                                            {% for menu_item in menu.menu_items %}
+                                                <li class="level2 {% if forloop.first %}first{% endif %}">
+                                                    <a title="{{ menu_item.content_object }}" class="level2 item-link" href="">
+                                                        <span class="menu-title">{{ menu_item.content_type.model|capfirst }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    {% endfor %}
                     
                     <li class="level1 ">
                         <a title="{{ menu_text.contact }}" class="level1  item-link" href=""><span

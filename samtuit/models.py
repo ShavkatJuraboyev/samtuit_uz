@@ -3,20 +3,38 @@ from django.conf import settings
 from django.templatetags.static import static
 from django.core.exceptions import ValidationError
 from PIL import Image
+from django.utils.text import slugify
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
+MENU_TYPE_CHOICES = (
+    ('list', 'List Ko‘rinishda'),
+    ('detail', 'Detail Ko‘rinishda'),
+)
 class Menu(models.Model):
     title_uz = models.CharField(max_length=255, verbose_name='Uzbek tilida sarlavha')
     title_ru = models.CharField(max_length=255, verbose_name='Rus tilida sarlavha')
     title_en = models.CharField(max_length=255, verbose_name='Ingliz tilida sarlavha')
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='children')
-    url = models.CharField(max_length=255, blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, blank=True, verbose_name="Slug")
+    menu_type = models.CharField(
+        max_length=10,
+        choices=MENU_TYPE_CHOICES,
+        default='list',
+        verbose_name="Menyu turi"
+    )
+    is_active = models.BooleanField(default=True, verbose_name="Faolmi?")
+
+    class Meta:
+        verbose_name = "Menyu"
+        verbose_name_plural = "Menyular"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title_uz)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title_uz  # Bu erda siz o'zingiz xohlagan tilni ko'rsatishingiz mumkin
-
-    class Meta:
-        verbose_name = 'Menu'
     
     def get_translation(self, field_name, language):
         """Berilgan tilga mos tarjimani qaytaradi."""
@@ -27,6 +45,25 @@ class Menu(models.Model):
 
     def get_menu_title(self, language):
         return self.get_translation('title', language)
+
+
+class MenuItem(models.Model):
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='items', verbose_name="Menyu")
+    content_type = models.ForeignKey(
+        ContentType, 
+        on_delete=models.CASCADE, 
+        verbose_name="Bog‘lanadigan Model (Ma'lumot turi)"
+    )
+    object_id = models.PositiveIntegerField(verbose_name="Bog‘lanadigan ID (optional)", null=True, blank=True)
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    def __str__(self):
+        return f"{self.menu.title_uz} - {self.content_type}"
+
+    class Meta:
+        verbose_name = "Menyu elementi"
+        verbose_name_plural = "Menyu elementlari"
+
 
 class PictureSlider(models.Model):
     image = models.ImageField(upload_to="silder/", help_text="Silayder rasmlari yuklash uchun")
