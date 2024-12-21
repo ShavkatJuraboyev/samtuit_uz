@@ -1,32 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu
-from django.shortcuts import get_object_or_404
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu, Season
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
-from django.db.models import Prefetch
-from django.apps import apps
-from django.http import JsonResponse
 
-# Model ro'yxatini qaytarish
-def get_models(request):
-    models = []
-    for model in apps.get_models():
-        models.append({
-            'model_name': model._meta.model_name
-        })
-    return JsonResponse({'models': models})
-
-# Obyektlarni qaytarish
-def get_objects(request):
-    model_name = request.GET.get('model')
-    if not model_name:
-        return JsonResponse({'objects': []})
-
-    model = apps.get_model(app_label='your_app_name', model_name=model_name)
-    objects = model.objects.values('id', 'name')  # Obyektlardan id va name maydonlarini olish
-    return JsonResponse({'objects': list(objects)})
 
 
 def set_language(request):
@@ -62,12 +40,21 @@ def home(request):
         celebritie.translated_title = celebritie.get_cel_title(language)
         celebritie.translated_text = celebritie.get_cel_text(language)
 
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)  # Ichki menyu tarjimasi
+
+    season = Season.objects.all().order_by("-id").first()
+
     context = {
         'pictures':pictures, 'posts':posts, 
         'post_one':post_one, 'post_three':post_three, 
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
         'wisdoms':wisdoms, 'celebrities':celebrities,
-        'menus': menus,
+        'menus':menus, 'season':season
         } 
     return render(request, 'users/index.html', context)

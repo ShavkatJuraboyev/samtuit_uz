@@ -1,0 +1,8 @@
+<h1>{{ list_menu.translated_title }}</h1>
+<ul>
+    {% for lst in lists %}
+        <li>
+            <h2><a href="{% url 'view_menu_detail' lst.id %}">{{ lst.id }} - {{ lst.translated_title }}</a></h2>
+        </li>
+    {% endfor %}
+</ul>

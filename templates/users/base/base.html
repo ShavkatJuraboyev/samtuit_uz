@@ -199,9 +199,13 @@
 </head>
 
 <body id="bd" class="homepage home-layout1 res">
-	<!-- <div class="season-container" id="snowContainer"></div> -->
+	{% if season.snow %}
+	<div class="season-container" id="snowContainer"></div>
+	{% elif season.rain %}
 	<div class="season-container" id="rainContainer"></div>
-	<!-- <div class="season-container" id="leafContainer"></div> -->
+	{% elif season.leaf %}
+	<div class="season-container" id="leafContainer"></div>
+	{% endif %}
 
 
 

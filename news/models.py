@@ -2,11 +2,11 @@ from django.db import models
 from django.conf import settings
 from django_ckeditor_5.fields import CKEditor5Field
 from django.templatetags.static import static
+from django.utils.text import slugify
 
 
-class Post(models.Model):
+class Post(models.Model): 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    key = models.CharField(max_length=100, unique=True, null=True)  # Matn kaliti
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
@@ -19,8 +19,6 @@ class Post(models.Model):
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
     content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
-
-    slug = models.SlugField(unique=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -76,8 +74,6 @@ class Meeting(models.Model):
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
     content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
 
-    slug = models.SlugField(unique=True, null=True)
-
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -120,7 +116,7 @@ class Meeting(models.Model):
         super(Meeting, self).save(*args, **kwargs)
  
 
-class Announcements(models.Model):
+class Announcements(models.Model): 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
     content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
@@ -398,3 +394,42 @@ class Conversation(models.Model):
         except Conversation.DoesNotExist:
             pass
         super(Conversation, self).save(*args, **kwargs)
+
+class Details(models.Model): 
+    title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
+    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
+
+    title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
+    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+
+    title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
+    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+
+    slug = models.SlugField(unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
+    share_count = models.IntegerField(default=0) 
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title_en)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title_uz
+    
+    class Meta:
+        verbose_name_plural = "Bittalik ma'lumotlar"
+    
+    def get_translation(self, field_name, language):
+        """Berilgan tilga mos tarjimani qaytaradi."""
+        language_suffix = f"_{language}"  # Masalan: '_en'
+        translated_field = f"{field_name}{language_suffix}"  # Masalan: 'title_en'
+        # Agar kerakli til bo'yicha ma'lumot topilmasa, O'zbek tilini qaytaradi
+        return getattr(self, translated_field, getattr(self, f"{field_name}_uz", ''))
+    
+    def get_detail_title(self, language):
+        return self.get_translation('title', language)
+
+    def get_detail_content(self, language):
+        return self.get_translation('content', language)
