@@ -126,7 +126,7 @@ class ListsAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'share_count', 'created_by',)  # Faqat o'qish uchun maydonlar
     fieldsets = (
         ('Umumiy maʼlumotlar', {
-            'fields': ('listmenu', 'image', 'url', 'share_count', 'created_by'),
+            'fields': ('listmenu', 'url', 'share_count', 'created_by'),
         }),
         ('Uzbekcha maʼlumotlar', {
             'fields': ('title_uz', 'text_uz', 'content_uz'),

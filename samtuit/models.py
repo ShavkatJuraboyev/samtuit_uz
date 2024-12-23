@@ -29,7 +29,7 @@ class Menu(models.Model):
         return getattr(self, translated_field, getattr(self, f"{field_name}_uz", ''))
 
     def get_menu_title(self, language):
-        return self.get_translation('title', language)
+        return self.get_translation('title', language) 
 
 class ListsMenu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
@@ -59,7 +59,6 @@ class ListsMenu(models.Model):
 
 class Lists(models.Model):
     listmenu = models.ForeignKey(ListsMenu, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Menusi", help_text="Menuyuda aks etadi")
-    image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     url = models.CharField(max_length=255, null=True, blank=True, help_text="Boshqa web saytga yonaltirish", verbose_name="Url")
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")

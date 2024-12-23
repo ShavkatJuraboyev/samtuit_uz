@@ -76,14 +76,10 @@
                                 </dl>
                             </aside>
 
-                            <figure class="img-fulltext pull-none">
-                                <a href="" title="">
-                                    <img src="{{post.get_post_img}}" alt="{{post.translated_title}}"/> </a>
-                            </figure>
-
-
-                            <a id="startOfPage"></a>                                
+                            
                             {{post.translated_content|safe}}
+                                                      
+                            
                            
                             <ul class="pager pagenav">
                                 {% if previous_post %}

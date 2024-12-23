@@ -60,7 +60,7 @@ class Post(models.Model):
             pass
         super(Post, self).save(*args, **kwargs)
 
-
+ 
 class Meeting(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")

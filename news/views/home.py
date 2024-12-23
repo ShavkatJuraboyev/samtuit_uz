@@ -21,7 +21,7 @@ def menu_view(request, slug):
     list_menu.translated_title = list_menu.get_lists_title(language)
 
     # Tilga mos tarjimalarni qo'shing
-    for lst in lists:
+    for lst in lists: 
         lst.translated_title = lst.get_list_title(language)
     ctx = {
         'list_menu': list_menu, 'lists': lists,

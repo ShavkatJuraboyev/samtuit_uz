@@ -2,9 +2,10 @@ TRANSLATIONS = {
     'menu': { 
         'uz': {
             'home': 'Bosh saxifa',
+            "university":"Universitet",
             'web_systems': 'Universitet web sayt tizimlari',
             'hemis_teacher': 'Hemis o\'qituvchi',
-            'hemis_student': 'Hemis talaba',
+            'hemis_student': 'Hemis talaba', 
             'library': 'Kutubxona',
             'admission': 'Qabul-2024',
             'news' : "Yangiliklar", 
@@ -37,10 +38,13 @@ TRANSLATIONS = {
             "scientific_research_activity":"Ilmiy tadqiqiot faolyati",
             "previous_post":"Oldingi",
             "next_post":"Keyingi",
+            "meetings":"Yig'ilishlar",
+            'announcements':'E\'lonlar',
         },
 
         'ru': {
-            'home': 'Домашняя страница',
+            'home': 'Домашняя страница',            
+            "university":"Университет",
             'web_systems': 'Веб-системы университета',
             'hemis_teacher': 'Hemis учитель',
             'hemis_student': 'Hemis студент', 
@@ -76,10 +80,13 @@ TRANSLATIONS = {
             "scientific_research_activity":"Научно-исследовательская деятельность",
             "previous_post":"Предыдущий",
             "next_post":"Следующий",
+            "meetings":"Встречи",
+            'announcements':'Объявления',
         },
 
         'en': {
             'home': 'Home',
+            "university":"University",
             'web_systems': 'University Web Systems',
             'hemis_teacher': 'Hemis Teacher',
             'hemis_student': 'Hemis Student',
@@ -115,6 +122,8 @@ TRANSLATIONS = {
             "scientific_research_activity":"Scientific research activity",
             "previous_post":"Previous",
             "next_post":"Next",
+            "meetings":"Meetings",
+            'announcements':'Announcements',
         }
     }
 }

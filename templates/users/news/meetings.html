@@ -17,20 +17,20 @@
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
                                 <li>
-                                    <a href="/" class="pathway">Bosh saxifa</a>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
                                 <li>
-                                    <span>Yangiliklar</span>
+                                    <span>{{menu_text.news}}</span>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>Yig'ilishlar</span></li>
+                                <li class="active"><span>{{menu_text.meetings}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -51,17 +51,16 @@
                     <div id="yt_component">
 
                         <div class="blog">
-                            <h2 class="heading-category"> <span class="subheading-category">Yig'ilishlar</span>
+                            <h2 class="heading-category"> <span class="subheading-category">{{menu_text.meetings}}</span>
                             </h2>
 
                             <div class="items-row cols-1 row-0 row">
-
+                                {% for meet in meetings %}
                                 <div class="item col-sm-12 column-1">
 
                                     <figure class="pull-none item-image">
 
-                                        <img src="../../../cache/sj_university2/6494c566369d3bf0607b63116407a288.jpg"
-                                            alt="" />
+                                        <img src="{{meet.get_meet_img}}" alt="{{meet.translated_title}}" width="300"/>
                                         <aside class="article-aside">
 
                                             <dl class="article-info  muted">
@@ -69,12 +68,11 @@
                                                 <dd class="createdby" itemprop="author" itemscope
                                                     itemtype="http://schema.org/Person">
                                                     <i class="fa fa-user"></i>
-                                                    <span itemprop="name">Super User</span> </dd>
+                                                    <span itemprop="name">{{meet.created_by}}</span> </dd>
 
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="category-blog.html" itemprop="genre">Content
-                                                        Category 1</a>
+                                                    {{menu_text.categories}}: <a href="{% url 'meeting' pk=meet.id %}" itemprop="genre">{{menu_text.meetings}}</a>
                                                 </dd>
 
                                             </dl>
@@ -87,9 +85,7 @@
                                         <header class="article-header">
 
                                             <h2>
-                                                <a
-                                                    href="category-blog/category-blog-4-columns/91-haretra-faucibus-eu-laoreet-nunc.html">
-                                                    Faucibus eu laoreet nunc</a>
+                                                <a href="{% url 'meeting' pk=meet.id %}">{{meet.translated_title}}</a>
                                             </h2>
 
                                         </header>
@@ -101,37 +97,87 @@
                                         <aside class="article-aside">
 
                                             <dl class="article-info  muted">
-                                                <dd class="create"><i class="ico-clock"></i>21 May 2020</dd>
+                                                <dd class="create"><i class="ico-clock"></i>{{meet.created_at}}</dd>
 
                                                 <dd class="hits"><i class="ico-hits"></i>23744</dd>
                                             </dl>
                                         </aside>
 
                                         <div class="article-intro">
-                                            <p>Suspendisse at libero porttitor nisi aliquet vulputate vitae at
-                                                velit. Aliquam eget arcu magna, vel congue dui. Nunc auctor mauris
-                                                tempor leo aliquam vel porta ante sodales. Nulla facilisi. In
-                                                accumsan mattis odio vel luctus.</p>
+                                            <p>{{meet.translated_text}}</p>
                                         </div>
 
                                     </div>
 
                                 </div>
-
+                            {% endfor %}
                             </div>
 
                             <div class="pagination">
                                 <ul class="pagination">
-                                    <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="category-blog0c72.html?start=4" class="pagenav">2</a>
-                                    </li>
-                                    <li><a title="3" href="category-blog14fa.html?start=8" class="pagenav">3</a>
-                                    </li>
-                                    <li><a title="Next" href="category-blog0c72.html?start=4" class="pagenav"><i
-                                                class="fa fa-long-arrow-right l-hiden"></i> <i
-                                                class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="category-blog14fa.html?start=8" class="pagenav">End</a>
-                                    </li>
+                                    <!-- Birinchi sahifa tugmasi -->
+                                    {% if meetings.number != 1 %}
+                                        <li>
+                                            <a title="First" href="?page=1" class="pagenav"><i class="icon-chevron-left" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-left" aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
+                                    <!-- Oldingi sahifa tugmasi -->
+                                    {% if meetings.has_previous %}
+                                        <li>
+                                            <a title="Previous" href="?page={{ meetings.previous_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-left"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Sahifa raqamlari -->
+                                    {% for page in meetings.paginator.page_range %}
+                                        {% if page == meetings.number %}
+                                            <li class="active"><span>{{ page }}</span></li>
+                                        {% elif page > meetings.number|add:'-3' and page < meetings.number|add:'3' %}
+                                            <li>
+                                                <a title="{{ page }}" href="?page={{ page }}" class="pagenav">{{ page }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                            
+                                    <!-- Keyingi sahifa tugmasi -->
+                                    {% if meetings.has_next %}
+                                        <li>
+                                            <a title="Next" href="?page={{ meetings.next_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Oxirgi sahifa tugmasi -->
+                                    {% if meetings.paginator.num_pages > 1 and meetings.number != meetings.paginator.num_pages %}
+                                        <li>
+                                            <a title="End" href="?page={{ meetings.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
+                                                aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-right"
+                                                aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>

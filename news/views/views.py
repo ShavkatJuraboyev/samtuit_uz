@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from news.models import Post, Announcements, Meeting, Details
+from news.models import Post, Announcements, Meeting, Details, Designation
 from samtuit.models import Menu, Season
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
@@ -33,7 +33,7 @@ def news(request):
         'posts': paginated_posts, 'menu_text':menu_text, "menus":menus, "season":season
         }
     return render(request, 'users/news/news.html', context) 
-
+ 
 def new(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
@@ -61,8 +61,7 @@ def new(request, pk):
     }
     return render(request, 'users/news_views/new_view.html', context)
 
-
-def meetings(request): 
+def meetings(request):  
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
@@ -73,8 +72,15 @@ def meetings(request):
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
     meetings = Meeting.objects.all() 
+    for meeting in meetings:
+        meeting.translated_title = meeting.get_meeting_title(language)
+        meeting.translated_text = meeting.get_meeting_text(language)
 
-    ctx = {'menu_text': menu_text, "meetings":meetings, "menus":menus, 'season':season}
+    paginator = Paginator(meetings, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+    ctx = {'menu_text': menu_text, "meetings":paginated_posts, "menus":menus, 'season':season}
     return render(request, 'users/news/meetings.html', ctx)
 
 def meeting(request, pk):
@@ -88,19 +94,17 @@ def meeting(request, pk):
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
     meeting = get_object_or_404(Meeting, pk=pk)
-    previous_post = Post.objects.filter(id__lt=meeting.id).order_by('-id').first()
-    next_post = Post.objects.filter(id__gt=meeting.id).order_by('id').first()
+    previous_meeting = Meeting.objects.filter(id__lt=meeting.id).order_by('-id').first()
+    next_meeting = Meeting.objects.filter(id__gt=meeting.id).order_by('id').first()
     meeting.translated_title = meeting.get_meeting_title(language)
     meeting.translated_content = meeting.get_meeting_content(language)
 
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
-        "previous_post":previous_post, 'next_post':next_post,
+        "previous_meeting":previous_meeting, 'next_meeting':next_meeting,
         "menus":menus, 'season':season
     }
     return render(request, 'users/news_views/meeting_view.html', ctx)
-
-
 
 def elonlar(request): 
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -114,9 +118,40 @@ def elonlar(request):
             child.translated_title = child.get_menu_title(language)
 
     announcements = Announcements.objects.all()
+    for announcement in announcements:
+        announcement.translated_title = announcement.get_anno_title(language)
+        announcement.translated_text = announcement.get_anno_text(language)
 
-    ctx = {'annos':announcements, 'menu_text':menu_text, "menus":menus, 'season':season}
+    paginator = Paginator(announcements, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+    ctx = {'annos':paginated_posts, 'menu_text':menu_text, "menus":menus, 'season':season}
     return render(request, 'users/news/elonlar.html', ctx)
+
+def elon(request, pk):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)
+    elon = get_object_or_404(Announcements, pk=pk)
+    previous_elon = Announcements.objects.filter(id__lt=elon.id).order_by('-id').first()
+    next_elon = Announcements.objects.filter(id__gt=elon.id).order_by('id').first()
+    elon.translated_title = elon.get_anno_title(language)
+    elon.translated_content = elon.get_anno_content(language)
+
+    ctx = {
+        "menu_text":menu_text, "meeting":meeting,
+        "previous_elon":previous_elon, 'next_elon':next_elon,
+        "menus":menus, 'season':season, 'elon':elon
+    }
+    return render(request, 'users/news_views/elon_view.html', ctx)
+
 
 def uchrashuvlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -129,7 +164,17 @@ def uchrashuvlar(request):
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
 
-    ctx = {'menu_text': menu_text, "menus":menus, 'season':season}
+    designations = Designation.objects.all()
+    for announcement in designations:
+        announcement.translated_title = announcement.get_desig_title(language)
+        announcement.translated_text = announcement.get_desig_text(language)
+
+    paginator = Paginator(designations, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+
+    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'desig':paginated_posts}
     return render(request, 'users/news/uchrashuvlar.html', ctx)
 
 def matbuat_anjumanlar(request):
@@ -168,7 +213,6 @@ def davra_suhbatlar(request):
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
     return render(request, 'users/news/davra_suhbatlari.html')
-
 
 def share_post(request, pk):
     post = get_object_or_404(Post, pk=pk)

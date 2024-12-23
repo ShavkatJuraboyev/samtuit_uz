@@ -17,20 +17,13 @@
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
                                 <li>
-                                    <a href="/" class="pathway">Bosh saxifa</a>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
-                                <li>
-                                    <span>Yangiliklar</span>
-                                    <span class="divider">
-                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
-                                            alt="" />
-                                    </span>
-                                </li>
-                                <li class="active"><span>E'lonlar</span></li>
+                                <li class="active"><span>{{menu_text.announcements}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -55,11 +48,11 @@
                         <div id="k2Container" class="itemListView gridview">
                             <div class="itemListCategoriesBlock">
                                 <div class="itemListCategory">
-                                    <h2>E'lonlar</h2>
+                                    <h2>{{menu_text.announcements}}</h2>
                                 </div>
 
                             </div>
-
+ 
                             <!-- Item list -->
                             <div class="itemList">
 
@@ -70,7 +63,7 @@
                                         <div class="catItemView groupLeading">
                                             <div class="catItemImageBlock">
                                                 <a href="" title="{{anno.title}}"> 
-                                                    <img src="{{anno.get_elon_img}}" alt="{{anno.title}}" style="width: 350px; height: 200px;" />
+                                                    <img src="{{anno.get_elon_img}}" alt="{{anno.translated_title}}" style="width: 350px; height: 200px;" />
                                                 </a>
                                                 <a data-rel="prettyPhoto" href="{{anno.get_elon_img}}" class="zoom_img"></a>
                                                 <div class="over-image"></div>
@@ -78,7 +71,7 @@
                                             <div class="main-item">
                                                 <div class="catItemHeader">
                                                     <h3 class="catItemTitle">
-                                                        <a href="">{{anno.title}}</a>
+                                                        <a href="">{{anno.translated_title}}</a>
                                                     </h3>
                                                     <aside class="article-aside">
                                                         <dl class="article-info  muted">
@@ -86,8 +79,7 @@
                                                             <dd class="create">{{anno.created_at}}</dd>
                                                             
                                                             <dd class="catItemCategory">
-                                                                <a href="">E'lonlarda</a>
-                                                                <span>Chop etilgan</span>
+                                                                <a href="">{{menu_text.announcements}}</a>
                                                             </dd>
                                                         </dl>
                                                     </aside>
@@ -96,13 +88,13 @@
 
                                                 <div class="catItemBody">
                                                     <div class="catItemIntroText">
-                                                        <p>{{anno.text}}</p>
+                                                        <p>{{anno.translated_text}}</p>
                                                     </div>
 
                                                     <div class="clr"></div>
                                                     <div class="clr"></div>
                                                     <div class="catItemReadMore">
-                                                        <a class="k2ReadMore button" href=""> Batafsil</a>
+                                                        <a class="k2ReadMore button" href="{% url 'elon' anno.id %}"> {{menu_text.more}}</a>
                                                     </div>
                                                     <div class="clr"></div>
                                                 </div>
@@ -119,18 +111,72 @@
                                 </div>
                             </div>
                             <!-- Pagination -->
-                            <div class="k2Pagination">
+                            <div class="pagination">
                                 <ul class="pagination">
-                                    <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="k2-1column0c72.html?start=4" class="pagenav">2</a></li>
-                                    <li><a title="3" href="k2-1column14fa.html?start=8" class="pagenav">3</a></li>
-                                    <li><a title="Next" href="k2-1column0c72.html?start=4" class="pagenav"><i
-                                                class="fa fa-long-arrow-right l-hiden"></i> <i
-                                                class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="k2-1column14fa.html?start=8" class="pagenav">End</a>
-                                    </li>
+                                    <!-- Birinchi sahifa tugmasi -->
+                                    {% if annos.number != 1 %}
+                                        <li>
+                                            <a title="First" href="?page=1" class="pagenav"><i class="icon-chevron-left" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-left" aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
+                                    <!-- Oldingi sahifa tugmasi -->
+                                    {% if annos.has_previous %}
+                                        <li>
+                                            <a title="Previous" href="?page={{ annos.previous_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-left"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Sahifa raqamlari -->
+                                    {% for page in annos.paginator.page_range %}
+                                        {% if page == annos.number %}
+                                            <li class="active"><span>{{ page }}</span></li>
+                                        {% elif page > annos.number|add:'-3' and page < annos.number|add:'3' %}
+                                            <li>
+                                                <a title="{{ page }}" href="?page={{ page }}" class="pagenav">{{ page }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                            
+                                    <!-- Keyingi sahifa tugmasi -->
+                                    {% if annos.has_next %}
+                                        <li>
+                                            <a title="Next" href="?page={{ annos.next_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Oxirgi sahifa tugmasi -->
+                                    {% if annos.paginator.num_pages > 1 and annos.number != annos.paginator.num_pages %}
+                                        <li>
+                                            <a title="End" href="?page={{ annos.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
+                                                aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-right"
+                                                aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
                                 </ul>
-                                Page 1 of 3
                             </div>
                         </div>
 

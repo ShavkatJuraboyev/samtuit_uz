@@ -73,7 +73,7 @@ customColorPalette = [
         },
     ]
 
-CKEDITOR_5_CUSTOM_CSS = 'static/users/css/custom_ckeditor.css'
+CKEDITOR5_JQUERY_URL = 'https://code.jquery.com/jquery-3.6.0.min.js'
 CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
 CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif', 'pdf', 'zip', 'mp4'] # optional
@@ -105,6 +105,7 @@ CKEDITOR_5_CONFIGS = {
             '|', 'bulletedList', 'numberedList', 
             '|', 'blockQuote',
         ],
+        'language': 'uz',
         'toolbar': [
             'heading', '|', 'outdent', 'indent', '|', 
             'bold', 'italic', 'link', 'underline', 'strikethrough',
@@ -119,13 +120,29 @@ CKEDITOR_5_CONFIGS = {
         ],
         'image': {
             'toolbar': [
-                'imageTextAlternative', '|', 'imageStyle:alignLeft',
-                'imageStyle:alignRight', 'imageStyle:alignCenter', 
-                'imageStyle:side', '|'
+                'imageTextAlternative', '|', 
+                'imageStyle:alignLeft', 'imageStyle:alignRight', 'imageStyle:alignCenter', 
+                'imageStyle:side', '|', 'resizeImage:custom', '|'
             ],
             'styles': [
                 'full', 'side', 'alignLeft', 
                 'alignRight', 'alignCenter',
+            ],
+            'resizeOptions': [
+                {
+                'name': 'resizeImage:original',
+                'label': 'Original'
+                },
+                {
+                    'name': 'resizeImage:50',
+                    'value': '50%',
+                    'label': '50%'
+                },
+                {
+                    'name': 'resizeImage:75',
+                    'value': '75%',
+                    'label': '75%'
+                }
             ]
         },
         'table': {
@@ -151,14 +168,18 @@ CKEDITOR_5_CONFIGS = {
             ]
         },
         'fontSize': {
-            'options': [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48]
+            'options': [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 33, 32, 36, 48]
         },
         'alignment': {
             'options': ['left', 'center', 'right', 'justify']
         },
         'upload': {
             'types': ['png', 'jpg', 'jpeg', 'gif']
-        }
+        },
+        'fileTools': {
+            'fileTypes': ['pdf', 'docx', 'pptx'],
+            'uploadUrl': '/upload/',  # Fayllarni yuklash
+        },
     },
     
     'extends_en': {
@@ -167,6 +188,7 @@ CKEDITOR_5_CONFIGS = {
             '|', 'bulletedList', 'numberedList', 
             '|', 'blockQuote',
         ],
+        'language': 'en',
         'toolbar': [
             'heading', '|', 'outdent', 'indent', '|', 
             'bold', 'italic', 'link', 'underline', 'strikethrough',
@@ -223,6 +245,7 @@ CKEDITOR_5_CONFIGS = {
             '|', 'bulletedList', 'numberedList', 
             '|', 'blockQuote',
         ],
+        'language': 'ru',
         'toolbar': [
             'heading', '|', 'outdent', 'indent', '|', 
             'bold', 'italic', 'link', 'underline', 'strikethrough',
@@ -282,6 +305,7 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -374,8 +398,11 @@ LOCALE_PATHS = [
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic uchun
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Statik fayllaringiz joylashgan katalog
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -386,3 +413,9 @@ CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'contentsCss': [STATIC_URL + 'users/css/custom_ckeditor.css'],
+    },
+}

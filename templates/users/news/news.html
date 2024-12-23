@@ -72,7 +72,7 @@
                                                     <span itemprop="name">{{post.created_by}}</span> </dd>
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
+                                                    {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>
                                             </dl>
                                         </aside>
