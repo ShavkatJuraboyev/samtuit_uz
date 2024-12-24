@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
+from ckeditor.widgets import CKEditorWidget
 from samtuit.models import PictureSlider, Partners, Students, Wisdom, Celebrities, Menu, Season, Lists, ListsMenu
 
 
@@ -126,7 +126,7 @@ class ListsAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'share_count', 'created_by',)  # Faqat o'qish uchun maydonlar
     fieldsets = (
         ('Umumiy maʼlumotlar', {
-            'fields': ('listmenu', 'url', 'share_count', 'created_by'),
+            'fields': ('listmenu', 'url', 'files', 'share_count', 'created_by'),
         }),
         ('Uzbekcha maʼlumotlar', {
             'fields': ('title_uz', 'text_uz', 'content_uz'),

@@ -39,273 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'samtuit',
     'news',
 ]
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
-customColorPalette = [
-        {
-            'color': 'hsl(4, 90%, 58%)',
-            'label': 'Red'
-        },
-        {
-            'color': 'hsl(340, 82%, 52%)',
-            'label': 'Pink'
-        },
-        {
-            'color': 'hsl(291, 64%, 42%)',
-            'label': 'Purple'
-        },
-        {
-            'color': 'hsl(262, 52%, 47%)',
-            'label': 'Deep Purple'
-        },
-        {
-            'color': 'hsl(231, 48%, 48%)',
-            'label': 'Indigo'
-        },
-        {
-            'color': 'hsl(207, 90%, 54%)',
-            'label': 'Blue'
-        },
-    ]
 
-CKEDITOR5_JQUERY_URL = 'https://code.jquery.com/jquery-3.6.0.min.js'
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
-CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif', 'pdf', 'zip', 'mp4'] # optional
-DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB
-FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': [
-            'heading', '|', 'bold', 'italic', 'link', 'underline', 
-            'strikethrough', 'insertHorizontalRule', 'imageUpload', '|',
-            'bulletedList', 'numberedList', 'blockQuote', '|', 
-            'fontSize', 'fontFamily', 'fontColor', 
-            'fontBackgroundColor', 'mediaEmbed', 'removeFormat', 
-            'insertTable', 'alignment'  # Qatorga alignment qo'shildi
-        ],
-        'language': 'uz',
-        'fontSize': {
-            'options': [
-                '8px', '9px', '10px', '11px', '12px', 
-                '14px', '15px', '16px', '18px', '20px', 
-                '24px', '30px', '36px', '48px', '60px', 
-                '72px'
-            ]
-        },
-    },
-    'extends_uz': {
-        'blockToolbar': [
-            'paragraph', 'heading1', 'heading2', 'heading3', 
-            '|', 'bulletedList', 'numberedList', 
-            '|', 'blockQuote',
-        ],
-        'language': 'uz',
-        'toolbar': [
-            'heading', '|', 'outdent', 'indent', '|', 
-            'bold', 'italic', 'link', 'underline', 'strikethrough',
-            'code', 'subscript', 'superscript', 'highlight', '|', 
-            'codeBlock', 'sourceEditing', 'insertImage',
-            'bulletedList', 'numberedList', 'todoList', '|', 
-            'blockQuote', 'imageUpload', '|',
-            'fontSize', 'fontFamily', 'fontColor', 
-            'fontBackgroundColor', 'mediaEmbed', 
-            'removeFormat', 'insertTable', 'insertHorizontalRule',
-            'alignment'  # Alignment qo'shildi
-        ],
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', '|', 
-                'imageStyle:alignLeft', 'imageStyle:alignRight', 'imageStyle:alignCenter', 
-                'imageStyle:side', '|', 'resizeImage:custom', '|'
-            ],
-            'styles': [
-                'full', 'side', 'alignLeft', 
-                'alignRight', 'alignCenter',
-            ],
-            'resizeOptions': [
-                {
-                'name': 'resizeImage:original',
-                'label': 'Original'
-                },
-                {
-                    'name': 'resizeImage:50',
-                    'value': '50%',
-                    'label': '50%'
-                },
-                {
-                    'name': 'resizeImage:75',
-                    'value': '75%',
-                    'label': '75%'
-                }
-            ]
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ],
-            'tableProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            },
-            'tableCellProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            }
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
-            ]
-        },
-        'fontSize': {
-            'options': [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 33, 32, 36, 48]
-        },
-        'alignment': {
-            'options': ['left', 'center', 'right', 'justify']
-        },
-        'upload': {
-            'types': ['png', 'jpg', 'jpeg', 'gif']
-        },
-        'fileTools': {
-            'fileTypes': ['pdf', 'docx', 'pptx'],
-            'uploadUrl': '/upload/',  # Fayllarni yuklash
-        },
-    },
-    
-    'extends_en': {
-        'blockToolbar': [
-            'paragraph', 'heading1', 'heading2', 'heading3', 
-            '|', 'bulletedList', 'numberedList', 
-            '|', 'blockQuote',
-        ],
-        'language': 'en',
-        'toolbar': [
-            'heading', '|', 'outdent', 'indent', '|', 
-            'bold', 'italic', 'link', 'underline', 'strikethrough',
-            'code', 'subscript', 'superscript', 'highlight', '|', 
-            'codeBlock', 'sourceEditing', 'insertImage',
-            'bulletedList', 'numberedList', 'todoList', '|', 
-            'blockQuote', 'imageUpload', '|',
-            'fontSize', 'fontFamily', 'fontColor', 
-            'fontBackgroundColor', 'mediaEmbed', 
-            'removeFormat', 'insertTable', 'insertHorizontalRule',
-            'alignment'  # Alignment qo'shildi
-        ],
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', '|', 'imageStyle:alignLeft',
-                'imageStyle:alignRight', 'imageStyle:alignCenter', 
-                'imageStyle:side', '|'
-            ],
-            'styles': [
-                'full', 'side', 'alignLeft', 
-                'alignRight', 'alignCenter',
-            ]
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ],
-            'tableProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            },
-            'tableCellProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            }
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
-            ]
-        },
-        'upload': {
-            'types': ['png', 'jpg', 'jpeg', 'gif']
-        }
-    },
-    
-    'extends_ru': {
-        'blockToolbar': [
-            'paragraph', 'heading1', 'heading2', 'heading3', 
-            '|', 'bulletedList', 'numberedList', 
-            '|', 'blockQuote',
-        ],
-        'language': 'ru',
-        'toolbar': [
-            'heading', '|', 'outdent', 'indent', '|', 
-            'bold', 'italic', 'link', 'underline', 'strikethrough',
-            'code', 'subscript', 'superscript', 'highlight', '|', 
-            'codeBlock', 'sourceEditing', 'insertImage',
-            'bulletedList', 'numberedList', 'todoList', '|', 
-            'blockQuote', 'imageUpload', '|',
-            'fontSize', 'fontFamily', 'fontColor', 
-            'fontBackgroundColor', 'mediaEmbed', 
-            'removeFormat', 'insertTable', 'insertHorizontalRule',
-            'alignment'  # Alignment qo'shildi
-        ],
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', '|', 'imageStyle:alignLeft',
-                'imageStyle:alignRight', 'imageStyle:alignCenter', 
-                'imageStyle:side', '|'
-            ],
-            'styles': [
-                'full', 'side', 'alignLeft', 
-                'alignRight', 'alignCenter',
-            ]
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ],
-            'tableProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            },
-            'tableCellProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
-            }
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
-            ]
-        },
-        'upload': {
-            'types': ['png', 'jpg', 'jpeg', 'gif']
-        }
-    },
-    
-    'list': {
-        'properties': {
-            'styles': 'true',
-            'startIndex': 'true',
-            'reversed': 'true',
-        }
-    }
-}
-
-CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -407,15 +149,274 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'extends_uz': {
+        'toolbar': 'full',
+        'height': 600,
+        'width': 1000,
+    },
+    'extends_en': {
+        'toolbar': 'full',
+        'height': 600,
+        'width': 1000,
+    },
+    'extends_ru': {
+        'toolbar': 'full',
+        'height': 600,
+        'width': 1000,
+    },
+}
+
+# customColorPalette = [
+#         {
+#             'color': 'hsl(4, 90%, 58%)',
+#             'label': 'Red'
+#         },
+#         {
+#             'color': 'hsl(340, 82%, 52%)',
+#             'label': 'Pink'
+#         },
+#         {
+#             'color': 'hsl(291, 64%, 42%)',
+#             'label': 'Purple'
+#         },
+#         {
+#             'color': 'hsl(262, 52%, 47%)',
+#             'label': 'Deep Purple'
+#         },
+#         {
+#             'color': 'hsl(231, 48%, 48%)',
+#             'label': 'Indigo'
+#         },
+#         {
+#             'color': 'hsl(207, 90%, 54%)',
+#             'label': 'Blue'
+#         },
+#     ]
+
+# CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"  # Fayllarni saqlash joyi
+# CKEDITOR_5_UPLOAD_PATH = "uploads/" 
+
+
+# CKEDITOR_5_CONFIGS = {
+#     'extends_uz': {
+#         'toolbar': [
+#             'heading', '|', 'outdent', 'indent', '|', 
+#             'bold', 'italic', 'link', 'underline', 'strikethrough', 
+#             'code', 'subscript', 'superscript', 'highlight', '|',
+#             'codeBlock', 'sourceEditing', 'insertImage', 'imageUpload',
+#             'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 
+#             '|', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 
+#             'mediaEmbed', 'removeFormat', 'insertTable', 'insertHorizontalRule', 'alignment'
+#         ],
+#         'image': {
+#             'styles': [],
+#             'toolbar': [
+#                 'imageTextAlternative', '|', 
+#                 'imageStyle:alignLeft', 'imageStyle:alignRight', 'imageStyle:alignCenter', 
+#                 'imageStyle:side', '|', 'resizeImage:custom', '|'
+#             ],
+#             'styles': [
+#                 'full', 'side', 'alignLeft', 
+#                 'alignRight', 'alignCenter',
+#             ],
+#             'resizeOptions': [
+#                 {
+#                 'name': 'resizeImage:original',
+#                 'label': 'Original'
+#                 },
+#                 {
+#                     'name': 'resizeImage:50',
+#                     'value': '50%',
+#                     'label': '50%'
+#                 },
+#                 {
+#                     'name': 'resizeImage:75',
+#                     'value': '75%',
+#                     'label': '75%'
+#                 }
+#             ]
+#         }, 
+#         'htmlSupport': {
+#             'allow': [
+#                 {
+#                     'name': 'p',
+#                     'attributes': {'style': True},
+#                     'classes': True
+#                 },
+#                 {
+#                     'name': 'img',
+#                     'attributes': {'src': True, 'width': True, 'height': True, 'alt': True, 'style': True},
+#                     'classes': True
+#                 }
+#             ]
+#         },
+#         'table': {
+#             'contentToolbar': [
+#                 'tableColumn', 'tableRow', 'mergeTableCells',
+#                 'tableProperties', 'tableCellProperties'
+#             ],
+#             'tableProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             },
+#             'tableCellProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             }
+#         },
+#         'heading': {
+#             'options': [
+#                 {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+#                 {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+#                 {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+#                 {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+#             ]
+#         },
+#         'fontSize': {
+#             'options': [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 33, 32, 36, 48]
+#         },
+#         'alignment': {
+#             'options': ['left', 'center', 'right', 'justify']
+#         },
+#         'upload': {
+#             'types': ['png', 'jpg', 'jpeg', 'gif']
+#         },
+#         'fileTools': {
+#             'fileTypes': ['pdf', 'docx', 'pptx'],
+#             'uploadUrl': '/upload/',  # Fayllarni yuklash
+#         },
+#     },
+    
+#     'extends_en': {
+#         'blockToolbar': [
+#             'paragraph', 'heading1', 'heading2', 'heading3', 
+#             '|', 'bulletedList', 'numberedList', 
+#             '|', 'blockQuote',
+#         ],
+#         'language': 'en',
+#         'toolbar': [
+#             'heading', '|', 'outdent', 'indent', '|', 
+#             'bold', 'italic', 'link', 'underline', 'strikethrough',
+#             'code', 'subscript', 'superscript', 'highlight', '|', 
+#             'codeBlock', 'sourceEditing', 'insertImage',
+#             'bulletedList', 'numberedList', 'todoList', '|', 
+#             'blockQuote', 'imageUpload', '|',
+#             'fontSize', 'fontFamily', 'fontColor', 
+#             'fontBackgroundColor', 'mediaEmbed', 
+#             'removeFormat', 'insertTable', 'insertHorizontalRule',
+#             'alignment'  # Alignment qo'shildi
+#         ],
+#         'image': {
+#             'toolbar': [
+#                 'imageTextAlternative', '|', 'imageStyle:alignLeft',
+#                 'imageStyle:alignRight', 'imageStyle:alignCenter', 
+#                 'imageStyle:side', '|'
+#             ],
+#             'styles': [
+#                 'full', 'side', 'alignLeft', 
+#                 'alignRight', 'alignCenter',
+#             ]
+#         },
+#         'table': {
+#             'contentToolbar': [
+#                 'tableColumn', 'tableRow', 'mergeTableCells',
+#                 'tableProperties', 'tableCellProperties'
+#             ],
+#             'tableProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             },
+#             'tableCellProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             }
+#         },
+#         'heading': {
+#             'options': [
+#                 {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+#                 {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+#                 {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+#                 {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+#             ]
+#         },
+#         'upload': {
+#             'types': ['png', 'jpg', 'jpeg', 'gif']
+#         }
+#     },
+    
+#     'extends_ru': {
+#         'blockToolbar': [
+#             'paragraph', 'heading1', 'heading2', 'heading3', 
+#             '|', 'bulletedList', 'numberedList', 
+#             '|', 'blockQuote',
+#         ],
+#         'language': 'ru',
+#         'toolbar': [
+#             'heading', '|', 'outdent', 'indent', '|', 
+#             'bold', 'italic', 'link', 'underline', 'strikethrough',
+#             'code', 'subscript', 'superscript', 'highlight', '|', 
+#             'codeBlock', 'sourceEditing', 'insertImage',
+#             'bulletedList', 'numberedList', 'todoList', '|', 
+#             'blockQuote', 'imageUpload', '|',
+#             'fontSize', 'fontFamily', 'fontColor', 
+#             'fontBackgroundColor', 'mediaEmbed', 
+#             'removeFormat', 'insertTable', 'insertHorizontalRule',
+#             'alignment'  # Alignment qo'shildi
+#         ],
+#         'image': {
+#             'toolbar': [
+#                 'imageTextAlternative', '|', 'imageStyle:alignLeft',
+#                 'imageStyle:alignRight', 'imageStyle:alignCenter', 
+#                 'imageStyle:side', '|'
+#             ],
+#             'styles': [
+#                 'full', 'side', 'alignLeft', 
+#                 'alignRight', 'alignCenter',
+#             ]
+#         },
+#         'table': {
+#             'contentToolbar': [
+#                 'tableColumn', 'tableRow', 'mergeTableCells',
+#                 'tableProperties', 'tableCellProperties'
+#             ],
+#             'tableProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             },
+#             'tableCellProperties': {
+#                 'borderColors': customColorPalette,
+#                 'backgroundColors': customColorPalette
+#             }
+#         },
+#         'heading': {
+#             'options': [
+#                 {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+#                 {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+#                 {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+#                 {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+#             ]
+#         },
+#         'upload': {
+#             'types': ['png', 'jpg', 'jpeg', 'gif']
+#         }
+#     },
+    
+#     'list': {
+#         'properties': {
+#             'styles': 'true',
+#             'startIndex': 'true',
+#             'reversed': 'true',
+#         }
+#     }
+# }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'contentsCss': [STATIC_URL + 'users/css/custom_ckeditor.css'],
-    },
-}

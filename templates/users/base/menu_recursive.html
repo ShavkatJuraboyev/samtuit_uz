@@ -1,0 +1,18 @@
+<div class="menu mega-content level{{ menu.0.level }}">
+    <div class="mega-content-inner clearfix">
+        <div class="mega-col first one">
+            <ul class="subnavi level{{ menu.0.level }}">
+                {% for item in menu %}
+                    <li class="level{{ item.level }} {% if forloop.first %}first{% endif %}">
+                        <a href="{{ item.url }}" title="{{ item.translated_title }}" class="level{{ item.level }} item-link">
+                            <span class="menu-title">{{ item.translated_title }}</span>
+                        </a>
+                        {% if item.children.exists %}
+                            {% include "users/base/menu_recursive.html" with menu=item.children.all %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

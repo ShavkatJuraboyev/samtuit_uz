@@ -3,8 +3,12 @@ from samtuit.models import Menu, ListsMenu, Lists
 from django.shortcuts import get_object_or_404
 from samtuit.translations import TRANSLATIONS
 
-
-
+def get_nested_children(list_menu):
+    children = list_menu.children.all()
+    return [{
+        'list_menu': child,
+        'children': get_nested_children(child)
+    } for child in children]
 
 def menu_view(request, slug):
     language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
@@ -17,15 +21,15 @@ def menu_view(request, slug):
             child.translated_title = child.get_menu_title(language)
 
     list_menu = get_object_or_404(ListsMenu, slug=slug)  # ListsMenu'ni slug bo'yicha toping
-    lists = Lists.objects.filter(listmenu=list_menu)  # ListsMenu bilan bog'liq barcha Lists ma'lumotlarini oling
-    list_menu.translated_title = list_menu.get_lists_title(language)
+    nested_children = get_nested_children(list_menu)
 
+    lists = Lists.objects.filter(listmenu=list_menu)  # ListsMenu bilan bog'liq barcha Lists ma'lumotlarini oling
     # Tilga mos tarjimalarni qo'shing
     for lst in lists: 
         lst.translated_title = lst.get_list_title(language)
     ctx = {
         'list_menu': list_menu, 'lists': lists,
-        "menu_text":menu_text, "menus":menus
+        "menu_text":menu_text, "menus":menus, 'children': nested_children,
         }
     return render(request, 'users/lists/list_page.html', ctx)
 
@@ -48,3 +52,4 @@ def view_menu_detail(request, pk):
         "menu_text":menu_text, "menus":menus
     }
     return render(request, 'users/lists/list_detail.html', ctx)
+

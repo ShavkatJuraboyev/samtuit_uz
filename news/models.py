@@ -3,6 +3,7 @@ from django.conf import settings
 from django_ckeditor_5.fields import CKEditor5Field
 from django.templatetags.static import static
 from django.utils.text import slugify
+from ckeditor_uploader.fields import RichTextUploadingField 
 
 
 class Post(models.Model): 
@@ -10,15 +11,15 @@ class Post(models.Model):
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -60,19 +61,18 @@ class Post(models.Model):
             pass
         super(Post, self).save(*args, **kwargs)
 
- 
 class Meeting(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -115,19 +115,18 @@ class Meeting(models.Model):
             pass
         super(Meeting, self).save(*args, **kwargs)
  
-
 class Announcements(models.Model): 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     location = models.CharField(max_length=200, null=True, verbose_name="Unversitet")
     build = models.CharField(max_length=200, null=True, verbose_name="Manzil")
@@ -175,19 +174,18 @@ class Announcements(models.Model):
 
         super(Announcements, self).save(*args, **kwargs)
 
-
 class Designation(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -234,15 +232,15 @@ class Designation(models.Model):
 class PressConference(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -289,15 +287,15 @@ class PressConference(models.Model):
 class Seminar(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -344,15 +342,15 @@ class Seminar(models.Model):
 class Conversation(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True)
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -378,7 +376,7 @@ class Conversation(models.Model):
     def get_conv_content(self, language):
         return self.get_translation('content', language)
 
-    def get_semin_img(self):
+    def get_conv_img(self):
         return self.image.url if self.image else static('')
     
     def __str__(self):
@@ -397,13 +395,13 @@ class Conversation(models.Model):
 
 class Details(models.Model): 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True, blank=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

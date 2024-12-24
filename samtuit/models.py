@@ -6,6 +6,7 @@ from PIL import Image
 from django.utils.text import slugify
 from django.conf import settings
 from django_ckeditor_5.fields import CKEditor5Field
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Menu(models.Model):
@@ -16,7 +17,7 @@ class Menu(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
     class Meta:
         verbose_name = "Menyu" 
-        verbose_name_plural = "Menyular"
+        verbose_name_plural = "Menyular" 
 
 
     def __str__(self):
@@ -35,7 +36,9 @@ class ListsMenu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
     title_en = models.CharField(max_length=100, verbose_name='Engliz tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
-    slug = models.SlugField(unique=True, blank=True, verbose_name="Url", help_text="Ushbu urlni tanlangan Menu saxifasidagi urlga joylashtiring")
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
+    slug = models.SlugField(unique=True, blank=True, verbose_name="Slug", help_text="Ushbu urlni tanlangan Menu saxifasidagi urlga joylashtiring")
+    url = models.CharField(max_length=200, blank=True, null=True, default=f"http://127.0.0.1:8000/views/")
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -56,22 +59,29 @@ class ListsMenu(models.Model):
     
     class Meta:
         verbose_name = "Menyular"
+    
+    @property
+    def translated_title(self):
+        from django.utils.translation import get_language
+        language = get_language()  # Joriy tilni aniqlash
+        return self.get_lists_title(language)
 
 class Lists(models.Model):
     listmenu = models.ForeignKey(ListsMenu, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Menusi", help_text="Menuyuda aks etadi")
     url = models.CharField(max_length=255, null=True, blank=True, help_text="Boshqa web saytga yonaltirish", verbose_name="Url")
+    files = models.FileField(upload_to="files", null=True, blank=True, help_text="Fayl yuklash agar kerak bo'lsa", verbose_name="Fayl")
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
-    text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = CKEditor5Field(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
+    text_uz = models.CharField(max_length=500, null=True, blank=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
+    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
-    text_en = models.CharField(max_length=500, null=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = CKEditor5Field(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    text_en = models.CharField(max_length=500, null=True, blank=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
+    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
-    text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = CKEditor5Field(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    text_ru = models.CharField(max_length=500, null=True, blank=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
+    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -95,23 +105,9 @@ class Lists(models.Model):
 
     def get_list_content(self, language):
         return self.get_translation('content', language)
-
-    def get_list_img(self):
-        return self.image.url if self.image else static('')
     
     def __str__(self):
         return self.title_uz
-    
-    def save(self, *args, **kwargs):
-        # Ushbu misolda allaqachon fayl borligini tekshiring
-        try:
-            this = Lists.objects.get(id=self.id)
-            # Agar fayl mavjud bo'lsa va yangi fayl bilan bir xil bo'lmasa, eski faylni o'chiring
-            if this.image and this.image != self.image:
-                this.image.delete(save=False)
-        except Lists.DoesNotExist:
-            pass
-        super(Lists, self).save(*args, **kwargs)
 
 class PictureSlider(models.Model):
     image = models.ImageField(upload_to="silder/", help_text="Silayder rasmlari yuklash uchun")
@@ -271,4 +267,4 @@ class Season(models.Model):
 
     def __str__(self):
         return self.season
-    
+

@@ -17,20 +17,20 @@
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
                                 <li>
-                                    <a href="/" class="pathway">Bosh saxifa</a>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
                                 <li>
-                                    <span>Yangiliklar</span>
+                                    <span>{{menu_text.university}}</span>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>Yangiliklar</span></li>
+                                <li class="active"><span>{{menu_text.designation}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -53,16 +53,16 @@
 
                         <div class="blog">
                             <h2 class="heading-category"> 
-                                <span class="subheading-category">Yangiliklar</span>
+                                <span class="subheading-category">{{menu_text.designation}}</span>
                             </h2>
 
                             <div class="items-leading row">
-                                {% for post in posts %}
+                                {% for desig in desigs %}
                                 <div class="item col-sm-6 leading-0">
 
                                     <figure class="pull-none item-image">
 
-                                        <img src="{{post.get_post_img}}" alt="{{post.title}}" style="width: 370px; height: 280px;"/>
+                                        <img src="{{desig.get_desig_img}}" alt="{{desig.title}}" style="width: 370px; height: 280px;"/>
                                         <aside class="article-aside">
 
                                             <dl class="article-info  muted">
@@ -70,11 +70,11 @@
                                                 <dd class="createdby" itemprop="author" itemscope
                                                     itemtype="">
                                                     <i class="fa fa-user"></i>
-                                                    <span itemprop="name">Super User</span> </dd>
+                                                    <span itemprop="name">{{desig.created_by}}</span> </dd>
 
                                                 <dt></dt>
                                                 <dd class="category-name">
-                                                    Category: <a href="{% url 'new' pk=post.id %}" itemprop="genre">Content Category 1</a>
+                                                    {{menu_text.categories}}: <a href="{% url 'uchrashuv' desig.id %}" itemprop="genre">{{menu_text.designation}}</a>
                                                 </dd>
 
                                             </dl>
@@ -87,7 +87,7 @@
                                         <header class="article-header">
 
                                             <h2>
-                                                <a href="{% url 'new' pk=post.id %}">{{post.title}}</a>
+                                                <a href="{% url 'uchrashuv' desig.id %}">{{desig.translated_title}}</a>
                                             </h2>
 
                                         </header>
@@ -99,14 +99,14 @@
                                         <aside class="article-aside">
 
                                             <dl class="article-info  muted">
-                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
+                                                <dd class="create"><i class="ico-clock"></i>{{desig.created_at}}</dd>
 
                                                 <dd class="hits"><i class="ico-hits"></i>23744</dd>
                                             </dl>
                                         </aside>
 
                                         <div class="article-intro">
-                                            <p>{{post.text}}</p>
+                                            <p>{{desig.translated_text}}</p>
                                         </div>
 
                                     </div>
@@ -116,14 +116,72 @@
 
                             </div>
 
-                            <div class="pagination">
+                             <!-- Pagination -->
+                             <div class="pagination">
                                 <ul class="pagination">
-                                    <li class="active"><span>1</span></li>
-                                    <li><a title="2" href="" class="pagenav">2</a></li>
-                                    <li><a title="Next" href="" class="pagenav"><i
-                                                class="fa fa-long-arrow-right l-hiden"></i> <i
-                                                class="fa fa-long-arrow-left r-hiden"></i></a></li>
-                                    <li><a title="End" href="" class="pagenav">End</a></li>
+                                    <!-- Birinchi sahifa tugmasi -->
+                                    {% if desigs.number != 1 %}
+                                        <li>
+                                            <a title="First" href="?page=1" class="pagenav"><i class="icon-chevron-left" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-left" aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
+                                    <!-- Oldingi sahifa tugmasi -->
+                                    {% if desigs.has_previous %}
+                                        <li>
+                                            <a title="Previous" href="?page={{ desigs.previous_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-left"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Sahifa raqamlari -->
+                                    {% for page in desigs.paginator.page_range %}
+                                        {% if page == desigs.number %}
+                                            <li class="active"><span>{{ page }}</span></li>
+                                        {% elif page > desigs.number|add:'-3' and page < desigs.number|add:'3' %}
+                                            <li>
+                                                <a title="{{ page }}" href="?page={{ page }}" class="pagenav">{{ page }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                            
+                                    <!-- Keyingi sahifa tugmasi -->
+                                    {% if desigs.has_next %}
+                                        <li>
+                                            <a title="Next" href="?page={{ desigs.next_page_number }}" class="pagenav">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <!-- Oxirgi sahifa tugmasi -->
+                                    {% if desigs.paginator.num_pages > 1 and desigs.number != desigs.paginator.num_pages %}
+                                        <li>
+                                            <a title="End" href="?page={{ desigs.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
+                                                aria-hidden="true"></i></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <span class="icon-chevron-right"
+                                                aria-hidden="true"></span>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>

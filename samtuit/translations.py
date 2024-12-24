@@ -10,7 +10,7 @@ TRANSLATIONS = {
             'admission': 'Qabul-2024',
             'news' : "Yangiliklar", 
             'structure': 'Tuzilma',
-            'activity': 'Faoliyat',
+            'activity': 'Faoliyat', 
             'applicant': 'Abituriyent',
             'students': 'Talabalar',
             'foreign_students': 'Xorijiy talabalar',
@@ -40,6 +40,10 @@ TRANSLATIONS = {
             "next_post":"Keyingi",
             "meetings":"Yig'ilishlar",
             'announcements':'E\'lonlar',
+            "designation":"Uchrashuvlar",
+            "press_releases":"Matbouat ajumanlari",
+            "seminars":"Seminarlar",
+            "conversations":"Davra suhbatlar",
         },
 
         'ru': {
@@ -82,6 +86,10 @@ TRANSLATIONS = {
             "next_post":"Следующий",
             "meetings":"Встречи",
             'announcements':'Объявления',
+            "designation":"Собрание",
+            "press_releases":"Пресс-релизы",
+            "seminars":"Семинары",
+            "conversations":"Круглые столы",
         },
 
         'en': {
@@ -124,6 +132,10 @@ TRANSLATIONS = {
             "next_post":"Next",
             "meetings":"Meetings",
             'announcements':'Announcements',
+            "designation":"Gathering",
+            "press_releases":"Press releases",
+            "seminars":"Seminars",
+            "conversations":"Conversations",
         }
     }
 }

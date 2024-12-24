@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from news.models import Post, Announcements, Meeting, Details, Designation
+from news.models import Post, Announcements, Meeting, Details, Designation, PressConference, Seminar, Conversation
 from samtuit.models import Menu, Season
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
@@ -165,17 +165,41 @@ def uchrashuvlar(request):
             child.translated_title = child.get_menu_title(language)
 
     designations = Designation.objects.all()
-    for announcement in designations:
-        announcement.translated_title = announcement.get_desig_title(language)
-        announcement.translated_text = announcement.get_desig_text(language)
+    for designation in designations:
+        designation.translated_title = designation.get_desig_title(language)
+        designation.translated_text = designation.get_desig_text(language)
 
     paginator = Paginator(designations, 10)  # Har bir sahifada 6 ta yangilik
     page_number = request.GET.get('page')
     paginated_posts = paginator.get_page(page_number)
 
 
-    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'desig':paginated_posts}
+    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'desigs':paginated_posts}
     return render(request, 'users/news/uchrashuvlar.html', ctx)
+
+def uchrashuv(request, pk):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)
+    uchrashuv = get_object_or_404(Designation, pk=pk)
+    previous_uchrashuv = Designation.objects.filter(id__lt=uchrashuv.id).order_by('-id').first()
+    next_uchrashuv = Designation.objects.filter(id__gt=uchrashuv.id).order_by('id').first()
+    uchrashuv.translated_title = uchrashuv.get_desig_title(language)
+    uchrashuv.translated_content = uchrashuv.get_desig_content(language)
+
+    ctx = {
+        "menu_text":menu_text, "meeting":meeting,
+        "previous_uchrashuv":previous_uchrashuv, 'next_uchrashuv':next_uchrashuv,
+        "menus":menus, 'season':season, 'uchrashuv':uchrashuv
+    }
+    return render(request, 'users/news_views/uchrashuv_view.html', ctx)
+
 
 def matbuat_anjumanlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -188,7 +212,42 @@ def matbuat_anjumanlar(request):
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
 
-    return render(request, 'users/news/matbuat_anjumanlar.html')
+    pressconferences = PressConference.objects.all()
+    for pressconference in pressconferences:
+        pressconference.translated_title = pressconference.get_press_title(language)
+        pressconference.translated_text = pressconference.get_press_text(language)
+
+    paginator = Paginator(pressconferences, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+
+    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'press':paginated_posts}
+
+    return render(request, 'users/news/matbuat_anjumanlar.html', ctx)
+
+def matbuat_anjuman(request, pk):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)
+    matbuat_anjuman = get_object_or_404(PressConference, pk=pk)
+    previous_matbuat_anjuman = PressConference.objects.filter(id__lt=matbuat_anjuman.id).order_by('-id').first()
+    next_matbuat_anjuman = PressConference.objects.filter(id__gt=matbuat_anjuman.id).order_by('id').first()
+    matbuat_anjuman.translated_title = matbuat_anjuman.get_press_title(language)
+    matbuat_anjuman.translated_content = matbuat_anjuman.get_press_content(language)
+
+    ctx = {
+        "menu_text":menu_text, "meeting":meeting,
+        "previous_matbuat_anjuman":previous_matbuat_anjuman, 'next_matbuat_anjuman':next_matbuat_anjuman,
+        "menus":menus, 'season':season, 'matbuat_anjuman':matbuat_anjuman
+    }
+    return render(request, 'users/news_views/matbuat_anjuman_view.html', ctx)
 
 def seminarlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -200,7 +259,43 @@ def seminarlar(request):
         menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
-    return render(request, 'users/news/seminarlar.html')
+
+    seminars = Seminar.objects.all()
+    for seminar in seminars:
+        seminar.translated_title = seminar.get_semin_title(language)
+        seminar.translated_text = seminar.get_semin_text(language)
+
+    paginator = Paginator(seminars, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+
+    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'seminars':paginated_posts}
+    return render(request, 'users/news/seminarlar.html', ctx)
+
+def seminar(request, pk):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)
+    seminar = get_object_or_404(Seminar, pk=pk)
+    previous_seminar = Seminar.objects.filter(id__lt=seminar.id).order_by('-id').first()
+    next_seminar = Seminar.objects.filter(id__gt=seminar.id).order_by('id').first()
+    seminar.translated_title = seminar.get_semin_title(language)
+    seminar.translated_content = seminar.get_semin_content(language)
+
+    ctx = {
+        "menu_text":menu_text, "meeting":meeting,
+        "previous_seminar":previous_seminar, 'next_seminar':next_seminar,
+        "menus":menus, 'season':season, 'seminar':seminar
+    }
+    return render(request, 'users/news_views/seminar_view.html', ctx)
+
 
 def davra_suhbatlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -212,7 +307,44 @@ def davra_suhbatlar(request):
         menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
         for child in menu.children.all():
             child.translated_title = child.get_menu_title(language)
-    return render(request, 'users/news/davra_suhbatlari.html')
+
+    conversations = Conversation.objects.all()
+    for conversation in conversations:
+        conversation.translated_title = conversation.get_conv_title(language)
+        conversation.translated_text = conversation.get_conv_text(language)
+
+    paginator = Paginator(conversations, 10)  # Har bir sahifada 6 ta yangilik
+    page_number = request.GET.get('page')
+    paginated_posts = paginator.get_page(page_number)
+
+
+    ctx = {'menu_text': menu_text, "menus":menus, 'season':season, 'convs':paginated_posts}
+    return render(request, 'users/news/davra_suhbatlari.html', ctx)
+
+
+def davra_suhbat(request, pk):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+
+    for menu in menus:
+        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
+        for child in menu.children.all():
+            child.translated_title = child.get_menu_title(language)
+    conversation = get_object_or_404(Conversation, pk=pk)
+    previous_conversation = Conversation.objects.filter(id__lt=conversation.id).order_by('-id').first()
+    next_conversation = Conversation.objects.filter(id__gt=conversation.id).order_by('id').first()
+    conversation.translated_title = conversation.get_conv_title(language)
+    conversation.translated_content = conversation.get_conv_content(language)
+
+    ctx = {
+        "menu_text":menu_text, "meeting":meeting,
+        "previous_conversation":previous_conversation, 'next_conversation':next_conversation,
+        "menus":menus, 'season':season, 'conversation':conversation
+    }
+    return render(request, 'users/news_views/davra_suhbat_view.html', ctx)
+
 
 def share_post(request, pk):
     post = get_object_or_404(Post, pk=pk)

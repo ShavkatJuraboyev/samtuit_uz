@@ -19,14 +19,14 @@
                                         class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li><span>{{menu_text.news}}</span><span class="divider"><img
+                                <li><span>{{menu_text.university}}</span><span class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li><a href="{% url 'news' %}" class="pathway">{{menu_text.news}}</a><span
+                                <li><a href="{% url 'news' %}" class="pathway">{{menu_text.seminars}}</a><span
                                         class="divider"><img
                                             src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" /></span></li>
-                                <li class="active"><span>{{post.translated_title}}</span></li>
+                                <li class="active"><span>{{seminar.translated_title}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <article class="item-page">
 
                             <header class="article-header">
-                                <h2><a href=""><span class="title-color">{{post.translated_title}}</span></a></h2>
+                                <h2><a href=""><span class="title-color">{{seminar.translated_title}}</span></a></h2>
                             </header>
 
                             <aside class="article-aside">
@@ -56,17 +56,17 @@
 
                                     <dd class="create">
                                         <span class="fa fa-clock-o"></span>
-                                        <time datetime="2020-05-21T22:44:01+00:00">{{post.created_at}}</time>
+                                        <time datetime="2020-05-21T22:44:01+00:00">{{seminar.created_at}}</time>
                                     </dd>
 
                                     <dd class="createdby" itemprop="author" itemscope
                                         itemtype="">
                                         <span class="fa fa-user"></span>
-                                        <span itemprop="name">{{post.created_by}}</span> </dd>
+                                        <span itemprop="name">{{seminar.created_by}}</span> </dd>
 
                                     <dd class="category-name">
-                                        {{menu_text.categories}}: <a href=""
-                                            itemprop="genre">{{menu_text.news}}</a> </dd>
+                                        {{menu_text.categories}}: <a href="{% url 'seminarlar' %}"
+                                            itemprop="genre">{{menu_text.seminars}}</a> </dd>
 
                                     <dd class="hits">
                                         <span class="icon-eye-open"></span>
@@ -83,25 +83,25 @@
 
 
                             <a id="startOfPage"></a>                                
-                            {{post.translated_content|safe}}
+                            {{seminar.translated_content|safe}}
                            
                             <ul class="pager pagenav">
-                                {% if previous_post %}
+                                {% if previous_seminar %}
                                 <li class="previous">
                                     <a class="hasTooltip" title="Faucibus eu laoreet nunc"
                                         aria-label="Previous article: Faucibus eu laoreet nunc"
-                                        href="{% url 'new' previous_post.id %}"
+                                        href="{% url 'seminar' previous_seminar.id %}"
                                         rel="prev">
                                         <span class="icon-chevron-left" aria-hidden="true"></span> <span
                                             aria-hidden="true">{{menu_text.previous_post}}</span> </a>
                                 </li>
                                 {% else %}
                                 {% endif %}
-                                {% if next_post %}
+                                {% if next_seminar %}
                                 <li class="next">
                                     <a class="hasTooltip" title="Aliquam lobortis cursus "
                                         aria-label="Next article: Aliquam lobortis cursus "
-                                        href="{% url 'new' next_post.id %}"
+                                        href="{% url 'seminar' next_seminar.id %}"
                                         rel="next">
                                         <span aria-hidden="true">{{menu_text.next_post}}</span> <span class="icon-chevron-right"
                                             aria-hidden="true"></span> </a>
