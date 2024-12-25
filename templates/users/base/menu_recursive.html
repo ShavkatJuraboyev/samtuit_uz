@@ -1,10 +1,10 @@
-<div class="menu mega-content level{{ menu.0.level }}">
+<div class="menu mega-content level2">
     <div class="mega-content-inner clearfix">
         <div class="mega-col first one">
-            <ul class="subnavi level{{ menu.0.level }}">
+            <ul class="subnavi level2">
                 {% for item in menu %}
-                    <li class="level{{ item.level }} {% if forloop.first %}first{% endif %}">
-                        <a href="{{ item.url }}" title="{{ item.translated_title }}" class="level{{ item.level }} item-link">
+                    <li class="level2 {% if forloop.first %}first{% endif %}">
+                        <a href="{{ item.url }}" title="{{ item.translated_title }}" class="level2 item-link">
                             <span class="menu-title">{{ item.translated_title }}</span>
                         </a>
                         {% if item.children.exists %}
