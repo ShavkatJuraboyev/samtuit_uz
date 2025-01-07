@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from samtuit.models import PictureSlider, Students, Partners, Wisdom, Celebrities, Menu, Season
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Season
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
@@ -14,6 +14,18 @@ def set_language(request):
     response = redirect(request.META.get("HTTP_REFERER", '/'))  # Oldingi sahifaga qaytish
     response.set_cookie('django_language', language)  # Cookie o'rnatish
     return response
+
+def get_menu_tree(menu, language):
+    """
+    Rekursiv menyu daraxtini yaratadi.
+    """
+    menu_data = {
+        'id': menu.id,
+        'title': menu.get_menu_title(language),
+        'url': menu.url,
+        'children': [get_menu_tree(child, language) for child in menu.children.all()]
+    }
+    return menu_data
 
 
 def home(request):
@@ -34,18 +46,10 @@ def home(request):
     for wisdom in wisdoms:
         wisdom.translated_title = wisdom.get_wis_title(language)
         wisdom.translated_text = wisdom.get_wis_text(language)
-    
-    celebrities = Celebrities.objects.all().order_by("-id")[:3]
-    for celebritie in celebrities:
-        celebritie.translated_title = celebritie.get_cel_title(language)
-        celebritie.translated_text = celebritie.get_cel_text(language)
 
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
-    for menu in menus:
-        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
-        for child in menu.children.all():
-            child.translated_title = child.get_menu_title(language)  # Ichki menyu tarjimasi
 
     season = Season.objects.all().order_by("-id").first()
 
@@ -54,7 +58,7 @@ def home(request):
         'post_one':post_one, 'post_three':post_three, 
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
-        'wisdoms':wisdoms, 'celebrities':celebrities,
-        'menus':menus, 'season':season
+        'wisdoms':wisdoms, 
+        'menus':menu_tree, 'season':season
         } 
     return render(request, 'users/index.html', context)

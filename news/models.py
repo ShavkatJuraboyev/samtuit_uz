@@ -4,10 +4,12 @@ from django_ckeditor_5.fields import CKEditor5Field
 from django.templatetags.static import static
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField 
+from django.core.exceptions import ValidationError
+from PIL import Image
 
 
 class Post(models.Model): 
-    image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
+    image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi", help_text="Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
@@ -61,6 +63,20 @@ class Post(models.Model):
             pass
         super(Post, self).save(*args, **kwargs)
 
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
+
 class Meeting(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
@@ -108,12 +124,25 @@ class Meeting(models.Model):
         # Ushbu misolda allaqachon fayl borligini tekshiring
         try:
             this = Meeting.objects.get(id=self.id)
-            # Agar fayl mavjud bo'lsa va yangi fayl bilan bir xil bo'lmasa, eski faylni o'chiring
+            # Agar fayl mavjud bo'lsa va yangi fayl bilan bir xil bo'lmasa, eski faylni o'chirish
             if this.image and this.image != self.image:
                 this.image.delete(save=False)
         except Meeting.DoesNotExist:
             pass
         super(Meeting, self).save(*args, **kwargs)
+
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
  
 class Announcements(models.Model): 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
@@ -173,6 +202,19 @@ class Announcements(models.Model):
             pass
 
         super(Announcements, self).save(*args, **kwargs)
+    
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
 
 class Designation(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
@@ -227,6 +269,19 @@ class Designation(models.Model):
         except Designation.DoesNotExist:
             pass
         super(Designation, self).save(*args, **kwargs)
+
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
 
 
 class PressConference(models.Model):
@@ -283,6 +338,19 @@ class PressConference(models.Model):
             pass
         super(PressConference, self).save(*args, **kwargs)
 
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
+
 
 class Seminar(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
@@ -337,6 +405,19 @@ class Seminar(models.Model):
         except Seminar.DoesNotExist:
             pass
         super(Seminar, self).save(*args, **kwargs)
+
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
 
 
 class Conversation(models.Model):
@@ -393,6 +474,20 @@ class Conversation(models.Model):
             pass
         super(Conversation, self).save(*args, **kwargs)
 
+    def clean(self):
+        # Super class clean metodini chaqirish
+        super().clean()
+        try:
+            # Yuklangan rasmni ochish
+            img = Image.open(self.image)
+
+            # O'lchamni tekshirish
+            if img.height > 500 or img.width > 740:
+                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
+        except Exception as e:
+            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
+
+
 class Details(models.Model): 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini", null=True, blank=True)
@@ -414,7 +509,7 @@ class Details(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title_uz
+        return self.title_uz 
     
     class Meta:
         verbose_name_plural = "Bittalik ma'lumotlar"

@@ -1,0 +1,312 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+{% block content %}
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+    <section id="yt_breadcrumb" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
+
+                    <div class="module   ">
+                        <div class="modcontent clearfix">
+
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li><a href="/" class="pathway">{{menu_text.home}}</a><span
+                                        class="divider"><img
+                                            src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" /></span></li>
+                                <li><span>{{menu_text.news}}</span><span class="divider"><img
+                                            src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" /></span></li>
+                                <li><a href="{% url 'news' %}" class="pathway">{{menu_text.news}}</a><span
+                                        class="divider"><img
+                                            src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" /></span></li>
+                                <li class="active"><span>{{post.translated_title}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="content" class="  no-left  block com_k2">
+     <div class="container">
+         <div class="row">
+             <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
+             <div id="content_main" class="col-md-9">
+                 <div id="system-message-container">
+                 </div>
+
+                 <div id="yt_component">
+                     <span id="startOfPageId273"></span>
+                     <div id="k2Container" class="itemView">
+                         <div class="itemHeader">
+                             <h2 class="itemTitle">
+                                 <div class="me-inline">{{leader.translated_full_name}}</div>
+                             </h2>
+                         </div>
+                         <div class="itemBody">
+                             <div class="itemFullText">
+                                 {{leader.translated_content|safe}}
+                             </div>
+                         </div>
+                         <div class="itemHeader">
+                            <h2 class="itemTitle">
+                                <div class="itemToolbar me-inline">
+                                    <ul class="icon-item size-mail">
+                                        <li class="fontsize">
+                                            <span class="itemTextResizerTitle">shrift hajmi</span>
+                                            <a href="#" id="fontIncrease">+</a>
+                                            <a href="#" id="fontDecrease">–</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </h2>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+             <aside id="content_right" class="col-md-3 col-sm-12">
+                <div id="right" class="col-sm-12">
+
+                    <div class="module k2-categories ">
+                        <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
+                        <div class="modcontent clearfix">
+
+                            <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
+                                <ul class="level0">
+                                    <li><a href=""><span class="catTitle">{{menu_text.faculties}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.departments}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.centers}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.applicant}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.students}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.scientific_research_activity}}</span><span
+                                                class="catCounter"></span></a></li>
+                                    <li><a href=""><span class="catTitle">{{menu_text.interactive_services}}</span><span
+                                                class="catCounter"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module  module_tabs ">
+                        <div class="modcontent clearfix">
+
+                            <div id="moduletabs_11308236401729926773" class="moduletabs top-position clearfix">
+
+                                <div class="tabs-container">
+                                    <ul class="tabs row">
+                                        <li class="col-sm-6 col-xs-6">
+                                            <div class="tab selected">{{menu_text.news}}</div>
+                                        </li>
+                                        <li class="col-sm-6 col-xs-6">
+                                            <div class="tab">{{menu_text.categories}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tabs-content-wrap">
+                                    <div class="tabs-content">
+                                        <div class="tabs-content-inner">
+                                            <div class="tab-content selected">
+
+                                                <div id="k2ModuleBox347" class="k2ItemsBlock k2-content-recent">
+
+                                                    <ul>
+                                                        <li class="even">
+                                                            <div class="moduleItemIntrotext">
+                                                                <a class="moduleItemImage" href=""
+                                                                    title="Continue reading &quot;Curabitur luctus tortor non quam&quot;">
+                                                                    <img src="{% static 'users/media/k2/items/cache/ea82697ed9755e975f3c7d735db2070c_XS.jpg' %}"
+                                                                        alt="Curabitur luctus tortor non quam" />
+                                                                </a>
+                                                                <div class="main">
+                                                                    <a class="moduleItemTitle" href="">Curabitur
+                                                                        luctus tortor non quam</a>
+                                                                    <span class="moduleItemDateCreated">Apr 20,
+                                                                        2015</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clr"></div>
+                                                            <div class="clr"></div>
+                                                            <div class="clr"></div>
+                                                        </li>
+                                                        <li class="odd">
+                                                            <div class="moduleItemIntrotext">
+                                                                <a class="moduleItemImage"
+                                                                    href=""
+                                                                    title="Continue reading &quot;Vivamus dictum pulvinar ipsum&quot;">
+                                                                    <img src="{% static 'users/media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XS.jpg' %}"
+                                                                        alt="Vivamus dictum pulvinar ipsum" />
+                                                                </a>
+                                                                <div class="main">
+                                                                    <a class="moduleItemTitle"
+                                                                        href="">Vivamus
+                                                                        dictum pulvinar ipsum</a>
+                                                                    <span class="moduleItemDateCreated">Apr 20,
+                                                                        2015</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+                                                        </li>
+                                                        <li class="even">
+
+                                                            <div class="moduleItemIntrotext">
+                                                                <a class="moduleItemImage"
+                                                                    href=""
+                                                                    title="Continue reading &quot;Nullam hendrerit tempus tellus&quot;">
+                                                                    <img src="{% static 'users/media/k2/items/cache/dbe05350458c15fa6c802fb686391131_XS.jpg' %}"
+                                                                        alt="Nullam hendrerit tempus tellus" />
+                                                                </a>
+                                                                <div class="main">
+                                                                    <a class="moduleItemTitle"
+                                                                        href="">Nullam
+                                                                        hendrerit tempus tellus</a>
+                                                                    <span class="moduleItemDateCreated">Apr 20,
+                                                                        2015</span>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+                                                        </li>
+                                                        <li class="odd lastItem">
+
+                                                            <div class="moduleItemIntrotext">
+                                                                <a class="moduleItemImage"
+                                                                    href=""
+                                                                    title="Continue reading &quot;Curabitur luctus tortor non quam gravida&quot;">
+                                                                    <img src="{% static 'users/media/k2/items/cache/63955aa9869cf7707ada1662dbfb31e2_XS.jpg' %}"
+                                                                        alt="Curabitur luctus tortor non quam gravida" />
+                                                                </a>
+                                                                <div class="main">
+                                                                    <a class="moduleItemTitle"
+                                                                        href="">Curabitur
+                                                                        luctus tortor non quam gravida</a>
+                                                                    <span class="moduleItemDateCreated">Apr 20,
+                                                                        2015</span>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+
+                                                            <div class="clr"></div>
+                                                        </li>
+                                                        <li class="clearList"></li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-content">
+
+                                                <div id="k2ModuleBox350"
+                                                    class="k2LatestCommentsBlock  tab-comments">
+
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                            </div>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function($) {
+                                    $('#moduletabs_11308236401729926773').jsmart_moduletabs({
+                                        sj_module: 'mod_sj_moduletabs',
+                                        sj_module_id: '360',
+                                        ajax_url: '',
+                                        ajaxUpdate: function(element, options) {
+                                            var loading = $('.ajax_loading', element);
+                                            if (loading.length) {
+                                                // show ajax indicator
+                                                var category_id = $(element).attr('title')
+                                                    .replace('sj_module_2load:',
+                                                        '');
+                                                ajax_options = {
+                                                    sj_module_2load: category_id,
+                                                    sj_module_id: options.sj_module_id,
+                                                    sj_module: options.sj_module
+                                                };
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: options.ajax_url,
+                                                    data: ajax_options,
+                                                    success: function(data, status,
+                                                        jqXHR) {
+                                                        $(element).html(data);
+                                                        $(element).data('fx2height',
+                                                            $(element).height());
+                                                        $(element).attr('title',
+                                                        '');
+                                                    },
+                                                    dataType: 'html'
+                                                });
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+
+                        </div>
+                    </div>
+
+                    <div class="module  tags-k2 ">
+                        <h3 class="modtitle">{{menu_text.categories}}</h3>
+                        <div class="modcontent clearfix">
+
+                            <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
+                                <a href="" style="font-size:100%" title="">
+                                    Creative </a>
+                                <a href="" style="font-size:100%" title="">
+                                    css </a>
+                                <a href="" style="font-size:100%" title="">
+                                    HTML5 </a>
+                                <a href="" style="font-size:100%" title="">
+                                    joomla </a>
+                                <a href="" style="font-size:100%" title="">
+                                    Photoshop </a>
+                                <a href="" style="font-size:100%" title="">
+                                    responsive </a>
+                                <a href="" style="font-size:100%" title="">
+                                    Text </a>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+         </div>
+     </div>
+
+ </section>
+    {% include 'users/base/settings.html' %}
+</div>
+{% endblock content %}

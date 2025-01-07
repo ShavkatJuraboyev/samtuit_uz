@@ -2,6 +2,7 @@ from django.shortcuts import render
 from samtuit.models import Menu, ListsMenu, Lists
 from django.shortcuts import get_object_or_404
 from samtuit.translations import TRANSLATIONS
+from samtuit.views import get_menu_tree
 
 def get_nested_children(list_menu):
     children = list_menu.children.all()
@@ -15,10 +16,7 @@ def menu_view(request, slug):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
 
-    for menu in menus:
-        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
-        for child in menu.children.all():
-            child.translated_title = child.get_menu_title(language)
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
     list_menu = get_object_or_404(ListsMenu, slug=slug)  # ListsMenu'ni slug bo'yicha toping
     nested_children = get_nested_children(list_menu)
@@ -29,7 +27,7 @@ def menu_view(request, slug):
         lst.translated_title = lst.get_list_title(language)
     ctx = {
         'list_menu': list_menu, 'lists': lists,
-        "menu_text":menu_text, "menus":menus, 'children': nested_children,
+        "menu_text":menu_text, "menus":menu_tree, 'children': nested_children,
         }
     return render(request, 'users/lists/list_page.html', ctx)
 
@@ -38,10 +36,7 @@ def view_menu_detail(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
 
-    for menu in menus:
-        menu.translated_title = menu.get_menu_title(language)  # Asosiy menyu tarjimasi
-        for child in menu.children.all():
-            child.translated_title = child.get_menu_title(language)
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
     list = get_object_or_404(Lists, pk=pk)
     list.translated_title = list.get_list_title(language)
@@ -49,7 +44,7 @@ def view_menu_detail(request, pk):
     list.translated_content = list.get_list_content(language)
     ctx = {
         'list': list,
-        "menu_text":menu_text, "menus":menus
+        "menu_text":menu_text, "menus":menu_tree
     }
     return render(request, 'users/lists/list_detail.html', ctx)
 

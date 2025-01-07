@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+
 <header id="yt_header" class="block">
     <div class="container">
         <div class="row">
@@ -11,7 +12,7 @@
                     <li class="item-1536"><a href=""><img src="{% static 'users/images/ramzlar/nota.png' %}" alt="mathiya" style="width: 20px; height: 20px;"></a></li>
                     <li class="item-1531 deeper parent"><a href="">{{ menu_text.web_systems }}</a>
                         <ul class="yt-list">
-                            <li class="item-1543"><a href="https://hemis.samtuit.uz/">{{ menu_text.hemis_teacher }}</a></li>
+                            <li class="item-1543"><a href="https://hemis.samtuit.uz/" target="_blank">{{ menu_text.hemis_teacher }}</a></li>
                             <li class="item-1544"><a href="https://student.samtuit.uz/" target="_blank">{{ menu_text.hemis_student }}</a></li>
                             <li class="item-1544"><a href="https://library.samtuit.uz/" target="_blank">{{ menu_text.library }}</a></li>
                         </ul>
@@ -122,7 +123,7 @@
 </header>
 
 <nav id="yt_menuwrap" class="block">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div id="yt_logo" class="col-md-3 col-sm-12">
 
@@ -132,72 +133,69 @@
                 </a>
 
             </div>
-            <div id="yt_mainmenu" class="col-md-9 col-sm-12 ">
-                <ul id="meganavigator" class="clearfix navi">
-                    {% for menu in menus %}
-                        <li class="level1 havechild">
-                            <a href="" title="{{ menu.translated_title }}" class="level1 havechild item-link">
-                                <span class="menu-title">{{ menu.translated_title }}</span>
-                            </a>
-                            {% if menu.children.exists %}
-                                {% include "users/base/menu_recursive.html" with menu=menu.children.all %}
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+            <div id="yt_mainmenu" class="col-md-9 col-sm-12">
 
-                <!-- <ul id="meganavigator" class="clearfix navi ">
-                    
+                <ul id="meganavigator" class="clearfix navi ">
                     {% for menu in menus %}
-                        <li class="level1 havechild ">
-                            <a href="#" title="{{ menu.translated_title }}" class="level1 havechild item-link">
-                                <span class="menu-title">{{ menu.translated_title }}</span>
-                            </a>
-                            {% if menu.children.exists %}
-                            <div class="level2 menu mega-content">
-                                <div class="mega-content-inner clearfix">
-                                    <div class="mega-col first one">
-                                        <ul class="subnavi level2">
-                                            {% for child in menu.children.all %}
-                                                {% if child.children.exists %}
-                                                    <li class="level2 {% if forloop.first %}first{% endif %}">
-                                                        <a title="{{ child.translated_title }}" class="level2 havechild  item-link"
-														href="#"><span class="menu-title">{{ child.translated_title }}</span></a>
-                                                    
-                                                        <div class="level3 menu mega-content">
-                                                            <div class="mega-content-inner clearfix">
-                                                                <div class="mega-col first one">
-                                                                    <ul class="subnavi level3">
-                                                                        {% for chil in child.children.all %}
-                                                                            <li class="level3 first ">
-                                                                                <a title="{{ chil.translated_title }}" class="level3 first  item-link" href="{{ chil.url }}">
-                                                                                    <span class="menu-title">{{ chil.translated_title }}</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        {% endfor %}
-                                                                    </ul>
+                    <li class="level1 havechild">
+                        <a title="{{ menu.title }}" class="level1 havechild  item-link" href="{% if menu.url %}{{ menu.url }}{% endif %}">
+                            <span class="menu-title">{{ menu.title }}</span>
+                        </a>
+                        {% if menu.children %}
+                        <div class="level2 menu mega-content" style="display: none; top: 104px; left: 25px;">
+                            <div class="mega-content-inner clearfix" style="opacity: 0;">
+                                <div class="mega-col first one">
+                                    <ul class="subnavi level2">
+                                        {% for child in menu.children %}
+                                        <li class="level2 first havechild ">
+                                            <a title="{{ child.title }}" class="level2 first havechild  item-link" href="{% if child.url %}{{ child.url }}{% endif %}">
+                                                <span class="menu-title">{{ child.title }}</span>
+                                            </a>
+                                            {% if child.children %}
+                                            <div class="level3 menu mega-content" style="display: none;top: 0px; left: 180px;">
+                                                <div class="mega-content-inner clearfix" style="opacity: 0;">
+                                                    <div class="mega-col first one">
+                                                        <ul class="subnavi level3">
+                                                            {% for subchild in child.children %}
+                                                            <li class="level3 first havechild">
+                                                                <a title="{{ subchild.title }}" class="level3 first  item-link" href="{% if subchild.url %}{{ subchild.url }}{% endif %}">
+                                                                    <span class="menu-title">{{ subchild.title }}</span>
+                                                                </a>
+                                                                {% if subchild.children %}
+                                                                <div class="level4 menu mega-content" style="display: none; top: 0px; left: -220px;">
+                                                                    <div class="mega-content-inner clearfix" style="opacity: 0;">
+                                                                        <div class="mega-col first one">
+                                                                            <ul class="subnavi level4">
+                                                                                {% for sub in subchild.children %}
+                                                                                <li class="level4 first">
+                                                                                    <a title="{{sub.title}}" class="level4 first  item-link" href="{% if sub.url %}{{ sub.url }}{% endif %}">
+                                                                                        <span class="menu-title">{{sub.title}}</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                {% endfor %}
+                                                                            </ul>
+                                                                        </div> 
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                {% else %}
-                                                    <li class="level2 {% if forloop.first %}first{% endif %}">
-                                                        <a title="{{ child.translated_title }}" class="level2 item-link" href="{{ child.url }}">
-                                                            <span class="menu-title">{{ child.translated_title }}</span>
-                                                        </a>
-                                                    </li>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
+                                                                {% endif %}
+                                                            </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </div>
-                            {% endif %}
-                        </li>
+                        </div>
+                        {% endif %}
+                    </li>
                     {% endfor %}
-
                 </ul>
-                 -->
+
                 <script type="text/javascript">
                     jQuery(function($) {
                         $('#meganavigator').megamenu({
@@ -217,13 +215,39 @@
                         <ul class="nav resmenu">
                             {% for menu in menus %}
                             <li class="haveChild level1">
-                                <a title="{{ menu.translated_title }}" href=''>{{ menu.translated_title }}</a> 
+                                <a title="{{ menu.translated_title }}" href=''>{{ menu.title }}</a> 
                                 <span class="menuress-toggle"></span>
-                                {% if menu.children.exists %}
+                                {% if menu.children %}
                                 <div class="res-wrapnav">
                                     <ul class="nav">
-                                        {% for child in menu.children.all %}
-                                        <li><a title="{{ child.translated_title }}" href='{{ child.url }}'>{{ child.translated_title }}</a> </li>
+                                        {% for child in menu.children %}
+                                        <li class="haveChild level2">
+                                            <a title="{{ child.title }}" href='{{ child.url }}'>{{ child.title }}</a> 
+                                            <span class="menuress-toggle"></span>
+                                            {% if child.children %}
+                                            <div class="res-wrapnav">
+                                                <ul class="nav">
+                                                    {% for subchild in child.children %}
+                                                        <li class="haveChild level3">
+                                                            <a title="{{ subchild.title }}" href='{{ subchild.url }}'>{{ subchild.title }}</a> 
+                                                            <span class="menuress-toggle"></span>
+                                                            {% if child.children %}
+                                                            <div class="res-wrapnav">
+                                                                <ul class="nav">
+                                                                    {% for sub in subchild.children %}
+                                                                    <li>
+                                                                        <a title="{{ sub.title }}" href='{{ sub.url }}'>{{ sub.title }}</a> 
+                                                                    </li>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </div>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            {% endif %}
+                                        </li>
                                         {% endfor %}
                                     </ul>
                                 </div>

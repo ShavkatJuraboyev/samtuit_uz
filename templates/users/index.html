@@ -236,7 +236,7 @@
     <section id="yt_spotlight5" class="block">
         <div class="container">
             <div class="row">
-                <div id="top7" class="col-lg-6 col-sm-12">
+                <div id="top7" class="col-lg-8 col-sm-12">
 
                     <div class="module  k2-mega-new-main ">
                         <h3 class="modtitle">{{ menu_text.breanch_news }}</h3>
@@ -250,14 +250,14 @@
                                                 <div class="item-first">
 
                                                     <div class="item-image">
-                                                        <a href="" title="Aliquam eu justo eu ipsum ultricies">
+                                                        <a href="{% url 'new' pk=post_one.id %}" title="Aliquam eu justo eu ipsum ultricies">
                                                             <img src="{{post_one.get_post_img}}" alt="{{post_one.get_post_img}}" height="250"/>
                                                         </a>
                                                         <div class="over-image"></div>
                                                     </div>
                                                     <div class="content-main">
                                                         <div class="item-title">
-                                                            <a href="" title="Aliquam eu justo eu ipsum ultricies">{{ post_one.translated_title }}</a>
+                                                            <a href="{% url 'new' pk=post_one.id %}" title="Aliquam eu justo eu ipsum ultricies">{{ post_one.translated_title }}</a>
                                                         </div>
                                                         <ul class="by-date">
                                                             <!-- <li class="athor"><span>Post by</span>&nbsp;</li> -->
@@ -267,7 +267,7 @@
                                                         <div class="item-description">{{ post_one.translated_text }}</div>
 
                                                         <div class="item-readmore">
-                                                            <a href=""
+                                                            <a href="{% url 'new' pk=post_one.id %}"
                                                                 title="Aliquam eu justo eu ipsum ultricies">
                                                                 <i class="fa fa-check"></i><span>{{ menu_text.more }}</span>
                                                             </a>
@@ -300,7 +300,7 @@
                     </div>
 
                 </div>
-                <div id="top8" class="col-lg-3 col-sm-6">
+                <div id="top8" class="col-lg-4 col-sm-12">
 
                     <div class="module  ">
                         <h3 class="modtitle">{{ menu_text.wisdom }}</h3>
@@ -363,45 +363,6 @@
                     </div>
 
                 </div>
-                <div id="top9" class="col-lg-3 col-sm-6">
-
-                    <div class="module  feature-teachers ">
-                        <h3 class="modtitle">{{ menu_text.famous_quotes }}</h3>
-                        <div class="modcontent clearfix">
-
-                            <div class="carousel-custommer">
-                                <div id="yt-extra-carousel1" style="width:100%; height:100%"
-                                    class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
-                                    data-interval='false'>
-                                    <div class="carousel-inner">
-                                        {% for celebritie in celebrities %}
-                                        <div class='item'>
-                                            <div class="customslider">
-                                                <div class="item-image"><img src="{{celebritie.get_cel_img}}"
-                                                        alt="" style="width: 100%; height: 100%;" /></div>
-                                                <div class="content-main">
-                                                    <h3 class="title">{{celebritie.translated_title}}</h3>
-                                                    <span class="adred"> </span>
-                                                    <p class="post-commnets">{{celebritie.translated_text}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div><a class="carousel-control left" href="#yt-extra-carousel1"
-                                        data-slide="prev"><i class="fa fa-angle-left"></i></a><a
-                                        class="carousel-control right" href="#yt-extra-carousel1"
-                                        data-slide="next"><i class="fa fa-angle-right"></i></a>
-                                    <ol class="carousel-indicators">
-                                        <li data-slide-to="0" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="1" data-target="#yt-extra-carousel1"></li>
-                                        <li data-slide-to="2" data-target="#yt-extra-carousel1"></li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
 
@@ -449,17 +410,17 @@
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="item-title">
-                                                            <a href="" title="Zatena mipan facen timas chumas">{{anno.title}}</a>
+                                                            <a href="{% url 'elon' anno.id %}" title="Zatena mipan facen timas chumas">{{anno.title}}</a>
                                                         </div>
                                                         <div class="school">
-                                                            <a href="">{{anno.location}}</a>
+                                                            <a href="{% url 'elon' anno.id %}">{{anno.location}}</a>
                                                             <p>{{anno.build}}</p>
                                                         </div>
 
                                                         <div class="item-content">
                                                             <div class="item-description">{{anno.text}}</div>
                                                             <div class="item-readmore">
-                                                                <a href=""
+                                                                <a href="{% url 'elon' anno.id %}"
                                                                     title="Zatena mipan facen timas chumas">
                                                                     <i class="fa fa-long-arrow-right"></i>
                                                                 </a>
@@ -470,7 +431,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clr1"></div>
                                             {% endfor %}
                                         </div>
                                         <!--line-->

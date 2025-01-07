@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from ckeditor.widgets import CKEditorWidget
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Celebrities, Menu, Season, Lists, ListsMenu
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu
 
 
 @admin.register(Menu)
@@ -61,37 +61,6 @@ class WisdomAdmin(admin.ModelAdmin):
         if not obj.pk:  # Ob'ekt yangi bo'lsa
             obj.created_by = request.user
         super(WisdomAdmin, self).save_model(request, obj, form, change)
-
-    def get_readonly_fields(self, request, obj=None):
-        """created_by maydonini faqat ko'rish uchun qilib qo'yish."""
-        if obj: 
-            return self.readonly_fields + ('created_by',)
-        return self.readonly_fields
-
-@admin.register(Celebrities)
-class CelebritiesAdmin(admin.ModelAdmin):
-    list_display = ('title_uz', 'title_en', 'title_ru')
-    readonly_fields = ('created_by',) 
-    fieldsets = (
-        ('Asosiy maʼlumotlar', {
-            'fields': ('image', 'created_by',),
-        }),
-        ('Uzbekcha maʼlumotlar', {
-            'fields': ('title_uz', 'text_uz',),
-        }),
-        ('Inglizcha maʼlumotlar', {
-            'fields': ('title_en', 'text_en',),
-        }),
-        ('Ruscha maʼlumotlar', {
-            'fields': ('title_ru', 'text_ru',),
-        }),
-    )
-
-    def save_model(self, request, obj, form, change):
-        """Admin foydalanuvchisi bo'lganligi uchun created_by maydonini avtomatik to'ldirish."""
-        if not obj.pk:  # Ob'ekt yangi bo'lsa
-            obj.created_by = request.user
-        super(CelebritiesAdmin, self).save_model(request, obj, form, change)
 
     def get_readonly_fields(self, request, obj=None):
         """created_by maydonini faqat ko'rish uchun qilib qo'yish."""

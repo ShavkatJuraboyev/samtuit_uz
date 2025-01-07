@@ -25,6 +25,7 @@ urlpatterns = [
     path('views/', include('news.urls')),
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', include('leadership.urls')),
 ]
 
 if settings.DEBUG:

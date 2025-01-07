@@ -1,0 +1,138 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+{% block content %}
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+    <section id="yt_breadcrumb" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
+
+                    <div class="module">
+                        <div class="modcontent clearfix">
+
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>{{menu_text.news}}</span>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li class="active"><span>{{menu_text.news}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="content" class="  no-left  no-right block com_content">
+     <div class="container">
+         <div class="row">
+             <div id="content_main" class="col-sm-12">
+
+                 <div id="yt_component">
+                     <article class="item-page">
+                         <header class="ourmember clearfix">
+                             <h2 class="page-module-title">
+                                Rahbariyat
+                             </h2>
+                         </header>
+
+                         <aside class="article-aside">
+                             <dl class="article-info">
+                             </dl>
+                         </aside>
+
+                         <div id="g-about" class="row">
+                            {% for leader in leadership %}
+                             <div class="col-sm-5 col-md-4 first ">
+                                 <h3 class="page-module-title">{{leader.translated_position}}:</h3>
+                                 <div class="caption pull-left">
+                                    <img src="{{leader.get_rek_img}}" alt="" width="300" height="220">
+                                 </div>
+                             </div>
+                             <div class="col-sm-4 col-md-4">
+                                 <h3 class="page-module-title"><b><a href="{% url 'rektorat' leader.slug %}">{{leader.translated_full_name}}</a></b></h3>
+                                 <ul class="yt-list check" type="check" color="#6B82A2">
+                                    <li> 
+                                        <a href="#">
+                                            <h4><i class="fa fa-calendar pull-"></i>
+                                                {{leader.acceptance}}</h4>
+                                        </a> 
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <h4><i class="fa fa-phone pull-"></i>
+                                            {{leader.phone}}</h4>
+                                        </a> 
+                                    </li>
+                                    <li>
+                                        <a href="#" type="E-mail">
+                                            <h4><i class="fa fa-envelope pull-"></i>
+                                            {{leader.email}}</h4>
+                                        </a> 
+                                    </li>
+                                 </ul>
+                             </div>
+                             {% endfor %}
+                             <div class="col-sm-12 first">
+                                 <div class="ourmember clearfix">
+                                     <h3 class="page-module-title">Direktor O'rin bosarlari</h3>
+                                     <div id="yt-extra-carousel" style="width:100%; height:auto"
+                                         class="yt-extra-carousel carousel slide pull-none" data-ride="carousel"
+                                         data-interval="false">
+                                         <div class="carousel-inner">
+                                            <div class="">
+                                                {% for subs in substitutes %}
+                                                <div class="col-sm-4 item-content first item">
+                                                    <div class="image">
+                                                        <img src="{{subs.get_rek_img}}" alt="" width="270" height="200">
+                                                        <div class="socials">
+                                                            <a class="facebook" href="#"><i class="fa fa-facebook pull- "></i></a> 
+                                                            <a class="flickr" href="#"><i class="fa fa-flickr pull- "></i></a> 
+                                                            <a class="twitter" href="#"><i class="fa fa-twitter pull- "></i></a>
+                                                         </div>
+                                                    </div>
+                                                    <div class="job">{{subs.translated_position}}</div>
+                                                    <div class="name"><a href="{% url 'rektorat' subs.slug %}">{{subs.translated_full_name}}</a></div>
+                                                    <div class="text"><h4><i class="fa fa-calendar pull-"></i> {{subs.acceptance}}</h4></div>
+                                                    <div class="text"><h4><i class="fa fa-phone pull-"></i>{{subs.phone}}</h4></div>
+                                                    <div class="text"><h4><i class="fa fa-envelope pull-"></i>{{subs.email}}</h4></div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                         </div>
+                                         
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </article>
+
+                 </div>
+             </div>
+             <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
+         </div>
+     </div>
+
+ </section>
+    
+    {% include 'users/base/settings.html' %}
+</div> 
+{% endblock content %}
