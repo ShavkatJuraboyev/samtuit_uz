@@ -1,0 +1,212 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+{% block content %}
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+
+    <section id="yt_breadcrumb" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
+
+                    <div class="module   ">
+                        <div class="modcontent clearfix">
+
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li><a href="/" class="pathway">{{menu_text.home}}</a><span
+                                        class="divider"><img
+                                            src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" /></span></li>
+                                <li class="active"><span>{{kafedr.translated_title}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <section id="content" class="  no-left  no-right block com_content">
+        <div class="container">
+            <div class="row">
+                <div id="content_main" class="col-sm-12">
+   
+                    <div id="yt_component">
+                        <article class="item-page">
+                            <header class="ourmember clearfix">
+                                <h2 class="page-module-title">
+                                   Dekanat
+                                </h2>
+                            </header>
+   
+                            <aside class="article-aside">
+                                <dl class="article-info">
+                                </dl>
+                            </aside>
+   
+                            <div id="g-about" class="row">
+                               {% for dekan in dekanlar %}
+                               {% if dekan.positions == 'dekan' %}
+                                <div class="col-sm-5 col-md-4 first ">
+                                    <h3 class="page-module-title">{{dekan.position}}:</h3>
+                                    <div class="caption pull-left">
+                                       <img src="{{dekan.image}}" alt="" width="300" height="220">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                    <h3 class="page-module-title"><b><a href="{% url 'dekanl' dekan.slug %}">{{dekan.full_name}}</a></b></h3>
+                                    <ul class="yt-list check" type="check" color="#6B82A2">
+                                       <li> 
+                                           <a href="#">
+                                               <h4><i class="fa fa-calendar pull-"></i>
+                                                   {{dekan.acceptance}}</h4>
+                                           </a> 
+                                       </li>
+                                       <li>
+                                           <a href="#">
+                                               <h4><i class="fa fa-phone pull-"></i>
+                                               {{dekan.phone}}</h4>
+                                           </a> 
+                                       </li>
+                                       <li>
+                                           <a href="#" type="E-mail">
+                                               <h4><i class="fa fa-envelope pull-"></i>
+                                               {{dekan.email}}</h4>
+                                           </a> 
+                                       </li>
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                <div class="col-sm-12 first">
+                                    <div class="ourmember clearfix">
+                                        <h3 class="page-module-title">Direktor O'rin bosarlari</h3>
+                                        <div id="yt-extra-carousel" style="width:100%; height:auto"
+                                            class="yt-extra-carousel carousel slide pull-none" data-ride="carousel"
+                                            data-interval="false">
+                                            <div class="carousel-inner">
+                                               <div class="">
+                                                {% for dekan in dekanlar %}
+                                                {% if dekan.positions == 'o\'rinbosar' %}
+                                                   <div class="col-sm-4 item-content first item">
+                                                       <div class="image">
+                                                           <img src="{{dekan.image}}" alt="" width="270" height="200">
+                                                           <div class="socials">
+                                                               <a class="facebook" href="#"><i class="fa fa-facebook pull- "></i></a> 
+                                                               <a class="flickr" href="#"><i class="fa fa-flickr pull- "></i></a> 
+                                                               <a class="twitter" href="#"><i class="fa fa-twitter pull- "></i></a>
+                                                            </div>
+                                                       </div>
+                                                       <div class="job">{{dekan.position}}</div>
+                                                       <div class="name"><a href="{% url 'dekanl' dekan.slug %}">{{dekan.full_name}}</a></div>
+                                                       <div class="text"><h4><i class="fa fa-calendar pull-"></i> {{dekan.acceptance}}</h4></div>
+                                                       <div class="text"><h4><i class="fa fa-phone pull-"></i>{{dekan.phone}}</h4></div>
+                                                       <div class="text"><h4><i class="fa fa-envelope pull-"></i>{{dekan.email}}</h4></div>
+                                                   </div>
+                                                   {% endif %}
+                                                   {% endfor %}
+                                               </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+   
+                        </article>
+   
+                    </div>
+                </div>
+                <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
+            </div>
+        </div>
+   
+    </section>
+   
+    <section id="yt_spotlight9" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="content_main" class="col-sm-12">
+                    <div id="yt_component">
+                        <article class="item-page">
+                            <header class="article-header">
+                                <h2> <a href="">Fakultet kafedralari <span class="title-color"></span> </a></h2>
+                            </header>
+                        </article>
+                    </div>
+                </div><br><br>
+                {% for kafedra in kafedralar %}
+                <div id="mid1" class="col-sm-3">
+                    <div class="module icon1 ">
+                        <h3 class="modtitle"><a href="{% url 'kafedra' kafedra.slug %}" style="color: rgb(43, 42, 42);">{{kafedra.titul}}</a></h3>
+                        <div class="modcontent clearfix">
+                            <p>{{kafedra.text}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- <div id="mid9" class="col-sm-3">
+
+                    <div class="module badge_new ">
+                        <h3 class="modtitle">Badge New<span class="badge">new</span>
+                        </h3>
+                        <div class="modcontent clearfix">
+
+                            <p>Curabitur lectus tortor, dapibus quis fringilla nec, iaculis at tortor. Sed non hendre rit
+                                urpis. Duis viverpurus sit amet nisi tincidunt at iaculis velit ullamcorper.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="mid10" class="col-sm-3">
+
+                    <div class="module  badge_hot ">
+                        <h3 class="modtitle">Badge Hot<span class="badge">hot</span>
+                        </h3>
+                        <div class="modcontent clearfix">
+
+                            <p>Curabitur lectus tortor, dapibus quis fringilla nec, iaculis at tortor. Sed non hendre rit
+                                urpis. Duis viverpurus sit amet nisi tincidunt at iaculis velit ullamcorper.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="mid11" class="col-sm-3">
+
+                    <div class="module  badge_cool ">
+                        <h3 class="modtitle">Badge Cool<span class="badge">cool</span>
+                        </h3>
+                        <div class="modcontent clearfix">
+
+                            <p>Curabitur lectus tortor, dapibus quis fringilla nec, iaculis at tortor. Sed non hendre rit
+                                urpis. Duis viverpurus sit amet nisi tincidunt at iaculis velit ullamcorper.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="mid12" class="col-sm-3">
+
+                    <div class="module  badge_best ">
+                        <h3 class="modtitle">Badge Best<span class="badge">best</span>
+                        </h3>
+                        <div class="modcontent clearfix">
+
+                            <p>Curabitur lectus tortor, dapibus quis fringilla nec, iaculis at tortor. Sed non hendre rit
+                                urpis. Duis viverpurus sit amet nisi tincidunt at iaculis velit ullamcorper.</p>
+                        </div>
+                    </div>
+
+                </div> -->
+                
+            </div>
+        </div>
+
+    </section>
+    {% include 'users/base/settings.html' %}
+</div>
+{% endblock content %}

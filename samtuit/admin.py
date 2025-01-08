@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from ckeditor.widgets import CKEditorWidget
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu
 
 
 @admin.register(Menu)
@@ -21,6 +21,26 @@ class MenuAdmin(admin.ModelAdmin):
         }),
         ('Umumiy maʼlumotlar', {
             'fields': ('url', 'parent'),  # parent maydonini umumiy ma'lumotlar qismiga qo'shish
+        }),
+    )
+
+@admin.register(QuickMmenu)
+class QuickMmenuAdmin(admin.ModelAdmin):
+    list_display = ('title_uz', 'title_en', 'title_ru')  # Ko'rsatiladigan ustunlar
+    list_filter = ('title_uz',)  # Filtrlar uchun 'parent' ni to'g'ri qo'llash
+    search_fields = ('title_uz', 'title_en', 'title_ru')  # Qidiruv maydonlari
+    fieldsets = (
+        ('Uzbekcha maʼlumotlar', {
+            'fields': ('title_uz',),
+        }),
+        ('Inglizcha maʼlumotlar', {
+            'fields': ('title_en',),
+        }),
+        ('Ruscha maʼlumotlar', {
+            'fields': ('title_ru',),
+        }),
+        ('Umumiy maʼlumotlar', {
+            'fields': ('url',),  # parent maydonini umumiy ma'lumotlar qismiga qo'shish
         }),
     )
 
@@ -80,7 +100,7 @@ class ListsInline(admin.TabularInline):
 # ListsMenu uchun konfiguratsiya
 @admin.register(ListsMenu)
 class ListsMenuAdmin(admin.ModelAdmin):
-    list_display = ('title_uz', 'slug')  # Admin panelda ko'rinadigan ustunlar
+    list_display = ('title_uz', 'slug', 'parent')  # Admin panelda ko'rinadigan ustunlar
     search_fields = ('title_uz', 'title_en', 'title_ru')  # Qidiruv maydoni
     list_filter = ('title_uz', 'title_en', 'title_ru')  # Filtrlar
     prepopulated_fields = {'slug': ('title_en',)}  # Slug maydoni avtomatik to'ldiriladi

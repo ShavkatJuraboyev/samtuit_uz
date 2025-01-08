@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from news.models import Post, Announcements, Meeting, Details, Designation, PressConference, Seminar, Conversation
-from samtuit.models import Menu, Season
+from samtuit.models import Menu, Season, QuickMmenu
 from django.http import JsonResponse
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
@@ -12,6 +12,9 @@ def news(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -27,7 +30,7 @@ def news(request):
     
 
     context = {
-        'posts': paginated_posts, 'menu_text':menu_text, "menus":menu_tree, "season":season
+        'posts': paginated_posts, 'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu
         }
     return render(request, 'users/news/news.html', context) 
  
@@ -37,6 +40,9 @@ def new(request, pk):
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     post = get_object_or_404(Post, pk=pk)
     previous_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
@@ -50,7 +56,7 @@ def new(request, pk):
         'previous_post': previous_post,
         'next_post': next_post,
         'menu_text':menu_text,
-        "menus":menu_tree, 'season':season
+        "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu
         
     }
     return render(request, 'users/news_views/new_view.html', context)
@@ -60,6 +66,9 @@ def meetings(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -72,7 +81,7 @@ def meetings(request):
     page_number = request.GET.get('page')
     paginated_posts = paginator.get_page(page_number)
 
-    ctx = {'menu_text': menu_text, "meetings":paginated_posts, "menus":menu_tree, 'season':season}
+    ctx = {'menu_text': menu_text, "meetings":paginated_posts, "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu}
     return render(request, 'users/news/meetings.html', ctx)
 
 def meeting(request, pk):
@@ -80,6 +89,9 @@ def meeting(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -92,7 +104,7 @@ def meeting(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_meeting":previous_meeting, 'next_meeting':next_meeting,
-        "menus":menu_tree, 'season':season
+        "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/meeting_view.html', ctx)
 
@@ -101,6 +113,9 @@ def elonlar(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -113,7 +128,7 @@ def elonlar(request):
     page_number = request.GET.get('page')
     paginated_posts = paginator.get_page(page_number)
 
-    ctx = {'annos':paginated_posts, 'menu_text':menu_text, "menus":menu_tree, 'season':season}
+    ctx = {'annos':paginated_posts, 'menu_text':menu_text, "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu}
     return render(request, 'users/news/elonlar.html', ctx)
 
 def elon(request, pk):
@@ -121,6 +136,9 @@ def elon(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -133,7 +151,7 @@ def elon(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_elon":previous_elon, 'next_elon':next_elon,
-        "menus":menu_tree, 'season':season, 'elon':elon
+        "menus":menu_tree, 'season':season, 'elon':elon, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/elon_view.html', ctx)
 
@@ -143,6 +161,9 @@ def uchrashuvlar(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -156,7 +177,7 @@ def uchrashuvlar(request):
     paginated_posts = paginator.get_page(page_number)
 
 
-    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'desigs':paginated_posts}
+    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'desigs':paginated_posts, 'quickmmenu':quickmmenu}
     return render(request, 'users/news/uchrashuvlar.html', ctx)
 
 def uchrashuv(request, pk):
@@ -164,6 +185,9 @@ def uchrashuv(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -176,7 +200,7 @@ def uchrashuv(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_uchrashuv":previous_uchrashuv, 'next_uchrashuv':next_uchrashuv,
-        "menus":menu_tree, 'season':season, 'uchrashuv':uchrashuv
+        "menus":menu_tree, 'season':season, 'uchrashuv':uchrashuv, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/uchrashuv_view.html', ctx)
 
@@ -186,6 +210,9 @@ def matbuat_anjumanlar(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -199,7 +226,7 @@ def matbuat_anjumanlar(request):
     paginated_posts = paginator.get_page(page_number)
 
 
-    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'press':paginated_posts}
+    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'press':paginated_posts, 'quickmmenu':quickmmenu}
 
     return render(request, 'users/news/matbuat_anjumanlar.html', ctx)
 
@@ -208,6 +235,9 @@ def matbuat_anjuman(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -220,7 +250,7 @@ def matbuat_anjuman(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_matbuat_anjuman":previous_matbuat_anjuman, 'next_matbuat_anjuman':next_matbuat_anjuman,
-        "menus":menu_tree, 'season':season, 'matbuat_anjuman':matbuat_anjuman
+        "menus":menu_tree, 'season':season, 'matbuat_anjuman':matbuat_anjuman, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/matbuat_anjuman_view.html', ctx)
 
@@ -229,6 +259,9 @@ def seminarlar(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -242,7 +275,7 @@ def seminarlar(request):
     paginated_posts = paginator.get_page(page_number)
 
 
-    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'seminars':paginated_posts}
+    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'seminars':paginated_posts, 'quickmmenu':quickmmenu}
     return render(request, 'users/news/seminarlar.html', ctx)
 
 def seminar(request, pk):
@@ -250,6 +283,9 @@ def seminar(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -262,7 +298,7 @@ def seminar(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_seminar":previous_seminar, 'next_seminar':next_seminar,
-        "menus":menu_tree, 'season':season, 'seminar':seminar
+        "menus":menu_tree, 'season':season, 'seminar':seminar, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/seminar_view.html', ctx)
 
@@ -272,6 +308,9 @@ def davra_suhbatlar(request):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -285,7 +324,7 @@ def davra_suhbatlar(request):
     paginated_posts = paginator.get_page(page_number)
 
 
-    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'convs':paginated_posts}
+    ctx = {'menu_text': menu_text, "menus":menu_tree, 'season':season, 'convs':paginated_posts, 'quickmmenu':quickmmenu}
     return render(request, 'users/news/davra_suhbatlari.html', ctx)
 
 
@@ -294,6 +333,9 @@ def davra_suhbat(request, pk):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -306,7 +348,7 @@ def davra_suhbat(request, pk):
     ctx = {
         "menu_text":menu_text, "meeting":meeting,
         "previous_conversation":previous_conversation, 'next_conversation':next_conversation,
-        "menus":menu_tree, 'season':season, 'conversation':conversation
+        "menus":menu_tree, 'season':season, 'conversation':conversation, 'quickmmenu':quickmmenu
     }
     return render(request, 'users/news_views/davra_suhbat_view.html', ctx)
 
@@ -322,6 +364,9 @@ def detail(request, slug):
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -329,5 +374,5 @@ def detail(request, slug):
     detail.translated_title = detail.get_detail_title(language)
     detail.translated_content = detail.get_detail_content(language)
     
-    ctx = {'detail': detail, 'menu_text':menu_text, "menus":menu_tree, 'season':season}
+    ctx = {'detail': detail, 'menu_text':menu_text, "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu}
     return render(request, 'users/details/detail.html', ctx)

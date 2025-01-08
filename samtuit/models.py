@@ -7,14 +7,17 @@ from django.utils.text import slugify
 from django.conf import settings
 from django_ckeditor_5.fields import CKEditor5Field
 from ckeditor_uploader.fields import RichTextUploadingField
-
+from django.utils.timezone import now
 
 class Menu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
-    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/views/")
+    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/")
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     class Meta:
         verbose_name = "Menyu" 
         verbose_name_plural = "Menyular" 
@@ -38,7 +41,10 @@ class ListsMenu(models.Model):
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
     slug = models.SlugField(unique=True, blank=True, verbose_name="Slug", help_text="Ushbu urlni tanlangan Menu saxifasidagi urlga joylashtiring")
-    url = models.CharField(max_length=200, blank=True, null=True, default=f"http://127.0.0.1:8000/views/")
+    url = models.CharField(max_length=200, blank=True, null=True, default=f"http://127.0.0.1:8000/")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -73,15 +79,15 @@ class Lists(models.Model):
 
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, blank=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
-    content_uz = RichTextUploadingField(config_name='extends_uz', verbose_name="Sarlovha umumiy matini")
+    content_uz = RichTextUploadingField(config_name='extends_uz', blank=True, verbose_name="Sarlovha umumiy matini")
 
     title_en = models.CharField(max_length=200, null=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
     text_en = models.CharField(max_length=500, null=True, blank=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
-    content_en = RichTextUploadingField(config_name='extends_en', verbose_name="English sarlovha umumiy matini", null=True)
+    content_en = RichTextUploadingField(config_name='extends_en', blank=True, verbose_name="English sarlovha umumiy matini", null=True)
 
     title_ru = models.CharField(max_length=200, null=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
     text_ru = models.CharField(max_length=500, null=True, blank=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
-    content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True)
+    content_ru = RichTextUploadingField(config_name='extends_ru', blank=True, verbose_name="Ruscha sarlovha umumiy matini", null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -111,6 +117,8 @@ class Lists(models.Model):
 
 class PictureSlider(models.Model):
     image = models.ImageField(upload_to="silder/", help_text="Silayder rasmlari yuklash uchun")
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     class Meta:
         verbose_name_plural = "Rasm Slayderlari"
@@ -136,6 +144,8 @@ class Partners(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Hamkor nomi")
     link = models.CharField(max_length=500, null=True, blank=True, verbose_name="Hamkor web sayt linki")
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Hamkor rasmi .png")
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     def get_hamk_img(self):
         return self.image.url if self.image else static('')
@@ -150,6 +160,7 @@ class Students(models.Model):
     candidate = models.CharField(max_length=250, null=True, blank=True)
     descriptions = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     class Meta:
         verbose_name_plural = "Talabalar"
@@ -181,6 +192,7 @@ class Wisdom(models.Model):
     title_ru = models.CharField(max_length=250, null=True, blank=True, verbose_name="Savollar", help_text="Rus tilida yozing. Maksimal 250 belgi")
     text_ru = models.CharField(max_length=600, null=True, blank=True, verbose_name="Javoblar", help_text="Rus tilida yozing. Maksimal 600 belgi")
 
+    created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     class Meta:
@@ -208,7 +220,33 @@ class Season(models.Model):
     leaf = models.BooleanField()
     rain = models.BooleanField()
     spring = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     def __str__(self):
         return self.season
 
+class QuickMmenu(models.Model):
+    title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
+    title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
+    title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
+    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
+    class Meta:
+        verbose_name = "Tezkor Menyu" 
+        verbose_name_plural = "Tezkor Menyular" 
+
+
+    def __str__(self):
+        return self.title_uz
+    
+    def get_translation(self, field_name, language):
+        """Berilgan tilga mos tarjimani qaytaradi."""
+        language_suffix = f"_{language}"
+        translated_field = f"{field_name}{language_suffix}"
+        return getattr(self, translated_field, getattr(self, f"{field_name}_uz", ''))
+
+    def get_menu_title(self, language):
+        return self.get_translation('title', language) 

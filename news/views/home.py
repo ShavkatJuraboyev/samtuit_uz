@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from samtuit.models import Menu, ListsMenu, Lists
+from samtuit.models import Menu, ListsMenu, Lists, QuickMmenu
 from django.shortcuts import get_object_or_404
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
@@ -15,7 +15,10 @@ def menu_view(request, slug):
     language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
-
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
+    
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
     list_menu = get_object_or_404(ListsMenu, slug=slug)  # ListsMenu'ni slug bo'yicha toping
@@ -28,6 +31,7 @@ def menu_view(request, slug):
     ctx = {
         'list_menu': list_menu, 'lists': lists,
         "menu_text":menu_text, "menus":menu_tree, 'children': nested_children,
+        'quickmmenu':quickmmenu
         }
     return render(request, 'users/lists/list_page.html', ctx)
 
@@ -35,6 +39,9 @@ def view_menu_detail(request, pk):
     language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
@@ -44,7 +51,8 @@ def view_menu_detail(request, pk):
     list.translated_content = list.get_list_content(language)
     ctx = {
         'list': list,
-        "menu_text":menu_text, "menus":menu_tree
+        "menu_text":menu_text, "menus":menu_tree,
+        'quickmmenu':quickmmenu
     }
     return render(request, 'users/lists/list_detail.html', ctx)
 

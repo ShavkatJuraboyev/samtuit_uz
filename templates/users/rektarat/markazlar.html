@@ -4,33 +4,22 @@
 <div id="yt_wrapper" class="layout-wide">
 
     {% include 'users/base/navbar.html' %}
-
     <section id="yt_breadcrumb" class="block">
         <div class="container">
             <div class="row">
                 <div id="breadcrumb" class="col-sm-12">
 
-                    <div class="module">
+                    <div class="module   ">
                         <div class="modcontent clearfix">
 
                             <ul class="breadcrumb ">
-                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="Siz bu yerdasiz:"></i>
                                 </li>
-                                <li>
-                                    <a href="/" class="pathway">{{menu_text.home}}</a>
-                                    <span class="divider">
-                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
-                                            alt="" />
-                                    </span>
-                                </li>
-                                <li>
-                                    <span>{{menu_text.news}}</span>
-                                    <span class="divider">
-                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
-                                            alt="" />
-                                    </span>
-                                </li>
-                                <li class="active"><span>{{menu_text.news}}</span></li>
+                                <li><a href="/" class="pathway" title="{{menu_text.home}}">{{menu_text.home}}</a><span
+                                        class="divider"><img
+                                            src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" /></span></li>
+                                <li class="active"><span>{{post.translated_title}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -44,149 +33,50 @@
     <section id="content" class="  no-left  block com_content">
         <div class="container">
             <div class="row">
-                <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
                 <div id="content_main" class="col-md-9">
-                    <div id="system-message-container">
-                    </div>
-
                     <div id="yt_component">
-
                         <div class="blog">
                             <h2 class="heading-category"> 
-                                <span class="subheading-category">{{menu_text.news}}</span>
+                                <span class="subheading-category">Markaz va bo'limlar</span>
                             </h2>
-
-                            <div class="items-leading row">
-                                {% for post in posts %}
-                                <div class="item col-sm-6 leading-0">
-
+                            {% for kaf in kafedra %}
+                            <div class="items-row cols-1 row-0 row">
+                                <div class="item col-sm-12 column-1">
                                     <figure class="pull-none item-image">
-
-                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}"/>
-                                        <aside class="article-aside">
-                                            <dl class="article-info  muted">
-                                                <dt></dt>
-                                                <dd class="createdby" itemprop="author" itemscope
-                                                    itemtype="">
-                                                    <i class="fa fa-user"></i>
-                                                    <span itemprop="name">{{post.created_by}}</span> </dd>
-                                                <dt></dt>
-                                                <dd class="category-name">
-                                                    {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
-                                                </dd>
-                                            </dl>
-                                        </aside>
+                                        <img src="{{kaf.get_dep_img}}" alt="{{kaf.translated_title}}">
                                     </figure>
-                                    <div class="article-text" style="height: 12cm;">
+                                    <div class="article-text">
                                         <header class="article-header">
-                                            <h2>
-                                                <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
-                                            </h2>
+                                            <h1>
+                                                <a href="{% url 'markaz' kaf.slug %}">{{kaf.translated_title}}</a>
+                                            </h1>
                                         </header>
-                                        <div class="icons">
-                                        </div>
-                                        <aside class="article-aside">
-                                            <dl class="article-info  muted">
-                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
-                                                <dd class="hits"><i class="ico-hits"></i>23744</dd>
-                                            </dl>
-                                        </aside>
                                         <div class="article-intro">
-                                            <p>{{ post.translated_text }}</p>
+                                            <p>{{kaf.translated_text}}</p>
                                         </div>
                                     </div>
+                                    <div class="item-readmore">
+                                        <a href="{% url 'markaz' kaf.slug %}" title="{{kaf.translated_title}}">
+                                            <i class="fa fa-check"></i><span>Batafsil</span>
+                                        </a>
+                                    </div>
                                 </div>
-                                {% endfor %}
                             </div>
-                            <div class="pagination">
-                                <ul class="pagination">
-                                    <!-- Birinchi sahifa tugmasi -->
-                                    {% if posts.number != 1 %}
-                                        <li>
-                                            <a title="First" href="?page=1" class="pagenav"><i class="icon-chevron-left" aria-hidden="true"></i></a>
-                                        </li>
-                                    {% else %}
-                                        <li class="disabled">
-                                            <span class="icon-chevron-left" aria-hidden="true"></span>
-                                        </li>
-                                    {% endif %}
-                                    <!-- Oldingi sahifa tugmasi -->
-                                    {% if posts.has_previous %}
-                                        <li>
-                                            <a title="Previous" href="?page={{ posts.previous_page_number }}" class="pagenav">
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="disabled">
-                                            <span>
-                                                <i class="fa fa-angle-left"></i>
-                                            </span>
-                                        </li>
-                                    {% endif %}
-                            
-                                    <!-- Sahifa raqamlari -->
-                                    {% for page in posts.paginator.page_range %}
-                                        {% if page == posts.number %}
-                                            <li class="active"><span>{{ page }}</span></li>
-                                        {% elif page > posts.number|add:'-3' and page < posts.number|add:'3' %}
-                                            <li>
-                                                <a title="{{ page }}" href="?page={{ page }}" class="pagenav">{{ page }}</a>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-                            
-                                    <!-- Keyingi sahifa tugmasi -->
-                                    {% if posts.has_next %}
-                                        <li>
-                                            <a title="Next" href="?page={{ posts.next_page_number }}" class="pagenav">
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="disabled">
-                                            <span>
-                                                <i class="fa fa-angle-right"></i>
-                                            </span>
-                                        </li>
-                                    {% endif %}
-                            
-                                    <!-- Oxirgi sahifa tugmasi -->
-                                    {% if posts.paginator.num_pages > 1 and posts.number != posts.paginator.num_pages %}
-                                        <li>
-                                            <a title="End" href="?page={{ posts.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
-                                                aria-hidden="true"></i></a>
-                                        </li>
-                                    {% else %}
-                                        <li class="disabled">
-                                            <span class="icon-chevron-right"
-                                                aria-hidden="true"></span>
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                            
+                            {% endfor %}
                         </div>
-
                     </div>
                 </div>
                 <aside id="content_right" class="col-md-3 col-sm-12">
                     <div id="right" class="col-sm-12">
-
+    
                         <div class="module k2-categories ">
                             <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
                             <div class="modcontent clearfix">
-
+    
                                 <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
                                     <ul class="level0">
-                                        {% for quick in quickmmenu %}
-                                        <li>
-                                            <a href="{{quick.url}}">
-                                                <span class="catTitle">{{quick.translated_title}}</span>
-                                                <span class="catCounter"></span>
-                                            </a>
-                                        </li>
-                                        {% endfor %}
+                                        <li><a href=""><span class="catTitle">{{menu_text.faculties}}</span><span
+                                                    class="catCounter"></span></a></li>
                                         <li><a href=""><span class="catTitle">{{menu_text.departments}}</span><span
                                                     class="catCounter"></span></a></li>
                                         <li><a href=""><span class="catTitle">{{menu_text.centers}}</span><span
@@ -203,12 +93,12 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="module  module_tabs ">
                             <div class="modcontent clearfix">
-
+    
                                 <div id="moduletabs_11308236401729926773" class="moduletabs top-position clearfix">
-
+    
                                     <div class="tabs-container">
                                         <ul class="tabs row">
                                             <li class="col-sm-6 col-xs-6">
@@ -223,9 +113,9 @@
                                         <div class="tabs-content">
                                             <div class="tabs-content-inner">
                                                 <div class="tab-content selected">
-
+    
                                                     <div id="k2ModuleBox347" class="k2ItemsBlock k2-content-recent">
-
+    
                                                         <ul>
                                                             <li class="even">
                                                                 <div class="moduleItemIntrotext">
@@ -261,15 +151,15 @@
                                                                             2015</span>
                                                                     </div>
                                                                 </div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
                                                             </li>
                                                             <li class="even">
-
+    
                                                                 <div class="moduleItemIntrotext">
                                                                     <a class="moduleItemImage"
                                                                         href=""
@@ -284,17 +174,17 @@
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
                                                                     </div>
-
+    
                                                                 </div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
                                                             </li>
                                                             <li class="odd lastItem">
-
+    
                                                                 <div class="moduleItemIntrotext">
                                                                     <a class="moduleItemImage"
                                                                         href=""
@@ -309,25 +199,25 @@
                                                                         <span class="moduleItemDateCreated">Apr 20,
                                                                             2015</span>
                                                                     </div>
-
+    
                                                                 </div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
-
+    
                                                                 <div class="clr"></div>
                                                             </li>
                                                             <li class="clearList"></li>
                                                         </ul>
-
+    
                                                     </div>
                                                 </div>
                                                 <div class="tab-content">
-
+    
                                                     <div id="k2ModuleBox350"
                                                         class="k2LatestCommentsBlock  tab-comments">
-
+    
                                                     </div>
                                                 </div>
                                                 <div class="clear"></div>
@@ -335,9 +225,9 @@
                                         </div>
                                         <div class="clear"></div>
                                     </div>
-
+    
                                 </div>
-
+    
                                 <script type="text/javascript">
                                     jQuery(document).ready(function($) {
                                         $('#moduletabs_11308236401729926773').jsmart_moduletabs({
@@ -375,14 +265,14 @@
                                         });
                                     });
                                 </script>
-
+    
                             </div>
                         </div>
-
+    
                         <div class="module  tags-k2 ">
                             <h3 class="modtitle">{{menu_text.categories}}</h3>
                             <div class="modcontent clearfix">
-
+    
                                 <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
                                     <a href="" style="font-size:100%" title="">
                                         Creative </a>
@@ -402,7 +292,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                     </div>
                 </aside>
             </div>
@@ -411,5 +301,5 @@
     </section>
 
     {% include 'users/base/settings.html' %}
-</div> 
+</div>
 {% endblock content %}

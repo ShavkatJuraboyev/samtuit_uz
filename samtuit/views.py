@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
 from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Season
 from news.models import Post, Announcements
 from django.utils.translation import activate
@@ -49,6 +48,7 @@ def home(request):
 
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
+    
 
 
     season = Season.objects.all().order_by("-id").first()
