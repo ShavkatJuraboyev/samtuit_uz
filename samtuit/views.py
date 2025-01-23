@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Season
+from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Season, QuickMmenu
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
@@ -26,13 +26,13 @@ def get_menu_tree(menu, language):
     }
     return menu_data
 
-
 def home(request):
     language = request.session.get('django_language', 'uz') 
-    pictures = PictureSlider.objects.all().order_by('-id')[:7]
-    posts = Post.objects.all().order_by('-id')[4:9]
-    post_one = Post.objects.all().order_by('-id')[0]
-    post_three = Post.objects.all().order_by('-id')[1:4]
+    pictures = PictureSlider.objects.all().order_by('-id')[:4]
+    post_one = Post.objects.all().order_by('-id').first()
+    post_three = Post.objects.all().order_by('-id')[1:5]
+    for post in post_three:
+        post.translated_title = post.get_post_title(language)
     students = Students.objects.all()
     annos = Announcements.objects.all().order_by("-id")[:4]
     partners = Partners.objects.all()
@@ -40,6 +40,10 @@ def home(request):
     post_one.translated_title = post_one.get_post_title(language)  # Sarlavha
     post_one.translated_text = post_one.get_post_text(language)
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
     
     wisdoms = Wisdom.objects.all().order_by("-id")[:5]
     for wisdom in wisdoms:
@@ -54,11 +58,20 @@ def home(request):
     season = Season.objects.all().order_by("-id").first()
 
     context = {
-        'pictures':pictures, 'posts':posts, 
+        'pictures':pictures, 
         'post_one':post_one, 'post_three':post_three, 
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
         'wisdoms':wisdoms, 
-        'menus':menu_tree, 'season':season
+        'menus':menu_tree, 'season':season, 'quickmmenu':quickmmenu
         } 
     return render(request, 'users/index.html', context)
+
+
+def contact(request):
+    language = request.session.get('django_language', 'uz') 
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    context = {
+        'menu_text':menu_text
+        }
+    return render(request, 'users/contact.html', context)

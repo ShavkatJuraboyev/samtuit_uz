@@ -1,0 +1,582 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+
+    <section id="yt_breadcrumb" class="block">
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
+
+                    <div class="module">
+                        <div class="modcontent clearfix">
+
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li class="active"><span>Aloqa</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="content" class="  no-left  no-right block com_content">
+        <div class="container">
+            <div class="row">
+                <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
+                <div id="content_main" class="col-sm-12">
+                    <div id="system-message-container">
+                    </div>
+                    <div id="yt_component">
+                        <article class="item-page">
+                            <header class="article-header">
+                                <h2>
+                                    <a href="contact-sidebar.html">
+                                        Contact us <span class="title-color"></span>
+                                    </a>
+                                </h2>
+                            </header>
+                            <aside class="article-aside">
+                                <dl class="article-info">
+                                    <dd class="create">
+                                        <span class="fa fa-clock-o"></span>
+                                        <time datetime="2020-05-21T22:44:01+00:00">
+                                            21 May 2020 </time>
+                                    </dd>
+                                    <dd class="createdby" itemprop="author" itemscope=""
+                                        itemtype="http://schema.org/Person">
+                                        <span class="fa fa-user"></span>
+                                        <span itemprop="name">Super User</span> </dd>
+                                    <dd class="category-name">
+                                        Category: <a href="contact-sidebar/9-explore.html" itemprop="genre">Explore</a>
+                                    </dd>
+                                    <dd class="hits">
+                                        <span class="icon-eye-open"></span>
+                                        <meta itemprop="interactionCount" content="UserPageVisits:193811">
+                                        Hits: 193811 </dd>
+                                </dl>
+                            </aside>
+                            <p>
+                                <script
+                                    src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;key=AIzaSyAYvfhU3lQ4Z52FXziEBemhbiXzFycLj7U">
+                                </script>
+                                <script type="text/javascript">
+                                    function showLatLgn() {
+                                        var geocoder = new google.maps.Geocoder();
+                                        var sLat = "21.0333333";
+                                        var sLong = "105.85000000000002";
+                                        var latlng = new google.maps.LatLng(sLat, sLong);
+                                        geocoder.geocode({
+                                            "latLng": latlng
+                                        }, function(data, status) {
+                                            if (status == google.maps.GeocoderStatus.OK) {
+                                                var add = data[1].formatted_address; //this is the full address
+                                                var myOptions = {
+                                                    zoom: 18,
+                                                    center: latlng,
+                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                };
+                                                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                                                    myOptions);
+                                                var marker = new google.maps.Marker({
+                                                    map: map,
+                                                    position: latlng
+                                                });
+                                                marker.setTitle('Address');
+                                                attachSecretMessage(marker, add);
+                                            } else {
+                                                try {
+                                                    alert("Address not found");
+                                                } catch (e) {}
+                                            }
+                                        })
+                                    }
+
+                                    function attachSecretMessage(marker, message) {
+                                        var infowindow = new google.maps.InfoWindow({
+                                            content: message
+                                        });
+                                        google.maps.event.addListener(marker, 'click', function() {
+                                            infowindow.open(marker.get('map'), marker);
+                                        });
+                                    }
+
+                                    function showLocation() {
+                                        var address = 'Los Angeles, CA, USA';
+                                        var geocoder = new google.maps.Geocoder();
+                                        geocoder.geocode({
+                                            "address": address
+                                        }, function(results, status) {
+                                            // If the Geocoding was successful
+                                            if (status == google.maps.GeocoderStatus.OK) {
+                                                var myOptions = {
+                                                    zoom: 18,
+                                                    center: results[0].geometry.location,
+                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                };
+                                                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                                                    myOptions);
+                                                // Add a marker at the address.
+                                                var marker = new google.maps.Marker({
+                                                    map: map,
+                                                    position: results[0].geometry.location
+                                                });
+                                                marker.setTitle('Address');
+                                                attachSecretMessage(marker, address);
+                                            } else {
+                                                try {
+                                                    alert(address + " not found");
+                                                } catch (e) {}
+                                            }
+                                        });
+                                    }
+                                    google.maps.event.addDomListener(window, 'load', showLocation);
+                                </script>
+                            </p>
+                            <div class="contact-ajax" id="contact_ajax1729926798906425569">
+                                <!--<![endif]-->
+                                <div class="ctajax-wrap row sidebar">
+                                    <div class="ctajax-element col-md-8 col-sm-8">
+                                        <div class="el-inner">
+                                            <h2 class="el-heading"><span>Contact Info</span></h2>
+                                            <div class="el-map">
+                                                <div id="map-canvas" style="height:300px; width:autopx;"></div>
+                                            </div>
+
+                                            <div class="el-desc">
+                                                <p>Forem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                                                    convallis ligula eget tellus lacinia tristique. Vivamus convallis
+                                                    tristique fringilla. Pellentesque pharetra, lacus tincidunt pulvinar
+                                                    facilisis</p>
+                                            </div>
+                                            <div class="el-info-contact">
+                                                <div class="info-address cf">
+                                                    <i class="icon-map-marker"></i>
+                                                    <span class="info-label" data-label="Address">: 1 Infinite Loop</span>
+                                                </div>
+                                                <div class="info-mobie cf">
+                                                    <i class="icon-mobile-phone"></i>
+                                                    <span class="info-label" data-label="Phone Number">:
+                                                        1-212-555555-1</span>
+                                                </div>
+                                                <div class="info-mail cf">
+                                                    <i class="icon-envelope-alt"></i>
+                                                    <span id="cloak2e1d2133081643851dcced9e28881902"><a
+                                                            href="mailto:contact@ytcvn.com" class="info-label"
+                                                            data-label="E-Mail">: contact@ytcvn.com</a></span>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('cloak2e1d2133081643851dcced9e28881902')
+                                                            .innerHTML = '';
+                                                        var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+                                                        var path = 'hr' + 'ef' + '=';
+                                                        var addy2e1d2133081643851dcced9e28881902 = 'c&#111;nt&#97;ct' +
+                                                            '&#64;';
+                                                        addy2e1d2133081643851dcced9e28881902 =
+                                                            addy2e1d2133081643851dcced9e28881902 + 'ytcvn' + '&#46;' +
+                                                            'c&#111;m';
+                                                        var addy_text2e1d2133081643851dcced9e28881902 =
+                                                            ': c&#111;nt&#97;ct@ytcvn.c&#111;m';
+                                                        document.getElementById('cloak2e1d2133081643851dcced9e28881902')
+                                                            .innerHTML += '<a ' + path + '\'' + prefix + ':' +
+                                                            addy2e1d2133081643851dcced9e28881902 +
+                                                            '\' class="info-label" data-label="E-Mail">' +
+                                                            addy_text2e1d2133081643851dcced9e28881902 + '<\/a>';
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ctajax-element col-md-4 col-sm-4">
+                                        <div class="el-inner cf">
+                                            <div class="el-form cf">
+                                                <h2 class="el-heading"><span>Bizga xabar yuboring</span></h2>
+                                                <form class="el-ctajax-form" id="el_ctajax_form" method="post" action="#">
+                                                    <div class="el-control">
+                                                        <label for="name">Ism</label>
+                                                        <input type="text" autocomplete="off" name="cainput_name"
+                                                            class="el-input" id="cainput_name" placeholder="Name">
+                                                        <span class="ca-tooltip" title="" data-toggle="tooltip" href="#"
+                                                            data-original-title="Please fill in your name!">
+                                                            <i class="icon-exclamation-sign el-error"></i>
+                                                        </span>
+                                                        <i class="icon-ok-sign el-ok"></i>
+                                                    </div>
+                                                    <div class="el-control ">
+                                                        <label for="email">Email</label>
+                                                        <input autocomplete="off" type="text" name="cainput_email"
+                                                            class="el-input" id="cainput_email" placeholder="Email">
+                                                        <span class="ca-tooltip" title="" data-toggle="tooltip" href="#"
+                                                            data-original-title="Please fill in your mail!">
+                                                            <i class="icon-exclamation-sign el-error"></i>
+                                                        </span>
+                                                        <i class="icon-ok-sign el-ok"></i>
+                                                    </div>
+                                                    <div class="el-control">
+                                                        <label for="subject">Subject</label>
+                                                        <input type="text" autocomplete="off" name="cainput_subject"
+                                                            class="el-input" id="cainput_subject" placeholder="Subject">
+                                                        <span class="ca-tooltip" title="" data-toggle="tooltip" href="#"
+                                                            data-original-title="Subject can not be null!">
+                                                            <i class="icon-exclamation-sign el-error"></i>
+                                                        </span>
+                                                        <i class="icon-ok-sign el-ok"></i>
+                                                    </div>
+                                                    <div class="el-control">
+                                                        <label for="message">Message</label>
+                                                        <textarea name="cainput_message" maxlength="1000" class="el-input"
+                                                            id="cainput_message" placeholder="Message"></textarea>
+                                                        <span class="ca-tooltip" title="" data-toggle="tooltip" href="#"
+                                                            data-original-title="Number of characters cannot be less than 5 or greater than 1000!">
+                                                            <i class="icon-exclamation-sign el-error"></i>
+                                                        </span>
+                                                        <i class="icon-ok-sign el-ok"></i>
+                                                    </div>
+                                                    <div class="el-control captcha-form">
+
+                                                        <img class="el-captcha" id="el_captcha293"
+                                                            src="../../../index3386.php?displayCaptcha=True&amp;instanceCaptcha=293&amp;time=1729926798899656403"
+                                                            alt="Captcha">
+                                                        <a class="el-captcha-refesh" href="#"
+                                                            onclick="document.getElementById('el_captcha293').src = '../../../indexf15f.php?displayCaptcha=True&amp;instanceCaptcha=293&amp;time=' + new Date().getTime() ;return false;"><i
+                                                                class="icon-refresh icon-large"></i></a>
+                                                    </div>
+                                                    <div class="el-control ">
+                                                        <label for="subject">Captcha*</label>
+                                                        <input type="text" name="cainput_captcha" maxlength="6"
+                                                            class="el-input" id="cainput_captcha" placeholder="Captcha*">
+                                                        <i
+                                                            class="icon-spinner  icon-large icon-spin el-captcha-loadding"></i>
+                                                        <span class="ca-tooltip" title="" data-toggle="tooltip" href="#"
+                                                            data-original-title="Please enter a valid captcha">
+                                                            <i class="icon-exclamation-sign el-error"></i>
+                                                        </span>
+                                                        <i class="icon-ok-sign el-ok"></i>
+                                                    </div>
+
+                                                    <div class="el-control">
+                                                        <input type="submit" value="Send" id="cainput_submit">
+                                                        <span class="el-ctajax-loadding"></span>
+                                                        <span class="el-ctajax-return return-error">
+                                                            <i class="icon-exclamation-sign icon-large">&nbsp;&nbsp;Mail is
+                                                                not sent.</i>
+                                                        </span>
+                                                        <span class="el-ctajax-return return-success">
+                                                            <i class="icon-ok-circle icon-large">&nbsp;&nbsp;Your email has
+                                                                been sent.</i>
+                                                        </span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="social-networks">
+                                            </div>
+                                            <!--<span class="el-aircaft"></span>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                jQuery(document).ready(function($) {
+                                    ;
+                                    (function(element) {
+                                        var $element = $(element);
+                                        $('.ca-tooltip', $element).tooltip();
+                                        var $form = $('#el_ctajax_form', $element);
+                                        var $ajax_url =
+                                            'contact-sidebar7fc1.html?contact_ajax=4173661729926798&amp;ctajax_modid=293'
+                                        var $name = $('#cainput_name', $element);
+                                        var $email = $('#cainput_email', $element);
+                                        var $subject = $('#cainput_subject', $element);
+                                        var $message = $('#cainput_message', $element);
+                                        var $captcha = $('#cainput_captcha', $element);
+                                        var $recaptcha = $('#dynamic_recaptcha_1', $element);
+                                        var $smail_copy = $('#contact_email_copy', $element);
+                                        var $ca_submit = $('#cainput_submit', $element);
+                                        var $image_load = $('.el-ctajax-loadding', $element);
+                                        var $notice_return = $('.el-ctajax-return', $element);
+                                        var $return_error = $('.return-error', $element);
+                                        var $return_success = $('.return-success', $element);
+
+                                        function validateInput(input, type) {
+                                            var validationResult = validation(input, type);
+                                            checkFormValidationState();
+                                            return validationResult.valid;
+                                        }
+
+                                        function validation(input, type) {
+                                            var result = new Object();
+                                            result.valid = true;
+                                            result.mes = "The field is valid";
+                                            var value = $(input).val();
+                                            switch (type) {
+                                                case "name":
+                                                case "subject":
+                                                    if (value.length == '') {
+                                                        result.valid = false;
+                                                        result.mes = "Please enter a valid!";
+                                                    }
+                                                    saveValidationState(input, result.valid);
+                                                    showValidationMessage(input, result);
+                                                    break;
+                                                case "message":
+                                                    if (value.length == '' || value.length <= 5) {
+                                                        result.valid = false;
+                                                        result.mes = "Please enter a valid!";
+                                                    }
+                                                    saveValidationState(input, result.valid);
+                                                    showValidationMessage(input, result);
+                                                    break;
+                                                case "email":
+                                                    var re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+                                                    if (!re.test(value)) {
+                                                        result.valid = false;
+                                                        result.mes = "Please enter a valid email!";
+                                                    }
+                                                    saveValidationState(input, result.valid);
+                                                    showValidationMessage(input, result);
+                                                    break;
+                                                case 'captchaCode':
+                                                    if (value.length == '' || value.length < 6) {
+                                                        result.valid = false;
+                                                        result.mes = "Please enter a valid!";
+                                                        saveValidationState(input, false);
+                                                        showValidationMessage(input, result);
+                                                    } else {
+                                                        saveValidationState(input, false);
+                                                        $(input).parent().removeClass('ctajax-error')
+                                                            .removeClass('ctajax-ok');
+                                                        $('.el-captcha-loadding', $element).css('display',
+                                                            'inline-block');
+                                                        $ca_submit.addClass('check-captcha');
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: $ajax_url,
+                                                            data: {
+                                                                captcha: value,
+                                                                task: 'checkcaptcha'
+                                                            },
+                                                            dataType: 'json',
+                                                            success: function(data) {
+                                                                $('.el-captcha-loadding', $element)
+                                                                    .css('display', 'none');
+                                                                $ca_submit.removeClass(
+                                                                    'check-captcha');
+                                                                saveValidationState(input, data
+                                                                    .valid);
+                                                                showValidationMessage(input, data);
+                                                                checkFormValidationState();
+                                                            }
+                                                        });
+                                                    }
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            return result;
+                                        }
+
+                                        function saveValidationState(input, validationState) {
+                                            $(input).data("validated", validationState);
+                                        }
+
+                                        function checkFormValidationState() {
+                                            var nameValid = $name.data("validated");
+                                            var emailValid = $email.data("validated");
+                                            var subjectValid = $subject.data("validated");
+                                            var messageValid = $message.data("validated");
+                                            var captchaValid = $captcha.data("validated");
+                                            var check_valid = '';
+                                            check_valid = nameValid && emailValid && subjectValid &&
+                                                messageValid && captchaValid;
+                                            if (check_valid) {
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
+                                        }
+
+                                        function showValidationMessage(input, validationResult) {
+                                            if (validationResult.valid === false) {
+                                                $(input).parent().addClass('ctajax-error').removeClass(
+                                                    'ctajax-ok');
+                                            } else {
+                                                $(input).parent().removeClass('ctajax-error').addClass(
+                                                    'ctajax-ok');
+                                            }
+                                        }
+                                        var timer0 = 0;
+                                        $name.on("keyup", function(e) {
+                                            if (timer0) {
+                                                clearTimeout(timer0);
+                                                timer0 = 0;
+                                            }
+                                            timer0 = setTimeout(function() {
+                                                validateInput($name, "name");
+                                            }, 1000);
+                                        });
+                                        var timer1 = 0;
+                                        $email.on("keyup", function(e) {
+                                            if (timer1) {
+                                                clearTimeout(timer1);
+                                                timer1 = 0;
+                                            }
+                                            timer1 = setTimeout(function() {
+                                                validateInput($email, "email");
+                                            }, 1000);
+                                        });
+                                        var timer2 = 0;
+                                        $subject.on("keyup", function(e) {
+                                            if (timer2) {
+                                                clearTimeout(timer2);
+                                                timer2 = 0;
+                                            }
+                                            timer2 = setTimeout(function() {
+                                                validateInput($subject, "subject");
+                                            }, 1000);
+                                        });
+                                        var timer3 = 0;
+                                        $message.on("keyup", function(e) {
+                                            if (timer3) {
+                                                clearTimeout(timer3);
+                                                timer3 = 0;
+                                            }
+                                            timer3 = setTimeout(function() {
+                                                validateInput($message, "message");
+                                            }, 1000);
+                                        });
+                                        var timer4 = 0;
+                                        $captcha.on("keyup", function() {
+                                            if (timer4) {
+                                                clearTimeout(timer4);
+                                                timer4 = 0;
+                                            }
+                                            timer4 = setTimeout(function() {
+                                                validateInput($captcha, "captchaCode");
+                                            }, 1000);
+                                        });
+                                        $('.el-captcha-refesh', $element).on('click.refesh', function() {
+                                            $captcha.val('');
+                                        });
+                                        $form.on('submit', function() {
+                                            var $name_value = $.trim($name.val());
+                                            var $email_value = $.trim($email.val());
+                                            var $subject_value = $.trim($subject.val());
+                                            var $message_value = $.trim($message.val());
+                                            var $captcha_value = $.trim($captcha.val());
+                                            //Recaptcha.response ('recaptcha_response_field');
+                                            var $smail_copy_value = $smail_copy.attr('checked') ? 1 : 0;
+                                            var $check_empty = '';
+                                            $check_empty = $name_value == '' || $subject_value == '' ||
+                                                $email_value == '' || $message_value == '' ||
+                                                $captcha_value == '';
+                                            if (checkFormValidationState() == false || $check_empty) {
+                                                if ($name_value == '') {
+                                                    validateInput($name, "name");
+                                                }
+                                                if ($email_value == '') {
+                                                    validateInput($email, "email");
+                                                }
+                                                if ($subject_value == '') {
+                                                    validateInput($subject, "subject");
+                                                }
+                                                if ($message_value == '' || $message_value.length <=
+                                                    5) {
+                                                    validateInput($message, "message");
+                                                }
+                                                if ($captcha_value == '') {
+                                                    validateInput($captcha, "captchaCode");
+                                                }
+                                                return false;
+                                            } else {
+                                                if ($ca_submit.hasClass('check-captcha') || $ca_submit
+                                                    .hasClass('ca-sending')) {
+                                                    return false;
+                                                } else {
+                                                    $ca_submit.addClass('ca-sending');
+                                                    $image_load.css('display', 'inline-block');
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: $ajax_url,
+                                                        data: {
+                                                            name: $name_value,
+                                                            email: $email_value,
+                                                            message: $message_value,
+                                                            subject: $subject_value,
+                                                            send_copy: $smail_copy_value,
+                                                            task: 'sendmail'
+                                                        },
+                                                        success: function(data) {
+                                                            $image_load.css('display',
+                                                                'none');
+                                                            //$return_success.css('display','inline-block');	
+                                                            if (data.status == 1) {
+                                                                $return_success.css(
+                                                                    'display',
+                                                                    'inline-block');
+                                                            } else {
+                                                                $return_error.css('display',
+                                                                    'inline-block');
+                                                            }
+                                                        },
+                                                        complete: function(data) {
+                                                            $form.each(function() {
+                                                                this.reset();
+                                                            });
+                                                            $notice_return.delay(3000)
+                                                                .fadeOut();
+                                                            $('.el-control').each(
+                                                        function() {
+                                                                $(this).removeClass(
+                                                                    'ctajax-ok');
+                                                            });
+                                                            $ca_submit.removeClass(
+                                                                'ca-sending');
+                                                            $url =
+                                                                'contact-sidebarindexf15f.php?displayCaptcha=True&amp;instanceCaptcha=293&amp;time=' +
+                                                                new Date().getTime();
+                                                            $('#el_captcha293', $element)
+                                                                .attr("src", $url);
+                                                        },
+                                                        dataType: 'json',
+                                                    });
+                                                }
+                                            }
+                                            return false;
+                                        });
+                                    })('#contact_ajax1729926798906425569')
+                                });
+                                //]]>	
+                            </script>
+                            <p></p>
+
+                        </article>
+
+                    </div>
+                </div>
+                <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
+            </div>
+        </div>
+    </section>
+
+{% include 'users/base/settings.html' %}
+
+</div>
+
+{% endblock content %}

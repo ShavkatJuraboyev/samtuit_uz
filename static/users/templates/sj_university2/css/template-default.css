@@ -700,7 +700,7 @@ span.highlight {
 body {
   line-height: 22px;
   background-color: #f6f6f6;
-  color: #777;
+  color: #292929;
   font-size: 13px;
 }
 #yt_header {
@@ -991,7 +991,7 @@ body {
   }
 }
 a {
-  color: #9ac9ec;
+  color: #1393f5;
 }
 a:hover {
   color: #4a505c;
@@ -4613,7 +4613,7 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slid
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
   max-width: none;
-  height: 60em;
+  height: 55em;
 }
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title {
@@ -5266,7 +5266,7 @@ div.sj-k2slickslider:hover .nav-pagination.conner-tl a.right {
   transition: all 0.3s ease-in-out;
 }
 .module.categories-ii {
-  margin-top: -20px;
+  margin-top: 20px;
   margin-bottom: 0;
 }
 .module.categories-ii .modcontent .sj_category {

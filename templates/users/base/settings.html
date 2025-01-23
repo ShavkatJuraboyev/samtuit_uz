@@ -3,56 +3,8 @@
 <section id="yt_spotlight7" class="block">
     <div class="container">
         <div class="row">
-            <div id="top11" class="col-md-9 col-sm-12">
-
-                <div class="module  newsletter ">
-                    <h3 class="modtitle">Subscribe Our Newsletter</h3>
-                    <div class="modcontent clearfix">
-                        <div class="acymailing_module newsletter" id="acymailing_module_formAcymailing72291">
-                            <div class="acymailing_fulldiv" id="acymailing_fulldiv_formAcymailing72291">
-                                <form id="formAcymailing72291"
-                                    action=""
-                                    onsubmit="return submitacymailingform('optin','formAcymailing72291')"
-                                    method="post" name="formAcymailing72291">
-                                    {% csrf_token %}
-                                    <div class="acymailing_module_form">
-                                        <table class="acymailing_form">
-                                            <tr>
-                                                <td class="acyfield_email acy_requiredField">
-                                                    <input id="user_email_formAcymailing72291"
-                                                        onfocus="if(this.value == 'Enter your email') this.value = '';"
-                                                        onblur="if(this.value=='') this.value='Enter your email';"
-                                                        class="inputbox" type="text" name="user[email]"
-                                                        style="width:100%" value="Enter your email"
-                                                        title="Enter your email" />
-                                                </td>
-
-                                                <td class="acysubbuttons">
-                                                    <input class="button subbutton btn btn-primary"
-                                                        type="submit" value="Submit Now" name="Submit"
-                                                        onclick="try{ return submitacymailingform('optin','formAcymailing72291'); }catch(err){alert('The form could not be submitted '+err);return false;}" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <input type="hidden" name="ajax" value="0" />
-                                        <input type="hidden" name="ctrl" value="sub" />
-                                        <input type="hidden" name="task" value="notask" />
-                                        <input type="hidden" name="redirect"
-                                            value="https%3A%2F%2Fdemo.smartaddons.com%2Ftemplates%2Fjoomla3%2Fsj-universityii%2F" />
-                                        <input type="hidden" name="redirectunsub"
-                                            value="https%3A%2F%2Fdemo.smartaddons.com%2Ftemplates%2Fjoomla3%2Fsj-universityii%2F" />
-                                        <input type="hidden" name="option" value="com_acymailing" />
-                                        <input type="hidden" name="hiddenlists" value="1" />
-                                        <input type="hidden" name="acyformname" value="formAcymailing72291" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div id="top12" class="col-md-3 col-sm-12">
+            
+            <div id="top12" class="col-md-12 col-sm-12">
 
                 <div class="module  social-icon ">
                     <div class="modcontent clearfix">
@@ -86,124 +38,46 @@
     </div>
 
 </section>
+
 <section id="yt_spotlight8" class="block">
     <div class="container">
         <div class="row">
-            <div id="bottom1" class="col-md-3 col-sm-6">
-
-                <div class="module  ">
-                    <div class="modcontent clearfix">
-
-                        <div><img src="{% static 'users/images/sj_univer/demo/1.png' %}" alt="" /></div>
-                    </div>
-                </div>
-
-            </div>
-            <div id="bottom2" class="col-md-3 col-sm-6">
+            <div id="bottom2" class="col-md-4 col-sm-6">
 
                 <div class="module  get-in-touch ">
-                    <h3 class="modtitle">Get In Touch</h3>
+                    <h3 class="modtitle">Aloqa</h3>
                     <div class="modcontent clearfix">
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        <p>Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari Universiteti Samarqand filiali</p>
                         <ul>
-                            <li><span class="lea">Add:</span> Lafayette has a great customer service</li>
-                            <li><span class="lea">Tel:</span> 02 8000 11 800</li>
-                            <li><span class="lea">Email:</span> university@gmail.com</li>
-                            <li><span class="lea">Hotline</span>: 647-507-1376</li>
+                            <li><span class="lea">Add:</span>Samarqand shahar Ibn Sino ko'chasi 2 A uy</li>
+                            <li><span class="lea">Tel:</span> +998 (66) 232 2929</li>
+                            <li><span class="lea">Email:</span> info@samtuit.uz</li>
+                            <li><span class="lea">Ishonch telefoni</span>: +998 66 232 20 37</li>
                         </ul>
                     </div>
                 </div>
 
             </div>
-            <div id="bottom3" class="col-md-2 col-sm-6">
-
-                <div class="module  useful-link ">
-                    <h3 class="modtitle">Useful Link</h3>
+            <div id="bottom3" class="col-md-3 col-sm-6">
+                <div class="module  useful-link">
+                    <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
                     <div class="modcontent clearfix">
-
                         <ul class="menu ">
-                            <li class="item-1537"><a href="">Themes Feature</a></li>
-                            <li class="item-1538"><a href="">Falcuty</a></li>
-                            <li class="item-1539"><a href="">Staff</a></li>
-                            <li class="item-1540"><a href="">Student</a></li>
-                            <li class="item-1541"><a href="">Parents</a></li>
-                            <li class="item-1542"><a href="">Visitors</a></li>
+                            {% for quick in quickmmenu %}
+                            <li class="item-1537"><a href="{{quick.url}}">{{quick.translated_title}}</a></li>  
+                            {% endfor %}           
                         </ul>
                     </div>
                 </div>
-
             </div>
-            <div id="bottom4" class="col-md-4 col-sm-6">
-
-                <div class="module  clients-say ">
-                    <h3 class="modtitle">Clients Say About Us</h3>
-                    <div class="modcontent clearfix">
-
-                        <div class="carousel-custommer">
-                            <div id="yt-extra-carousel" style="width:100%; height:100%"
-                                class="yt-extra-carousel carousel slide pull-center" data-ride="carousel"
-                                data-interval='false'>
-                                <div class="carousel-inner">
-                                    <div class='item'>
-                                        <div class="customslider">
-                                            <div class="item-image"><img src="{% static 'users/images/bonus_page/1.png' %}"
-                                                    alt="" />
-                                                <div class="over-image"> </div>
-                                            </div>
-                                            <div class="content-main">
-                                                <p class="post-commnets">“Harum congue adipisci nostrum laborum
-                                                    luctus nibh, nihil malesuada modi! Voluptate, eleifend!
-                                                    Excepturi mattis”</p>
-                                                <h3 class="title"><span class="use">Jillian Aenean</span> -
-                                                    Student</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class='item'>
-                                        <div class="customslider">
-                                            <div class="item-image"><img src="{% static 'users/images/bonus_page/2.png' %}"
-                                                    alt="" />
-                                                <div class="over-image"> </div>
-                                            </div>
-                                            <div class="content-main">
-                                                <p class="post-commnets">“Harum congue adipisci nostrum laborum
-                                                    luctus nibh, nihil malesuada modi! Voluptate, eleifend!
-                                                    Excepturi mattis”</p>
-                                                <h3 class="title"><span class="use">Eker Gilmore</span> -
-                                                    Student</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class='item'>
-                                        <div class="customslider">
-                                            <div class="item-image"><img src="{% static 'users/images/bonus_page/4.png' %}"
-                                                    alt="" />
-                                                <div class="over-image"> </div>
-                                            </div>
-                                            <div class="content-main">
-                                                <p class="post-commnets">“Harum congue adipisci nostrum laborum
-                                                    luctus nibh, nihil malesuada modi! Voluptate, eleifend!
-                                                    Excepturi mattis”</p>
-                                                <h3 class="title"><span class="use">Jillian Gilmore</span> -
-                                                    Student</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><a class="carousel-control left" href="#yt-extra-carousel"
-                                    data-slide="prev"><i class="fa fa-angle-left"></i></a><a
-                                    class="carousel-control right" href="#yt-extra-carousel"
-                                    data-slide="next"><i class="fa fa-angle-right"></i></a>
-                                <ol class="carousel-indicators">
-                                    <li data-slide-to="0" data-target="#yt-extra-carousel"></li>
-                                    <li data-slide-to="1" data-target="#yt-extra-carousel"></li>
-                                    <li data-slide-to="2" data-target="#yt-extra-carousel"></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-5 col-md-6">
+                <div class="module  get-in-touch ">
+                    <h3 class="modtitle">Xarita</h3>
+                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1773.860846388476!2d66.98123068663902!3d39.67934908334424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d188e87ff9341%3A0xc519336839ee6ba7!2zVEFUVSBTYW1hcmthbmQsIFNhbWFycWFuZCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1624598540989!5m2!1sru!2s" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-
+                
+                
             </div>
         </div>
     </div>
@@ -215,22 +89,24 @@
             <div id="yt_copyright" class="col-sm-12">
 
                 <div class="copyright">
-                    Copyright © 2024 SJ University II. All Rights Reserved </div>
+                    Mualliflik huquqi © 2025 TATU Samarqand filiali.
+                </div>
 
                 <div class="designby ">
-                    Designed by <a target="_blank" title="Visit SmartAddons!"
-                        href="">SmartAddons.Com</a>
+                    <a target="_blank" title="RTTM"
+                        href="http://127.0.0.1:8000/markaz/raqamli-talim-texnalogiyalari-markazi/">RTTM</a> tamonidan ishlab chiqarilgan
                 </div>
-
+<!-- 
                 <div class="powered-by"><a href="">Joomla!</a> is Free Software released
                     under the <a href="">GNU General Public License.</a>
-                </div>
+                </div> -->
 
             </div>
         </div>
     </div>
 
 </footer>
+
 <div id="yt_sticky_right" class="yt-slidePanel">
     <div class="yt-sticky">
 
@@ -279,6 +155,7 @@
 </script>
 
 <a id="yt-totop" class="backtotop" href="#"><i class="fa fa-angle-up"></i> Yuqori </a>
+
 <script type="text/javascript">
     jQuery('.backtotop').click(function() {
         jQuery('body,html').animate({
@@ -300,22 +177,6 @@
 
         <!--Body-->
         <div class="cpanel-theme">
-
-            <!-- Style Color -->
-            <!-- <div class="panel-group">
-                <h4 class="panel-heading">Mavzu ranglari</h4>
-
-                <div class="panel-theme-color">
-                    <span data-placement="top" title="Standart" class="theme-color default active">Standart</span>
-                    <span data-placement="top" title="Moviy" class="theme-color cyan">Moviy</span>
-                    <span data-placement="top" title="Qizil" class="theme-color red">Qizil</span>
-                    <span data-placement="top" title="Yashil" class="theme-color green">Yashil</span>
-                    <span data-placement="top" title="Sariq" class="theme-color carot">Sariq</span>
-                    <span data-placement="top" title="Binafsha" class="theme-color violet">Binafsha</span>
-
-                </div>
-            </div> -->
-
             <!-- Layouts -->
             <div class="panel-group ">
                 <h4 class="panel-heading">Tartib</h4>
@@ -327,7 +188,7 @@
                 </div>
             </div>
 
-            <!-- <div class="panel-group nomarginbottom">
+            <div class="panel-group nomarginbottom">
                 <div class="panel-desc" style="margin:10px 0 3px;"> Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq
                 </div>
                 <div class="body-bg">
@@ -342,7 +203,7 @@
                 </div>
                 <input type="hidden" name="ytcpanel_bgimage" value="" />
 
-            </div> -->
+            </div>
 
         </div>
 

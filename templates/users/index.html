@@ -103,7 +103,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/99_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/kafedra.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -121,7 +121,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/100_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/fakultet.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -139,7 +139,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/107_9c5ad294586b5de60aa6217da7987acb.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bolim.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -157,7 +157,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bosh-ish.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bos_ish.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -175,7 +175,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/abuturent.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/abuturent.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -191,7 +191,7 @@
                                     <li class="icon-image " style="width: -20px;">
                                         <a href="">
                                             <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/talabalar.jpg' %}"
+                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/student.png' %}"
                                                 alt="image" />
                                         </a>
                                         <div class="over-image"></div>
@@ -279,9 +279,9 @@
                                                     <ul class="otehr-link">
                                                         {% for post in post_three %}
                                                         <li class="row">
-                                                            <a href=""
+                                                            <a href="{% url 'new' pk=post.id %}"
                                                                 class="col-xs-7"
-                                                                title="Curabitur luctus tortor non quam">{{post.title_uz}}</a>
+                                                                title="Curabitur luctus tortor non quam">{{post.translated_title}}</a>
                                                             <ul class="by-date col-xs-5">
                                                                 <li class="time-ago">{{post.created_at}}</li>
                                                             </ul>
@@ -292,7 +292,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clr1"></div>
                                 </div>
                             </div>
 

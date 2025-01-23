@@ -70,22 +70,22 @@
                                  <h3 class="page-module-title"><b><a href="{% url 'rektorat' leader.slug %}">{{leader.translated_full_name}}</a></b></h3>
                                  <ul class="yt-list check" type="check" color="#6B82A2">
                                     <li> 
-                                        <a href="#">
-                                            <h4><i class="fa fa-calendar pull-"></i>
+                                        <span class="">
+                                            <h4><i class="fa fa-calendar pull- text-primary"></i>
                                                 {{leader.acceptance}}</h4>
-                                        </a> 
+                                        </span> 
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <h4><i class="fa fa-phone pull-"></i>
+                                        <span>
+                                            <h4><i class="fa fa-phone pull- text-primary"></i>
                                             {{leader.phone}}</h4>
-                                        </a> 
+                                        </span> 
                                     </li>
                                     <li>
-                                        <a href="#" type="E-mail">
-                                            <h4><i class="fa fa-envelope pull-"></i>
+                                        <span type="E-mail">
+                                            <h4><i class="fa fa-envelope pull- text-primary"></i>
                                             {{leader.email}}</h4>
-                                        </a> 
+                                        </span> 
                                     </li>
                                  </ul>
                              </div>
@@ -103,9 +103,9 @@
                                                     <div class="image">
                                                         <img src="{{subs.get_rek_img}}" alt="" width="270" height="200">
                                                         <div class="socials">
-                                                            <a class="facebook" href="#"><i class="fa fa-facebook pull- "></i></a> 
-                                                            <a class="flickr" href="#"><i class="fa fa-flickr pull- "></i></a> 
-                                                            <a class="twitter" href="#"><i class="fa fa-twitter pull- "></i></a>
+                                                            <!-- <a class="facebook" href="#"><i class="fa fa-facebook pull- "></i></a> 
+                                                            <a class="flickr" href="#"><i class="fa fa-telegram pull- "></i></a> 
+                                                            <a class="twitter" href="#"><i class="fa fa-instagram pull- "></i></a> -->
                                                          </div>
                                                     </div>
                                                     <div class="job">{{subs.translated_position}}</div>

@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField 
 from django.core.exceptions import ValidationError
 from PIL import Image
+from django.utils.timezone import now
 
 
 class Post(models.Model): 
@@ -23,7 +24,7 @@ class Post(models.Model):
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -91,7 +92,7 @@ class Meeting(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -159,7 +160,7 @@ class Announcements(models.Model):
 
     location = models.CharField(max_length=200, null=True, verbose_name="Unversitet")
     build = models.CharField(max_length=200, null=True, verbose_name="Manzil")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Tadbir rasmi")
     day = models.DateField(verbose_name="Kun", help_text="Tadbir qaysi kunda bo'lishini kiriting", null=True)
     start_time = models.TimeField(verbose_name="Boshlanish vaqti", help_text="Tadbir boshlanish vaqtini kiriting (HH:MM:SS)", null=True)
@@ -230,7 +231,7 @@ class Designation(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -298,7 +299,7 @@ class PressConference(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -366,7 +367,7 @@ class Seminar(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -434,7 +435,7 @@ class Conversation(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Sarlovha rasmi")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 
@@ -499,7 +500,7 @@ class Details(models.Model):
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
     slug = models.SlugField(unique=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True, blank=True, default=now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     share_count = models.IntegerField(default=0) 
 

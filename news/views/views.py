@@ -24,13 +24,23 @@ def news(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    paginator = Paginator(posts, 10)  # Har bir sahifada 6 ta yangilik
+    paginator = Paginator(posts, 1)  # Har bir sahifada 6 ta yangilik
     page_number = request.GET.get('page')
     paginated_posts = paginator.get_page(page_number)
+
+    # Keyingi 5 ta postni olish
+    start_index = paginated_posts.end_index()  # Joriy sahifaning oxirgi index
+    next_posts = posts[start_index:start_index + 5]  # Keyingi 5 ta postni oling
+
+    for next_post in next_posts:
+        next_post.translated_title = next_post.get_post_title(language)
+        next_post.translated_text = next_post.get_post_text(language)
     
 
     context = {
-        'posts': paginated_posts, 'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu
+        'posts': paginated_posts, 'menu_text':menu_text,
+        "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu,
+        'next_posts': next_posts,
         }
     return render(request, 'users/news/news.html', context) 
  
