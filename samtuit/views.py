@@ -26,7 +26,7 @@ def get_menu_tree(menu, language):
     }
     return menu_data
 
-def home(request):
+def home(request): 
     language = request.session.get('django_language', 'uz') 
     pictures = PictureSlider.objects.all().order_by('-id')[:4]
     post_one = Post.objects.all().order_by('-id').first()
@@ -69,9 +69,18 @@ def home(request):
 
 
 def contact(request):
-    language = request.session.get('django_language', 'uz') 
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
-    context = {
-        'menu_text':menu_text
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
+
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
+    ctx = {
+        'menu_text':menu_text, 
+        "menus":menu_tree, 'season':season, 
+        'quickmmenu':quickmmenu
         }
-    return render(request, 'users/contact.html', context)
+    return render(request, 'users/contact.html', ctx)

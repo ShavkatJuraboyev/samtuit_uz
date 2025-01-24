@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from samtuit.models import Menu, Season, QuickMmenu
+from news.models import Post
 from django.http import JsonResponse
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
@@ -16,6 +17,13 @@ def leader(request):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     leadership = Leadership.objects.filter(positions='rektor')
     substitutes = Leadership.objects.filter(positions='o\'rinbosar')
 
@@ -28,7 +36,9 @@ def leader(request):
         subs.translated_position = subs.get_rek_position(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'leadership':leadership, 'substitutes':substitutes
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'leadership':leadership, 'substitutes':substitutes, 'next_posts': posts,
     }
 
     return render(request, 'users/rektarat/raxbariyat.html', context)
@@ -43,13 +53,22 @@ def rektorat(request, slug):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     leader = get_object_or_404(Leadership, slug=slug)
     leader.translated_content = leader.get_rek_content(language)
     leader.translated_full_name = leader.get_rek_full_name(language)
     leader.translated_position = leader.get_rek_position(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'leader':leader
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'leader':leader, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/raxbar.html', context)
@@ -64,13 +83,22 @@ def kafedralar(request):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     kafedra = Departments.objects.all()
     for kaf in kafedra:
         kaf.translated_title = kaf.get_dep_titul(language)
         kaf.translated_text = kaf.get_dep_text(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'kafedra':kafedra,
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'kafedra':kafedra, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/kafedralar.html', context)
@@ -85,16 +113,24 @@ def kafedra(request, slug):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     kafedr = get_object_or_404(Departments, slug=slug)
     kafedr.translated_content = kafedr.get_dep_content(language)
     kafedr.translated_title = kafedr.get_dep_titul(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'kafedr':kafedr
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'kafedr':kafedr, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/kafedra.html', context)
-
 
 def markazlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -106,13 +142,22 @@ def markazlar(request):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     center = DepartmentsCenter.objects.all()
     for kaf in center:
         kaf.translated_title = kaf.get_depcen_title(language)
         kaf.translated_text = kaf.get_depcen_text(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'leader':leader, 'kafedra':center,
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'leader':leader, 'kafedra':center, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/markazlar.html', context)
@@ -127,16 +172,24 @@ def markaz(request, slug):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     center = get_object_or_404(DepartmentsCenter, slug=slug)
     center.translated_content = center.get_depcen_content(language)
     center.translated_title = center.get_depcen_title(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'kafedr':center
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'kafedr':center, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/markaz.html', context)
-
 
 def fakultetlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
@@ -148,13 +201,22 @@ def fakultetlar(request):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     faculty = Faculty.objects.all()
     for facul in faculty:
         facul.translated_title = facul.get_facul_titul(language)
         facul.translated_text = facul.get_facul_text(language)
 
     context = {
-        'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'faculty':faculty,
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'faculty':faculty, 'next_posts': posts,
     }
  
     return render(request, 'users/rektarat/facultetlar.html', context)
@@ -168,6 +230,13 @@ def fakultet(request, slug):
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
+
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
 
     fakultet = get_object_or_404(Faculty, slug=slug)
     dekanlar = [
@@ -195,7 +264,11 @@ def fakultet(request, slug):
         }
         for kafedra in fakultet.kafedra.all()
     ]
-    context = {'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'dekanlar': dekanlar, 'kafedralar':kafedralar}
+    context = {
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'dekanlar': dekanlar, 'kafedralar':kafedralar, 'next_posts': posts,
+        }
 
     return render(request, 'users/rektarat/fakultet.html', context)
 
@@ -209,11 +282,22 @@ def dekan(request, slug):
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     dekan = get_object_or_404(FacultyDean, slug=slug)
     dekan.translated_content = dekan.get_dekan_content(language)
     dekan.translated_full_name = dekan.get_dekan_full_name(language)
     dekan.translated_position = dekan.get_dekan_position(language)
 
-    context = {'menu_text':menu_text, "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu, 'dekan':dekan}
+    context = {
+        'menu_text':menu_text, "menus":menu_tree, 
+        "season":season, 'quickmmenu':quickmmenu, 
+        'dekan':dekan, 'next_posts': posts, 
+        }
 
     return render(request, 'users/rektarat/dekan.html', context)

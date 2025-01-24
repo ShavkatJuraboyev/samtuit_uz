@@ -24,7 +24,7 @@
                             <div class="yt-socialbt"><a data-placement="top" target="_blank"
                                     class="sb google-plus default   color" title="Google-Plus"
                                     href="https://plus.google.com/"><i
-                                        class="fa fa-google-plus"></i></a></div>
+                                        class="fa fa-google"></i></a></div>
                             <div class="yt-socialbt"><a data-placement="top" target="_blank"
                                     class="sb linkedin default   color" title="Linkedin"
                                     href="http://www.linkedin.com/"><i
@@ -174,148 +174,60 @@
                         class="fa fa-refresh fa-spin"></i> Qayta tiklash</a>
             </div>
         </div>
-
         <!--Body-->
         <div class="cpanel-theme">
             <!-- Layouts -->
             <div class="panel-group ">
                 <h4 class="panel-heading">Tartib</h4>
                 <div class="panel-layout typeLayout">
-                    <span data-value="layout-wide" class="layout-item btn  active">Keng</span>
-                    <span data-value="layout-boxed" class="layout-item btn ">Qutili</span>
-                    <span data-value="layout-framed" class="layout-item btn ">Ramkali</span>
-                    <span data-value="layout-rounded" class="layout-item btn ">Dumaloq</span>
+                    <span data-value="layout-wide" class="layout-item btn " onclick="changeLayout('layout-wide')">Keng</span>
+                    <span data-value="layout-boxed" class="layout-item btn " onclick="changeLayout('layout-boxed')">Qutili</span>
+                    <span data-value="layout-framed" class="layout-item btn " onclick="changeLayout('layout-framed')">Ramkali</span>
+                    <span data-value="layout-rounded" class="layout-item btn " onclick="changeLayout('layout-rounded')">Dumaloq</span>
                 </div>
             </div>
-
-            <div class="panel-group nomarginbottom">
-                <div class="panel-desc" style="margin:10px 0 3px;"> Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq
-                </div>
-                <div class="body-bg">
-                    <a href="#" data-placement="top" title="naqsh 1" class="pattern pattern1">naqsh 1</a>
-                    <a href="#" data-placement="top" title="naqsh 2" class="pattern pattern2">naqsh 2</a>
-                    <a href="#" data-placement="top" title="naqsh 3" class="pattern pattern3">naqsh 3</a>
-                    <a href="#" data-placement="top" title="naqsh 4" class="pattern pattern4">naqsh 4</a>
-                    <a href="#" data-placement="top" title="naqsh 5" class="pattern pattern5">naqsh 5</a>
-                    <a href="#" data-placement="top" title="naqsh 6" class="pattern pattern6">naqsh 6</a>
-                    <a href="#" data-placement="top" title="naqsh 7" class="pattern pattern7">naqsh 7</a>
-                    <a href="#" data-placement="top" title="naqsh 8" class="pattern pattern8">naqsh 8</a>
-                </div>
-                <input type="hidden" name="ytcpanel_bgimage" value="" />
-
-            </div>
-
         </div>
-
     </div>
-
     <div id="cpanel_btn" class="isDown">
         <i class="fa fa-wrench"></i>
     </div>
-
 </div>
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        patternClick('.body-bg .pattern', 'bgimage', Array('#bd'));
-        var array = Array('bgimage');
-        var array_default = Array('pattern8');
-        var array_cyan = Array('pattern8');
-        var array_red = Array('pattern8');
-        var array_green = Array('pattern8');
-        var array_carot = Array('pattern8');
-        var array_violet = Array('pattern8');
-        //default
-        $('.theme-color.default').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_default);
-            onCPApply();
-        });
-        //1.Color Cyan
-        $('.theme-color.cyan').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_cyan);
-            onCPApply();
-        });
-        //2.Color Red
-        $('.theme-color.red').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_red);
-            onCPApply();
-        });
-        //3.Color Green
-        $('.theme-color.green').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_green);
-            onCPApply();
-        });
-        //4.Color Carot
-        $('.theme-color.carot').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_carot);
-            onCPApply();
-        });
-        //5.Color Violet
-        $('.theme-color.violet').click(function() {
-            $($(this).parent().find('.active')).removeClass('active');
-            $(this).addClass('active');
-            createCookie(TMPL_NAME + '_' + 'themecolor', $(this).html().toLowerCase(), 365);
-            setCpanelValues(array_violet);
-            onCPApply();
-        });
-        /* miniColorsCPanel */
-        function miniColorsCPanel(elC, elT, selector) {
-            $(elC).miniColors({
-                change: function(hex, rgb) {
-                    if (typeof(elT) != 'string') {
-                        for (i = 0; i < elT.length; i++) {
-                            $(elT[i]).css(selector, hex);
-                        }
-                    } else {
-                        $(elT).css(selector, hex);
-                    }
-                    createCookie(TMPL_NAME + '_' + ($(this).attr('name').match(/^ytcpanel_(.*)$/))[
-                        1], hex, 365);
-                }
-            });
-        }
-        /* Begin: Set click pattern */
-        function patternClick(elC, paramCookie, elT) {
-            $(elC).click(function() {
-                oldvalue = $(this).parent().find('.active').html();
-                $(elC).removeClass('active');
-                $(this).addClass('active');
-                value = $(this).html();
-                if (elT.length > 0) {
-                    for ($i = 0; $i < elT.length; $i++) {
-                        $(elT[$i]).removeClass(oldvalue);
-                        $(elT[$i]).addClass(value);
-                    }
-                }
-                if (paramCookie) {
-                    $('input[name$="ytcpanel_' + paramCookie + '"]').attr('value', value);
-                    createCookie(TMPL_NAME + '_' + paramCookie, value, 365);
-                }
-            });
-        }
 
-        function setCpanelValues(array) {
-            // Remove the # from the hash, as different browsers may or may not include it
-            // append /remove anchor name from current url without refresh
-            if (array['0']) {
-                $('.body-backgroud-image .pattern').removeClass('active');
-                $('.body-backgroud-image .pattern.' + array['3']).addClass('active');
-                $('input[name$="ytcpanel_bgimage"]').attr('value', array['3']);
-            }
+<!-- <script>
+    // Cookie yoki localStorage orqali layoutni saqlash
+    function changeLayout(layout) {
+        // Tanlangan layoutni saqlash
+        localStorage.setItem('selectedLayout', layout);
+
+        // Bodyga tanlangan classni qo'shish
+        document.body.className = layout;
+
+        // Aktiv tugmani yangilash
+        document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
+        document.querySelector(`[data-value="${layout}"]`).classList.add('active');
+    }
+
+    // Layoutni tiklash
+    function resetLayout() {
+        // LocalStorage ni tozalash
+        localStorage.removeItem('selectedLayout');
+
+        // Standart layoutni qo'llash
+        document.body.className = '';
+        document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
+        document.querySelector(`[data-value="layout-wide"]`).classList.add('active');
+    }
+
+    // Sahifa yuklanganda layoutni tiklash
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLayout = localStorage.getItem('selectedLayout');
+        if (savedLayout) {
+            document.body.className = savedLayout;
+            document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
+            document.querySelector(`[data-value="${savedLayout}"]`).classList.add('active');
+        } else {
+            document.body.className = 'layout-wide';
+            document.querySelector(`[data-value="layout-wide"]`).classList.add('active');
         }
     });
-</script>
+</script> -->

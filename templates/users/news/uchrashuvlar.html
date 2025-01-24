@@ -192,25 +192,19 @@
                     <div id="right" class="col-sm-12">
 
                         <div class="module k2-categories ">
-                            <h3 class="modtitle">Tezkor menyular</h3>
+                            <h3 class="modtitle">{{menu_text.quick_menus}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox357" class="k2CategoriesListBlock k2-categories">
                                     <ul class="level0">
-                                        <li><a href=""><span class="catTitle">Fakultetlar</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Kafedralar</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Bo'lim va markazlar</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Abituriyent</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Talabalar</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Ilmiy tadqiqiot faolyati</span><span
-                                                    class="catCounter"></span></a></li>
-                                        <li><a href=""><span class="catTitle">Interaktiv xizmatlar</span><span
-                                                    class="catCounter"></span></a></li>
+                                        {% for quick in quickmmenu %}
+                                        <li>
+                                            <a href="{{quick.url}}">
+                                                <span class="catTitle">{{quick.translated_title}}</span>
+                                                <span class="catCounter"></span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -224,10 +218,10 @@
                                     <div class="tabs-container">
                                         <ul class="tabs row">
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab selected">Yangiliklar</div>
+                                                <div class="tab selected">{{menu_text.news}}</div>
                                             </li>
                                             <li class="col-sm-6 col-xs-6">
-                                                <div class="tab">Kategoriyalar</div>
+                                                <div class="tab">{{menu_text.categories}}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -239,98 +233,19 @@
                                                     <div id="k2ModuleBox347" class="k2ItemsBlock k2-content-recent">
 
                                                         <ul>
+                                                            {% for next_post in next_posts %}
                                                             <li class="even">
                                                                 <div class="moduleItemIntrotext">
-                                                                    <a class="moduleItemImage" href=""
-                                                                        title="Continue reading &quot;Curabitur luctus tortor non quam&quot;">
-                                                                        <img src="{% static 'users/media/k2/items/cache/ea82697ed9755e975f3c7d735db2070c_XS.jpg' %}"
-                                                                            alt="Curabitur luctus tortor non quam" />
+                                                                    <a class="moduleItemImage" href="{% url 'new' pk=next_post.id %}" title="{{next_post.translated_title}}">
+                                                                        <img src="{{next_post.get_post_img}}" alt="{{next_post.translated_title}}"  height="50" width="70"/>
                                                                     </a>
                                                                     <div class="main">
-                                                                        <a class="moduleItemTitle" href="">Curabitur
-                                                                            luctus tortor non quam</a>
-                                                                        <span class="moduleItemDateCreated">Apr 20,
-                                                                            2015</span>
+                                                                        <a class="moduleItemTitle" href="{% url 'new' pk=next_post.id %}">{{next_post.translated_title}}</a>
+                                                                        <span class="moduleItemDateCreated">{{next_post.created_at}}</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="clr"></div>
-                                                                <div class="clr"></div>
-                                                                <div class="clr"></div>
                                                             </li>
-                                                            <li class="odd">
-                                                                <div class="moduleItemIntrotext">
-                                                                    <a class="moduleItemImage"
-                                                                        href=""
-                                                                        title="Continue reading &quot;Vivamus dictum pulvinar ipsum&quot;">
-                                                                        <img src="{% static 'users/media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XS.jpg' %}"
-                                                                            alt="Vivamus dictum pulvinar ipsum" />
-                                                                    </a>
-                                                                    <div class="main">
-                                                                        <a class="moduleItemTitle"
-                                                                            href="">Vivamus
-                                                                            dictum pulvinar ipsum</a>
-                                                                        <span class="moduleItemDateCreated">Apr 20,
-                                                                            2015</span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-                                                            </li>
-                                                            <li class="even">
-
-                                                                <div class="moduleItemIntrotext">
-                                                                    <a class="moduleItemImage"
-                                                                        href=""
-                                                                        title="Continue reading &quot;Nullam hendrerit tempus tellus&quot;">
-                                                                        <img src="{% static 'users/media/k2/items/cache/dbe05350458c15fa6c802fb686391131_XS.jpg' %}"
-                                                                            alt="Nullam hendrerit tempus tellus" />
-                                                                    </a>
-                                                                    <div class="main">
-                                                                        <a class="moduleItemTitle"
-                                                                            href="">Nullam
-                                                                            hendrerit tempus tellus</a>
-                                                                        <span class="moduleItemDateCreated">Apr 20,
-                                                                            2015</span>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-                                                            </li>
-                                                            <li class="odd lastItem">
-
-                                                                <div class="moduleItemIntrotext">
-                                                                    <a class="moduleItemImage"
-                                                                        href=""
-                                                                        title="Continue reading &quot;Curabitur luctus tortor non quam gravida&quot;">
-                                                                        <img src="{% static 'users/media/k2/items/cache/63955aa9869cf7707ada1662dbfb31e2_XS.jpg' %}"
-                                                                            alt="Curabitur luctus tortor non quam gravida" />
-                                                                    </a>
-                                                                    <div class="main">
-                                                                        <a class="moduleItemTitle"
-                                                                            href="">Curabitur
-                                                                            luctus tortor non quam gravida</a>
-                                                                        <span class="moduleItemDateCreated">Apr 20,
-                                                                            2015</span>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-
-                                                                <div class="clr"></div>
-                                                            </li>
-                                                            <li class="clearList"></li>
+                                                            {% endfor %}
                                                         </ul>
 
                                                     </div>
@@ -392,24 +307,24 @@
                         </div>
 
                         <div class="module  tags-k2 ">
-                            <h3 class="modtitle">Kategoriyalar</h3>
+                            <h3 class="modtitle">{{menu_text.categories}}</h3>
                             <div class="modcontent clearfix">
 
                                 <div id="k2ModuleBox362" class="k2TagCloudBlock  tags-k2">
-                                    <a href="" style="font-size:100%" title="">
-                                        Creative </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        css </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        HTML5 </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        joomla </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        Photoshop </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        responsive </a>
-                                    <a href="" style="font-size:100%" title="">
-                                        Text </a>
+                                    <a href="{% url 'news' %}" style="font-size:100%" title="{{menu_text.news}}">
+                                        {{menu_text.news}} </a>
+                                    <a href="{% url 'uchrashuvlar' %}" style="font-size:100%" title="{{menu_text.designation}} ">
+                                        {{menu_text.designation}} </a>
+                                    <a href="{% url 'elonlar' %}" style="font-size:100%" title="{{menu_text.announcements}}">
+                                        {{menu_text.announcements}} </a>
+                                    <a href="{% url 'matbuat_anjumanlar' %}" style="font-size:100%" title="{{menu_text.press_releases}}">
+                                        {{menu_text.press_releases}} </a>
+                                    <a href="{% url 'seminarlar' %}" style="font-size:100%" title="{{menu_text.seminars}}">
+                                        {{menu_text.seminars}} </a>
+                                    <a href="{% url 'davra_suhbatlar' %}" style="font-size:100%" title="{{menu_text.conversations}} ">
+                                        {{menu_text.conversations}} </a>
+                                    <a href="{% url 'meetings' %}" style="font-size:100%" title="{{menu_text.meetings}}">
+                                        {{menu_text.meetings}} </a>
                                     <div class="clr"></div>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from samtuit.models import Menu, ListsMenu, Lists, QuickMmenu
+from news.models import Post
 from django.shortcuts import get_object_or_404
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
@@ -21,6 +22,13 @@ def menu_view(request, slug):
     
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     list_menu = get_object_or_404(ListsMenu, slug=slug)  # ListsMenu'ni slug bo'yicha toping
     nested_children = get_nested_children(list_menu)
 
@@ -31,7 +39,7 @@ def menu_view(request, slug):
     ctx = {
         'list_menu': list_menu, 'lists': lists,
         "menu_text":menu_text, "menus":menu_tree, 'children': nested_children,
-        'quickmmenu':quickmmenu
+        'quickmmenu':quickmmenu, 'next_posts': posts,
         }
     return render(request, 'users/lists/list_page.html', ctx)
 
@@ -45,6 +53,13 @@ def view_menu_detail(request, pk):
 
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
 
+    posts = Post.objects.all().order_by('-created_at')[:8]  # Postlar ro'yxatini yaratish
+
+    # Tanlangan tilga mos bo'lgan ma'lumotlarni o'zgartirish
+    for post in posts:
+        post.translated_title = post.get_post_title(language)
+        post.translated_text = post.get_post_text(language)
+
     list = get_object_or_404(Lists, pk=pk)
     list.translated_title = list.get_list_title(language)
     list.translated_text = list.get_list_text(language)
@@ -52,7 +67,7 @@ def view_menu_detail(request, pk):
     ctx = {
         'list': list,
         "menu_text":menu_text, "menus":menu_tree,
-        'quickmmenu':quickmmenu
+        'quickmmenu':quickmmenu, 'next_posts': posts,
     }
     return render(request, 'users/lists/list_detail.html', ctx)
 

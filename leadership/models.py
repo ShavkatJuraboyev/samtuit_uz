@@ -236,7 +236,6 @@ class FacultyDean(models.Model):
     def __str__(self):
         return self.full_name_uz
 
-
 class Departments(models.Model):
     image = models.ImageField(upload_to='kafedra/', null=True, blank=True, verbose_name="Kafedra rasmi", help_text="Rasm o‘lchami 370x250 piksel bo‘lishi kerak!")
     titul_uz = models.CharField(max_length=200, null=True, blank=True, help_text="Kafedra nomi O'zbekcha kiriting", verbose_name="Kafedra nomi UZB")

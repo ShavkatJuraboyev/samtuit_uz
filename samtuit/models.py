@@ -13,14 +13,25 @@ class Menu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
-    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/")
+    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/", help_text="""
+                http://127.0.0.1:8000/views/ 
+                           `#news#announcements#meetings#gatherings#seminars#conversations#round/talks#`, 
+                           `bitalik ma'lumot->#about/slug#`, 
+                           `2-menu->#slug#`,
+                http://127.0.0.1:8000/ 
+                           `rektor->#leader#`,
+                           `kafedralar->#kafedralar#`,
+                           `markazlar->#markazlar#`,
+                           `fakultetlar->#fakultetlar#`,
+                           `Aloqa -> #contact#,
+            """)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
     class Meta:
         verbose_name = "Menyu" 
-        verbose_name_plural = "Menyular" 
+        verbose_name_plural = "1-Menyular" 
 
 
     def __str__(self):
@@ -40,8 +51,8 @@ class ListsMenu(models.Model):
     title_en = models.CharField(max_length=100, verbose_name='Engliz tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', verbose_name="Ota menyu" )
-    slug = models.SlugField(unique=True, blank=True, verbose_name="Slug", help_text="Ushbu urlni tanlangan Menu saxifasidagi urlga joylashtiring")
-    url = models.CharField(max_length=200, blank=True, null=True, default=f"http://127.0.0.1:8000/")
+    slug = models.SlugField(unique=True, blank=True, verbose_name="Slug", help_text="Ota menu bolsa slug tanlangan 1-Menu saxifasidagi urlga joylashtiring")
+    url = models.CharField(max_length=200, blank=True, null=True, default=f"")
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
@@ -65,6 +76,7 @@ class ListsMenu(models.Model):
     
     class Meta:
         verbose_name = "Menyular"
+        verbose_name_plural = "2-Menyular "
     
     @property
     def translated_title(self):

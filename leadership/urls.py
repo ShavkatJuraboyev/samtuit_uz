@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('fakultetlar/', fakultetlar, name="fakultetlar"),
     path('fakultet/<slug:slug>/', fakultet, name="fakultet"),
+    
     path('dekan/<slug:slug>/', dekan, name="dekanl"),
 
 
