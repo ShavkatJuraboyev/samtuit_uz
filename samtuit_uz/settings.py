@@ -154,9 +154,9 @@ LOCALE_PATHS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic uchun
 
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static'),  # Statik fayllaringiz joylashgan katalog
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Statik fayllaringiz joylashgan katalog
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
