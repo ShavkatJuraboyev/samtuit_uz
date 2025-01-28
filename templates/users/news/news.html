@@ -51,11 +51,11 @@
 
                             <div class="items-leading row">
                                 {% for post in posts %}
-                                <div class="item col-sm-6 leading-0">
+                                <div class="item col-sm-6 ">
 
                                     <figure class="pull-none item-image">
 
-                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}"/>
+                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
                                         <aside class="article-aside">
                                             <dl class="article-info  muted">
                                                 <dt></dt>
@@ -70,7 +70,7 @@
                                             </dl>
                                         </aside>
                                     </figure>
-                                    <div class="article-text" style="height: 12cm;">
+                                    <div class="article-text" style="height: 500px;">
                                         <header class="article-header">
                                             <h2>
                                                 <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
