@@ -56,13 +56,13 @@
                     <div class="modcontent clearfix">
                         <div class="mod-languages ">
                             <a class="dropdown-toggle">
-                                {% if request.LANGUAGE_CODE == 'uz' %}
+                                {% if language == 'uz' %}
                                     <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" />
                                     Uzbek
-                                {% elif request.LANGUAGE_CODE == 'en' %}
+                                {% elif language == 'en' %}
                                     <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" />
                                     English
-                                {% elif request.LANGUAGE_CODE == 'ru' %}
+                                {% elif language == 'ru' %}
                                     <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha" title="Ruscha" />
                                     Русский
                                 {% else %}
@@ -72,7 +72,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu ">
-                                <li class="-actilangve">
+                                <li class="actilangve">
                                     <a href="{% url 'set_language' %}?lang=uz">
                                         <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek "
                                             title="Uzbek "/> Uzbek </a>

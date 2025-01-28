@@ -3,6 +3,7 @@ from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Seas
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
+from django.conf import settings
 
 
 
@@ -53,7 +54,7 @@ def home(request):
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
     
-
+    print(request.LANGUAGE_CODE)
 
     season = Season.objects.all().order_by("-id").first()
 
@@ -63,7 +64,7 @@ def home(request):
         'students':students, "annos":annos, 
         'partners':partners, 'menu_text':menu_text,
         'wisdoms':wisdoms, 
-        'menus':menu_tree, 'season':season, 'quickmmenu':quickmmenu
+        'menus':menu_tree, 'season':season, 'quickmmenu':quickmmenu, "language":language
         } 
     return render(request, 'users/index.html', context)
 
