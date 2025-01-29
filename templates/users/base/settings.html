@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n %}
 <section id="yt_spotlight7" class="block">
     <div class="container">
         <div class="row">
@@ -70,7 +70,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="col-lg-5 col-md-6">
                 <div class="module  get-in-touch ">
                     <h3 class="modtitle">Xarita</h3>
@@ -108,9 +108,8 @@
 
 </footer>
 
-<div id="yt_sticky_right" class="yt-slidePanel">
+<!-- <div id="yt_sticky_right" class="yt-slidePanel">
     <div class="yt-sticky">
-
         <div class="module ">
             <span class="btn-special" title="Ko'rish Sozlamalari"><span class="fa fa-eye"></span></span>
             <div class="box-special">
@@ -128,7 +127,6 @@
                 </div>
             </div>
         </div>
-
         <div class="module ">
             <span class="btn-special" title="Maxsus holatda modulni sozlash uchun"><span
                     class="fa fa-info"></span></span>
@@ -144,9 +142,8 @@
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+</div> -->
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -166,7 +163,7 @@
     });
 </script>
 
-<div id="cpanel_wrapper" style="direction:ltr">
+<!-- <div id="cpanel_wrapper" style="direction:ltr">
     <div class="accordion" id="ytcpanel_accordion">
         <div class="cpanel-head">
             Sozlamalar
@@ -175,9 +172,7 @@
                         class="fa fa-refresh fa-spin"></i> Qayta tiklash</a>
             </div>
         </div>
-        <!--Body-->
         <div class="cpanel-theme">
-            <!-- Layouts -->
             <div class="panel-group ">
                 <h4 class="panel-heading">Tartib</h4>
                 <div class="panel-layout typeLayout">
@@ -192,43 +187,4 @@
     <div id="cpanel_btn" class="isDown">
         <i class="fa fa-wrench"></i>
     </div>
-</div>
-
-<!-- <script>
-    // Cookie yoki localStorage orqali layoutni saqlash
-    function changeLayout(layout) {
-        // Tanlangan layoutni saqlash
-        localStorage.setItem('selectedLayout', layout);
-
-        // Bodyga tanlangan classni qo'shish
-        document.body.className = layout;
-
-        // Aktiv tugmani yangilash
-        document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
-        document.querySelector(`[data-value="${layout}"]`).classList.add('active');
-    }
-
-    // Layoutni tiklash
-    function resetLayout() {
-        // LocalStorage ni tozalash
-        localStorage.removeItem('selectedLayout');
-
-        // Standart layoutni qo'llash
-        document.body.className = '';
-        document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
-        document.querySelector(`[data-value="layout-wide"]`).classList.add('active');
-    }
-
-    // Sahifa yuklanganda layoutni tiklash
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLayout = localStorage.getItem('selectedLayout');
-        if (savedLayout) {
-            document.body.className = savedLayout;
-            document.querySelectorAll('.layout-item').forEach(item => item.classList.remove('active'));
-            document.querySelector(`[data-value="${savedLayout}"]`).classList.add('active');
-        } else {
-            document.body.className = 'layout-wide';
-            document.querySelector(`[data-value="layout-wide"]`).classList.add('active');
-        }
-    });
-</script> -->
+</div> -->
