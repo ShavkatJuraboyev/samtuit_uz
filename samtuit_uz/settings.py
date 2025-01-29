@@ -26,7 +26,14 @@ SECRET_KEY = 'django-insecure-uzsw2-e58hvo1_#1hu(g_wmth^6*xc8#6e2iz%kra29ig1*3bd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["new.samtuit.uz", "172.20.20.6", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["new.samtuit.uz", "www.new.samtuit.uz", "172.20.20.6", "127.0.0.1", "localhost"]
+
+CSRF_TRUSTED_ORIGINS = ['https://new.samtuit.uz', 'https://www.new.samtuit.uz']
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 

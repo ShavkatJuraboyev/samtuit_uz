@@ -56,13 +56,13 @@
                     <div class="modcontent clearfix">
                         <div class="mod-languages ">
                             <a class="dropdown-toggle">
-                                {% if language == 'uz' %}
+                                {% if request.LANGUAGE_CODE == 'uz' %}
                                     <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" />
                                     Uzbek
-                                {% elif language == 'en' %}
+                                {% elif request.LANGUAGE_CODE == 'en' %}
                                     <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" />
                                     English
-                                {% elif language == 'ru' %}
+                                {% elif request.LANGUAGE_CODE == 'ru' %}
                                     <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha" title="Ruscha" />
                                     Русский
                                 {% else %}
