@@ -64,23 +64,6 @@ class Post(models.Model):
             pass
         super(Post, self).save(*args, **kwargs)
 
-<<<<<<< HEAD
-   # def clean(self):
-   #     # Super class clean metodini chaqirish
-   #     super().clean()
-
-   #     try:
-            # Yuklangan rasmni ochish
-   #         img = Image.open(self.image)
-
-            # O'lchamni tekshirish
-    #        if img.height > 500 or img.width > 740:
-     #           raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
-     #   except Exception as e:
-     #       raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
-
-=======
->>>>>>> 51975e20b527ae60f2677d597fcdffeb3de53a97
 class Meeting(models.Model):
     title_uz = models.CharField(max_length=200, null=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
     text_uz = models.CharField(max_length=500, null=True, help_text="Sarlavha matini maksimal 500 belgi", verbose_name="Sarlovha matini")
