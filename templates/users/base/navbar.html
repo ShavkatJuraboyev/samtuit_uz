@@ -126,7 +126,15 @@
             <div id="yt_logo" class="col-md-3 col-sm-12">
                 <div class="row">
                     <a class="" href="/" title="TATU Samarqand filiali universityii">
+                        {% if request.LANGUAGE_CODE == 'uz' %}
                         <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2.png' %}" alt="sj universityii" height="100" width="300"/>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                        <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2_eng.png' %}" alt="sj universityii" height="100" width="300"/>
+                        {% elif request.LANGUAGE_CODE == 'ru' %}
+                        <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2_rus.png' %}" alt="sj universityii" height="100" width="300"/>
+                        {% else %}
+                        <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2.png' %}" alt="sj universityii" height="100" width="300"/>
+                        {% endif %}
                     </a>
                 </div>
             </div>
