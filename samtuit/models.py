@@ -13,12 +13,12 @@ class Menu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
-    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/", help_text="""
-                http://127.0.0.1:8000/views/ 
+    url = models.CharField(max_length=200, blank=True, null=True, default="https://new.samtuit.uz/", help_text="""
+                https://new.samtuit.uz/views/ 
                            `#news#announcements#meetings#gatherings#seminars#conversations#round/talks#`, 
                            `bitalik ma'lumot->#about/slug#`, 
                            `2-menu->#slug#`,
-                http://127.0.0.1:8000/ 
+                https://new.samtuit.uz/ 
                            `rektor->#leader#`,
                            `kafedralar->#kafedralar#`,
                            `markazlar->#markazlar#`,
