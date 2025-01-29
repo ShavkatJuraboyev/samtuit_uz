@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-uzsw2-e58hvo1_#1hu(g_wmth^6*xc8#6e2iz%kra29ig1*3bd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["172.20.20.6", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["new.samtuit.uz", "172.20.20.6", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -62,8 +62,7 @@ MIDDLEWARE = [
     'news.middleware.CaptureIPMiddleware',
 ]
 
-LANGUAGE_COOKIE_NAME = 'django_language'  # Til cookie'ining nomi
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 
 ROOT_URLCONF = 'samtuit_uz.urls'
 
@@ -96,6 +95,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'samtuit',
+#         'USER': 'samtuituser',
+#         'PASSWORD': 'samtuit2025',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -121,6 +130,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uz'
 TIME_ZONE = 'Asia/Tashkent'
+
+LANGUAGE_COOKIE_NAME = 'django_language'  # Til cookie'ining nomi
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 USE_I18N = True
 USE_L10N = True
