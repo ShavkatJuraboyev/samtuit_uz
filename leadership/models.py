@@ -69,22 +69,6 @@ class Leadership(models.Model):
         # Agar rasm mavjud bo'lmasa, static fayldan default rasmni qaytaradi
         return self.image.url if self.image else static('users/images/person-240x300.png')
 
-    def clean(self):
-        if not self.image:
-            return  # Agar rasm yuklanmagan bo'lsa, to'xtaydi
-
-        # Super class clean metodini chaqirish
-        super().clean()
-
-        try:
-            # Yuklangan rasmni ochish
-            img = Image.open(self.image)
-
-            # O'lchamni tekshirish
-            if img.height > 201 or img.width > 270:
-                raise ValidationError("Rasm o‘lchami 270x201 piksel bo‘lishi kerak!")
-        except Exception as e:
-            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
         
     def __str__(self):
         return self.full_name_uz
@@ -137,20 +121,6 @@ class Faculty(models.Model):
         # Agar rasm mavjud bo'lmasa, static fayldan default rasmni qaytaradi
         return self.image.url if self.image else static('users/images/person-240x300.png')
 
-    def clean(self):
-        if not self.image:
-            return  # Agar rasm yuklanmagan bo'lsa, to'xtaydi
-
-        # Super class clean metodini chaqirish
-        super().clean()
-
-        try:
-            # Yuklangan rasmni ochish
-            img = Image.open(self.image)
-            if img.height > 500 or img.width > 740:
-                raise ValidationError("Rasm o‘lchami 740x500 piksel bo‘lishi kerak!")
-        except Exception as e:
-            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
         
     def __str__(self):
         return self.title_uz
@@ -216,22 +186,6 @@ class FacultyDean(models.Model):
         # Agar rasm mavjud bo'lmasa, static fayldan default rasmni qaytaradi
         return self.image.url if self.image else static('users/images/person-240x300.png')
 
-    def clean(self):
-        if not self.image:
-            return  # Agar rasm yuklanmagan bo'lsa, to'xtaydi
-
-        # Super class clean metodini chaqirish
-        super().clean()
-
-        try:
-            # Yuklangan rasmni ochish
-            img = Image.open(self.image)
-
-            # O'lchamni tekshirish
-            if img.height > 201 or img.width > 270:
-                raise ValidationError("Rasm o‘lchami 270x201 piksel bo‘lishi kerak!")
-        except Exception as e:
-            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
         
     def __str__(self):
         return self.full_name_uz
@@ -292,20 +246,6 @@ class Departments(models.Model):
         # Agar rasm mavjud bo'lmasa, static fayldan default rasmni qaytaradi
         return self.image.url if self.image else static('users/images/person-240x300.png')
 
-    def clean(self):
-        if not self.image:
-            return  # Agar rasm yuklanmagan bo'lsa, to'xtaydi
-
-        # Super class clean metodini chaqirish
-        super().clean()
-
-        try:
-            # Yuklangan rasmni ochish
-            img = Image.open(self.image)
-            if img.height > 250 or img.width > 370:
-                raise ValidationError("Rasm o‘lchami 370x250 piksel bo‘lishi kerak!")
-        except Exception as e:
-            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
         
     def __str__(self):
         return self.titul_uz
@@ -365,20 +305,7 @@ class DepartmentsCenter(models.Model):
         # Agar rasm mavjud bo'lmasa, static fayldan default rasmni qaytaradi
         return self.image.url if self.image else static('users/images/person-240x300.png')
 
-    def clean(self):
-        if not self.image:
-            return  # Agar rasm yuklanmagan bo'lsa, to'xtaydi
 
-        # Super class clean metodini chaqirish
-        super().clean()
-
-        try:
-            # Yuklangan rasmni ochish
-            img = Image.open(self.image)
-            if img.height > 250 or img.width > 370:
-                raise ValidationError("Rasm o‘lchami 370x250 piksel bo‘lishi kerak!")
-        except Exception as e:
-            raise ValidationError(f"Yuklangan rasm noto'g'ri yoki ochilmayapti: {e}")
         
     def __str__(self):
         return self.title_uz
