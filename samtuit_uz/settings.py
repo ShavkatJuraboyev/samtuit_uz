@@ -197,3 +197,10 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# 30 daqiqa davomida faoliyat bo‘lmasa sessiyani tugatish
+SESSION_COOKIE_AGE = 1800  # 30 daqiqa = 1800 soniya
+
+# Sessiya tugashidan so‘ng avtomatik logout
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Brauzer yopilganda sessiya tugaydi
