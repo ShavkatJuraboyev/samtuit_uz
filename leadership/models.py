@@ -248,7 +248,7 @@ class Departments(models.Model):
 
         
     def __str__(self):
-        return self.titul_uz
+        return self.titul_uz 
 
 class DepartmentsCenter(models.Model):
     image = models.ImageField(upload_to='kafedra/', null=True, blank=True, verbose_name="Bo'lim va markazlar rasmi", help_text="Rasm o‘lchami 370x250 piksel bo‘lishi kerak!")

@@ -45,7 +45,7 @@
                                 {{menu_text.leadership}}
                              </h2>
                          </header>
-
+ 
                          <aside class="article-aside">
                              <dl class="article-info">
                              </dl>
@@ -60,7 +60,7 @@
                                  </div>
                              </div>
                              <div class="col-sm-4 col-md-4">
-                                 <h3 class="page-module-title"><b><a href="{% url 'rektorat' leader.slug %}">{{leader.translated_full_name}}</a></b></h3>
+                                 <h3 class="page-module-title"><b><a href="{% if leader.content_uz %}{% url 'rektorat' leader.slug %}{% endif %}">{{leader.translated_full_name}}</a></b></h3>
                                  <ul class="yt-list check" type="check" color="#6B82A2">
                                     <li> 
                                         <span class="">
@@ -102,7 +102,7 @@
                                                          </div>
                                                     </div>
                                                     <div class="job">{{subs.translated_position}}</div>
-                                                    <div class="name"><a href="{% url 'rektorat' subs.slug %}">{{subs.translated_full_name}}</a></div>
+                                                    <div class="name"><a href="{% if subs.content_uz %}{% url 'rektorat' subs.slug %}{% endif %}">{{subs.translated_full_name}}</a></div>
                                                     <div class="text"><h4><i class="fa fa-calendar pull-"></i> {{subs.acceptance}}</h4></div>
                                                     <div class="text"><h4><i class="fa fa-phone pull-"></i>{{subs.phone}}</h4></div>
                                                     <div class="text"><h4><i class="fa fa-envelope pull-"></i>{{subs.email}}</h4></div>
