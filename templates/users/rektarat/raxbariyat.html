@@ -1,5 +1,5 @@
 {% extends 'users/base/base.html' %}
-{% load static %}
+{% load static %} 
 {% block content %}
 <div id="yt_wrapper" class="layout-wide">
 
@@ -16,20 +16,13 @@
                                 <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
                                 </li>
                                 <li>
-                                    <a href="/" class="pathway">{{menu_text.home}}</a>
-                                    <span class="divider">
-                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
-                                            alt="" />
-                                    </span>
-                                </li>
-                                <li>
                                     <span>{{menu_text.news}}</span>
                                     <span class="divider">
                                         <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
                                             alt="" />
                                     </span>
                                 </li>
-                                <li class="active"><span>{{menu_text.news}}</span></li>
+                                <li class="active"><span>{{menu_text.leadership}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -49,7 +42,7 @@
                      <article class="item-page">
                          <header class="ourmember clearfix">
                              <h2 class="page-module-title">
-                                Rahbariyat
+                                {{menu_text.leadership}}
                              </h2>
                          </header>
 

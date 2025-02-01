@@ -44,6 +44,7 @@ TRANSLATIONS = {
             "press_releases":"Matbouat ajumanlari",
             "seminars":"Seminarlar",
             "conversations":"Davra suhbatlar",
+            "leadership":"Rahbariyat",
         },
 
         'ru': {
@@ -90,6 +91,7 @@ TRANSLATIONS = {
             "press_releases":"Пресс-релизы",
             "seminars":"Семинары",
             "conversations":"Круглые столы",
+            "leadership":"Лидерство",
         },
 
         'en': {
@@ -136,6 +138,7 @@ TRANSLATIONS = {
             "press_releases":"Press releases",
             "seminars":"Seminars",
             "conversations":"Conversations",
+            "leadership":"Leadership",
         }
     }
 }
