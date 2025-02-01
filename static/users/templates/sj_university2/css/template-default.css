@@ -6431,7 +6431,7 @@ ul.c-step li span {
   margin-right: 0px;
   margin-left: 5px;
 }
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 993px) {
   ul.c-step li {
     margin: 0 10px;
   }

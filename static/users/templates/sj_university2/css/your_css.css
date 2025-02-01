@@ -6,7 +6,7 @@
 /* Medium devices Desktops  
 // ------------------*/
 @media (min-width: 980px) and (max-width: 1199px) {
-	
+   
 }
 
 /* Small devices Tablets	
@@ -20,3 +20,19 @@
 @media (max-width: 767px){
 	
 }
+
+/* @media (max-width: 1200px) {
+    #yt_mainmenu ul.navi {
+      display: none; 
+    }
+  
+    #yt_mainmenu .yt-resmenu {
+      display: block !important;
+    }
+  
+    #yt_mainmenu .yt-resmenu .btn-navbar {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  } */

@@ -857,7 +857,7 @@
     width: 100%;
   }
 }
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 993px) {
   #bd .contentpane {
     display: block;
     overflow: auto;
