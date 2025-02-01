@@ -1,7 +1,7 @@
 TRANSLATIONS = {
     'menu': { 
         'uz': {
-            'home': 'Bosh saxifa',
+            'home': 'Bosh saxifa', 
             "university":"Universitet",
             'web_systems': 'Universitet web sayt tizimlari',
             'hemis_teacher': 'Hemis o\'qituvchi',
@@ -45,6 +45,7 @@ TRANSLATIONS = {
             "seminars":"Seminarlar",
             "conversations":"Davra suhbatlar",
             "leadership":"Rahbariyat",
+            "sitemap": "Sayt xaritasi",
         },
 
         'ru': {
@@ -92,6 +93,7 @@ TRANSLATIONS = {
             "seminars":"Семинары",
             "conversations":"Круглые столы",
             "leadership":"Лидерство",
+            "sitemap": "Карта сайта",
         },
 
         'en': {
@@ -139,6 +141,7 @@ TRANSLATIONS = {
             "seminars":"Seminars",
             "conversations":"Conversations",
             "leadership":"Leadership",
+            "sitemap": "Sitemap",
         }
     }
 }

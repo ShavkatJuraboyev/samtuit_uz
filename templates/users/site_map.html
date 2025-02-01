@@ -1,0 +1,98 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %} 
+
+<div id="yt_wrapper" class="layout-wide">
+
+    {% include 'users/base/navbar.html' %}
+
+    <section id="yt_breadcrumb" class="block"> 
+        <div class="container">
+            <div class="row">
+                <div id="breadcrumb" class="col-sm-12">
+                    <div class="module   ">
+                        <div class="modcontent clearfix">
+                            <ul class="breadcrumb ">
+                                <li class="active"><i class="fa fa-home" rel="tooltip" title="You are here: "></i>
+                                </li>
+                                <li>
+                                    <a href="/" class="pathway">{{menu_text.home}}</a>
+                                    <span class="divider">
+                                        <img src="{% static 'users/templates/sj_university2/images/system/arrow.png' %}"
+                                            alt="" />
+                                    </span>
+                                </li>
+                                <li class="active"><span>{{menu_text.sitemap}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content" class="  no-left  no-right block com_xmap">
+     <div class="container">
+         <div class="row">
+             <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
+             <div id="content_main" class="col-sm-12">
+                 <div id="system-message-container">
+                 </div>
+
+                 <div id="yt_component">
+                     <div id="xmap">
+
+                         <ul class="level_0">
+                             <li><a href="/" title="{{menu_text.home}}">{{menu_text.home}}</a></li>
+                             {% for menu in menus %}
+                             <li><a href="{% if menu.url %}{{ menu.url }}{% endif %}" title="{{ menu.title }}">{{ menu.title }}</a>
+                                {% if menu.children %}
+                                 <ul class="level_1">
+                                    {% for child in menu.children %}
+                                     <li><a href="{% if child.url %}{{ child.url }}{% endif %}" title="{{ child.title }}">{{ child.title }}</a>
+                                        {% if child.children %}
+                                         <ul class="level_2">
+                                            {% for subchild in child.children %}
+                                             <li><a href="{% if subchild.url %}{{ subchild.url }}{% endif %}" title="{{ subchild.title }}">{{ subchild.title }}</a>
+                                                {% if subchild.children %}
+                                                 <ul class="level_3">
+                                                    {% for sub in subchild.children %}
+                                                     <li><a href="{% if sub.url %}{{ sub.url }}{% endif %}"
+                                                             title="{{sub.title}}">{{sub.title}}</a>
+                                                         <!-- <ul class="level_4">
+                                                             <li><a href="" title="Welcome to Kunena!">Welcome to Kunena!</a>
+                                                             </li>
+                                                         </ul> -->
+                                                     </li>
+                                                     {% endfor %}
+                                                 </ul>
+                                                 {% endif %}
+                                             </li>
+                                             {% endfor %}
+                                         </ul>
+                                         {% endif %}
+                                     </li>
+                                     {% endfor %}
+                                 </ul>
+                                 {% endif %}
+                             </li>
+                             {% endfor %}
+                         </ul>
+
+                         <span class="article_separator">&nbsp;</span>
+                     </div>
+                 </div>
+             </div>
+             <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
+         </div>
+     </div>
+
+ </section>
+
+    {% include 'users/base/settings.html' %}
+
+</div>
+
+{% endblock content %}

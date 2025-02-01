@@ -85,3 +85,21 @@ def contact(request):
         'quickmmenu':quickmmenu
         }
     return render(request, 'users/contact.html', ctx)
+
+
+def site_map(request):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
+
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
+    ctx = {
+        'menu_text':menu_text, 
+        "menus":menu_tree, 'season':season, 
+        'quickmmenu':quickmmenu
+        }
+    return render(request, 'users/site_map.html', ctx)
