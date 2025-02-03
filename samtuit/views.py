@@ -28,7 +28,8 @@ def get_menu_tree(menu, language):
     return menu_data
 
 def home(request): 
-    language = request.session.get('django_language', 'uz') 
+    language = request.session.get('django_language', 'uz')
+    print(language) 
     pictures = PictureSlider.objects.all().order_by('-id')[:4]
     post_one = Post.objects.all().order_by('-id').first()
     post_three = Post.objects.all().order_by('-id')[1:5]
@@ -68,7 +69,7 @@ def home(request):
         } 
     return render(request, 'users/index.html', context)
 
-
+ 
 def contact(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
@@ -82,7 +83,8 @@ def contact(request):
     ctx = {
         'menu_text':menu_text, 
         "menus":menu_tree, 'season':season, 
-        'quickmmenu':quickmmenu
+        'quickmmenu':quickmmenu, 
+        'language':language
         }
     return render(request, 'users/contact.html', ctx)
 
@@ -100,6 +102,7 @@ def site_map(request):
     ctx = {
         'menu_text':menu_text, 
         "menus":menu_tree, 'season':season, 
-        'quickmmenu':quickmmenu
+        'quickmmenu':quickmmenu, 
+        'language':language
         }
     return render(request, 'users/site_map.html', ctx)

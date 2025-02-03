@@ -38,7 +38,7 @@ def leader(request):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'leadership':leadership, 'substitutes':substitutes, 'next_posts': posts,
+        'leadership':leadership, 'substitutes':substitutes, 'next_posts': posts, 'language':language
     }
 
     return render(request, 'users/rektarat/raxbariyat.html', context)
@@ -68,7 +68,7 @@ def rektorat(request, slug):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'leader':leader, 'next_posts': posts,
+        'leader':leader, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/raxbar.html', context)
@@ -98,7 +98,7 @@ def kafedralar(request):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'kafedra':kafedra, 'next_posts': posts,
+        'kafedra':kafedra, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/kafedralar.html', context)
@@ -127,7 +127,7 @@ def kafedra(request, slug):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'kafedr':kafedr, 'next_posts': posts,
+        'kafedr':kafedr, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/kafedra.html', context)
@@ -157,7 +157,7 @@ def markazlar(request):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'leader':leader, 'kafedra':center, 'next_posts': posts,
+        'leader':leader, 'kafedra':center, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/markazlar.html', context)
@@ -186,7 +186,7 @@ def markaz(request, slug):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'kafedr':center, 'next_posts': posts,
+        'kafedr':center, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/markaz.html', context)
@@ -216,7 +216,7 @@ def fakultetlar(request):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'faculty':faculty, 'next_posts': posts,
+        'faculty':faculty, 'next_posts': posts, 'language':language
     }
  
     return render(request, 'users/rektarat/facultetlar.html', context)
@@ -267,7 +267,7 @@ def fakultet(request, slug):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'dekanlar': dekanlar, 'kafedralar':kafedralar, 'next_posts': posts,
+        'dekanlar': dekanlar, 'kafedralar':kafedralar, 'next_posts': posts, 'language':language
         }
 
     return render(request, 'users/rektarat/fakultet.html', context)
@@ -297,7 +297,7 @@ def dekan(request, slug):
     context = {
         'menu_text':menu_text, "menus":menu_tree, 
         "season":season, 'quickmmenu':quickmmenu, 
-        'dekan':dekan, 'next_posts': posts, 
+        'dekan':dekan, 'next_posts': posts, 'language':language 
         }
 
     return render(request, 'users/rektarat/dekan.html', context)

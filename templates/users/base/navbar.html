@@ -1,5 +1,5 @@
 {% load static %}
-{% load i18n %}
+{% load i18n %} 
 
 <header id="yt_header" class="block">
     <div class="container">
@@ -63,13 +63,13 @@
                     <div class="modcontent clearfix">
                         <div class="mod-languages ">
                             <a class="dropdown-toggle">
-                                {% if request.LANGUAGE_CODE == 'uz' %}
+                                {% if language == 'uz' %}
                                     <img src="{% static 'users/images/ramzlar/uzb_1.png' %}" alt="Uzbek" title="Uzbek" />
                                     Uzbek
-                                {% elif request.LANGUAGE_CODE == 'en' %}
+                                {% elif language == 'en' %}
                                     <img src="{% static 'users/images/ramzlar/en.gif' %}" alt="English" title="English" />
                                     English
-                                {% elif request.LANGUAGE_CODE == 'ru' %}
+                                {% elif language == 'ru' %}
                                     <img src="{% static 'users/images/ramzlar/rus_1.png' %}" alt="Ruscha" title="Ruscha" />
                                     Русский
                                 {% else %}
@@ -136,11 +136,11 @@
             <div id="yt_logo" class="col-md-3 col-sm-12">
                 <div class="row">
                     <a class="" href="/" title="Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari Universiteti Samarqand filiali">
-                        {% if request.LANGUAGE_CODE == 'uz' %}
+                        {% if language == 'uz' %}
                         <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2.png' %}" alt="sj universityii" height="100" width="300"/>
-                        {% elif request.LANGUAGE_CODE == 'en' %}
+                        {% elif language == 'en' %}
                         <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2_eng.png' %}" alt="sj universityii" height="100" width="300"/>
-                        {% elif request.LANGUAGE_CODE == 'ru' %}
+                        {% elif language == 'ru' %}
                         <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2_rus.png' %}" alt="sj universityii" height="100" width="300"/>
                         {% else %}
                         <img data-placeholder="no" src="{% static 'users/templates/sj_university2/images/styling/default/2.png' %}" alt="sj universityii" height="100" width="300"/>

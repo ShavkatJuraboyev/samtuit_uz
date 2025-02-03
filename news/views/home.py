@@ -39,7 +39,7 @@ def menu_view(request, slug):
     ctx = {
         'list_menu': list_menu, 'lists': lists,
         "menu_text":menu_text, "menus":menu_tree, 'children': nested_children,
-        'quickmmenu':quickmmenu, 'next_posts': posts,
+        'quickmmenu':quickmmenu, 'next_posts': posts,'language':language
         }
     return render(request, 'users/lists/list_page.html', ctx)
 
@@ -67,7 +67,7 @@ def view_menu_detail(request, pk):
     ctx = {
         'list': list,
         "menu_text":menu_text, "menus":menu_tree,
-        'quickmmenu':quickmmenu, 'next_posts': posts,
+        'quickmmenu':quickmmenu, 'next_posts': posts, 'language':language
     }
     return render(request, 'users/lists/list_detail.html', ctx)
 

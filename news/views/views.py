@@ -50,7 +50,7 @@ def news(request):
     
 
     context = {
-        'posts': paginated_posts, 'menu_text':menu_text,
+        'posts': paginated_posts, 'menu_text':menu_text, 'language':language,
         "menus":menu_tree, "season":season, 'quickmmenu':quickmmenu,
         'next_posts': next_posts,
         }
@@ -101,7 +101,7 @@ def new(request, pk):
         'post': post,
         'previous_post': previous_post,
         'next_post': next_post,
-        'menu_text':menu_text,
+        'menu_text':menu_text, 'language':language,
         "menus":menu_tree, 'season':season, 
         'quickmmenu':quickmmenu,
         'next_posts': next_posts,
@@ -136,7 +136,7 @@ def meetings(request):
     paginated_posts = paginator.get_page(page_number)
 
     ctx = {
-        'menu_text': menu_text, "meetings":paginated_posts, 
+        'menu_text': menu_text, 'language':language, "meetings":paginated_posts, 
         "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu,
         'next_posts': posts,
         }
@@ -202,7 +202,7 @@ def elonlar(request):
     paginated_posts = paginator.get_page(page_number)
 
     ctx = {
-        'annos':paginated_posts, 'menu_text':menu_text, 
+        'annos':paginated_posts, 'menu_text':menu_text, 'language':language, 
         "menus":menu_tree, 'season':season, 'quickmmenu':quickmmenu,
         'next_posts': posts,}
     return render(request, 'users/news/elonlar.html', ctx)
@@ -268,7 +268,7 @@ def uchrashuvlar(request):
 
 
     ctx = {
-        'menu_text': menu_text, "menus":menu_tree, 
+        'menu_text': menu_text, 'language':language, "menus":menu_tree, 
         'season':season, 'desigs':paginated_posts, 
         'quickmmenu':quickmmenu, 'next_posts': posts,}
     return render(request, 'users/news/uchrashuvlar.html', ctx)
@@ -334,7 +334,7 @@ def matbuat_anjumanlar(request):
 
 
     ctx = {
-        'menu_text': menu_text, "menus":menu_tree, 
+        'menu_text': menu_text, 'language':language, "menus":menu_tree, 
         'season':season, 'press':paginated_posts, 
         'quickmmenu':quickmmenu, 'next_posts': posts,}
 
@@ -401,7 +401,7 @@ def seminarlar(request):
 
 
     ctx = {
-        'menu_text': menu_text, "menus":menu_tree, 
+        'menu_text': menu_text, 'language':language, "menus":menu_tree, 
         'season':season, 'seminars':paginated_posts, 
         'quickmmenu':quickmmenu, 'next_posts': posts,}
     return render(request, 'users/news/seminarlar.html', ctx)
@@ -467,7 +467,7 @@ def davra_suhbatlar(request):
 
 
     ctx = {
-        'menu_text': menu_text, "menus":menu_tree, 
+        'menu_text': menu_text, 'language':language, "menus":menu_tree, 
         'season':season, 'convs':paginated_posts, 
         'quickmmenu':quickmmenu,'next_posts': posts,}
     return render(request, 'users/news/davra_suhbatlari.html', ctx)
@@ -533,7 +533,7 @@ def detail(request, slug):
     detail.translated_content = detail.get_detail_content(language)
     
     ctx = {
-        'detail': detail, 'menu_text':menu_text, 
+        'detail': detail, 'menu_text':menu_text, 'language':language, 
         "menus":menu_tree, 'season':season, 
         'quickmmenu':quickmmenu, 'next_posts': posts,}
     return render(request, 'users/details/detail.html', ctx)
