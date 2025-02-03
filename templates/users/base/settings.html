@@ -108,7 +108,8 @@
 
 </footer>
 
-<!-- <div id="yt_sticky_right" class="yt-slidePanel">
+</style>
+<div id="yt_sticky_right" class="yt-slidePanel">
     <div class="yt-sticky">
         <div class="module ">
             <span class="btn-special" title="Ko'rish Sozlamalari"><span class="fa fa-eye"></span></span>
@@ -127,33 +128,16 @@
                 </div>
             </div>
         </div>
-        <div class="module ">
-            <span class="btn-special" title="Maxsus holatda modulni sozlash uchun"><span
-                    class="fa fa-info"></span></span>
-            <div class="box-special">
-                <h3>For customize module in special position</h3>
-                <div class="clearfix">
-
-                    <p>The solution is using Module Class Suffix. You can customize button, module content
-                        follow Module Class Suffix</p>
-                    <p>E.g. Module Class Suffix: @<strong>bullhorn</strong> then:<br />- Class of button is
-                        'fa-<strong>bullhorn</strong>'<strong>. </strong>If without @<strong>... </strong>the
-                        default is 'fa-pushpin'</p>
-                </div>
-            </div>
-        </div>
     </div>
-</div> -->
-
+</div>
+    
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         var events = 'click';
         YTScript.slidePositions('#yt_sticky_right .yt-sticky', 'right', events);
     });
 </script>
-
 <a id="yt-totop" class="backtotop" href="#"><i class="fa fa-angle-up"></i> Yuqori </a>
-
 <script type="text/javascript">
     jQuery('.backtotop').click(function() {
         jQuery('body,html').animate({
@@ -163,28 +147,52 @@
     });
 </script>
 
-<!-- <div id="cpanel_wrapper" style="direction:ltr">
+<div id="cpanel_wrapper" style="direction: ltr" >
+
     <div class="accordion" id="ytcpanel_accordion">
         <div class="cpanel-head">
-            Sozlamalar
+            {{menu_text.settings}}
             <div class="cpanel-reset">
-                <a class="btn btn-info" href="#" onclick="javascript: onCPResetDefault(TMPL_COOKIE);"><i
-                        class="fa fa-refresh fa-spin"></i> Qayta tiklash</a>
+                <a class="btn btn-info" href="#" onclick="javascript: onCPResetDefault(TMPL_COOKIE);"><i class="fa fa-refresh fa-spin"></i>{{menu_text.reset}}</a>
             </div>
         </div>
+
         <div class="cpanel-theme">
+
             <div class="panel-group ">
-                <h4 class="panel-heading">Tartib</h4>
+                <h4 class="panel-heading">{{menu_text.layout}}</h4>
                 <div class="panel-layout typeLayout">
-                    <span data-value="layout-wide" class="layout-item btn " onclick="changeLayout('layout-wide')">Keng</span>
-                    <span data-value="layout-boxed" class="layout-item btn " onclick="changeLayout('layout-boxed')">Qutili</span>
-                    <span data-value="layout-framed" class="layout-item btn " onclick="changeLayout('layout-framed')">Ramkali</span>
-                    <span data-value="layout-rounded" class="layout-item btn " onclick="changeLayout('layout-rounded')">Dumaloq</span>
+                    <span data-value="layout-wide" class="layout-item btn  active">{{menu_text.wide}}</span>
+                    <span data-value="layout-boxed" class="layout-item btn ">{{menu_text.boxed}}</span>
+                    <span data-value="layout-framed" class="layout-item btn ">{{menu_text.framed}}</span>
+                    <span data-value="layout-rounded" class="layout-item btn ">{{menu_text.rounded}}</span>
                 </div>
             </div>
+
+            <div class="panel-group nomarginbottom">
+                <div class="panel-desc" style="margin:10px 0 3px;"> Patterns for Layout: Boxed, Framed, Rounded
+                </div>
+                <div class="body-bg">
+                    <a href="#" class="pattern pattern1" data-pattern="pattern1">pattern1</a>
+                    <a href="#" class="pattern pattern2" data-pattern="pattern2">pattern2</a>
+                    <a href="#" class="pattern pattern3" data-pattern="pattern3">pattern3</a>
+                    <a href="#" class="pattern pattern4" data-pattern="pattern4">pattern4</a>
+                    <a href="#" class="pattern pattern5" data-pattern="pattern5">pattern5</a>
+                    <a href="#" class="pattern pattern6" data-pattern="pattern6">pattern6</a>
+                    <a href="#" class="pattern pattern7" data-pattern="pattern7">pattern7</a>
+                    <a href="#" class="pattern pattern8" data-pattern="pattern8">pattern8</a>
+                </div>
+                <input type="hidden" name="ytcpanel_bgimage" value="">
+
+            </div>
+
         </div>
+
     </div>
+
     <div id="cpanel_btn" class="isDown">
         <i class="fa fa-wrench"></i>
     </div>
-</div> -->
+
+</div>
+

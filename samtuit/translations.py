@@ -46,6 +46,15 @@ TRANSLATIONS = {
             "conversations":"Davra suhbatlar",
             "leadership":"Rahbariyat",
             "sitemap": "Sayt xaritasi",
+            "layout":"Tartib",
+            "pattern":"Naqish",
+            "settings":"Sozlamalar",
+            "reset":"Qayta tiklash",
+            "wide":"Keng",
+            "boxed":"Qutili",
+            "framed":"Ramkali",
+            "rounded":"Yumaloq",
+            "patterns_for_layout":"Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq",
         },
 
         'ru': {
@@ -94,6 +103,15 @@ TRANSLATIONS = {
             "conversations":"Круглые столы",
             "leadership":"Лидерство",
             "sitemap": "Карта сайта",
+            "layout":"Макет",
+            "pattern":"шаблон",
+            "settings":"Настройки",
+            "reset":"Перезагрузить",
+            "wide":"Широкий",
+            "boxed":"В коробке",
+            "framed":"В рамке",
+            "rounded":"Округлый",
+            "patterns_for_layout":"Шаблоны для макета: в рамке, в коробке, с закругленными углами",
         },
 
         'en': {
@@ -142,6 +160,15 @@ TRANSLATIONS = {
             "conversations":"Conversations",
             "leadership":"Leadership",
             "sitemap": "Sitemap",
+            "layout":"Layout",
+            "pattern":"Pattern",
+            "settings":"Settings",
+            "reset":"Reset",
+            "wide":"Wide",
+            "boxed":"Boxed",
+            "framed":"Framed",
+            "rounded":"Rounded",
+            "patterns_for_layout":"Patterns for Layout: Boxed, Framed, Rounded",
         }
     }
 }
