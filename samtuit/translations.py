@@ -55,7 +55,7 @@ TRANSLATIONS = {
             "framed":"Ramkali",
             "rounded":"Yumaloq",
             "patterns_for_layout":"Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq",
-            "deputy_directors":"Direktor o'rinbosarlari",
+            "deputy_directors":"Direktor o`rinbosarlari",
         },
 
         'ru': {
