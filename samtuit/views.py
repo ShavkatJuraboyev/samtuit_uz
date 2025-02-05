@@ -31,8 +31,8 @@ def home(request):
     language = request.session.get('django_language', 'uz')
     print(language) 
     pictures = PictureSlider.objects.all().order_by('-id')[:4]
-    post_one = Post.objects.all().order_by('-id').first()
-    post_three = Post.objects.all().order_by('-id')[1:5]
+    post_one = Post.objects.all().order_by('-created_at').first()
+    post_three = Post.objects.all().order_by('-created_at')[1:5]
     for post in post_three:
         post.translated_title = post.get_post_title(language)
     students = Students.objects.all()
@@ -52,10 +52,8 @@ def home(request):
         wisdom.translated_title = wisdom.get_wis_title(language)
         wisdom.translated_text = wisdom.get_wis_text(language)
 
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
-    
-    print(request.LANGUAGE_CODE)
 
     season = Season.objects.all().order_by("-id").first()
 

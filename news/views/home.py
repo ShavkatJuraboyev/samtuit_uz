@@ -15,7 +15,7 @@ def get_nested_children(list_menu):
 def menu_view(request, slug):
     language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -46,7 +46,7 @@ def menu_view(request, slug):
 def view_menu_detail(request, pk):
     language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)

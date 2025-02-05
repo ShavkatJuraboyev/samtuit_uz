@@ -11,7 +11,7 @@ def news(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -60,7 +60,7 @@ def new(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
@@ -112,7 +112,7 @@ def meetings(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -146,7 +146,7 @@ def meeting(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -178,7 +178,7 @@ def elonlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -211,7 +211,7 @@ def elon(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -243,7 +243,7 @@ def uchrashuvlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -277,7 +277,7 @@ def uchrashuv(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -309,7 +309,7 @@ def matbuat_anjumanlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -344,7 +344,7 @@ def matbuat_anjuman(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -376,7 +376,7 @@ def seminarlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -410,7 +410,7 @@ def seminar(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -442,7 +442,7 @@ def davra_suhbatlar(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -476,7 +476,7 @@ def davra_suhbat(request, pk):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
@@ -514,7 +514,7 @@ def detail(request, slug):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
