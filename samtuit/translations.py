@@ -55,6 +55,7 @@ TRANSLATIONS = {
             "framed":"Ramkali",
             "rounded":"Yumaloq",
             "patterns_for_layout":"Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq",
+            "deputy_directors":"Direktor o'rinbosarlari",
         },
 
         'ru': {
@@ -112,6 +113,7 @@ TRANSLATIONS = {
             "framed":"В рамке",
             "rounded":"Округлый",
             "patterns_for_layout":"Шаблоны для макета: в рамке, в коробке, с закругленными углами",
+            "deputy_directors":"Заместители директора",
         },
 
         'en': {
@@ -169,6 +171,7 @@ TRANSLATIONS = {
             "framed":"Framed",
             "rounded":"Rounded",
             "patterns_for_layout":"Patterns for Layout: Boxed, Framed, Rounded",
+            "deputy_directors":"Deputy Directors",
         }
     }
 }

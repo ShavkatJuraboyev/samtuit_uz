@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("toggle-yellow-black").addEventListener("click", function (event) {
         event.preventDefault();
-        document.body.style.backgroundColor = "#FFD700"; // Sariq fon
+        document.body.style.backgroundColor = "#d48429"; // Sariq fon
         document.body.style.color = "#8B0000"; // Qizil rang matn
         document.body.style.filter = "none"; // Filterni olib tashlash
         localStorage.setItem("background", "#FFD700");
