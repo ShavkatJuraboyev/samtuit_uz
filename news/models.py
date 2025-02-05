@@ -131,13 +131,13 @@ class Announcements(models.Model):
     text_ru = models.CharField(max_length=500, null=True, help_text="Ruscha sarlavha matini maksimal 500 belgi", verbose_name="Ruscha arlovha matini")
     content_ru = RichTextUploadingField(config_name='extends_ru', verbose_name="Ruscha sarlovha umumiy matini", null=True, blank=True)
 
-    location = models.CharField(max_length=200, null=True, verbose_name="Unversitet")
-    build = models.CharField(max_length=200, null=True, verbose_name="Manzil")
+    location = models.CharField(max_length=200, null=True, verbose_name="Unversitet", blank=True)
+    build = models.CharField(max_length=200, null=True, verbose_name="Manzil", blank=True)
     created_at = models.DateTimeField(null=True, blank=True, default=now)
     image = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="Tadbir rasmi")
-    day = models.DateField(verbose_name="Kun", help_text="Tadbir qaysi kunda bo'lishini kiriting", null=True)
-    start_time = models.TimeField(verbose_name="Boshlanish vaqti", help_text="Tadbir boshlanish vaqtini kiriting (HH:MM:SS)", null=True)
-    end_time = models.TimeField(verbose_name="Tugash vaqti", help_text="Tadbir tugash vaqtini kiriting (HH:MM:SS)", null=True)
+    day = models.DateField(verbose_name="Kun", help_text="Tadbir qaysi kunda bo'lishini kiriting", null=True, blank=True)
+    start_time = models.TimeField(verbose_name="Boshlanish vaqti", help_text="Tadbir boshlanish vaqtini kiriting (HH:MM:SS)", null=True, blank=True)
+    end_time = models.TimeField(verbose_name="Tugash vaqti", help_text="Tadbir tugash vaqtini kiriting (HH:MM:SS)", null=True, blank=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
 
     class Meta:
