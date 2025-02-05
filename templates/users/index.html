@@ -388,8 +388,7 @@
                                                     <div class="item-image">
                                                         <img src="{{anno.get_elon_img}}"
                                                             alt="{{anno.title}}" style="height: 20em;"/>
-                                                        <div class="time-image">
-                                                            <!-- Date created -->
+                                                        <!-- <div class="time-image">
                                                             <div class="item-created">
                                                                 <span>{{anno.day.day}}</span>
                                                                 <span>{{anno.day|date:"F"}}</span>
@@ -401,23 +400,21 @@
                                                                 </span>
                                                                 <span class="end-time">
                                                                     {{anno.end_time}}
-                                                                </span> </div>
-
-                                                        </div>
-                                                        <div class="over-image"></div>
-
+                                                                </span> 
+                                                            </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="item-title">
-                                                            <a href="{% url 'elon' anno.id %}" title="Zatena mipan facen timas chumas">{{anno.title}}</a>
+                                                            <a href="{% url 'elon' anno.id %}" title="Zatena mipan facen timas chumas">{{anno.translated_title}}</a>
                                                         </div>
                                                         <div class="school">
-                                                            <a href="{% url 'elon' anno.id %}">{{anno.location}}</a>
-                                                            <p>{{anno.build}}</p>
+                                                            <!-- <a href="{% url 'elon' anno.id %}">{{anno.translated_title}}</a>
+                                                            <p>{{anno.build}}</p> -->
                                                         </div>
 
                                                         <div class="item-content">
-                                                            <div class="item-description">{{anno.text}}</div>
+                                                            <div class="item-description">{{anno.translated_text}}</div>
                                                             <div class="item-readmore">
                                                                 <a href="{% url 'elon' anno.id %}"
                                                                     title="Zatena mipan facen timas chumas">

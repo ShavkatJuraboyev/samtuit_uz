@@ -37,7 +37,10 @@ def home(request):
         post.translated_title = post.get_post_title(language)
     students = Students.objects.all()
     annos = Announcements.objects.all().order_by("-id")[:4]
-    partners = Partners.objects.all()
+    for ann in annos:
+        ann.translated_title = ann.get_anno_title(language)
+        ann.translated_text = ann.get_anno_text(language)
+    partners = Partners.objects.all() 
     
     post_one.translated_title = post_one.get_post_title(language)  # Sarlavha
     post_one.translated_text = post_one.get_post_text(language)
