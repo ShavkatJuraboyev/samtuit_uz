@@ -56,6 +56,8 @@ TRANSLATIONS = {
             "rounded":"Yumaloq",
             "patterns_for_layout":"Joylashtirish uchun naqshlar: qutili, ramkali, yumaloq",
             "deputy_directors":"Direktor o‘rinbosarlari",
+            "vice_deans":"Dekan o‘rinbosarlari",
+            "faculty_departments":"Fakultet kafedralari",
         },
 
         'ru': {
@@ -114,6 +116,8 @@ TRANSLATIONS = {
             "rounded":"Округлый",
             "patterns_for_layout":"Шаблоны для макета: в рамке, в коробке, с закругленными углами",
             "deputy_directors":"Заместители директора",
+            "vice_deans":"Заместители декана",
+            "faculty_departments":"Факультетские кафедры",
         },
 
         'en': {
@@ -172,6 +176,8 @@ TRANSLATIONS = {
             "rounded":"Rounded",
             "patterns_for_layout":"Patterns for Layout: Boxed, Framed, Rounded",
             "deputy_directors":"Deputy Directors",
+            "vice_deans":"Vice Deans",
+            "faculty_departments":"Faculty departments",
         }
     }
 }
