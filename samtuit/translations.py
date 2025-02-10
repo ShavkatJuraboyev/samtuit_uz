@@ -1,7 +1,7 @@
 TRANSLATIONS = {
     'menu': { 
         'uz': {
-            'home': 'Bosh saxifa', 
+            'home': 'Bosh sahifa', 
             "university":"Universitet",
             'web_systems': 'Universitet web sayt tizimlari',
             'hemis_teacher': 'Hemis o\'qituvchi',
@@ -22,7 +22,7 @@ TRANSLATIONS = {
             'faculties': 'Fakultetlar',
             'facultie_text': "Kompyuter injiniringi fakulteti Telekommunikatsiya texnologiyalari va kasb ta'limi fakulteti",
             'departments': "Kafedralar",
-            'department_text': "Filialda 9 ta Kafedralar mavjud.",
+            'department_text': "Filialda 9 ta Kafedra mavjud.",
             'centers':"Bo‘lim va markazlar",
             "center_text":"Filialda jami 17 ta bo‘lim va markazlar mavjud.",
             "student_text": "O‘zbekiston Respublikasi Vazirlar Mahkamasining 2018 yil 3-apreldagi 261-son qarori...",
@@ -33,7 +33,7 @@ TRANSLATIONS = {
             "famous_quotes":"Mashxurlar aytgan so‘zlari",
             "announcements_and_events":"E'lonlar va tadbirlar",
             "our_partners" : "Bizning hamkorlar",
-            "our_pride":"Bizning iftxorlarimiz",
+            "our_pride":"Bizning faxirlarimiz",
             "quick_menus":"Tezkor menyular",
             "scientific_research_activity":"Ilmiy tadqiqiot faolyati",
             "previous_post":"Oldingi",
@@ -41,7 +41,7 @@ TRANSLATIONS = {
             "meetings":"Yig'ilishlar",
             'announcements':'E\'lonlar',
             "designation":"Uchrashuvlar",
-            "press_releases":"Matbouat ajumanlari",
+            "press_releases":"Matbuot anjumanlari",
             "seminars":"Seminarlar",
             "conversations":"Davra suhbatlar",
             "leadership":"Rahbariyat",
@@ -58,6 +58,7 @@ TRANSLATIONS = {
             "deputy_directors":"Direktor o‘rinbosarlari",
             "vice_deans":"Dekan o‘rinbosarlari",
             "faculty_departments":"Fakultet kafedralari",
+            "dean_s_office":"Dekanat",
         },
 
         'ru': {
@@ -118,6 +119,7 @@ TRANSLATIONS = {
             "deputy_directors":"Заместители директора",
             "vice_deans":"Заместители декана",
             "faculty_departments":"Факультетские кафедры",
+            "dean_s_office":"Деканат",
         },
 
         'en': {
@@ -178,6 +180,7 @@ TRANSLATIONS = {
             "deputy_directors":"Deputy Directors",
             "vice_deans":"Vice Deans",
             "faculty_departments":"Faculty departments",
+            "dean_s_office":"Dean's office",
         }
     }
 }
