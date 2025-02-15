@@ -1,11 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.templatetags.static import static
-from django.core.exceptions import ValidationError
-from PIL import Image
 from django.utils.text import slugify
 from django.conf import settings
-from django_ckeditor_5.fields import CKEditor5Field
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.timezone import now
 
@@ -262,3 +259,17 @@ class QuickMmenu(models.Model):
 
     def get_menu_title(self, language):
         return self.get_translation('title', language) 
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=True, verbose_name="Ismi")
+    email = models.EmailField(null=True, blank=True, verbose_name="Eamil")
+    subject = models.CharField(max_length=50, null=True, blank=True, verbose_name="Mavzu")
+    text = models.TextField(null=True, blank=True, verbose_name="Xabar")
+
+    def __str__(self):
+        return f"{self.name} - {self.subject}"
+    
+    class Meta:
+        verbose_name = "Aloqa" 
+        verbose_name_plural = "Aloqalar"

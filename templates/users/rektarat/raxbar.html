@@ -55,7 +55,27 @@
                          </div>
                          <div class="itemBody">
                              <div class="itemFullText">
-                                 {{leader.translated_content|safe}}
+                                <style>
+                                    .article-content table {
+                                        width: 100%;
+                                        border-collapse: collapse !important;
+                                        border: 1px solid black !important;
+                                    }
+                                
+                                    .article-content th, .article-content td {
+                                        border: 1px solid black !important;
+                                        padding: 8px;
+                                        text-align: left;
+                                    }
+                                
+                                    .article-content th {
+                                        background-color: #f2f2f2;
+                                    }
+                                </style>
+                                
+                                <div class="article-content">
+                                    {{leader.translated_content|safe}}
+                                </div>
                              </div>
                          </div>
                          <div class="itemHeader">

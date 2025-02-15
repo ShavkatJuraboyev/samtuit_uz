@@ -68,9 +68,28 @@
 
                                 </dl>
                             </aside>
-
-                            <a id="startOfPage"></a>                                
-                            {{conversation.translated_content|safe}}
+                            
+                            <style>
+                                .article-content table {
+                                    width: 100%;
+                                    border-collapse: collapse !important;
+                                    border: 1px solid black !important;
+                                }
+                            
+                                .article-content th, .article-content td {
+                                    border: 1px solid black !important;
+                                    padding: 8px;
+                                    text-align: left;
+                                }
+                            
+                                .article-content th {
+                                    background-color: #f2f2f2;
+                                }
+                            </style>
+                            
+                            <div class="article-content">
+                                {{conversation.translated_content|safe}}
+                            </div>
                            
                             <ul class="pager pagenav">
                                 {% if previous_conversation %}

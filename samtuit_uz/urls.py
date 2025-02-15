@@ -26,6 +26,8 @@ urlpatterns = [
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('leadership.urls')),
+
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

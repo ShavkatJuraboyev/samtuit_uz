@@ -69,8 +69,28 @@
                                 </dl>
                             </aside>
 
+                            <style>
+                                .article-content table {
+                                    width: 100%;
+                                    border-collapse: collapse !important;
+                                    border: 1px solid black !important;
+                                }
                             
-                            {{post.translated_content|safe}}
+                                .article-content th, .article-content td {
+                                    border: 1px solid black !important;
+                                    padding: 8px;
+                                    text-align: left;
+                                }
+                            
+                                .article-content th {
+                                    background-color: #f2f2f2;
+                                }
+                            </style>
+                            
+                            <div class="article-content">
+                                {{post.translated_content|safe}}
+                            </div> 
+                            
                                                       
                             
                            

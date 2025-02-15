@@ -52,7 +52,9 @@ INSTALLED_APPS = [
 
     'samtuit',
     'news',
-    'leadership'
+    'leadership',
+
+    'captcha',
 ]
 
 

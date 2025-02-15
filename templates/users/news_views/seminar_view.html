@@ -73,10 +73,29 @@
                                 <a href="" title="">
                                     <img src="{{post.get_post_img}}" alt="{{post.translated_title}}"/> </a>
                             </figure>
-
-
-                            <a id="startOfPage"></a>                                
-                            {{seminar.translated_content|safe}}
+                            <style>
+                                .article-content table {
+                                    width: 100%;
+                                    border-collapse: collapse !important;
+                                    border: 1px solid black !important;
+                                }
+                            
+                                .article-content th, .article-content td {
+                                    border: 1px solid black !important;
+                                    padding: 8px;
+                                    text-align: left;
+                                }
+                            
+                                .article-content th {
+                                    background-color: #f2f2f2;
+                                }
+                            </style>
+                            
+                            <div class="article-content">
+                                {{seminar.translated_content|safe}}
+                            </div> 
+                               
+                            
                            
                             <ul class="pager pagenav">
                                 {% if previous_seminar %}

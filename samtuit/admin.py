@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from ckeditor.widgets import CKEditorWidget
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu, Contact
 
 
 @admin.register(Menu)
@@ -139,3 +139,9 @@ class ListsAdmin(admin.ModelAdmin):
             return self.readonly_fields + ('created_by',)
         return self.readonly_fields
     # save_on_top = True  # Saqlash tugmalari yuqorida ko'rsatiladi
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'text', 'id')
+    search_fields = ('name', 'email', 'subject')

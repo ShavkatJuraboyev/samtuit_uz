@@ -3,8 +3,8 @@ from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Seas
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
-from django.conf import settings
-
+from samtuit.forms import ContactForm
+from django.contrib import messages
 
 
 def set_language(request):
@@ -29,7 +29,6 @@ def get_menu_tree(menu, language):
 
 def home(request): 
     language = request.session.get('django_language', 'uz')
-    print(language) 
     pictures = PictureSlider.objects.all().order_by('-id')[:4]
     post_one = Post.objects.all().order_by('-created_at').first()
     post_three = Post.objects.all().order_by('-created_at')[1:5]
@@ -75,17 +74,29 @@ def contact(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
-
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Ma'lumotlarni bazaga saqlash
+            messages.success(request, "Xabaringiz muvaffaqiyatli yuborildi!")
+            return redirect('contact')  # Kontakt sahifasiga qaytish
+        else:
+            messages.error(request, "Xatolik yuz berdi. Iltimos, ma'lumotlarni to'g'ri kiriting.")
+    else:
+        form = ContactForm()
+
     ctx = {
         'menu_text':menu_text, 
         "menus":menu_tree, 'season':season, 
         'quickmmenu':quickmmenu, 
-        'language':language
+        'language':language,
+        "form": form
         }
     return render(request, 'users/contact.html', ctx)
 
@@ -94,12 +105,12 @@ def site_map(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
-    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children')
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
     for quic in quickmmenu:
         quic.translated_title = quic.get_menu_title(language)
-
     menu_tree = [get_menu_tree(menu, language) for menu in menus]
+
     ctx = {
         'menu_text':menu_text, 
         "menus":menu_tree, 'season':season, 
