@@ -1648,6 +1648,7 @@ div.categories-list > div {
   position: relative;
   z-index: 1;
   float: left;
+  border-radius: 8%;
 }
 .blog .items-leading .item .item-image .article-aside {
   background: #3f444e;
@@ -3339,6 +3340,7 @@ ul.list-contact a:hover {
   margin: 0;
   border: none;
   transition: all 0.3s ease-in-out;
+  border-radius: 0.5cm;
 }
 .k2-content-recent ul li.even .moduleItemIntrotext .moduleItemImage:hover img,
 .k2-content-recent ul li.odd .moduleItemIntrotext .moduleItemImage:hover img {
@@ -3415,6 +3417,7 @@ ul.list-contact a:hover {
   color: #fff;
   position: relative;
   border: none;
+  border-radius: 2cm;
 }
 .module div.moduletabs.top-position div.tabs-container ul.tabs li .tab.selected:before {
   content: "";
@@ -3437,12 +3440,14 @@ ul.list-contact a:hover {
   background: #EEEEEE;
   margin: 0 0 16px;
   color: #4a505c;
+  border-radius: 2cm;
 }
 .module div.moduletabs.top-position div.tabs-container ul.tabs li .tab:hover {
   color: #9ac9ec;
 }
 .module div.moduletabs.top-position div.tabs-container ul.tabs li:last-child .tab {
   border: none;
+  border-radius: 2cm;
 }
 .module div.moduletabs.top-position div.tabs-content-wrap div.tabs-content {
   border-top: none;
@@ -3606,6 +3611,7 @@ ul.list-contact a:hover {
   color: #666;
   text-transform: capitalize;
   border: 1px solid #ddd;
+  border-radius: 2cm;
 }
 .k2TagCloudBlock.tags-k2 a:hover {
   padding: 5px 10px 5px 15px;
@@ -3627,6 +3633,7 @@ div.sj-accordion {
 div.sj-accordion .acd-items {
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
+  
 }
 div.sj-accordion .acd-items .acd-item:nth-child(1) .acd-header {
   border-top: 1px solid #ebebeb;
@@ -4043,6 +4050,7 @@ div.sj-accordion .acd-items .acd-item.selected .acd-content-wrap .acd-content-wr
 }
 .module.k2-mega-new-main .modcontent .sj-meganew .item-first .item-image img {
   transition: all 0.2s ease-out;
+  border-radius: 8%;
 }
 .module.k2-mega-new-main .modcontent .sj-meganew .item-first .item-image:hover img {
   -moz-transform: perspective(2000px) rotateY(-5deg) translate(0,-8px);
@@ -4052,11 +4060,13 @@ div.sj-accordion .acd-items .acd-item.selected .acd-content-wrap .acd-content-wr
   transform: perspective(2000px) rotateY(-5deg) translate(0,-8px);
   transition: all 0.2s ease-out;
   transition-delay: 0.1s;
+  border-radius: 8%;
 }
 .module.k2-mega-new-main .modcontent .sj-meganew .item-first .item-image:hover .over-image {
   opacity: 1;
   box-shadow: 0 0 0 8px #9ac9ec inset;
   transition: all 0.2s ease-out;
+  border-radius: 8%;
 }
 .module.k2-mega-new-main .modcontent .sj-meganew .item-first .content-main .item-title a {
   color: #000;
@@ -4096,6 +4106,7 @@ div.sj-accordion .acd-items .acd-item.selected .acd-content-wrap .acd-content-wr
   font-weight: 400;
   text-transform: uppercase;
   font-size: 11px;
+  border-radius: 1cm;
 }
 .module.k2-mega-new-main .modcontent .sj-meganew .item-first .item-readmore a {
   color: #000;
