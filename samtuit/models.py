@@ -239,7 +239,7 @@ class QuickMmenu(models.Model):
     title_uz = models.CharField(max_length=100, verbose_name='Uzbek tilida menu')
     title_ru = models.CharField(max_length=100, verbose_name='Rus tilida menu')
     title_en = models.CharField(max_length=100, verbose_name='Ingliz tilida menu')
-    url = models.CharField(max_length=200, blank=True, null=True, default="http://127.0.0.1:8000/")
+    url = models.CharField(max_length=200, blank=True, null=True, default="https://new.samtuit.uz/")
 
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
