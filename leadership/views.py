@@ -89,7 +89,8 @@ def kafedralar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    kafedra = Departments.objects.all().order_by('-id')
+    title_field = f"title_{language}"
+    kafedra = Departments.objects.all().order_by(title_field)
     for kaf in kafedra:
         kaf.translated_title = kaf.get_dep_titul(language)
         kaf.translated_text = kaf.get_dep_text(language)
@@ -148,7 +149,8 @@ def markazlar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    center = DepartmentsCenter.objects.all().order_by('-id')
+    title_field = f"title_{language}"
+    center = DepartmentsCenter.objects.all().order_by(title_field)
     for kaf in center:
         kaf.translated_title = kaf.get_depcen_title(language)
         kaf.translated_text = kaf.get_depcen_text(language)
