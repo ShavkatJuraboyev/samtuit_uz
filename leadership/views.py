@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from samtuit.models import Menu, Season, QuickMmenu
 from news.models import Post
-from django.http import JsonResponse
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
 from leadership.models import Leadership, Departments, DepartmentsCenter, Faculty, FacultyDean
@@ -90,7 +89,7 @@ def kafedralar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    kafedra = Departments.objects.all()
+    kafedra = Departments.objects.all().order_by('-id')
     for kaf in kafedra:
         kaf.translated_title = kaf.get_dep_titul(language)
         kaf.translated_text = kaf.get_dep_text(language)
@@ -149,7 +148,7 @@ def markazlar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    center = DepartmentsCenter.objects.all()
+    center = DepartmentsCenter.objects.all().order_by('-id')
     for kaf in center:
         kaf.translated_title = kaf.get_depcen_title(language)
         kaf.translated_text = kaf.get_depcen_text(language)
@@ -208,7 +207,7 @@ def fakultetlar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    faculty = Faculty.objects.all()
+    faculty = Faculty.objects.all().order_by('-id')
     for facul in faculty:
         facul.translated_title = facul.get_facul_titul(language)
         facul.translated_text = facul.get_facul_text(language)
