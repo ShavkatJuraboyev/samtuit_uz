@@ -406,7 +406,7 @@
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="item-title">
-                                                            <a href="{% url 'elon' anno.id %}" title="Zatena mipan facen timas chumas">{{anno.translated_title}}</a>
+                                                            <a href="{% url 'elon' anno.id %}" title="Zatena mipan facen timas chumas">{{anno.translated_title|truncatechars:70}}</a>
                                                         </div>
                                                         <div class="school">
                                                             <!-- <a href="{% url 'elon' anno.id %}">{{anno.translated_title}}</a>
@@ -414,14 +414,13 @@
                                                         </div>
 
                                                         <div class="item-content">
-                                                            <div class="item-description">{{anno.translated_text}}</div>
+                                                            <div class="item-description">{{anno.translated_text|truncatechars:70}}</div>
                                                             <div class="item-readmore">
                                                                 <a href="{% url 'elon' anno.id %}"
                                                                     title="Zatena mipan facen timas chumas">
                                                                     <i class="fa fa-long-arrow-right"></i>
                                                                 </a>
                                                             </div>
-
                                                         </div>
 
                                                     </div>

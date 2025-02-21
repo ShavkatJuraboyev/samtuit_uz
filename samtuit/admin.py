@@ -1,7 +1,5 @@
-from django import forms
 from django.contrib import admin
-from ckeditor.widgets import CKEditorWidget
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu, Contact
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu, Contact, Files
 
 
 @admin.register(Menu)
@@ -145,3 +143,24 @@ class ListsAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'text', 'id')
     search_fields = ('name', 'email', 'subject')
+
+
+@admin.register(Files)
+class FilesAdmins(admin.ModelAdmin):
+    list_display = ('title_uz', 'listmenu', 'created_at')
+    search_fields = ('title_uz', 'title_en', 'title_ru')
+    readonly_fields = ('created_by',)
+    fieldsets = (
+        ('Fayl maʼlumotlari', {
+            'fields': ('listmenu', 'files', 'created_at',),
+        }),
+        ('Uzbekcha maʼlumotlar', {
+            'fields': ('title_uz', 'text_uz',),
+        }),
+        ('Inglizcha maʼlumotlar', {
+            'fields': ('title_en', 'text_en',),
+        }),
+        ('Ruscha maʼlumotlar', {
+            'fields': ('title_ru', 'text_ru',),
+        }),
+    )

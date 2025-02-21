@@ -103,7 +103,7 @@ class Lists(models.Model):
     share_count = models.IntegerField(default=0) 
 
     class Meta:
-        verbose_name_plural = "Qoshimcha ma'lumotlar"
+        verbose_name_plural = "Menuli ma'lumotlar"
      
     def get_translation(self, field_name, language):
         """Berilgan tilga mos tarjimani qaytaradi."""
@@ -123,6 +123,43 @@ class Lists(models.Model):
     
     def __str__(self):
         return self.title_uz
+
+class Files(models.Model):
+    listmenu = models.ForeignKey(ListsMenu, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Menusi", help_text="Menuyuda aks etadi")
+
+    title_uz = models.CharField(max_length=200, null=True, blank=True, help_text="Sarlavha maksimal 200 belgi", verbose_name="Sarlovhasi")
+    text_uz = models.CharField(max_length=550, null=True, blank=True, help_text="Sarlavha matini maksimal 550 belgi", verbose_name="Sarlovha matini")
+
+    title_en = models.CharField(max_length=200, null=True, blank=True, help_text="English sarlavha maksimal 200 belgi", verbose_name="English sarlovhasi")
+    text_en = models.CharField(max_length=500, null=True, blank=True, help_text="English sarlavha matini maksimal 500 belgi", verbose_name="English sarlovha matini")
+
+    title_ru = models.CharField(max_length=200, null=True, blank=True, help_text="Ruscha sarlavha maksimal 200 belgi", verbose_name="Ruscha arlovhasi")
+    text_ru = models.CharField(max_length=550, null=True, blank=True, help_text="Ruscha sarlavha matini maksimal 550 belgi", verbose_name="Ruscha arlovha matini")
+
+    files = models.FileField(upload_to='file/', null=True, blank=True, verbose_name="Fayl")  # Rasm yuklash uchun
+    created_at = models.DateTimeField(null=True, blank=True, default=now)            
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, editable=False)
+
+    class Meta:
+        verbose_name_plural = "File menuli ma'lumotlar"
+     
+    def get_translation(self, field_name, language):
+        """Berilgan tilga mos tarjimani qaytaradi."""
+        language_suffix = f"_{language}"  # Masalan: '_en'
+        translated_field = f"{field_name}{language_suffix}"  # Masalan: 'title_en'
+        # Agar kerakli til bo'yicha ma'lumot topilmasa, O'zbek tilini qaytaradi
+        return getattr(self, translated_field, getattr(self, f"{field_name}_uz", ''))
+
+    def get_file_title(self, language):
+        return self.get_translation('title', language)
+
+    def get_file_text(self, language):
+        return self.get_translation('text', language)
+
+
+    def __str__(self):
+        return self.title_uz
+    
 
 class PictureSlider(models.Model):
     image = models.ImageField(upload_to="silder/", help_text="Silayder rasmlari yuklash uchun")

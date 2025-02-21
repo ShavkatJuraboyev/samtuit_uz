@@ -3857,6 +3857,7 @@ div.sj-accordion .acd-items .acd-item.selected .acd-content-wrap .acd-content-wr
 .extra-upcoming-slider .sj-extraslider .extraslider-inner .item .line .item-wrap .item-info .item-content .item-description {
   color: #000;
   margin-bottom: 30px;
+  max-height: 20px;
 }
 .extra-upcoming-slider .sj-extraslider .extraslider-inner .item .line .item-wrap .item-info .item-content .item-readmore {
   text-align: right;
