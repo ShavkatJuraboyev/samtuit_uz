@@ -57,7 +57,7 @@
                                 </div>
                                 {% endfor %}
                             {% else %}
-                                {% for node in children %}
+                                {% for lst in lists %}
                                     <div id="disqus_thread">
                                         {% if lst.is_file %}
                                             <a href="{% url 'view_menu_detail' lst.id %}">
