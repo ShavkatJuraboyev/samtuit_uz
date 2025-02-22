@@ -84,11 +84,16 @@
                                     background-color: #f2f2f2;
                                 }
                             </style>
-                            
-                            <div class="article-content">
-                                {{list.translated_content|safe}}
-                            </div>
-                           <a class="k2ReadMore button" href="{{list.files.url}}" target="_blank">{{list.files.name}}</a>
+                            {% if list.files %}
+                                <div class="article-content">
+                                    {{list.translated_content|safe}}
+                                </div>
+                                <a class="k2ReadMore button" href="{{list.files.url}}" target="_blank">{{list.files.name}}</a>
+                            {% else %}
+                                <div class="article-content">
+                                    {{list.translated_content|safe}}
+                                </div>
+                            {% endif %}
 
                         </article>
 
