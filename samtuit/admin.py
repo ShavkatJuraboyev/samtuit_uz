@@ -1,5 +1,5 @@
 from django.contrib import admin
-from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu, Contact, Files
+from samtuit.models import PictureSlider, Partners, Students, Wisdom, Menu, Season, Lists, ListsMenu, QuickMmenu, Contact
 
 
 @admin.register(Menu)
@@ -113,7 +113,7 @@ class ListsAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'share_count', 'created_by',)  # Faqat o'qish uchun maydonlar
     fieldsets = (
         ('Umumiy maʼlumotlar', {
-            'fields': ('listmenu', 'url', 'files', 'share_count', 'created_by'),
+            'fields': ('listmenu', 'is_file', 'url', 'files', 'share_count', 'created_by'),
         }),
         ('Uzbekcha maʼlumotlar', {
             'fields': ('title_uz', 'text_uz', 'content_uz'),
@@ -143,24 +143,3 @@ class ListsAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'text', 'id')
     search_fields = ('name', 'email', 'subject')
-
-
-@admin.register(Files)
-class FilesAdmins(admin.ModelAdmin):
-    list_display = ('title_uz', 'listmenu', 'created_at')
-    search_fields = ('title_uz', 'title_en', 'title_ru')
-    readonly_fields = ('created_by',)
-    fieldsets = (
-        ('Fayl maʼlumotlari', {
-            'fields': ('listmenu', 'files', 'created_at',),
-        }),
-        ('Uzbekcha maʼlumotlar', {
-            'fields': ('title_uz', 'text_uz',),
-        }),
-        ('Inglizcha maʼlumotlar', {
-            'fields': ('title_en', 'text_en',),
-        }),
-        ('Ruscha maʼlumotlar', {
-            'fields': ('title_ru', 'text_ru',),
-        }),
-    )

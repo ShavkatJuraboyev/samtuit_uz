@@ -34,7 +34,7 @@ def menu_view(request, slug):
 
     lists = Lists.objects.filter(listmenu=list_menu)  # ListsMenu bilan bog'liq barcha Lists ma'lumotlarini oling
     # Tilga mos tarjimalarni qo'shing
-    for lst in lists: 
+    for lst in lists:
         lst.translated_title = lst.get_list_title(language)
     ctx = {
         'list_menu': list_menu, 'lists': lists,
