@@ -47,20 +47,32 @@
                                 <span class="subheading-category">{{ list_menu.translated_title }}</span>
                             </h2>
                             {% if list_menu.children.exists %}
-                            {% for node in children %}
-                            <div id="disqus_thread">
-                                <a href="{% url 'menu_view' slug=node.list_menu.slug %}">
-                                    <span class="subheading-category">
-                                        {{ node.list_menu.translated_title }}
-                                    </span>
-                                </a>
-                                
-                            </div>
-                            {% endfor %}
-
-                            
+                                {% for node in children %}
+                                <div id="disqus_thread">
+                                    <a href="{% url 'menu_view' slug=node.list_menu.slug %}">
+                                        <span class="subheading-category">
+                                            {{ node.list_menu.translated_title }}
+                                        </span>
+                                    </a>
+                                </div>
+                                {% endfor %}
                             {% else %}
-                                <table class="category table table-striped ">
+                                {% for node in children %}
+                                    <div id="disqus_thread">
+                                        {% if lst.is_file %}
+                                            <a href="{% url 'view_menu_detail' lst.id %}">
+                                            {{ lst.translated_title }}</a>
+                                        {% elif lst.url %}
+                                            <a href="{{lst.url}}"  target="_blank">
+                                            {{ lst.translated_title }}</a>
+                                        {% elif lst.files %}
+                                            <a href="{{lst.files.url}}"  target="_blank">
+                                            {{ lst.translated_title }}</a>
+                                        {%endif%}
+                                    </div>
+                                {% endfor %}
+
+                                <!-- <table class="category table table-striped ">
                                     <tbody>
                                         {% for lst in lists %}
                                         <tr class="cat-list-row0">
@@ -79,7 +91,7 @@
                                         </tr>
                                         {% endfor %}
                                     </tbody>
-                                </table>
+                                </table> -->
                             {% endif %}
                         </div>
                     </div>
