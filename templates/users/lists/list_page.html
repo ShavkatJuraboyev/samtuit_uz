@@ -47,19 +47,18 @@
                                 <span class="subheading-category">{{ list_menu.translated_title }}</span>
                             </h2>
                             {% if list_menu.children.exists %}
-                            <table class="category table table-striped ">
-                                <tbody>
-                                {% for node in children %}
-                                <tr class="cat-list-row0">
-                                    <td headers="categorylist_header_title" class="list-title">
-                                        <a href="{% url 'menu_view' slug=node.list_menu.slug %}">
-                                            {{ node.list_menu.translated_title }}</a>
-                                        
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                            {% for node in children %}
+                            <div id="disqus_thread">
+                                <a href="{% url 'menu_view' slug=node.list_menu.slug %}">
+                                    <span class="subheading-category">
+                                        {{ node.list_menu.translated_title }}
+                                    </span>
+                                </a>
+                                
+                            </div>
+                            {% endfor %}
+
+                            
                             {% else %}
                                 <table class="category table table-striped ">
                                     <tbody>
