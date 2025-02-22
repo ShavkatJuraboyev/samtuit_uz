@@ -89,7 +89,7 @@ def kafedralar(request):
         post.translated_title = post.get_post_title(language)
         post.translated_text = post.get_post_text(language)
 
-    title_field = f"title_{language}"
+    title_field = f"titul_{language}"
     kafedra = Departments.objects.all().order_by(title_field)
     for kaf in kafedra:
         kaf.translated_title = kaf.get_dep_titul(language)
