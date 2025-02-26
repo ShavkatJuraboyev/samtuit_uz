@@ -33,7 +33,7 @@ TRANSLATIONS = {
             "famous_quotes":"Mashxurlar aytgan so‘zlari",
             "announcements_and_events":"E'lonlar va tadbirlar",
             "our_partners" : "Bizning hamkorlar",
-            "our_pride":"Bizning faxirlarimiz",
+            "our_pride":"Bizning faxrlarimiz",
             "quick_menus":"Tezkor menyular",
             "scientific_research_activity":"Ilmiy tadqiqiot faolyati",
             "previous_post":"Oldingi",
