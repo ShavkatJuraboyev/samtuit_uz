@@ -58,12 +58,12 @@
                                         <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
                                         <aside class="article-aside">
                                             <dl class="article-info  muted">
-                                                <dt></dt>
-                                                <dd class="createdby" itemprop="author" itemscope
+                                                
+                                                <!-- <dd class="createdby" itemprop="author" itemscope
                                                     itemtype="">
                                                     <i class="fa fa-user"></i>
-                                                    <span itemprop="name">{{post.created_by}}</span> </dd>
-                                                <dt></dt>
+                                                    <span itemprop="name">{{post.created_by}}</span> </dd> -->
+                                                
                                                 <dd class="category-name">
                                                     {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>
