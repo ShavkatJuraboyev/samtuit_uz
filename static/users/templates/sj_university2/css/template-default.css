@@ -7315,6 +7315,7 @@ ul.c-step li span {
   color: #444;
   font-size: 11px;
   text-transform: capitalize;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #k2Container.itemView .itemHeader .itemToolbar .size-mail a#fontIncrease {
   display: inline-block;
