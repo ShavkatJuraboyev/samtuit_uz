@@ -80,7 +80,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            <div class="clr"></div>
+                                {% if forloop.counter|divisibleby:"2" %}
+                                    <div class="clr"></div>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                             <div class="pagination">
