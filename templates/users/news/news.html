@@ -43,12 +43,10 @@
                             <h2 class="heading-category"> 
                                 <span class="subheading-category">{{menu_text.news}}</span>
                             </h2>
-                            <div class="items-leading row">
+                            <div class="items-leading row d-flex flex-wrap">
                                 {% for post in posts %}
-                                <div class="item col-sm-6 ">
-
+                                <div class="item col-sm-6 d-flex flex-column mb-4">
                                     <figure class="pull-none item-image">
-
                                         <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
                                         <aside class="article-aside">
                                             <dl class="article-info  muted">
