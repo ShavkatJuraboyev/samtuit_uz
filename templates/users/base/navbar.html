@@ -230,31 +230,22 @@
                         <ul class="nav resmenu">
                             {% for menu in menus %}
                             <li class="haveChild level1">
-                                <a title="{{ menu.translated_title }}" href=''>{{ menu.title }}</a>
-                                    {% if not menu.url %} 
-                                    <span class="menuress-toggle"></span>
-                                    {% else %}
-                                    {% endif %}
+                                <a title="{{ menu.translated_title }}" href=''>{{ menu.title }}</a> 
+                                <span class="menuress-toggle"></span>
                                 {% if menu.children %}
                                 <div class="res-wrapnav">
                                     <ul class="nav">
                                         {% for child in menu.children %}
                                         <li class="haveChild level2">
                                             <a title="{{ child.title }}" href='{{ child.url }}'>{{ child.title }}</a> 
-                                                {% if not child.url %} 
-                                                <span class="menuress-toggle"></span>
-                                                {% else %}
-                                                {% endif %}
+                                            <span class="menuress-toggle"></span>
                                             {% if child.children %}
                                             <div class="res-wrapnav">
                                                 <ul class="nav">
                                                     {% for subchild in child.children %}
                                                         <li class="haveChild level3">
                                                             <a title="{{ subchild.title }}" href='{{ subchild.url }}'>{{ subchild.title }}</a> 
-                                                                {% if not subchild.url %} 
-                                                                <span class="menuress-toggle"></span>
-                                                                {% else %}
-                                                                {% endif %}
+                                                            <span class="menuress-toggle"></span>
                                                             {% if child.children %}
                                                             <div class="res-wrapnav">
                                                                 <ul class="nav">
