@@ -72,7 +72,7 @@
                                             </dl>
                                         </aside>
                                         <div class="article-intro">
-                                            <p>{{ post.translated_text|truncatewords:200 }}</p>
+                                            <p>{{ post.translated_text|safe|truncatechars:200 }} {# noto‘g‘ri bo‘ladi #}</p>
                                         </div>
                                     </div>
                                 </div>
