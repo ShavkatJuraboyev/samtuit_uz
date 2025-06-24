@@ -705,7 +705,7 @@ body {
 }
 #yt_header {
   padding: 0;
-  background: #3f444e;
+  background: #000637;
 }
 #yt_header #top2 {
   text-align: right;
@@ -720,7 +720,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  background: #3f444e;
+  background: #000637;
   z-index: 999;
 }
 #yt_header .menu {
