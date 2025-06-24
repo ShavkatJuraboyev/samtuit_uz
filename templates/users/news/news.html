@@ -45,41 +45,37 @@
                             </h2>
                             <div class="items-leading row">
                                 {% for post in posts %}
-                                <div class="item col-sm-6 d-flex mb-4 leading-{{ forloop.counter0 }}">
-                                    <div class="inner-item card h-100 w-100 d-flex flex-column">
-                                        <figure class="pull-none item-image">
-                                            <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
-                                            <aside class="article-aside">
-                                                <dl class="article-info muted">
-                                                    <dd class="category-name">
-                                                        {{menu_text.categories}}:
-                                                        <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
-                                                    </dd>
-                                                </dl>
-                                            </aside>
-                                        </figure>
-
-                                        <div class="flex-grow-1 d-flex flex-column">
-                                            <header class="article-header">
-                                                <h2>
-                                                    <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
-                                                </h2>
-                                            </header>
-                                            <div class="icons"></div>
-                                            <aside class="article-aside">
-                                                <dl class="article-info muted">
-                                                    <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
-                                                </dl>
-                                            </aside>
-                                            <div class="article-intro mt-auto">
-                                                <p>{{ post.translated_text|striptags|truncatechars:200 }}</p>
-                                            </div>
+                                <div class="item col-sm-6 leading-{{ forloop.counter0 }}">
+                                    <figure class="pull-none item-image">
+                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
+                                        <aside class="article-aside">
+                                            <dl class="article-info  muted">
+                                                <dd class="category-name">
+                                                    {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
+                                                </dd>
+                                            </dl>
+                                        </aside>
+                                    </figure>
+                                    <div class="article-text" style="min-height: 300px;">
+                                        <header class="article-header">
+                                            <h2>
+                                                <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
+                                            </h2>
+                                        </header>
+                                        <div class="icons">
+                                        </div>
+                                        <aside class="article-aside">
+                                            <dl class="article-info  muted">
+                                                <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
+                                            </dl>
+                                        </aside>
+                                        <div class="article-intro">
+                                            <p>{{ post.translated_text|striptags|truncatechars:200 }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 {% endfor %}
                             </div>
-
                             <div class="pagination">
                                 <ul class="pagination">
                                     {% if posts.number != 1 %}
