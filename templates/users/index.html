@@ -6,6 +6,7 @@
 <div id="yt_wrapper" class="layout-wide">
 
     {% include 'users/base/navbar.html' %}
+   
 
     <section id="yt_spotlight1" class="block">
         <div class="container">
@@ -13,7 +14,6 @@
                 <div id="slideshow" class="col-sm-12">
                     <div id="sj_k2slickslider346" class="sj-k2slickslider  slide slickslider-right"
                         data-interval="5000" data-pause="hover" >
-                        <!-- Carousel items -->
                         <div class="slickslider-items bg-style1">
                             <div class="slickslider-item item clearfix active">
                                 <div class="images-slideshow">
@@ -31,7 +31,6 @@
                             {% endfor %}
                         </div>
 
-                        <!-- Carousel nav -->
                         <div class="nav-pagination conner-tl bg-style1">
                             <a class="left" href="#sj_k2slickslider346" data-jslide="prev">
                                  <span class="over-row"></span>
@@ -57,7 +56,6 @@
                                 $this.jcarousel(options);
                                 $this.bind('jslide', function(e) {
                                     var index = $(this).find(e.relatedTarget).index();
-                                    // process for nav
                                     $('[data-jslide]').each(function() {
                                         var $nav = $(this),
                                             $navData = $nav.data(),
