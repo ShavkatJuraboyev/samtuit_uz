@@ -1,34 +1,3 @@
-<!-- <div class="menu mega-content level2">
-    <div class="mega-content-inner clearfix">
-        <div class="mega-col first one">
-            <ul class="subnavi level2">
-                {% for item in menu %}
-                    <li class="level2 {% if forloop.first %}first{% endif %}">
-                        <a href="{{ item.url }}" title="{{ item.translated_title }}" class="level2 item-link">
-                            <span class="menu-title">{{ item.translated_title }}</span>
-                        </a>
-                        {% if item.children.exists %}
-                            {% include "users/base/menu_recursive.html" with menu=item.children.all %}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</div> -->
-
-<!-- {% for child in children %}
-    <li class="level2">
-        <a href="{{ child.url }}" title="{{ child.title }}" class="level2 item-link">
-            <span class="menu-title">{{ child.title }}</span>
-        </a>
-        {% if child.children %}
-            <ul class="subnavi level3">
-                {% include 'users/base/menu_recursive.html' with children=child.children %}
-            </ul>
-        {% endif %}
-    </li>
-{% endfor %} -->
 
 {% for child in children %}
 <li class="level2">

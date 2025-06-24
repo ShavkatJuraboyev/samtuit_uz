@@ -213,21 +213,6 @@
 
     </section>
 
-    <section id="content" class="no-left  no-right block com_content">
-        <div class="container">
-            <div class="row">
-                <aside id="content_left" class="col-md-3 col-sm-12 hidden"></aside>
-                <div id="content_main" class="col-sm-12">
-                    <div id="system-message-container">
-                    </div>
-                    <p style="display:none">Asosiy tarkib blokini yashirish</p>
-                </div>
-                <aside id="content_right" class="col-md-3 col-sm-12 hidden"></aside>
-            </div>
-        </div>
-
-    </section>
-
     <section id="yt_spotlight5" class="block">
         <div class="container">
             <div class="row">
@@ -550,154 +535,6 @@
 
     </section>
 
-    <!-- <section id="yt_spotlight3" class="block">
-        <div class="container">
-            <div class="row">
-                <div id="top4" class="col-lg-9 col-sm-8 ">
-                    <br>
-                    <div class="module  k2-slider-style-one ">
-                        <h3 class="modtitle">So'ngi yangiliklar </h3>
-                        <div class="modcontent clearfix">
-                            <div id="sj_k2_slider_21093653941729926732" class="sj-k2-container-slider" >
-
-                                <div class="page-button top style">
-                                    <ul class="control-button preload">
-                                        <li class="preview"><i class="fa fa-chevron-left"></i></li>
-                                        <li class="next"><i class="fa fa-chevron-right"></i></li>
-                                    </ul>
-                                </div>
-
-                                <div
-                                    class="slider not-js cols-6 preset01-3 preset02-3 preset03-1 preset04-1 preset05-1">
-                                    <div class="vpo-wrap">
-                                        <div class="vp">
-                                            <div class="vpi-wrap">
-                                                {% for post in posts %}
-                                                <div class="item">
-                                                    <div class="item-wrap">
-
-                                                        <div class="item-img item-height">
-                                                            <div class="item-img-info">
-                                                                <a
-                                                                    href="{% url 'new' pk=post.id %}">
-                                                                    <img alt="{{post.title}}" src="{{post.get_post_img}}" style="height: 185px;"/>
-                                                                </a>
-                                                                <div class="over-image"></div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="item-info  ">
-                                                            <div class="item-inner">
-                                                                <div class="item-title">
-                                                                    <a href="{% url 'new' pk=post.id %}" title="Batafsil ">{{post.title}}"</a>
-                                                                </div>
-                                                                <div class="item-content">
-                                                                    <div class="item-des">
-                                                                        {{post.text}}
-                                                                    </div>
-                                                                    <div class="item-read">
-                                                                        <a href="{% url 'new' pk=post.id %}"
-                                                                            title="Batafsil ">
-                                                                            <i class="fa fa-check"></i><span>Batafsil</span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <script type="text/javascript">
-                                jQuery(document).ready(function($) {
-                                    ;
-                                    (function(element) {
-                                        var $element = $(element);
-                                        var $slider = $('.slider', $element)
-                                        $('.slider', $element).responsiver({
-                                            interval: 0,
-                                            speed: 1000,
-                                            start: 0,
-                                            step: 1,
-                                            circular: true,
-                                            preload: true,
-                                            fx: 'slide',
-                                            pause: 'hover',
-                                            control: {
-                                                prev: '#sj_k2_slider_21093653941729926732 .control-button li[class="preview"]',
-                                                next: '#sj_k2_slider_21093653941729926732 .control-button li[class="next"]'
-                                            },
-                                            getColumns: function(element) {
-                                                var match = $(element).attr('class').match(/cols-(\d+)/);
-                                                if (match[1]) {
-                                                    var column = parseInt(match[1]);
-                                                } else {
-                                                    var column = 1;
-                                                }
-                                                if (!column) column = 1;
-                                                return column;
-                                            }
-                                        });
-                                        $slider.touchSwipeLeft(function() {
-                                            $slider.responsiver('next');
-                                        });
-                                        $slider.touchSwipeRight(function() {
-                                            $slider.responsiver('prev');
-                                        });
-                                        $('.control-button', $element).removeClass('preload');
-                                    })('#sj_k2_slider_21093653941729926732');
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div id="top5" class="col-lg-3 col-sm-4 ">
-
-                    <div class="module  cus-admissions ">
-                        <div class="modcontent clearfix">
-
-                            <ul>
-                                <li>
-                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-pen.png' %}" alt="" /></div>
-                                    <div class="content">
-                                        <h3 class="title"><a title="" href="#">Murojaat qilish</a></h3>
-                                        <a href="#">Aloqa</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-map.png' %}" alt="" /></div>
-                                    <div class="content">
-                                        <h3 class="title"><a title="" href="#">Joylashuv manzilimiz</a></h3>
-                                        <p>Samarqand shahar Ibn Sino <br> ko'chasi 2 A uy </p>
-                                        <p>Tel: +998 (66) 232 2929</p>
-                                        <a href="#">Xaritada tekshiring</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"> <img src="{% static 'users/images/demo/icon/icon-book.png' %}" alt="" /></div>
-                                    <div class="content">
-                                        <h3 class="title"><a title="" href="#">O'qituvchimiz bo'ling</a></h3>
-                                        <p><a href="#" rel="alternate">Qanday murojaat qilish <br> kerak</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </section> -->
-    
-   
-
     <section id="yt_spotlight6" class="block">
         <div class="container">
             <div class="row">
@@ -730,14 +567,6 @@
                                     <div class="buttom-click" style="line-height: 500px; "><span>{{menu_text.our_pride}}</span> </div>
                                 </section>
                             </div>
-
-                            <script type="text/javascript">
-                                var tag_id = document.getElementById('sj_scatteredgallery_16834689361729926732376');
-                                new Photostack(tag_id.querySelector('#sg_photostack_376'), {
-                                    callback: function(item) {}
-                                });
-                            </script>
-
                         </div>
                     </div>
 
