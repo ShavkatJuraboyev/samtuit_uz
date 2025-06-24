@@ -45,20 +45,19 @@
                             </h2>
                             <div class="items-leading row">
                                 {% for post in posts %}
-                                <div class="item col-sm-6 ">
+                                <div class="item col-sm-6" style="display: flex; flex-direction: column; height: 100%;">
 
                                     <figure class="pull-none item-image">
-
                                         <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
                                         <aside class="article-aside">
-                                            <dl class="article-info  muted">
+                                            <dl class="article-info muted">
                                                 <dd class="category-name">
                                                     {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>
                                             </dl>
                                         </aside>
                                     </figure>
-                                    <div class="article-text" style="min-height: 200px;">
+                                    <div class="article-text" style="flex: 1 1 auto;">
                                         <header class="article-header">
                                             <h2>
                                                 <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
@@ -67,7 +66,7 @@
                                         <div class="icons">
                                         </div>
                                         <aside class="article-aside">
-                                            <dl class="article-info  muted">
+                                            <dl class="article-info muted">
                                                 <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
                                             </dl>
                                         </aside>
