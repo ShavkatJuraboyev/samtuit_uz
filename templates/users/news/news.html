@@ -45,19 +45,20 @@
                             </h2>
                             <div class="items-leading row">
                                 {% for post in posts %}
-                                <div class="item col-sm-6" style="display: flex; flex-direction: column; height: 100%;">
+                                <div class="item col-sm-6 ">
 
                                     <figure class="pull-none item-image">
+
                                         <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" width="500" height="300"/>
                                         <aside class="article-aside">
-                                            <dl class="article-info muted">
+                                            <dl class="article-info  muted">
                                                 <dd class="category-name">
                                                     {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>
                                             </dl>
                                         </aside>
                                     </figure>
-                                    <div class="article-text" style="flex: 1 1 auto;">
+                                    <div class="article-text" style="min-height: 100px;">
                                         <header class="article-header">
                                             <h2>
                                                 <a href="{% url 'new' pk=post.id %}">{{ post.translated_title }}</a>
@@ -66,12 +67,12 @@
                                         <div class="icons">
                                         </div>
                                         <aside class="article-aside">
-                                            <dl class="article-info muted">
+                                            <dl class="article-info  muted">
                                                 <dd class="create"><i class="ico-clock"></i>{{post.created_at}}</dd>
                                             </dl>
                                         </aside>
                                         <div class="article-intro">
-                                            <p>{{ post.translated_text }}</p>
+                                            <p>{{ post.translated_text|truncatechars:500 }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +124,8 @@
                                             </span>
                                         </li>
                                     {% endif %}
+                            
+                                    <!-- Oxirgi sahifa tugmasi -->
                                     {% if posts.paginator.num_pages > 1 and posts.number != posts.paginator.num_pages %}
                                         <li>
                                             <a title="End" href="?page={{ posts.paginator.num_pages }}" class="pagenav"><i class="icon-chevron-right"
