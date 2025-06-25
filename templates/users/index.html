@@ -88,128 +88,83 @@
     </section> 
 
     <section id="yt_spotlight2" class="block">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div id="top3" class="col-sm-12">
+            <div id="top3" class="col-sm-12">
+                <div class="module categories-ii">
+                <div class="modcontent clearfix">
+                    <div class="sj_category theme4">
+                    <div class="category-grid">
 
-                    <div class="module  categories-ii ">
-                        <div class="modcontent clearfix">
-
-                            <div id="category_15065818671729926732" class="sj_category theme4">
-                                <ul class="line items-row1">
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://new.samtuit.uz/fakultetlar/">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/kafedra.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://new.samtuit.uz/fakultetlar/">{{ menu_text.faculties }}</a>
-                                        </h3>
-                                        <p class="des">{{ menu_text.facultie_text }}</p>
-
-                                    </li>
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://new.samtuit.uz/kafedralar/">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/fakultet.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://new.samtuit.uz/kafedralar/">{{ menu_text.departments }}</a>
-                                        </h3>
-                                        <p class="des">{{ menu_text.department_text }}</p>
-
-                                    </li>
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://new.samtuit.uz/markazlar/">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bolim.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://new.samtuit.uz/markazlar/">{{ menu_text.centers }}</a>
-                                        </h3>
-                                        <p class="des">{{ menu_text.center_text }}</p>
-
-                                    </li>
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://my.mehnat.uz/login">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/bos_ish.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://my.mehnat.uz/login">{{ menu_text.vacancies }}</a>
-                                        </h3>
-                                        <p class="des">{{ menu_text.vacancie_text }}</p>
-
-                                    </li>
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://new.samtuit.uz/views/about/order-of-admission/">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/abuturent.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://new.samtuit.uz/views/about/order-of-admission/">{{ menu_text.applicant }}</a></h3>
-                                        <p class="des">{{ menu_text.applicant_text }} </p>
-
-                                    </li>
-
-                                    <li class="icon-image " style="width: -20px;">
-                                        <a href="https://new.samtuit.uz/views/about/instructions/">
-                                            <img style="width: -20px; height: 170px;"
-                                                src="{% static 'users/cache/mod_sj_k2_categories_ii/student.png' %}"
-                                                alt="image" />
-                                        </a>
-                                        <div class="over-image"></div>
-
-                                    </li>
-                                    <li class="content">
-                                        <h3 class="tilte">
-                                            <a href="https://new.samtuit.uz/views/about/instructions/">{{ menu_text.students }}</a>
-                                        </h3>
-                                        <p class="des">{{ menu_text.student_text }}</p>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-
+                        <div class="category-box">
+                        <a href="https://new.samtuit.uz/fakultetlar/">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/kafedra.png' %}" alt="Fakultetlar" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://new.samtuit.uz/fakultetlar/">{{ menu_text.faculties }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.facultie_text }}</p>
                         </div>
-                    </div>
 
+                        <div class="category-box">
+                        <a href="https://new.samtuit.uz/kafedralar/">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/fakultet.png' %}" alt="Kafedralar" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://new.samtuit.uz/kafedralar/">{{ menu_text.departments }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.department_text }}</p>
+                        </div>
+
+                        <div class="category-box">
+                        <a href="https://new.samtuit.uz/markazlar/">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/bolim.png' %}" alt="Bo‘limlar" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://new.samtuit.uz/markazlar/">{{ menu_text.centers }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.center_text }}</p>
+                        </div>
+
+                        <div class="category-box">
+                        <a href="https://my.mehnat.uz/login">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/bos_ish.png' %}" alt="Bo'sh ish o‘rinlari" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://my.mehnat.uz/login">{{ menu_text.vacancies }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.vacancie_text }}</p>
+                        </div>
+
+                        <div class="category-box">
+                        <a href="https://new.samtuit.uz/views/about/order-of-admission/">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/abuturent.png' %}" alt="Abituriyentlar" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://new.samtuit.uz/views/about/order-of-admission/">{{ menu_text.applicant }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.applicant_text }}</p>
+                        </div>
+
+                        <div class="category-box">
+                        <a href="https://new.samtuit.uz/views/about/instructions/">
+                            <img src="{% static 'users/cache/mod_sj_k2_categories_ii/student.png' %}" alt="Talabalar" />
+                        </a>
+                        <h3 class="title">
+                            <a href="https://new.samtuit.uz/views/about/instructions/">{{ menu_text.students }}</a>
+                        </h3>
+                        <p class="desc">{{ menu_text.student_text }}</p>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
                 </div>
             </div>
+            </div>
         </div>
-
     </section>
+
 
     <section id="yt_spotlight5" class="block">
         <div class="container">
@@ -533,24 +488,20 @@
 
     </section>
 
+    
     <section id="yt_spotlight6" class="block">
         <div class="container">
             <div class="row">
                 <div id="top10" class="col-sm-12">
-
                     <div class="module  style-me-scattered ">
                         <div class="modcontent clearfix">
-                            <div id="sj_scatteredgallery_16834689361729926732376" class="sj-sg-gallery ">
-                                <section id="sg_photostack_376" class="sg-photostack  photostack-start "
-                                    style="height: 500px;">
-
+                            <div id="sj_scatteredgallery_9882068411750824721376" class="sj-sg-gallery ">
+                                <section id="sg_photostack_376" class="sg-photostack  photostack-start "style="height: 500px;">
                                     <div class="sg-container">
                                         {% for student in students %}
                                         <figure>
                                             <a title="{{student.frist_name}}">
-                                                <img src="{{student.get_student_img}}"
-                                                    alt="{{student.frist_name}}"
-                                                    title="{{student.frist_name}}" />
+                                                <img src="{{student.get_student_img}}" alt="{{student.frist_name}}" title="{{student.frist_name}}" />
                                             </a>
                                             <figcaption>
                                                 <div class="sg-title">
@@ -563,15 +514,23 @@
                                         {% endfor %}
                                     </div>
                                     <div class="buttom-click" style="line-height: 500px; "><span>{{menu_text.our_pride}}</span> </div>
+                                    <nav>
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </nav>
                                 </section>
                             </div>
+
+                            <script type="text/javascript">
+                                var tag_id = document.getElementById('sj_scatteredgallery_9882068411750824721376');
+                                new Photostack(tag_id.querySelector('#sg_photostack_376'), {
+                                    callback: function(item) {}
+                                });
+                            </script>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </section>
     {% include 'users/base/settings.html' %}
 
