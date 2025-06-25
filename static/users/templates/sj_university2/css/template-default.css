@@ -4624,8 +4624,17 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slid
 }
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
+  height: 80em;
   max-width: none;
-  height: 55em;
+  width: 100%;
+  /* object-fit: cover; */
+}
+@media (max-width: 768px) {
+  div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
+    height: auto;
+    max-width: 100%;
+    object-fit: contain; /* Rasm kesilmasdan chiqadi */
+  }
 }
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title {
