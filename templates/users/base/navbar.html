@@ -163,37 +163,46 @@
                 <ul id="meganavigator" class="clearfix navi ">
                     {% for menu in menus %}
                     <li class="level1 havechild">
-                        <a title="{{ menu.title }}" class="level1 havechild  item-link" href="{% if menu.url %}{{ menu.url }}{% endif %}">
+                        <a title="{{ menu.title }}" class="level1 havechild item-link" href="{% if menu.url %}{{ menu.url }}{% endif %}">
                             <span class="menu-title">{{ menu.title }}</span>
+                            <!-- {% if menu.children %}
+                                <i class="fa fa-angle-down dropdown-arrow"></i>
+                            {% endif %} -->
                         </a>
                         {% if menu.children %}
-                        <div class="level2 menu mega-content" style="display: none; top: 104px; left: 25px;">
-                            <div class="mega-content-inner clearfix" style="opacity: 0;">
+                        <div class="level2 menu mega-content">
+                            <div class="mega-content-inner clearfix">
                                 <div class="mega-col first one">
                                     <ul class="subnavi level2">
                                         {% for child in menu.children %}
-                                        <li class="level2 first havechild ">
-                                            <a title="{{ child.title }}" class="level2 first havechild  item-link" href="{% if child.url %}{{ child.url }}{% endif %}">
+                                        <li class="level2 first havechild">
+                                            <a title="{{ child.title }}" class="level2 first item-link" href="{% if child.url %}{{ child.url }}{% endif %}">
                                                 <span class="menu-title">{{ child.title }}</span>
+                                                {% if child.children %}
+                                                    <i class="fa fa-angle-right dropdown-arrow"></i>
+                                                {% endif %}
                                             </a>
                                             {% if child.children %}
-                                            <div class="level3 menu mega-content" style="display: none;top: 0px; left: 180px;">
-                                                <div class="mega-content-inner clearfix" style="opacity: 0;">
+                                            <div class="level3 menu mega-content">
+                                                <div class="mega-content-inner clearfix">
                                                     <div class="mega-col first one">
                                                         <ul class="subnavi level3">
                                                             {% for subchild in child.children %}
                                                             <li class="level3 first havechild">
-                                                                <a title="{{ subchild.title }}" class="level3 first  item-link" href="{% if subchild.url %}{{ subchild.url }}{% endif %}">
+                                                                <a title="{{ subchild.title }}" class="level3 first item-link" href="{% if subchild.url %}{{ subchild.url }}{% endif %}">
                                                                     <span class="menu-title">{{ subchild.title }}</span>
+                                                                    {% if subchild.children %}
+                                                                        <i class="fa fa-angle-right dropdown-arrow"></i>
+                                                                    {% endif %}
                                                                 </a>
                                                                 {% if subchild.children %}
-                                                                <div class="level4 menu mega-content" style="display: none; top: 0px; left: -220px;">
-                                                                    <div class="mega-content-inner clearfix" style="opacity: 0;">
+                                                                <div class="level4 menu mega-content">
+                                                                    <div class="mega-content-inner clearfix">
                                                                         <div class="mega-col first one">
                                                                             <ul class="subnavi level4">
                                                                                 {% for sub in subchild.children %}
                                                                                 <li class="level4 first">
-                                                                                    <a title="{{sub.title}}" class="level4 first  item-link" href="{% if sub.url %}{{ sub.url }}{% endif %}">
+                                                                                    <a title="{{sub.title}}" class="level4 first item-link" href="{% if sub.url %}{{ sub.url }}{% endif %}">
                                                                                         <span class="menu-title">{{sub.title}}</span>
                                                                                     </a>
                                                                                 </li>
@@ -221,6 +230,7 @@
                     {% endfor %}
                 </ul>
 
+
                 <script type="text/javascript">
                     jQuery(function($) {
                         $('#meganavigator').megamenu({
@@ -233,9 +243,7 @@
                 </script>
 
                 <div id="yt-responivemenu" class="yt-resmenu ">
-                    <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed"
-                        type="button">
-                        <i class="fa fa-bars"></i> Menu </button>
+                    <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed" type="button"><i class="fa fa-bars"></i> Menu </button>
                     <div id="resmenu_sidebar" class="nav-collapse collapse">
                         <ul class="nav resmenu">
                             {% for menu in menus %}

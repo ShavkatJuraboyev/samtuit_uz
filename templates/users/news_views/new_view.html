@@ -97,7 +97,7 @@
                             <ul class="pager pagenav">
                                 {% if previous_post %}
                                 <li class="previous">
-                                    <a class="hasTooltip" title="Faucibus eu laoreet nunc"
+                                    <a class="hasTooltip" title="{{menu_text.previous_post}}"
                                         aria-label="Previous article: Faucibus eu laoreet nunc"
                                         href="{% url 'new' previous_post.id %}"
                                         rel="prev">
@@ -108,7 +108,7 @@
                                 {% endif %}
                                 {% if next_post %}
                                 <li class="next">
-                                    <a class="hasTooltip" title="Aliquam lobortis cursus "
+                                    <a class="hasTooltip" title="{{menu_text.next_post}}"
                                         aria-label="Next article: Aliquam lobortis cursus "
                                         href="{% url 'new' next_post.id %}"
                                         rel="next">

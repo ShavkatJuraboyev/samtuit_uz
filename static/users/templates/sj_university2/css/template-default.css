@@ -4686,14 +4686,14 @@ div.sj-k2slickslider .nav-pagination.conner-tl a.left {
   transition: all 0.3s ease-in-out;
   background: url(../images/icon/row-left.png) no-repeat center center rgba(255,255,255,0.7);
 }
-div.sj-k2slickslider .nav-pagination.conner-tl a.left:hover {
+/* div.sj-k2slickslider .nav-pagination.conner-tl a.left:hover {
   width: 120px;
   transition: all 0.3s ease-in-out;
   background-position: 15px center;
   text-indent: 0;
   padding-left: 10px;
   background-color: #fff;
-}
+} */
 div.sj-k2slickslider .nav-pagination.conner-tl a.right {
   position: absolute;
   right: -100px;
@@ -4714,14 +4714,14 @@ div.sj-k2slickslider .nav-pagination.conner-tl a.right {
   transition: all 0.3s ease-in-out;
   background: url(../images/icon/row-right.png) no-repeat center center rgba(255,255,255,0.7);
 }
-div.sj-k2slickslider .nav-pagination.conner-tl a.right:hover {
+/* div.sj-k2slickslider .nav-pagination.conner-tl a.right:hover {
   width: 120px;
   transition: all 0.3s ease-in-out;
   background-position: 85px center;
   background-color: #fff;
   text-indent: 0;
   padding-right: 10px;
-}
+} */
 div.sj-k2slickslider div.pag-item {
   position: absolute;
   bottom: 50px;
