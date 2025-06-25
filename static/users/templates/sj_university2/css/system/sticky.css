@@ -103,7 +103,7 @@ div.yt-slideBar .btn-special {
 .yt-slidePanel {
   position: fixed;
   z-index: 250;
-  top: 230px;
+  top: 100px;
   padding: 0;
   width: 280px;
 }
