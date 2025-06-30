@@ -69,7 +69,6 @@ def home(request):
         } 
     return render(request, 'users/index.html', context)
 
- 
 def contact(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
@@ -100,7 +99,6 @@ def contact(request):
         }
     return render(request, 'users/contact.html', ctx)
 
-
 def site_map(request):
     language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
@@ -118,3 +116,23 @@ def site_map(request):
         'language':language
         }
     return render(request, 'users/site_map.html', ctx)
+
+
+
+def student(request):
+    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
+
+    ctx = {
+        'menu_text':menu_text, 
+        "menus":menu_tree, 'season':season, 
+        'quickmmenu':quickmmenu, 
+        'language':language
+        }
+    return render(request, 'users/student.html', ctx)

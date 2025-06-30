@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uzsw2-e58hvo1_#1hu(g_wmth^6*xc8#6e2iz%kra29ig1*3bd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ["new.samtuit.uz", "www.new.samtuit.uz", "172.20.20.6", "127.0.0.1", "localhost"]
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'samtuit',
     'news',
     'leadership',
+    'interaktiv',
 
     'captcha',
 ]
@@ -99,23 +100,23 @@ WSGI_APPLICATION = 'samtuit_uz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'samtuit',
-        'USER': 'samtuituser',
-        'PASSWORD': 'samtuit2025',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'samtuit',
+#         'USER': 'samtuituser',
+#         'PASSWORD': 'samtuit2025',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -207,3 +208,15 @@ SESSION_COOKIE_AGE = 1800  # 30 daqiqa = 1800 soniya
 
 # Sessiya tugashidan so‘ng avtomatik logout
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Brauzer yopilganda sessiya tugaydi
+
+
+HEMIS_OAUTH2_AUTHORIZATION_URL = 'https://student.samtuit.uz/oauth/authorize'
+HEMIS_OAUTH2_TOKEN_URL = 'https://student.samtuit.uz/oauth/access-token'
+HEMIS_OAUTH2_CLIENT_ID = '4'
+HEMIS_OAUTH2_CLIENT_SECRET = 'JlnSenlTkyUzxBWm0RttygUrHOfsi0RZ1hdpUNdZ'
+# HEMIS_REDIRECT_URI = 'http://127.0.0.1:8000/callback/'  # Django'da `callback` url
+HEMIS_REDIRECT_URI = 'https://new.samtuit.uz/callback/'  # Django'da `callback` url serverda
+HEMIS_OATUHT2_API_URL = 'https://student.samtuit.uz/oauth/api/user'
+
+# settings.py
+LOGIN_URL = '/login/'

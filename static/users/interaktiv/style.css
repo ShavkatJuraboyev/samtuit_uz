@@ -1,0 +1,208 @@
+ html, body {
+      height: 100%;
+    }
+    body {
+      background: #f9f9fb;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+    }
+    .sidebar {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .sidebar .nav-link {
+    padding: 8px 0;
+    font-size: 15px;
+    color: #444;
+    transition: 0.3s;
+    }
+    .sidebar .nav-link:hover {
+    color: #007bff;
+    background: rgba(0, 123, 255, 0.05);
+    border-radius: 6px;
+    }
+    .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+    }
+    .sidebar h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .service-card.disabled {
+      opacity: 0.6;
+      pointer-events: none;
+      position: relative;
+    }
+    .service-card.disabled::after {
+      content: "Jarayonida";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .service-card.inprocess::after {
+      content: "Ishlab chiqarish jarayonida";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .service-card i {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .service-card h6 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .service-card a {
+      color: #007bff;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .navbar .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+   .user-dropdown {
+    position: relative;
+    display: inline-block;
+    }
+    .user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    transition: 0.3s;
+    }
+
+    .user-avatar:hover {
+    border-color: #007bff;
+    }
+    .user-card {
+    position: absolute;
+    right: 0;
+    top: 100%; /* Avatar ostiga chiqadi */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 999;
+    }
+   .user-dropdown:hover .user-card {
+    display: block;
+    }
+
+    .user-card .hover-bg:hover {
+    background-color: #f8f9fa;
+    }
+    .user-card h6 {
+      margin: 0;
+      font-size: 14px;
+    }
+    .user-card a {
+      display: block;
+      padding: 6px 0;
+      font-size: 13px;
+      color: #333;
+      text-decoration: none;
+    }
+    .user-card a:hover {
+      color: #c0392b;
+    }
+    .offcanvas-body .nav-link {
+    font-size: 15px;
+    color: #333;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    }
+    .offcanvas-body .nav-link:hover {
+    background: #f1f1f1;
+    }
+    .offcanvas-body .nav-link.active {
+    background: #007bff;
+    color: white;
+    }
+
+    .offcanvas-header .offcanvas-title {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .offcanvas-title img {
+      height: 40px;
+    }
+    .offcanvas-title span {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-brand {
+        display: none !important;
+      }
+    }
+
+     footer {
+      background: #b3b2b2;
+      border-top: 1px solid #e1e4e8;
+      padding: 20px 0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }

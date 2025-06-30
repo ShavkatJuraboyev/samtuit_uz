@@ -1,0 +1,86 @@
+{% extends "interaktiv/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    {% include "interaktiv/sidebar.html" %}
+    <div class="col-lg-9">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-4">
+            <img src="{{ users.image }}" alt="Rasm" class="rounded-circle me-3" style="width: 100px; height: 100px; object-fit: cover;">
+            <div>
+              <h5 class="mb-1">{{ users.full_name }}</h5>
+              <p class="text-muted mb-0">{{ users.student_id_number }}</p>
+              <span class="badge bg-primary">{{ users.studentStatus.name }}</span>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <strong>Email:</strong> {{ users.email }}
+            </div>
+            <div class="col-md-6">
+              <strong>Telefon:</strong> {{ users.phone }}
+            </div>
+            <div class="col-md-6">
+              <strong>Jinsi:</strong> {{ users.gender.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Tug'ilgan sana:</strong> {{ users.birth_date|date:"Y-m-d" }}
+            </div>
+            <div class="col-md-6">
+              <strong>OTM:</strong> {{ users.university }}
+            </div>
+            <div class="col-md-6">
+              <strong>Fakultet:</strong> {{ users.faculty.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Yo‘nalish:</strong> {{ users.specialty.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Guruh:</strong> {{ users.group.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Ta'lim turi:</strong> {{ users.educationType.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Ta'lim shakli:</strong> {{ users.educationForm.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>To‘lov turi:</strong> {{ users.paymentForm.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Til:</strong> {{ users.educationLang.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Kurs:</strong> {{ users.level.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Semestr:</strong> {{ users.semester.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>GPA:</strong> {{ users.avg_gpa }}
+            </div>
+            <div class="col-md-6">
+              <strong>Manzil:</strong> {{ users.address }}
+            </div>
+            <div class="col-md-6">
+              <strong>Viloyat:</strong> {{ users.province.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Tuman:</strong> {{ users.district.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Yashash holati:</strong> {{ users.accommodation.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Ijtimoiy toifa:</strong> {{ users.socialCategory.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

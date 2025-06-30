@@ -1,0 +1,41 @@
+{% extends "interaktiv/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    {% include "interaktiv/sidebar.html" %}
+    <div class="col-lg-9">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-4">
+            <img src="{{ users.image }}" alt="Rasm" class="rounded-circle me-3" style="width: 100px; height: 100px; object-fit: cover;">
+            <div>
+              <h5 class="mb-1">{{ users.full_name }}</h5>
+              <p class="text-muted mb-0">{{ users.student_id_number }}</p>
+              <span class="badge bg-primary">{{ users.studentStatus.name }}</span>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <strong>Viloyat:</strong> {{ users.province.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Tuman:</strong> {{ users.district.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Manzil:</strong> {{ users.address }}
+            </div>
+            <div class="col-md-6">
+              <strong>Yashash holati:</strong> {{ users.accommodation.name }}
+            </div>
+            <div class="col-md-6">
+              <strong>Ijtimoiy toifa:</strong> {{ users.socialCategory.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

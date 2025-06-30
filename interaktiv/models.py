@@ -1,0 +1,33 @@
+from django.db import models
+from django.contrib.auth.models import User
+# Create your models here.
+class UserHemis(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    hemis_id = models.CharField(max_length=100, unique=True, verbose_name="Hemis ID")
+    phone = models.CharField(max_length=13, verbose_name="Telefon raqami")
+    short_name = models.CharField(max_length=100, verbose_name="Qisqartma ismi")
+    userStatus = models.CharField(max_length=100, verbose_name="Foydalanuvchi holati")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.hemis_id
+    class Meta:
+        verbose_name = "Foydalanuvchilar"
+        verbose_name_plural = "Foydalanuvchilar ro'yxati"
+
+
+class GrantApplication(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Foydalanuvchi")
+    application_date = models.DateTimeField(auto_now_add=True, verbose_name="Ariza yuborilgan sana")
+    file = models.FileField(upload_to='grant_applications/', verbose_name="Ariza fayli")
+    status = models.CharField(max_length=50, choices=[('pending', 'Kutilmoqda'), ('approved', 'Tasdiqlangan'), ('rejected', 'Rad etilgan')], default='pending', verbose_name="Ariza holati")
+    new_phone = models.CharField("Yangi telefon raqam", max_length=20)
+    comments = models.TextField(blank=True, null=True, verbose_name="Izohlar")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.status}"
+
+    class Meta:
+        verbose_name = "Grant arizasi"
+        verbose_name_plural = "Grant arizalari"

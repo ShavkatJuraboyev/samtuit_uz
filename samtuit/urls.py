@@ -6,4 +6,5 @@ urlpatterns = [
     path('set-language/', set_language, name='set_language'),
     path('contact/', contact, name='contact'),
     path('site/map/', site_map, name='site_map'),
+    # Add other URL patterns as needed
 ]
