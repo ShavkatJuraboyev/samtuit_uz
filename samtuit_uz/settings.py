@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uzsw2-e58hvo1_#1hu(g_wmth^6*xc8#6e2iz%kra29ig1*3bd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["new.samtuit.uz", "www.new.samtuit.uz", "172.20.20.6", "127.0.0.1", "localhost"]
 
@@ -100,23 +100,23 @@ WSGI_APPLICATION = 'samtuit_uz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
-   }
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'samtuit',
-#         'USER': 'samtuituser',
-#         'PASSWORD': 'samtuit2025',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'samtuit',
+        'USER': 'samtuituser',
+        'PASSWORD': 'samtuit2025',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
