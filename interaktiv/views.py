@@ -38,7 +38,7 @@ def callback(request):
     token_data = token_response.json()
     access_token = token_data.get('access_token')
     request.session['access_token'] = access_token
-    request.session['hemis_authenticated'] = True
+    # request.session['hemis_authenticated'] = True
 
     # Foydalanuvchi ma'lumotlarini olish
     user_info_response = requests.get(settings.HEMIS_OATUHT2_API_URL, headers={
@@ -92,10 +92,8 @@ def logout(request):
     request.session.flush()
     return redirect('home')
 
+@login_required
 def get_user(request):
-    if not request.session.get('hemis_authenticated', False):
-        return redirect('login_oauth')
-
     access_token = request.session.get('access_token')
     if not access_token:
         return JsonResponse({'user': 'Token topilmadi'})
