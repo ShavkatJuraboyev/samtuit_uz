@@ -15,26 +15,54 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
     .login-card {
       background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 400px;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       width: 100%;
+      max-width: 450px;
+    }
+    .logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
     }
     .login-card h4 {
-      margin-bottom: 30px;
       font-weight: 600;
+      margin-bottom: 20px;
       text-align: center;
     }
-    .form-check-label {
-      font-weight: 500;
+    .form-control {
+      padding: 10px 14px;
+      font-size: 15px;
     }
     .btn-login {
       width: 100%;
       padding: 10px;
+      font-size: 16px;
+    }
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+    }
+    .divider::before, .divider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #ccc;
+    }
+    .divider::before {
+      left: 0;
+    }
+    .divider::after {
+      right: 0;
     }
   </style>
 </head>
@@ -42,24 +70,46 @@
 
   <form method="POST" class="login-card">
     {% csrf_token %}
-    <h4><i class="bi bi-box-arrow-in-right me-2"></i>Tizimga kirish</h4>
+    
+    <!-- Logo va sarlavha -->
+    <div class="text-center">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+      <h4>Tizimga kirish</h4>
+    </div>
 
-    <div class="form-check mb-3">
+    <!-- Username -->
+    <div class="mb-3">
+      <label for="username" class="form-label">Foydalanuvchi nomi</label>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Foydalanuvchi nomini kiriting">
+    </div>
+
+    <!-- Parol -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Parol</label>
+      <input type="password" class="form-control" id="password" name="password" placeholder="Parolni kiriting">
+    </div>
+
+    <!-- Kirish tugmasi -->
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary btn-login">
+        <i class="bi bi-box-arrow-in-right me-1"></i> Tizimga kirish
+      </button>
+    </div>
+
+    <!-- Yoki HEMIS orqali -->
+    <div class="divider">yoki</div>
+
+    <div class="form-check mb-3 text-start">
       <input class="form-check-input" type="radio" name="user_type" id="student" value="student" checked>
       <label class="form-check-label" for="student">
         Talaba sifatida kirish
       </label>
     </div>
-    <!-- <div class="form-check mb-4">
-      <input class="form-check-input" type="radio" name="user_type" id="xodim" value="xodim">
-      <label class="form-check-label" for="xodim">
-        Xodim sifatida kirish
-      </label>
-    </div> -->
 
-    <button type="submit" class="btn btn-primary btn-login">
+    <button type="submit" class="btn btn-outline-dark btn-login">
       <i class="bi bi-box-arrow-in-right me-1"></i> HEMIS orqali kirish
     </button>
+
   </form>
 
 </body>
