@@ -5,12 +5,12 @@ from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
 from samtuit.forms import ContactForm
 from django.contrib import messages
+from django.utils.translation import get_language
 
 
 def set_language(request):
     language = request.GET.get('lang', 'uz')  # Default til
     activate(language)  # Tarjima tizimini o'zgartirish
-    request.session['django_language'] = language  # Sessiyada tilni saqlash
     response = redirect(request.META.get("HTTP_REFERER", '/'))  # Oldingi sahifaga qaytish
     response.set_cookie('django_language', language)  # Cookie o'rnatish
     return response
@@ -28,7 +28,7 @@ def get_menu_tree(menu, language):
     return menu_data
 
 def home(request): 
-    language = request.session.get('django_language', 'uz')
+    language = get_language()
     pictures = PictureSlider.objects.all().order_by('-id')[:4]
     post_one = Post.objects.all().order_by('-created_at').first()
     post_three = Post.objects.all().order_by('-created_at')[1:5]
@@ -70,7 +70,7 @@ def home(request):
     return render(request, 'users/index.html', context)
 
 def contact(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -100,7 +100,7 @@ def contact(request):
     return render(request, 'users/contact.html', ctx)
 
 def site_map(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -120,7 +120,7 @@ def site_map(request):
 
 
 def student(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')

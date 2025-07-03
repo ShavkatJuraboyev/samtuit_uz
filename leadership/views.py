@@ -4,10 +4,11 @@ from news.models import Post
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
 from leadership.models import Leadership, Departments, DepartmentsCenter, Faculty, FacultyDean
+from django.utils.translation import get_language
 # Create your views here.
 
 def leader(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -43,7 +44,7 @@ def leader(request):
     return render(request, 'users/rektarat/raxbariyat.html', context)
 
 def rektorat(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -73,7 +74,7 @@ def rektorat(request, slug):
     return render(request, 'users/rektarat/raxbar.html', context)
 
 def kafedralar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -104,7 +105,7 @@ def kafedralar(request):
     return render(request, 'users/rektarat/kafedralar.html', context)
 
 def kafedra(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -133,7 +134,7 @@ def kafedra(request, slug):
     return render(request, 'users/rektarat/kafedra.html', context)
 
 def markazlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -164,7 +165,7 @@ def markazlar(request):
     return render(request, 'users/rektarat/markazlar.html', context)
 
 def markaz(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -193,7 +194,7 @@ def markaz(request, slug):
     return render(request, 'users/rektarat/markaz.html', context)
 
 def fakultetlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -223,7 +224,7 @@ def fakultetlar(request):
     return render(request, 'users/rektarat/facultetlar.html', context)
 
 def fakultet(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -274,7 +275,7 @@ def fakultet(request, slug):
     return render(request, 'users/rektarat/fakultet.html', context)
 
 def dekan(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')

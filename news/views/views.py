@@ -5,10 +5,11 @@ from samtuit.models import Menu, Season, QuickMmenu
 from django.http import JsonResponse
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
+from django.utils.translation import get_language
 
 
 def news(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -57,7 +58,7 @@ def news(request):
     return render(request, 'users/news/news.html', context) 
  
 def new(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -109,7 +110,7 @@ def new(request, pk):
     return render(request, 'users/news_views/new_view.html', context)
 
 def meetings(request):  
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -143,7 +144,7 @@ def meetings(request):
     return render(request, 'users/news/meetings.html', ctx)
 
 def meeting(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -175,7 +176,7 @@ def meeting(request, pk):
     return render(request, 'users/news_views/meeting_view.html', ctx)
 
 def elonlar(request): 
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -208,7 +209,7 @@ def elonlar(request):
     return render(request, 'users/news/elonlar.html', ctx)
 
 def elon(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -240,7 +241,7 @@ def elon(request, pk):
     return render(request, 'users/news_views/elon_view.html', ctx)
 
 def uchrashuvlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -274,7 +275,7 @@ def uchrashuvlar(request):
     return render(request, 'users/news/uchrashuvlar.html', ctx)
 
 def uchrashuv(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -306,7 +307,7 @@ def uchrashuv(request, pk):
     return render(request, 'users/news_views/uchrashuv_view.html', ctx)
 
 def matbuat_anjumanlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -341,7 +342,7 @@ def matbuat_anjumanlar(request):
     return render(request, 'users/news/matbuat_anjumanlar.html', ctx)
 
 def matbuat_anjuman(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -373,7 +374,7 @@ def matbuat_anjuman(request, pk):
     return render(request, 'users/news_views/matbuat_anjuman_view.html', ctx)
 
 def seminarlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -407,7 +408,7 @@ def seminarlar(request):
     return render(request, 'users/news/seminarlar.html', ctx)
 
 def seminar(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -439,7 +440,7 @@ def seminar(request, pk):
     return render(request, 'users/news_views/seminar_view.html', ctx)
 
 def davra_suhbatlar(request):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -473,7 +474,7 @@ def davra_suhbatlar(request):
     return render(request, 'users/news/davra_suhbatlari.html', ctx)
 
 def davra_suhbat(request, pk):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
@@ -511,7 +512,7 @@ def share_post(request, pk):
     return JsonResponse({'share_count': post.share_count}) 
 
 def detail(request, slug):
-    language = request.session.get('django_language', 'uz')  # Default: O'zbek tili
+    language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     season = Season.objects.all().order_by("-id").first()
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')

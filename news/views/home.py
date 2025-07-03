@@ -4,6 +4,7 @@ from news.models import Post
 from django.shortcuts import get_object_or_404
 from samtuit.translations import TRANSLATIONS
 from samtuit.views import get_menu_tree
+from django.utils.translation import get_language
 
 def get_nested_children(list_menu):
     children = list_menu.children.all()
@@ -13,7 +14,7 @@ def get_nested_children(list_menu):
     } for child in children]
 
 def menu_view(request, slug):
-    language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
+    language = get_language()  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
@@ -44,7 +45,7 @@ def menu_view(request, slug):
     return render(request, 'users/lists/list_page.html', ctx)
 
 def view_menu_detail(request, pk):
-    language = request.session.get('django_language', 'uz')  # Hozirgi tilni oling
+    language = get_language()  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]

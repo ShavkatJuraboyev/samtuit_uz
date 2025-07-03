@@ -72,6 +72,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'news.middleware.CaptureIPMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+]
+
+LANGUAGE_COOKIE_NAME = 'django_language'
+LANGUAGES = [
+    ('uz', 'Uzbek'),
+    ('ru', 'Russian'),
+    ('en', 'English'),
 ]
 
 
