@@ -1,6 +1,6 @@
 import requests
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as django_login, logout as django_logout
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
@@ -11,10 +11,25 @@ from datetime import datetime
 
 def login(request):
     if request.method == "POST":
-        return redirect(
-            f"{settings.HEMIS_OAUTH2_AUTHORIZATION_URL}?client_id={settings.HEMIS_OAUTH2_CLIENT_ID}"
-            f"&redirect_uri={settings.HEMIS_REDIRECT_URI}&response_type=code"
-        )
+        login_type = request.POST.get("login_type")
+
+        if login_type == "local":
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                django_login(request, user)
+                return redirect('home')  # foydalanuvchi kirgandan keyin yo'naltiriladigan sahifa
+            else:
+                messages.error(request, "Login yoki parol noto‘g‘ri")
+
+        elif login_type == "hemis":
+            return redirect(
+                f"{settings.HEMIS_OAUTH2_AUTHORIZATION_URL}?client_id={settings.HEMIS_OAUTH2_CLIENT_ID}"
+                f"&redirect_uri={settings.HEMIS_REDIRECT_URI}&response_type=code"
+            )
+
     return render(request, 'interaktiv/login.html')
 
 def callback(request):

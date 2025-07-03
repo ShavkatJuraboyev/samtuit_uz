@@ -95,7 +95,7 @@
 
     <!-- Kirish tugmasi -->
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary btn-login">
+      <button type="submit" name="login_type" value="local" class="btn btn-primary btn-login">
         <i class="bi bi-box-arrow-in-right me-1"></i> Tizimga kirish
       </button>
     </div>
@@ -110,9 +110,11 @@
       </label>
     </div>
 
-    <button type="button" class="btn btn-outline-dark btn-login">
-      <i class="bi bi-box-arrow-in-right me-1"></i> HEMIS orqali kirish
-    </button>
+    <div class="mb-3">
+      <button type="submit" name="login_type" value="hemis" class="btn btn-outline-dark btn-login">
+        <i class="bi bi-box-arrow-in-right me-1"></i> HEMIS orqali kirish
+      </button>
+    </div>
 
   </form>
 
