@@ -70,6 +70,9 @@ def callback(request):
     hemis_id = data.get('student_id_number')
     phone = data.get('phone', '')
     short_name = data.get('short_name', '')
+    faculty = data.get('faculty', {}).get('name', 'Noma’lum')
+    group = data.get('group', {}).get('name', 'Noma’lum')
+    gpa_ball = data.get('avg_gpa', 0.0)
     user_status = data.get('studentStatus', {}).get('name', 'Noma’lum')
 
     # Django User yaratish
@@ -88,7 +91,10 @@ def callback(request):
             'phone': phone,
             'short_name': short_name,
             'userStatus': user_status,
-            'user': django_user
+            'user': django_user,
+            'faculty': faculty,
+            'group': group,
+            'gpa_ball': gpa_ball
         }
     )
 
