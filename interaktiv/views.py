@@ -160,27 +160,30 @@ def education(request):
 @login_required
 def user_application(request):
     users = get_user(request)
+    if users['level']['name'] == '1-kurs':
+        if request.method == 'POST':
+            new_phone = request.POST.get('new_phone')
+            file = request.FILES.get('file')
 
-    if request.method == 'POST':
-        new_phone = request.POST.get('new_phone')
-        file = request.FILES.get('file')
+            if not new_phone or not file:
+                messages.error(request, "Barcha maydonlarni to‘ldiring.")
+                return redirect('student')
 
-        if not new_phone or not file:
-            messages.error(request, "Barcha maydonlarni to‘ldiring.")
-            return redirect('student')
+            GrantApplication.objects.create(
+                user=request.user,
+                new_phone=new_phone,
+                file=file,
+                faculty=users['faculty']['name'] if users.get('faculty') else '',
+                group=users['group']['name'] if users.get('group') else '',
+                gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
+                
+            )
 
-        GrantApplication.objects.create(
-            user=request.user,
-            new_phone=new_phone,
-            file=file,
-            faculty=users['faculty']['name'] if users.get('faculty') else '',
-            group=users['group']['name'] if users.get('group') else '',
-            gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
-            
-        )
-
-        messages.success(request, "Arizangiz muvaffaqiyatli yuborildi!")
-        return redirect('student')  # yoki boshqa sahifaga
+            messages.success(request, "Arizangiz muvaffaqiyatli yuborildi!")
+            return redirect('student')  # yoki boshqa sahifaga
+    else:
+        messages.error(request, "Faqat 1-kurs talabalar ariza yuborishi mumkin.")
+        return redirect('student')
 
     context = {
         'users': users,
