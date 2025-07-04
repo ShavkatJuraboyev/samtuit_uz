@@ -70,9 +70,6 @@ def callback(request):
     hemis_id = data.get('student_id_number')
     phone = data.get('phone', '')
     short_name = data.get('short_name', '')
-    faculty = data.get('faculty', {}).get('name', 'Noma’lum')
-    group = data.get('group', {}).get('name', 'Noma’lum')
-    gpa_ball = data.get('avg_gpa', 0.0)
     user_status = data.get('studentStatus', {}).get('name', 'Noma’lum')
 
     # Django User yaratish
@@ -92,9 +89,6 @@ def callback(request):
             'short_name': short_name,
             'userStatus': user_status,
             'user': django_user,
-            'faculty': faculty,
-            'group': group,
-            'gpa_ball': gpa_ball
         }
     )
 
@@ -178,7 +172,11 @@ def user_application(request):
         GrantApplication.objects.create(
             user=request.user,
             new_phone=new_phone,
-            file=file
+            file=file,
+            faculty=users.faculty.name,
+            group=users.group.name,
+            gpa_ball=users.avg_gpa if hasattr(users, 'avg_gpa') else 0.0,
+            
         )
 
         messages.success(request, "Arizangiz muvaffaqiyatli yuborildi!")
