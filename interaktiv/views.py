@@ -173,9 +173,9 @@ def user_application(request):
             user=request.user,
             new_phone=new_phone,
             file=file,
-            faculty=users.faculty.name,
-            group=users.group.name,
-            gpa_ball=users.avg_gpa if hasattr(users, 'avg_gpa') else 0.0,
+            faculty=users['faculty']['name'] if users.get('faculty') else '',
+            group=users['group']['name'] if users.get('group') else '',
+            gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
             
         )
 
