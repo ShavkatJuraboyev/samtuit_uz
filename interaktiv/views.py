@@ -212,6 +212,7 @@ def grant_application_list(request):
     }
     return render(request, 'interaktiv/grant_application_list.html',context)
 
+
 @login_required
 def admins(request):
     applications = GrantApplication.objects.all().order_by('-id')
