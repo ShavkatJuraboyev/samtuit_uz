@@ -31,7 +31,8 @@
                     <div class="col-md-6"><strong>Kurs:</strong> {{ user.level.name|default:"-" }}</div>
                     <div class="col-md-6"><strong>Semestr:</strong> {{ user.semester.name|default:"-" }}</div>
                     <div class="col-md-6"><strong>O'quv yili:</strong> {{ user.educationYear.name|default:"-" }}</div>
-                    <div class="col-md-6"><strong>GPA ball:</strong> {{ application.gpa_ball|default:"-" }}</div>
+                    <div class="col-md-6"><strong>GPA ball:</strong> {{ application.gpa_ball|default:"-" }}-({{user.avg_gpa}})</div>
+                    <div class="col-md-6"><strong>Ta'lim shakli:</strong> {{ user.paymentForm.name|default:"-" }}</div>
                     <div class="col-md-6">
                       <strong>Yuborilgan fayl:</strong>
                       {% if application.file %}
