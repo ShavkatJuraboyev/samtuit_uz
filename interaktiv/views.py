@@ -177,6 +177,15 @@ def education(request):
 def user_application(request):
     users = get_user(request)
     if users['level']['name'] == '1-kurs':
+        # Foydalanuvchining arizasi mavjudmi va statusi "Kutulmoqda"mi tekshiramiz
+        existing_application = GrantApplication.objects.filter(
+            user=request.user, status='pending'  # 'pending' - Kutulmoqda
+        ).first()
+
+        if existing_application:
+            messages.error(request, "Sizda Ko'rib chiqilayotgan ariza mavjud.")
+            return redirect('student')
+
         if request.method == 'POST':
             new_phone = request.POST.get('new_phone')
             file = request.FILES.get('file')
@@ -192,7 +201,6 @@ def user_application(request):
                 faculty=users['faculty']['name'] if users.get('faculty') else '',
                 group=users['group']['name'] if users.get('group') else '',
                 gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
-                
             )
 
             messages.success(request, "Arizangiz muvaffaqiyatli yuborildi!")
