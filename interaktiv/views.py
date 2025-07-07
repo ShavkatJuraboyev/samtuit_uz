@@ -224,7 +224,7 @@ def admins(request):
 @login_required
 def application_detail(request, hemis_id):
     try:
-        application = GrantApplication.objects.get(user__id=hemis_id)
+        application = GrantApplication.objects.get(user=hemis_id)
         user = get_user_info(hemis_id)
     except GrantApplication.DoesNotExist:
         messages.error(request, "Ariza topilmadi.")
