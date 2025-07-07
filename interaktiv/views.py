@@ -225,11 +225,17 @@ def admins(request):
 def application_detail(request, application_id):
     try:
         application = GrantApplication.objects.get(id=application_id)
-        hemis_id = application.user.userhemis.hemis_id  # kerak bo'lsa hemis_id ni oling
-        user = get_user_info(hemis_id)
-        print(user)  # foydalanuvchi ma'lumotlarini konsolga chiqarish
+        hemis_id = application.user.userhemis.hemis_id  # UserHemis orqali hemis_id
+        user_info = get_user_info(hemis_id)  # HEMIS API dan ma'lumot
+        if user_info.get('success'):
+            user_data = user_info['data']
+        else:
+            user_data = None
     except GrantApplication.DoesNotExist:
         messages.error(request, "Ariza topilmadi.")
+        return redirect('admins')
+    except AttributeError:
+        messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
         return redirect('admins')
 
     if request.method == 'POST':
@@ -245,6 +251,7 @@ def application_detail(request, application_id):
 
     context = {
         'application': application,
-        'user': user,
+        'user': user_data,  # faqat data bo'limini templatega yuboramiz
     }
     return render(request, 'interaktiv/application_detail.html', context)
+

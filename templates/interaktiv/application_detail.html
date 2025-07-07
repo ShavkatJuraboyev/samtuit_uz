@@ -11,10 +11,9 @@
           <div class="d-flex align-items-center mb-4">
             <img src="{{ user.image }}" alt="Rasm" class="rounded-circle me-3" style="width: 100px; height: 100px; object-fit: cover;">
             <div>
-              <h5 class="mb-1">{{ user.full_name }}</h5>
-              <p class="text-muted mb-0">{{ user.student_id_number }}</p>
-              <span class="badge bg-primary">{{ user.studentStatus.name }}</span>
-              <p>{{user}}</p>
+                <h5 class="mb-1">{{ user.full_name }}</h5>
+                <p class="text-muted mb-0">{{ user.student_id_number }}</p>
+                <span class="badge bg-primary">{{ user.studentStatus.name }}</span>
             </div>
           </div>
 
@@ -23,7 +22,6 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body bg-light">
                         {% if user %}
-                            <h5 class="mb-3 text-primary">{{ user.full_name }}</h5>
                             <div class="row g-2">
                                 <div class="col-md-6">
                                     <strong>Fakultet:</strong> {{ user.department.name }}
@@ -32,19 +30,7 @@
                                     <strong>Kafedra:</strong> {{ user.specialty.name }}
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>Viloyat:</strong> {{ user.province.name }}
-                                </div>
-                                <div class="col-md-6">
-                                    <strong>Tuman:</strong> {{ user.district.name }}
-                                </div>
-                                <div class="col-md-6">
                                     <strong>Telefon:</strong> {{ user.phone }}
-                                </div>
-                                <div class="col-md-6">
-                                    <strong>Hemis ID:</strong> {{ user.student_id_number }}
-                                </div>
-                                <div class="col-md-6">
-                                    <strong>Jarayon:</strong> {{ user.studentStatus.name }}
                                 </div>
                                 <div class="col-md-6">
                                     <strong>Guruh:</strong> {{ user.group.name }}
@@ -58,8 +44,13 @@
                                 <div class="col-md-6">
                                     <strong>O'quv yili:</strong> {{ user.educationYear.name }}
                                 </div>
-                                <div class="col-md-6">
-                                    <strong>Lavozim:</strong> {{ user.studentStatus.name }}
+                                <div class="col-md-12">
+                                    <strong>Yuborilgan fayl:</strong>
+                                    {% if application.file %}
+                                        <a href="{{ application.file.url }}" target="_blank">Faylni ko‘rish</a>
+                                    {% else %}
+                                        <span class="text-muted">Fayl mavjud emas</span>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% else %}
