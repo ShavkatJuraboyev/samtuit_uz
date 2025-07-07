@@ -17,5 +17,5 @@ urlpatterns = [
     path('user-application/', user_application, name='user_application'),
     path('grant-arizalar/', grant_application_list, name='grant_application_list'),
     path('admins/', admins, name='admins'),
-    path('application-list/<int:pk>/', application_detail, name='application_detail'),
+    path('application-list/<str:pk>/', application_detail, name='application_detail'),
 ]
