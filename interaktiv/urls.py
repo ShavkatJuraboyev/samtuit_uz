@@ -2,7 +2,7 @@ from django.urls import path
 from interaktiv.views import (
     student, login, callback,logout, 
     get_user, profile, location, education, user_application,
-    grant_application_list, admins, admin_application_list
+    grant_application_list, admins, application_detail
     )
  
 urlpatterns = [
@@ -17,5 +17,5 @@ urlpatterns = [
     path('user-application/', user_application, name='user_application'),
     path('grant-arizalar/', grant_application_list, name='grant_application_list'),
     path('admins/', admins, name='admins'),
-    path('admin-application-list/<int:pk>/', admin_application_list, name='admin_application_list'),
+    path('application-list/<int:pk>/', application_detail, name='application_detail'),
 ]
