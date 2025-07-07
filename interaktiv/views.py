@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.db.models import Q
+import openpyxl
+from django.http import HttpResponse
 
 
 def get_user_info(hemis_id):
@@ -232,7 +234,7 @@ def admins(request):
         except ValueError:
             pass  # noto‘g‘ri GPA kiritilsa, filterlash o‘tmaydi
 
-    paginator = Paginator(applications, 10)  # Har bir sahifada 10 ta ariza
+    paginator = Paginator(applications, 20)  # Har bir sahifada 10 ta ariza
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -277,3 +279,46 @@ def application_detail(request, application_id):
     }
     return render(request, 'interaktiv/application_detail.html', context)
 
+@login_required
+def export_applications_excel(request):
+    faculty = request.GET.get('faculty')
+    gpa = request.GET.get('gpa')
+
+    applications = GrantApplication.objects.all().order_by('-id')
+
+    if faculty:
+        applications = applications.filter(faculty__icontains=faculty)
+
+    if gpa:
+        try:
+            gpa_value = float(gpa)
+            applications = applications.filter(gpa_ball__gte=gpa_value)
+        except ValueError:
+            pass
+
+    # Excel fayl yaratish
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Grant arizalari"
+
+    # Sarlavhalar
+    ws.append(['#', 'Foydalanuvchi ismi', 'Fakultet', 'GPA', 'Holati', 'Tel'])
+
+    # Ma'lumotlarni to'ldirish
+    for idx, app in enumerate(applications, 1):
+        ws.append([
+            idx,
+            app.user.first_name,   # username o‘rniga first_name
+            app.faculty,
+            app.gpa_ball,
+            app.get_status_display(),
+            app.new_phone
+        ])
+
+    # Javobni tayyorlash
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=grant_arizalari.xlsx'
+    wb.save(response)
+    return response
