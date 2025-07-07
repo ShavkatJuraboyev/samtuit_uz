@@ -16,7 +16,7 @@ class UserHemis(models.Model):
         verbose_name = "Foydalanuvchilar"
         verbose_name_plural = "Foydalanuvchilar ro'yxati"
 
-
+ 
 class GrantApplication(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Foydalanuvchi")
     faculty = models.CharField(max_length=100, verbose_name="Fakultet", null=True, blank=True)

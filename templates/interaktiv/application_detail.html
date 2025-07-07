@@ -1,0 +1,116 @@
+{% extends "interaktiv/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    {% include "interaktiv/sidebar.html" %}
+    <div class="col-lg-9">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-4">
+            <img src="{{ user.image }}" alt="Rasm" class="rounded-circle me-3" style="width: 100px; height: 100px; object-fit: cover;">
+            <div>
+              <h5 class="mb-1">{{ user.full_name }}</h5>
+              <p class="text-muted mb-0">{{ user.student_id_number }}</p>
+              <span class="badge bg-primary">{{ user.studentStatus.name }}</span>
+            </div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body bg-light">
+                        {% if user %}
+                            <h5 class="mb-3 text-primary">{{ user.full_name }}</h5>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <strong>Fakultet:</strong> {{ user.department.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Kafedra:</strong> {{ user.specialty.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Viloyat:</strong> {{ user.province.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Tuman:</strong> {{ user.district.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Telefon:</strong> {{ user.phone }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Hemis ID:</strong> {{ user.student_id_number }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Jarayon:</strong> {{ user.studentStatus.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Guruh:</strong> {{ user.group.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Kurs:</strong> {{ user.level.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Semestr:</strong> {{ user.semester.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>O'quv yili:</strong> {{ user.educationYear.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Lavozim:</strong> {{ user.studentStatus.name }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning mb-0">
+                                Foydalanuvchi haqida ma'lumot topilmadi.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ariza holatini ko'rsatish va o'zgartirish formasi -->
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="mb-3 text-primary">Ariza holatini yangilash</h5>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Holat</label>
+                                <select class="form-select" name="status" id="status" required>
+                                    <option value="">Tanlang</option>
+                                    <option value="approved" {% if application.status == 'approved' %}selected{% endif %}>Tasdiqlandi</option>
+                                    <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rad etildi</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comments" class="form-label">Izoh</label>
+                                <textarea class="form-control" name="comments" id="comments" rows="3">{{ application.comments }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Saqlash</button>
+                        </form>
+                        {% if application.status %}
+                        <div class="mt-3">
+                            <p><strong>Joriy holat:</strong> 
+                                {% if application.status == 'approved' %}
+                                    <span class="badge bg-success">Tasdiqlandi</span>
+                                {% elif application.status == 'rejected' %}
+                                    <span class="badge bg-danger">Rad etildi</span>
+                                {% endif %}
+                            </p>
+                            <p><strong>Izoh:</strong> {{ application.comments|default:"Yo'q" }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

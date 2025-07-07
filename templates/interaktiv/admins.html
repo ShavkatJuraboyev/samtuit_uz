@@ -1,0 +1,57 @@
+{% extends "interaktiv/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    {% include "interaktiv/sidebar.html" %}
+    <div class="col-lg-9">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h4 class="mb-4">Yuborilgan grant arizalari</h4>
+            {% if applications %}
+                <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Foydalanuvchi</th>
+                        <th>Fakulteti</th>
+                        <th>GPA</th>
+                        <th>Holati</th>
+                        <th>Tel</th>
+                        <th>Hujjat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for app in users %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ app.user }}</td>
+                        <td>{{ app.faculty }}</td>
+                        <td>{{ app.gpa_ball }}</td>
+                        <td>
+                        {% if app.status == "pending" %}
+                            <span class="badge bg-warning text-dark">Kutilmoqda</span>
+                        {% elif app.status == "approved" %}
+                            <span class="badge bg-success">Tasdiqlangan</span>
+                        {% else %}
+                            <span class="badge bg-danger">Rad etilgan</span>
+                        {% endif %}
+                        </td>
+                        <td>{{ app.new_phone|default:"-" }}</td>
+                        <td><a href="{{ app.file.url }}" target="_blank">Ko‘rish</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            {% else %}
+                <p>Siz hali hech qanday ariza yubormagansiz.</p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -9,6 +9,18 @@ from interaktiv.models import UserHemis, GrantApplication
 from django.contrib.auth.decorators import login_required 
 from datetime import datetime
 
+
+def get_user_info(hemis_id):
+    """Hemis id kiritilishi lozim"""
+    url = f"https://student.samtuit.uz/rest/v1/data/student-info?student_id_number={hemis_id}"
+    token = "Y-R36P1BY-eLfuCwQbcbAlvt9GAMk-WP"
+    headers = {"Authorization": "Bearer " + token}
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()
+    return None
+
+
 def login(request):
     if request.method == "POST":
         login_type = request.POST.get("login_type")
@@ -199,3 +211,37 @@ def grant_application_list(request):
         'applications': applications,
     }
     return render(request, 'interaktiv/grant_application_list.html',context)
+
+@login_required
+def admins(request):
+    applications = GrantApplication.objects.all().order_by('-id')
+    context = {
+        'users': applications,
+    }   
+    return render(request, 'interaktiv/admins.html', context)
+
+@login_required
+def application_detail(request, hemis_id):
+    try:
+        application = GrantApplication.objects.get(user=hemis_id)
+        user = get_user_info(hemis_id)
+    except GrantApplication.DoesNotExist:
+        messages.error(request, "Ariza topilmadi.")
+        return redirect('admins')
+
+    if request.method == 'POST':
+        status = request.POST.get('status')
+        comments = request.POST.get('comments', '')
+
+        if status in ['approved', 'rejected']:
+            application.status = status
+            application.comments = comments
+            application.save()
+            messages.success(request, "Ariza holati yangilandi.")
+            return redirect('admins')
+
+    context = {
+        'application': application,
+        'user': user,
+    }
+    return render(request, 'interaktiv/application_detail.html', context)
