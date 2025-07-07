@@ -157,11 +157,11 @@
                         </div>
 
                         <div class="category-box">
-                            <a href="{% url 'student' %}">
+                            <a href="{% if request.user.is_staff %}{% url 'admins' %}{% else %}{% url 'student' %}{% endif %}">
                                 <img src="{% static 'users/cache/mod_sj_k2_categories_ii/image.png' %}" alt="Talabalar" />
                             </a>
                             <h3 class="title">
-                                <a href="{% url 'student' %}">{{menu_text.apply}}</a>
+                                <a href="{% if request.user.is_staff %}{% url 'admins' %}{% else %}{% url 'student' %}{% endif %}">{{menu_text.apply}}</a>
                             </h3>
                             <p class="desc">{{ menu_text.appeal_text }}</p>
                         </div>
