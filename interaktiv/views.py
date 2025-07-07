@@ -32,7 +32,7 @@ def login(request):
 
             if user is not None:
                 django_login(request, user)
-                return redirect('home')  # foydalanuvchi kirgandan keyin yo'naltiriladigan sahifa
+                return redirect('admins')  # foydalanuvchi kirgandan keyin yo'naltiriladigan sahifa
             else:
                 messages.error(request, "Login yoki parol noto‘g‘ri")
 
