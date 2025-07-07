@@ -222,9 +222,10 @@ def admins(request):
     return render(request, 'interaktiv/admins.html', context)
 
 @login_required
-def application_detail(request, hemis_id, pk):
+def application_detail(request, application_id):
     try:
-        application = GrantApplication.objects.get(user__id=pk, user__userhemis__hemis_id=hemis_id)
+        application = GrantApplication.objects.get(id=application_id)
+        hemis_id = application.user.userhemis.hemis_id  # kerak bo'lsa hemis_id ni oling
         user = get_user_info(hemis_id)
     except GrantApplication.DoesNotExist:
         messages.error(request, "Ariza topilmadi.")
