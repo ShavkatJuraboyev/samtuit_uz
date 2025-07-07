@@ -227,6 +227,7 @@ def application_detail(request, application_id):
         application = GrantApplication.objects.get(id=application_id)
         hemis_id = application.user.userhemis.hemis_id  # kerak bo'lsa hemis_id ni oling
         user = get_user_info(hemis_id)
+        print(user)  # foydalanuvchi ma'lumotlarini konsolga chiqarish
     except GrantApplication.DoesNotExist:
         messages.error(request, "Ariza topilmadi.")
         return redirect('admins')
