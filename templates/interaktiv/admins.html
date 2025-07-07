@@ -9,6 +9,20 @@
       <div class="card border-0 shadow-sm">
         <div class="card-body">
           <h4 class="mb-4">Yuborilgan grant arizalari</h4>
+          <form method="get" class="row g-2 mb-3">
+                <div class="col-md-4">
+                    <input type="text" name="faculty" class="form-control" placeholder="Fakultet bo‘yicha qidiring"
+                        value="{{ faculty_filter }}">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" step="0.01" name="gpa" class="form-control" placeholder="Minimal GPA"
+                        value="{{ gpa_filter }}">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">Filtrlash</button>
+                </div>
+            </form>
+
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-light">
@@ -29,7 +43,6 @@
                         <td>
                             <a href="{% url 'application_detail' app.id %}">{{ app.user }}</a>
                         </td>
-
                         <td>{{ app.faculty }}</td>
                         <td>{{ app.gpa_ball }}</td>
                         <td>
@@ -48,6 +61,36 @@
                     </tbody>
                 </table>
             </div>
+            <nav>
+                <ul class="pagination">
+                    {% if users.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}{% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}page={{ users.previous_page_number }}">Oldingi</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Oldingi</span></li>
+                    {% endif %}
+
+                    {% for num in users.paginator.page_range %}
+                        {% if users.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}{% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if users.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}{% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}page={{ users.next_page_number }}">Keyingi</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Keyingi</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+
         </div>
       </div>
     </div>

@@ -30,7 +30,7 @@
                                     <strong>Kafedra:</strong> {{ user.specialty.name }}
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>Telefon:</strong> {{ user.phone }}
+                                    <strong>Telefon:</strong> {{ application.new_phone }}
                                 </div>
                                 <div class="col-md-6">
                                     <strong>Guruh:</strong> {{ user.group.name }}
@@ -44,7 +44,10 @@
                                 <div class="col-md-6">
                                     <strong>O'quv yili:</strong> {{ user.educationYear.name }}
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <strong>GPA ball:</strong> {{ application.gpa_ball }}
+                                </div>
+                                <div class="col-md-6">
                                     <strong>Yuborilgan fayl:</strong>
                                     {% if application.file %}
                                         <a href="{{ application.file.url }}" target="_blank">Faylni ko‘rish</a>
@@ -90,9 +93,11 @@
                                     <span class="badge bg-success">Tasdiqlandi</span>
                                 {% elif application.status == 'rejected' %}
                                     <span class="badge bg-danger">Rad etildi</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">Kutilmoqda</span>
                                 {% endif %}
                             </p>
-                            <p><strong>Izoh:</strong> {{ application.comments|default:"Yo'q" }}</p>
+                            <p><strong>Izoh:</strong> {{ application.comments|default:"-" }}</p>
                         </div>
                         {% endif %}
                     </div>

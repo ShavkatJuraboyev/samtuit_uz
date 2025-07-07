@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from interaktiv.models import UserHemis, GrantApplication
 from django.contrib.auth.decorators import login_required 
 from datetime import datetime
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def get_user_info(hemis_id):
@@ -215,10 +217,30 @@ def grant_application_list(request):
 
 @login_required
 def admins(request):
+    faculty = request.GET.get('faculty')
+    gpa = request.GET.get('gpa')
+
     applications = GrantApplication.objects.all().order_by('-id')
+
+    if faculty:
+        applications = applications.filter(faculty__icontains=faculty)
+
+    if gpa:
+        try:
+            gpa_value = float(gpa)
+            applications = applications.filter(gpa_ball__gte=gpa_value)
+        except ValueError:
+            pass  # noto‘g‘ri GPA kiritilsa, filterlash o‘tmaydi
+
+    paginator = Paginator(applications, 10)  # Har bir sahifada 10 ta ariza
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'users': applications,
-    }   
+        'users': page_obj,
+        'faculty_filter': faculty or '',
+        'gpa_filter': gpa or '',
+    }
     return render(request, 'interaktiv/admins.html', context)
 
 @login_required
