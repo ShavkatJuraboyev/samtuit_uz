@@ -310,7 +310,7 @@ def export_applications_excel(request):
     ws.title = "Grant arizalari"
 
     # Sarlavhalar
-    ws.append(['#', 'Foydalanuvchi ismi', 'Fakultet', 'GPA', 'Holati', 'Tel'])
+    ws.append(['#', 'Foydalanuvchi ismi', 'Fakultet', 'Guruh', 'GPA', 'Holati', 'Tel'])
 
     # Ma'lumotlarni to'ldirish
     for idx, app in enumerate(applications, 1):
@@ -318,6 +318,7 @@ def export_applications_excel(request):
             idx,
             app.user.first_name,   # username o‘rniga first_name
             app.faculty,
+            app.group,
             app.gpa_ball,
             app.get_status_display(),
             app.new_phone

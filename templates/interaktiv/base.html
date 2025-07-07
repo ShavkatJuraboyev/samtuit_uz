@@ -22,7 +22,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand d-none d-lg-flex align-items-center" href="{% url 'student' %}">
+    <a class="navbar-brand d-none d-lg-flex align-items-center" href="{% if request.user.is_staff %}{% url 'admins' %}{%else%}{% url 'student' %}{%endif%}">
       <img src="{% static 'users/images/Logo.png' %}" alt="logo" height="80" class="me-2">
       <span class="fw-bold fs-5 lh-sm" style="font-size: 13px;">Muhammad al-Xorazmiy nomidagi<br> Toshkent Axborot Texnologiyalari <br> Universiteti Samarqand filiali</span>
     </a>
