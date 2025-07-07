@@ -26,7 +26,7 @@
                     {% for app in users %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td><a href="{% url 'application_detail' app.user %}">{{ app.user }}</a></td>
+                        <td><a href="{% url 'application_detail' app.user.id %}">{{ app.user }}</a></td>
                         <td>{{ app.faculty }}</td>
                         <td>{{ app.gpa_ball }}</td>
                         <td>
