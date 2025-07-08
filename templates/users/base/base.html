@@ -155,7 +155,7 @@
 		if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
 		}
 	</script>
-	<script>
+	<!-- <script>
 		(function() {
 			const checkDevTools = () => {
 				const widthThreshold = window.outerWidth - window.innerWidth > 160;
@@ -174,7 +174,26 @@
 
 			setInterval(checkDevTools, 1000);
 		})();
-	</script>
+	</script> -->
+<script>
+    // Faqat asosiy oyna orqali sahifani ko'rishga ruxsat beramiz
+    if (window.top !== window.self) {
+        // iframe ichida ochilgan — OK
+    } else {
+        // Foydalanuvchi to'g'ridan-to'g'ri URL ochdi (yoki kodni ko'rmoqda)
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.innerHTML = `
+                <div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#fff;">
+                    <div style="text-align:center;">
+                        <h1 style="color:red;">⚠ Diqqat!</h1>
+                        <p>Bu sahifa faqat tizim orqali ko‘rish uchun mo‘ljallangan.</p>
+                        <p>To‘g‘ridan-to‘g‘ri ochish cheklangan.</p>
+                    </div>
+                </div>
+            `;
+        });
+    }
+</script>
 
 
 </body>
