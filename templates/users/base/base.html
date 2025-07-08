@@ -145,16 +145,37 @@
 		}
 	</script>
 	<script>
-document.addEventListener("contextmenu", function(e){
-  e.preventDefault();
-}, false);
+		document.addEventListener("contextmenu", function(e){
+		e.preventDefault();
+		}, false);
 
-document.onkeydown = function(e) {
-  if(e.keyCode == 123) return false; // F12
-  if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
-  if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
-}
-</script>
+		document.onkeydown = function(e) {
+		if(e.keyCode == 123) return false; // F12
+		if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
+		if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+		}
+	</script>
+	<script>
+		(function() {
+			const checkDevTools = () => {
+				const widthThreshold = window.outerWidth - window.innerWidth > 160;
+				const heightThreshold = window.outerHeight - window.innerHeight > 160;
+				if (widthThreshold || heightThreshold) {
+					document.body.innerHTML = `
+						<div style="display:flex;align-items:center;justify-content:center;height:100vh;">
+							<div style="text-align:center;">
+								<h1 style="color:red;">⚠ Diqqat!</h1>
+								<p>Bu sahifa admin tomonidan himoyalangan.</p>
+								<p>Prosmotr kod ochilganligi aniqlandi.</p>
+							</div>
+						</div>`;
+				}
+			};
+
+			setInterval(checkDevTools, 1000);
+		})();
+	</script>
+
 
 </body>
 
