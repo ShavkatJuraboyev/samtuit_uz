@@ -24,6 +24,7 @@ class GrantApplication(models.Model):
     gpa_ball = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="GPA balli", null=True, blank=True)
     application_date = models.DateTimeField(auto_now_add=True, verbose_name="Ariza yuborilgan sana")
     file = models.FileField(upload_to='grant_applications/', verbose_name="Ariza fayli")
+    social_activism_flied = models.FileField(upload_to='social_activism/', verbose_name="Ijtimoiy faoliyat fayli", null=True, blank=True)
     status = models.CharField(max_length=50, choices=[('pending', 'Kutilmoqda'), ('approved', 'Tasdiqlangan'), ('rejected', 'Rad etilgan')], default='pending', verbose_name="Ariza holati")
     new_phone = models.CharField("Yangi telefon raqam", max_length=20)
     comments = models.TextField(blank=True, null=True, verbose_name="Izohlar")

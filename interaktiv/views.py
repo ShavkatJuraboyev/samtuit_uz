@@ -189,6 +189,8 @@ def user_application(request):
         if request.method == 'POST':
             new_phone = request.POST.get('new_phone')
             file = request.FILES.get('file')
+            # Ijtimoiy faoliyat fayli optional, shuning uchun uni tekshirish shart emas
+            social_activism_flied = request.FILES.get('social_activism_flied')
 
             if not new_phone or not file:
                 messages.error(request, "Barcha maydonlarni to‘ldiring.")
@@ -198,6 +200,7 @@ def user_application(request):
                 user=request.user,
                 new_phone=new_phone,
                 file=file,
+                social_activism_flied=social_activism_flied,
                 faculty=users['faculty']['name'] if users.get('faculty') else '',
                 group=users['group']['name'] if users.get('group') else '',
                 gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
@@ -223,7 +226,6 @@ def grant_application_list(request):
         'applications': applications,
     }
     return render(request, 'interaktiv/grant_application_list.html',context)
-
 
 @login_required
 def admins(request):
