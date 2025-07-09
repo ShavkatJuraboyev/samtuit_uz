@@ -46,29 +46,31 @@
                             <span class="badge bg-danger">Rad etilgan</span>
                         {% endif %}
                         </td>
+                        <!-- Akademik fayl -->
                         <td>
                             {% if app.file %}
                                 <a href="{{ app.file.url }}" target="_blank" title="Faylni ko‘rish">
-                                    📄
+                                    <i class="fas fa-file-pdf text-danger"></i>
                                 </a>
                             {% else %}
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal">
-                                    📄
-                                </a>
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if app.social_activism_field %}
-                                <a href="{{ app.social_activism_field.url }}" target="_blank" title="Faylni ko‘rish">
-                                    📄
-                                </a>
-                            {% else %}
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal">
-                                    📄
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
+                                    <i class="fas fa-file-pdf text-secondary"></i>
                                 </a>
                             {% endif %}
                         </td>
 
+                        <!-- Ijtimoiy faoliyat fayli -->
+                        <td>
+                            {% if app.social_activism_field %}
+                                <a href="{{ app.social_activism_field.url }}" target="_blank" title="Faylni ko‘rish">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
+                                    <i class="fas fa-file-pdf text-secondary"></i>
+                                </a>
+                            {% endif %}
+                        </td>
                         <td>{{ app.comments|default:"-" }}</td>
                     </tr>
                     {% endfor %}
@@ -95,6 +97,7 @@
                 </div>
               </div>
             </div>
+
 
         </div>
       </div>
