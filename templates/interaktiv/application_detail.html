@@ -34,9 +34,17 @@
                     <div class="col-md-6"><strong>GPA ball:</strong> {{ application.gpa_ball|default:"-" }}-({{user.avg_gpa}})</div>
                     <div class="col-md-6"><strong>Ta'lim shakli:</strong> {{ user.paymentForm.name|default:"-" }}</div>
                     <div class="col-md-6">
-                      <strong>Yuborilgan fayl:</strong>
+                      <strong>Akademik fayl:</strong>
                       {% if application.file %}
                         <a href="{{ application.file.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
+                      {% else %}
+                        <span class="text-muted">Fayl mavjud emas</span>
+                      {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                      <strong>Ijtimoiy fayl:</strong>
+                      {% if application.social_activism_field %}
+                        <a href="{{ application.social_activism_field.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
                       {% else %}
                         <span class="text-muted">Fayl mavjud emas</span>
                       {% endif %}
