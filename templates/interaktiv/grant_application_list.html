@@ -26,7 +26,8 @@
                         <th>Yuborilgan sana</th>
                         <th>Telefon raqam</th>
                         <th>Holati</th>
-                        <th>Fayl</th>
+                        <th>Akademik fayl</th>
+                        <th>Ijtimoiy fayl</th>
                         <th>Izoh</th>
                     </tr>
                     </thead>
@@ -45,7 +46,29 @@
                             <span class="badge bg-danger">Rad etilgan</span>
                         {% endif %}
                         </td>
-                        <td><a href="{{ app.file.url }}" target="_blank">Ko‘rish</a></td>
+                        <td>
+                            {% if app.file %}
+                                <a href="{{ app.file.url }}" target="_blank" title="Faylni ko‘rish">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if app.social_activism_field %}
+                                <a href="{{ app.social_activism_field.url }}" target="_blank" title="Faylni ko‘rish">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal">
+                                    <i class="fas fa-file-pdf text-danger"></i>
+                                </a>
+                            {% endif %}
+                        </td>
+
                         <td>{{ app.comments|default:"-" }}</td>
                     </tr>
                     {% endfor %}
@@ -55,6 +78,24 @@
             {% else %}
                 <p>Siz hali hech qanday ariza yubormagansiz.</p>
             {% endif %}
+            <!-- Fayl topilmadi modal oynasi -->
+            <div class="modal fade" id="noFileModal" tabindex="-1" aria-labelledby="noFileModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-warning-subtle">
+                    <h5 class="modal-title" id="noFileModalLabel">Xatolik</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
+                  </div>
+                  <div class="modal-body text-center">
+                    Fayl topilmadi yoki yuklanmagan.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yopish</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
         </div>
       </div>
     </div>
