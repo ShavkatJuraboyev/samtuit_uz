@@ -189,7 +189,6 @@ def user_application(request):
         if request.method == 'POST':
             new_phone = request.POST.get('new_phone')
             file = request.FILES.get('file')
-            # Ijtimoiy faoliyat fayli optional, shuning uchun uni tekshirish shart emas
             social_activism_flied = request.FILES.get('social_activism_flied')
 
             if not new_phone or not file:
