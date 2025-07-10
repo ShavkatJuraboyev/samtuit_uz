@@ -57,12 +57,79 @@
                 </div>
 
                 <div class="col-md-4">
-                <label for="file" class="form-label">Akaemik ma'lumotnoma (PDF)</label>
-                <input type="file" name="file" id="file" class="form-control" accept=".pdf" required>
+                  <label for="file" class="form-label">
+                    Akaemik ma'lumotnoma (PDF)
+                    <button type="button" class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#sampleModal">
+                      Namuna
+                    </button>
+                  </label>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="sampleModal" tabindex="-1" aria-labelledby="sampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                      <h5 class="modal-title" id="sampleModalLabel">Akaemik ma'lumotnoma namunasi</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
+                      </div>
+                      <div class="modal-body">
+                        <h5 class="text-center mb-3 fw-bold text-uppercase">Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti</h5>
+                        <h6 class="text-center mb-4 text-decoration-underline">Reyting daftar</h6>
+
+                        <p><strong>Talabaning F.I.Sh.:</strong> Shahboz Yuldashev</p>
+                        <p><strong>Fakultet:</strong> Kompyuter injiniringi</p>
+                        <p><strong>Mutaxassislik:</strong> 60610400 - Dasturiy injiniring</p>
+                        <p><strong>Ta’lim turi:</strong> Bakalavr</p>
+                        <p><strong>Ta’lim shakli:</strong> Kunduzgi</p>
+                        <p><strong>Kurs:</strong> 1-kurs</p>
+
+                        <div class="table-responsive mt-3">
+                          <table class="table table-bordered align-middle text-center">
+                            <thead class="table-light">
+                              <tr>
+                                <th scope="col">T/R</th>
+                                <th scope="col">Fanlar</th>
+                                <th scope="col">Fan turi</th>
+                                <th scope="col">Yuklama</th>
+                                <th scope="col">Kredit</th>
+                                <th scope="col">Reyting / Ball</th>
+                                <th scope="col">Baho</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr><td colspan="7" class="fw-bold text-start">1-semestr</td></tr>
+                              <tr><td>1</td><td>O'zbekistonning eng yangi tarixi</td><td>Majburiy</td><td>120</td><td>4.0</td><td>108 / 90</td><td>5</td></tr>
+                              <tr><td>2</td><td>Falsafa</td><td>Majburiy</td><td>120</td><td>4.0</td><td>112 / 93</td><td>5</td></tr>
+                              <tr><td>3</td><td>Xorijiy til 1</td><td>Majburiy</td><td>120</td><td>4.0</td><td>113 / 94</td><td>5</td></tr>
+                              <tr><td>4</td><td>Hisob (Calculus) 1</td><td>Majburiy</td><td>180</td><td>6.0</td><td>164 / 91</td><td>5</td></tr>
+                              <tr><td>5</td><td>Fizika 1</td><td>Majburiy</td><td>180</td><td>6.0</td><td>171 / 95</td><td>5</td></tr>
+                              <tr><td>6</td><td>Dasturlash 1</td><td>Majburiy</td><td>180</td><td>6.0</td><td>164 / 91</td><td>5</td></tr>
+
+                              <tr><td colspan="7" class="fw-bold text-start">2-semestr</td></tr>
+                              <tr><td>1</td><td>Dinshunoslik</td><td>Majburiy</td><td>120</td><td>4.0</td><td>110 / 92</td><td>5</td></tr>
+                              <tr><td>2</td><td>Xorijiy til 2</td><td>Majburiy</td><td>120</td><td>4.0</td><td>112 / 93</td><td>5</td></tr>
+                              <tr><td>3</td><td>Hisob (Calculus) 2</td><td>Majburiy</td><td>180</td><td>6.0</td><td>164 / 91</td><td>5</td></tr>
+                              <tr><td>4</td><td>Fizika 2</td><td>Majburiy</td><td>180</td><td>6.0</td><td>170 / 94</td><td>5</td></tr>
+                              <tr><td>5</td><td>Dasturlash 2</td><td>Majburiy</td><td>180</td><td>6.0</td><td>172 / 95</td><td>5</td></tr>
+                              <tr><td>6</td><td>Akademik yozuv</td><td>Majburiy</td><td>120</td><td>4.0</td><td>112 / 93</td><td>5</td></tr>
+                              <tr><td>7</td><td>Ma'lumotlar tuzilmasi va algoritmlar</td><td>Majburiy</td><td>120</td><td>4.0</td><td>118 / 98</td><td>5</td></tr>
+                              <tr><td>8</td><td>Ma'rifat darslari</td><td>Tanlov</td><td>18</td><td>0.0</td><td>O'tdi</td><td>-</td></tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yopish</button>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  <input type="file" name="file" id="file" class="form-control" accept=".pdf" required>
                 </div>
                 <div class="col-md-4">
-                <label for="social_activism_field" class="form-label">Ijtimoiy faolligi (PDF)</label>
-                <input type="file" name="social_activism_field" id="social_activism_field" class="form-control" accept=".pdf" required>
+                  <label for="social_activism_field" class="form-label">Ijtimoiy faolligi (PDF)</label>
+                  <input type="file" name="social_activism_field" id="social_activism_field" class="form-control" accept=".pdf" required>
                 </div>
 
                 <div class="col-12 text-end">
