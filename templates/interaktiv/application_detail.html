@@ -15,6 +15,13 @@
               <h5 class="mb-1">{{ user.full_name|default:"-" }}</h5>
               <p class="text-muted mb-0">{{ user.student_id_number|default:"-" }}</p>
               <span class="badge bg-primary">{{ user.studentStatus.name|default:"-" }}</span>
+              <p>
+              <i class="bi bi-calendar-event me-1"></i>
+              <span class="text-muted">Ariza yaratilgan vaqt:</span>
+              <strong>
+                {{ application.application_date|date:"d-m-Y H:i" }}
+              </strong>
+              </p>
             </div>
           </div>
 
