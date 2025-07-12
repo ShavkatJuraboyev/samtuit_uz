@@ -17,6 +17,15 @@
           </div>
 
           <form method="get" class="row g-2 mb-4">
+            <div class="col-md-2">
+              <select name="per_page" class="form-select" onchange="this.form.submit()">
+                {% for num in per_page_choices %}
+                  <option value="{{ num }}" {% if per_page|stringformat:"s" == num|stringformat:"s" %}selected{% endif %}>
+                    {{ num }} ta/sahifa
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
             <div class="col-md-3">
               <input type="text" name="faculty" class="form-control" placeholder="Fakultet bo‘yicha" value="{{ faculty_filter }}">
             </div>
@@ -25,13 +34,6 @@
             </div>
             <div class="col-md-3">
               <input type="text" name="name" class="form-control" placeholder="Ism bo‘yicha qidiring" value="{{ name_filter }}">
-            </div>
-            <div class="col-md-2">
-              <select name="per_page" class="form-select" onchange="this.form.submit()">
-                {% for num in '10,20,50,100'.split(',') %}
-                  <option value="{{ num }}" {% if per_page|stringformat:"s" == num %}selected{% endif %}>{{ num }} ta/sahifa</option>
-                {% endfor %}
-              </select>
             </div>
             <div class="col-md-1">
               <button type="submit" class="btn btn-primary w-100">

@@ -256,6 +256,7 @@ def admins(request):
     paginator = Paginator(applications, per_page)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    per_page_choices = [10, 20, 50, 100] 
 
     context = {
         'users': page_obj,
@@ -264,6 +265,7 @@ def admins(request):
         'name_filter': name or '',
         'per_page': per_page,
         'total_count': applications.count(),
+        'per_page_choices': per_page_choices,
     }
     return render(request, 'interaktiv/admins.html', context)
 
