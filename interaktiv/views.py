@@ -231,6 +231,8 @@ def grant_application_list(request):
 def admins(request):
     faculty = request.GET.get('faculty')
     gpa = request.GET.get('gpa')
+    name = request.GET.get('name')
+    per_page = request.GET.get('per_page', 20)
 
     applications = GrantApplication.objects.all().order_by('-id')
 
@@ -243,8 +245,15 @@ def admins(request):
             applications = applications.filter(gpa_ball__gte=gpa_value)
         except ValueError:
             pass  # noto‘g‘ri GPA kiritilsa, filterlash o‘tmaydi
+    if name:
+        applications = applications.filter(user__first_name__icontains=name)  # yoki `icontains=user__full_name` agar mavjud bo‘lsa
 
-    paginator = Paginator(applications, 20)  # Har bir sahifada 10 ta ariza
+    try:
+        per_page = int(per_page)
+    except ValueError:
+        per_page = 20
+
+    paginator = Paginator(applications, per_page)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -252,6 +261,9 @@ def admins(request):
         'users': page_obj,
         'faculty_filter': faculty or '',
         'gpa_filter': gpa or '',
+        'name_filter': name or '',
+        'per_page': per_page,
+        'total_count': applications.count(),
     }
     return render(request, 'interaktiv/admins.html', context)
 

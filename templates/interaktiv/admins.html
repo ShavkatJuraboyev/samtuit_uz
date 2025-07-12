@@ -17,15 +17,25 @@
           </div>
 
           <form method="get" class="row g-2 mb-4">
-            <div class="col-md-4">
-              <input type="text" name="faculty" class="form-control" placeholder="Fakultet bo‘yicha qidiring" value="{{ faculty_filter }}">
+            <div class="col-md-3">
+              <input type="text" name="faculty" class="form-control" placeholder="Fakultet bo‘yicha" value="{{ faculty_filter }}">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <input type="number" step="0.01" name="gpa" class="form-control" placeholder="Minimal GPA" value="{{ gpa_filter }}">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <input type="text" name="name" class="form-control" placeholder="Ism bo‘yicha qidiring" value="{{ name_filter }}">
+            </div>
+            <div class="col-md-2">
+              <select name="per_page" class="form-select" onchange="this.form.submit()">
+                {% for num in '10,20,50,100'.split(',') %}
+                  <option value="{{ num }}" {% if per_page|stringformat:"s" == num %}selected{% endif %}>{{ num }} ta/sahifa</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-1">
               <button type="submit" class="btn btn-primary w-100">
-                <i class="bi bi-funnel"></i> Filtrlash
+                <i class="bi bi-funnel"></i>
               </button>
             </div>
           </form>
@@ -112,37 +122,72 @@
                 </div>
               </div>
             </div>
+            <div class="mb-2 text-end text-muted">
+            Jami foydalanuvchilar: <strong>{{ total_count }}</strong>
+          </div>
 
           {% if users.paginator.num_pages > 1 %}
             <nav aria-label="Sahifalash">
               <ul class="pagination justify-content-center">
 
+                {# Oldingi sahifaga o'tish #}
+                {% if users.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}
+                    {% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}
+                    {% if name_filter %}name={{ name_filter }}&{% endif %}
+                    {% if per_page %}per_page={{ per_page }}&{% endif %}
+                    page={{ users.previous_page_number }}">Oldingi</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">Oldingi</span></li>
+                {% endif %}
+
+                {# Sahifa raqamlari #}
                 {% for num in users.paginator.page_range %}
                   {% if users.number == num %}
-                    <li class="page-item active">
-                      <span class="page-link">{{ num }}</span>
-                    </li>
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
 
                   {% elif num >= users.number|add:'-2' and num <= users.number|add:'2' %}
                     <li class="page-item">
-                      <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}{% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}page={{ num }}">{{ num }}</a>
+                      <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}
+                      {% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}
+                      {% if name_filter %}name={{ name_filter }}&{% endif %}
+                      {% if per_page %}per_page={{ per_page }}&{% endif %}
+                      page={{ num }}">{{ num }}</a>
                     </li>
 
                   {% elif num == 1 or num == users.paginator.num_pages %}
                     <li class="page-item">
-                      <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}{% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}page={{ num }}">{{ num }}</a>
+                      <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}
+                      {% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}
+                      {% if name_filter %}name={{ name_filter }}&{% endif %}
+                      {% if per_page %}per_page={{ per_page }}&{% endif %}
+                      page={{ num }}">{{ num }}</a>
                     </li>
 
                   {% elif num == users.number|add:'-3' or num == users.number|add:'3' %}
-                    <li class="page-item disabled">
-                      <span class="page-link">…</span>
-                    </li>
+                    <li class="page-item disabled"><span class="page-link">…</span></li>
                   {% endif %}
                 {% endfor %}
+
+                {# Keyingi sahifaga o'tish #}
+                {% if users.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?{% if faculty_filter %}faculty={{ faculty_filter }}&{% endif %}
+                    {% if gpa_filter %}gpa={{ gpa_filter }}&{% endif %}
+                    {% if name_filter %}name={{ name_filter }}&{% endif %}
+                    {% if per_page %}per_page={{ per_page }}&{% endif %}
+                    page={{ users.next_page_number }}">Keyingi</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">Keyingi</span></li>
+                {% endif %}
 
               </ul>
             </nav>
           {% endif %}
+
 
 
         </div>
