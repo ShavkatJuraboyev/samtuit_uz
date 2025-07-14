@@ -234,17 +234,24 @@ def update_grant_file(request, pk):
         file = request.FILES.get('file')
         social_activism_field = request.FILES.get('social_activism_field')
 
+        # Ariza fayli yangilansa, eski faylni o‘chirish va yangisini qo‘yish
         if file:
+            if application.file:
+                application.file.delete(save=False)  # Faylni diskdan o‘chirish
             application.file = file
-        if social_activism_field:
-            application.social_activism_field = social_activism_field
-        application.save()
 
+        # Ijtimoiy faoliyat fayli yangilansa, eski faylni o‘chirish va yangisini qo‘yish
+        if social_activism_field:
+            if application.social_activism_field:
+                application.social_activism_field.delete(save=False)
+            application.social_activism_field = social_activism_field
+
+        application.save()
         messages.success(request, "Fayllar muvaffaqiyatli yangilandi.")
         return redirect('grant_application_list')
 
-    # POST bo‘lmasa, hech narsa qilmaydi (yoki xato chiqaradi)
     return redirect('grant_application_list')
+
 
 @login_required
 def admins(request):
