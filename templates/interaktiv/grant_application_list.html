@@ -29,6 +29,7 @@
                         <th>Akademik fayl</th>
                         <th>Ijtimoiy fayl</th>
                         <th>Izoh</th>
+                        <th>Taxrirlash</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,6 +73,11 @@
                             {% endif %}
                         </td>
                         <td>{{ app.comments|default:"-" }}</td>
+                        <td>
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#editFileModal{{ app.id }}" title="tahrirlash">
+                              <i class="fas fa-pen text-danger"></i>
+                          </a>
+                        </td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -98,7 +104,33 @@
               </div>
             </div>
 
-
+            <!-- Modal -->
+            <div class="modal fade" id="editFileModal{{ app.id }}" tabindex="-1" aria-labelledby="editFileModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form method="POST" enctype="multipart/form-data" action="{% url 'update_grant_file' app.id %}">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editFileModalLabel">Fayllarni yangilash</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="file" class="form-label">Ariza fayli</label>
+                        <input type="file" name="file" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="social_activism_field" class="form-label">Ijtimoiy faoliyat fayli</label>
+                        <input type="file" name="social_activism_field" class="form-control">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Saqlash</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

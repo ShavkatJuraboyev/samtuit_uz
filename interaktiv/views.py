@@ -1,5 +1,5 @@
 import requests
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib import messages
 from django.http import JsonResponse
@@ -226,6 +226,22 @@ def grant_application_list(request):
         'applications': applications,
     }
     return render(request, 'interaktiv/grant_application_list.html',context)
+
+@login_required
+def update_grant_file(request, pk):
+    application = get_object_or_404(GrantApplication, pk=pk, user=request.user)
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        social_activism_field = request.FILES.get('social_activism_field')
+
+        if file:
+            application.file = file
+        if social_activism_field:
+            application.social_activism_field = social_activism_field
+        application.save()
+
+        messages.success(request, "Fayllar muvaffaqiyatli yangilandi.")
+        return redirect('grant_application_list')
 
 @login_required
 def admins(request):
