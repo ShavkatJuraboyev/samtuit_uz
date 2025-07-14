@@ -243,6 +243,9 @@ def update_grant_file(request, pk):
         messages.success(request, "Fayllar muvaffaqiyatli yangilandi.")
         return redirect('grant_application_list')
 
+    # POST bo‘lmasa, hech narsa qilmaydi (yoki xato chiqaradi)
+    return redirect('grant_application_list')
+
 @login_required
 def admins(request):
     faculty = request.GET.get('faculty')
