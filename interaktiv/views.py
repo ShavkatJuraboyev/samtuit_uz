@@ -189,8 +189,18 @@ def user_application(request):
         if request.method == 'POST':
             new_phone = request.POST.get('new_phone')
             file = request.FILES.get('file')
-            # Ijtimoiy faoliyat fayli optional, shuning uchun uni tekshirish shart emas
             social_activism_field = request.FILES.get('social_activism_field')
+
+            # GPA tekshiruvi
+            gpa = users.get('avg_gpa', 0.0)
+            try:
+                gpa = float(gpa)
+            except (TypeError, ValueError):
+                gpa = 0.0
+
+            if gpa < 3.5:
+                messages.error(request, "Ariza topshirish uchun GPA 3.5 yoki undan yuqori bo‘lishi kerak.")
+                return redirect('student')
 
             if not new_phone or not file:
                 messages.error(request, "Barcha maydonlarni to‘ldiring.")
@@ -203,11 +213,11 @@ def user_application(request):
                 social_activism_field=social_activism_field,
                 faculty=users['faculty']['name'] if users.get('faculty') else '',
                 group=users['group']['name'] if users.get('group') else '',
-                gpa_ball=users['avg_gpa'] if users.get('avg_gpa') else 0.0,
+                gpa_ball=gpa,
             )
 
             messages.success(request, "Arizangiz muvaffaqiyatli yuborildi!")
-            return redirect('student')  # yoki boshqa sahifaga
+            return redirect('student')
     else:
         messages.error(request, "Faqat 1-kurs talabalar ariza yuborishi mumkin.")
         return redirect('student')
