@@ -176,6 +176,13 @@ def education(request):
 @login_required
 def user_application(request):
     users = get_user(request)
+
+    # Ariza topshirish muddati (masalan, 2024-06-10 gacha)
+    deadline = datetime(2025, 7, 20)
+    if datetime.now() > deadline:
+        messages.error(request, "Ariza topshirish muddati tugadi.")
+        return redirect('student')
+
     if users['level']['name'] == '1-kurs':
         # Foydalanuvchining arizasi mavjudmi va statusi "Kutulmoqda"mi tekshiramiz
         existing_application = GrantApplication.objects.filter(
