@@ -3,9 +3,10 @@ from samtuit.models import PictureSlider, Students, Partners, Wisdom, Menu, Seas
 from news.models import Post, Announcements
 from django.utils.translation import activate
 from samtuit.translations import TRANSLATIONS
-from samtuit.forms import ContactForm
+from samtuit.forms import ContactForm, ForeignStudentForm
 from django.contrib import messages
 from django.utils.translation import get_language
+from interaktiv.models import ForeignStudent
 
 
 def set_language(request):
@@ -118,7 +119,6 @@ def site_map(request):
     return render(request, 'users/site_map.html', ctx)
 
 
-
 def student(request):
     language = get_language()  # Default: O'zbek tili
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
@@ -136,3 +136,37 @@ def student(request):
         'language':language
         }
     return render(request, 'users/student.html', ctx)
+
+def foreign_student(request):
+    language = get_language()  # Default: O'zbek tili
+    menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
+    season = Season.objects.all().order_by("-id").first()
+    menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
+    quickmmenu = QuickMmenu.objects.all()[:7]
+    for quic in quickmmenu:
+        quic.translated_title = quic.get_menu_title(language)
+    menu_tree = [get_menu_tree(menu, language) for menu in menus]
+
+    if request.method == "POST":
+        form = ForeignStudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your application has been submitted successfully!")
+            return redirect('foreign_student')
+        else:
+            messages.error(request, "There was an error. Please check your information.")
+    else:
+        form = ForeignStudentForm()
+
+    foreign_students = ForeignStudent.objects.all()
+
+    ctx = {
+        'menu_text': menu_text,
+        "menus": menu_tree,
+        'season': season,
+        'quickmmenu': quickmmenu,
+        'language': language,
+        'foreign_students': foreign_students,
+        'form': form
+    }
+    return render(request, 'users/foreign_student.html', ctx)

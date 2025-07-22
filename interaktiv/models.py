@@ -35,3 +35,21 @@ class GrantApplication(models.Model):
     class Meta:
         verbose_name = "Grant arizasi"
         verbose_name_plural = "Grant arizalari"
+
+
+
+class ForeignStudent(models.Model):
+    first_name = models.CharField(max_length=100, verbose_name="Ism", null=True, blank=True)
+    last_name = models.CharField(max_length=100, verbose_name="Familiya", null=True, blank=True)
+    phone = models.CharField(max_length=13, verbose_name="Telefon raqami", null=True, blank=True)
+    country = models.CharField(max_length=100, verbose_name="Mamlakat", null=True, blank=True)
+    passport_file = models.FileField(upload_to='passports/', verbose_name="Pasport fayli", null=True, blank=True)
+    diploma_file = models.FileField(upload_to='diplomas/', verbose_name="Diplom fayli", null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Yaratilgan sana")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Yangilangan sana")
+
+    def __str__(self):
+        return self.first_name + "" + self.last_name
+    class Meta:
+        verbose_name = "Chet el talabalari"
+        verbose_name_plural = "Chet el talabalari ro'yxati"
