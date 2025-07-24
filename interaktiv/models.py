@@ -49,7 +49,7 @@ class ForeignStudent(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Yangilangan sana")
 
     def __str__(self):
-        return (self.firstname or "") + " " + (self.lastname or "")
+        return (self.first_name or "Ism yo'q") + " " + (self.last_name or "Familiya yo'q")
 
     class Meta:
         verbose_name = "Chet el talabalari"
