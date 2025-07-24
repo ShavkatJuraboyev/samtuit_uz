@@ -3,42 +3,54 @@ from news.models import Post, Meeting,  Announcements, Designation, PressConfere
 from django.contrib.admin.models import LogEntry
 
 class LogEntryAdmin(admin.ModelAdmin):
-    list_display = ('action_time', 'user', 'content_type', 'object_repr', 'ip_address', 'device', 'action_flag')
+    list_display = ('action_time', 'user', 'content_type', 'object_repr', 'ip_address', 'mac_address', 'device')
     search_fields = ['user__username', 'content_type__model']
 
     def log_change(self, request, object, message):
-        """ LogEntry yaratishda IP va qurilma ma'lumotlarini qo‘shish """
-        # IP va qurilma ma'lumotlarini olish
-        ip = request.user_ip if hasattr(request, "user_ip") else "N/A"
-        device = request.user_agent if hasattr(request, "user_agent") else "N/A"
+        ip = getattr(request, 'client_ip', 'N/A')
+        mac = getattr(request, 'mac_address', 'N/A')
+        device = getattr(request, 'user_agent_str', 'N/A')
 
-        # IP va qurilma ma'lumotlarini message'ga qo‘shish
-        message += f" | IP: {ip} | Device: {device}"
-        
-        # LogEntry yaratish
+        # Ma’lumotlarni message ichida saqlaymiz
+        message += f" | IP: {ip} | MAC: {mac} | Device: {device}"
+
         LogEntry.objects.log_action(
             user_id=request.user.pk,
             content_type_id=None,
             object_id=None,
-            object_repr=object.__str__(),
+            object_repr=str(object),
             action_flag=LogEntry.CHANGE,
             change_message=message
         )
 
     def ip_address(self, obj):
-        # change_message'dan IP manzilini olish
         if "IP:" in obj.change_message:
-            return obj.change_message.split(" | ")[-2].replace("IP: ", "")
+            parts = obj.change_message.split(" | ")
+            for part in parts:
+                if part.strip().startswith("IP:"):
+                    return part.replace("IP: ", "").strip()
         return "N/A"
-    ip_address.short_description = "IP Address"
+
+    def mac_address(self, obj):
+        if "MAC:" in obj.change_message:
+            parts = obj.change_message.split(" | ")
+            for part in parts:
+                if part.strip().startswith("MAC:"):
+                    return part.replace("MAC: ", "").strip()
+        return "N/A"
 
     def device(self, obj):
-        # change_message'dan qurilma nomini olish
         if "Device:" in obj.change_message:
-            return obj.change_message.split(" | ")[-1].replace("Device: ", "")
+            parts = obj.change_message.split(" | ")
+            for part in parts:
+                if part.strip().startswith("Device:"):
+                    return part.replace("Device: ", "").strip()
         return "N/A"
-    device.short_description = "Device"
 
+    ip_address.short_description = "IP Address"
+    mac_address.short_description = "MAC Address"
+    device.short_description = "Device"
+    
 # Admin-da LogEntry modelini ko‘rish uchun uni ro‘yxatdan o‘tkazish
 admin.site.register(LogEntry, LogEntryAdmin)
 
@@ -297,3 +309,4 @@ class DetailsAdmin(admin.ModelAdmin):
         if obj: 
             return self.readonly_fields + ('created_by',)
         return self.readonly_fields
+    

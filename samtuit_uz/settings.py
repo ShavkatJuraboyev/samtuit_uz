@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'news.middleware.CaptureIPMiddleware',
+    'news.middleware.CaptureClientInfoMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
 
