@@ -15,10 +15,10 @@ class ForeignStudentForm(forms.ModelForm):
         model = ForeignStudent
         fields = ['first_name', 'last_name', 'phone', 'country', 'passport_file', 'diploma_file']
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'required':True}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'required':True}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'required':True}),
             'country': forms.TextInput(attrs={'class': 'form-control'}),
-            'passport_file': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
-            'diploma_file': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'passport_file': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required':True}),
+            'diploma_file': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required':True}),
         }
