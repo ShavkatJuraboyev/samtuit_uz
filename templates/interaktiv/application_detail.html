@@ -69,21 +69,26 @@
 
           <div class="card border-0 shadow-sm">
             <div class="card-body">
-              <h5 class="text-primary mb-3">Ariza holatini yangilash</h5>
-              <form method="post" class="row g-3">
+              <h5 class="text-primary mb-4 fw-bold">
+                <i class="bi bi-pencil-square me-1"></i> Ariza holatini yangilash
+              </h5>
+
+              <form method="post" class="row g-4">
                 {% csrf_token %}
 
+                <!-- Holat -->
                 <div class="col-md-6">
-                  <label for="status" class="form-label">Holat</label>
-                  <select class="form-select" name="status" id="status" required>
+                  <label for="status" class="form-label fw-semibold">Holat</label>
+                  <select class="form-select shadow-sm" name="status" id="status" required>
                     <option value="">Tanlang</option>
                     <option value="approved" {% if application.status == 'approved' %}selected{% endif %}>Tasdiqlandi</option>
                     <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rad etildi</option>
                   </select>
                 </div>
 
+                <!-- Bahoni ko‘rsatish -->
                 <div class="col-md-6">
-                  <label class="form-label d-block">Baholarni ko‘rsatish:</label>
+                  <label class="form-label fw-semibold d-block">Baholarni ko‘rsatish</label>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" name="show_scores" id="show_scores"
                       {% if application.is_visible_to_user %}checked{% endif %}>
@@ -91,29 +96,32 @@
                   </div>
                 </div>
 
-
+                <!-- Qo‘shimcha ball -->
                 <div class="col-md-6">
-                  <label for="ball" class="form-label">Qo‘shimcha ball</label>
-                  <input type="number" step="0.01" class="form-control" name="ball" id="ball"
-                    value="{{ application.ball|default_if_none:'' }}">
+                  <label for="ball" class="form-label fw-semibold">Qo‘shimcha ball</label>
+                  <input type="number" step="0.01" class="form-control shadow-sm" name="ball" id="ball"
+                    value="{{ application.ball|default_if_none:'' }}" placeholder="Masalan: 4.75">
                 </div>
 
+                <!-- Izoh -->
                 <div class="col-md-12">
-                  <label for="comments" class="form-label">Izoh</label>
-                  <textarea class="form-control" name="comments" id="comments" rows="3"
+                  <label for="comments" class="form-label fw-semibold">Izoh</label>
+                  <textarea class="form-control shadow-sm" name="comments" id="comments" rows="3"
                     placeholder="Izoh kiriting...">{{ application.comments }}</textarea>
                 </div>
 
-                <div class="col-md-12">
-                  <button type="submit" class="btn btn-success">
-                    <i class="bi bi-save"></i> Saqlash
+                <!-- Submit tugmasi -->
+                <div class="col-md-12 text-end">
+                  <button type="submit" class="btn btn-success px-4 shadow-sm">
+                    <i class="bi bi-save me-1"></i> Saqlash
                   </button>
                 </div>
               </form>
 
+              <!-- Joriy holat va izoh -->
               {% if application.status %}
-              <div class="mt-4">
-                <p><strong>Joriy holat:</strong>
+              <div class="mt-4 border-top pt-3">
+                <p class="mb-1"><strong>Joriy holat:</strong>
                   {% if application.status == 'approved' %}
                   <span class="badge bg-success">Tasdiqlandi</span>
                   {% elif application.status == 'rejected' %}
@@ -122,11 +130,12 @@
                   <span class="badge bg-warning text-dark">Kutilmoqda</span>
                   {% endif %}
                 </p>
-                <p><strong>Izoh:</strong> {{ application.comments|default:"-" }}</p>
+                <p class="mb-0"><strong>Izoh:</strong> {{ application.comments|default:"-" }}</p>
               </div>
               {% endif %}
             </div>
           </div>
+
 
 
         </div>
