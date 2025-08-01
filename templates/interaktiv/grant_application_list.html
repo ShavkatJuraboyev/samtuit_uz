@@ -23,7 +23,7 @@
                     <thead class="table-light">
                     <tr>
                         <th>#</th>
-                        <th>Yuborilgan sana</th>
+                        <!-- <th>Yuborilgan sana</th> -->
                         <th>Telefon raqam</th>
                         <th>Holati</th>
                         <th>Akademik fayl</th>
@@ -37,7 +37,7 @@
                     {% for app in applications %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ app.application_date|date:"Y-m-d H:i" }}</td>
+                        <!-- <td>{{ app.application_date|date:"Y-m-d H:i" }}</td> -->
                         <td>{{ app.new_phone }}</td>
                         <td>
                         {% if app.status == "pending" %}
