@@ -18,110 +18,82 @@
           </div>
           <h4 class="mb-4">Yuborilgan grant arizalari</h4>
             {% if applications %}
-                <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class="table-light">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle shadow-sm">
+                  <thead class="table-primary text-center">
                     <tr>
-                        <th>#</th>
-                        <!-- <th>Yuborilgan sana</th> -->
-                        <th>Telefon raqam</th>
-                        <th>Holati</th>
-                        <th>Akademik fayl</th>
-                        <th>Ijtimoiy fayl</th>
-                        <th>Baholar</th> 
-                        <th>Izoh</th>
-                        <th>Taxrirlash</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Telefon raqam</th>
+                      <th scope="col">Holati</th>
+                      <th scope="col">Akademik fayl</th>
+                      <th scope="col">Ijtimoiy fayl</th>
+                      <th scope="col">Baholar</th>
+                      <th scope="col">Izoh</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                  </thead>
+                  <tbody class="text-center">
                     {% for app in applications %}
                     <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <!-- <td>{{ app.application_date|date:"Y-m-d H:i" }}</td> -->
-                        <td>{{ app.new_phone }}</td>
-                        <td>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ app.new_phone }}</td>
+                      <td>
                         {% if app.status == "pending" %}
-                            <span class="badge bg-warning text-dark">Kutilmoqda</span>
+                          <span class="badge bg-warning text-dark">Kutilmoqda</span>
                         {% elif app.status == "approved" %}
-                            <span class="badge bg-success">Tasdiqlangan</span>
+                          <span class="badge bg-success">Tasdiqlangan</span>
                         {% else %}
-                            <span class="badge bg-danger">Rad etilgan</span>
+                          <span class="badge bg-danger">Rad etilgan</span>
                         {% endif %}
-                        </td>
-                        <!-- Akademik fayl -->
-                        <td>
-                            {% if app.file %}
-                                <a href="{{ app.file.url }}" target="_blank" title="Faylni ko‘rish">
-                                    <i class="fas fa-file-pdf text-danger"></i>
-                                </a>
-                            {% else %}
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
-                                    <i class="fas fa-file-pdf text-secondary"></i>
-                                </a>
-                            {% endif %}
-                        </td>
+                      </td>
 
-                        <!-- Ijtimoiy faoliyat fayli -->
-                        <td>
-                            {% if app.social_activism_field %}
-                                <a href="{{ app.social_activism_field.url }}" target="_blank" title="Faylni ko‘rish">
-                                    <i class="fas fa-file-pdf text-danger"></i>
-                                </a>
-                            {% else %}
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
-                                    <i class="fas fa-file-pdf text-secondary"></i>
-                                </a>
-                            {% endif %}
-                        </td>
-                        <td>
-                          {% if app.is_visible_to_user %}
-                            GPA: {{ app.gpa_ball }}<br>
-                            Ball: {{ app.ball }}<br>
-                            Jami: {{ app.total_ball }}
-                          {% else %}
-                            <span class="text-muted">Baholar hali ko‘rsatilmagan</span>
-                          {% endif %}
-                        </td>
-                        <td>{{ app.comments|default:"-" }}</td>
-                        <td>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#editFileModal{{ app.id }}" title="tahrirlash">
-                              <i class="fas fa-pen text-danger"></i>
+                      <!-- Akademik fayl -->
+                      <td>
+                        {% if app.file %}
+                          <a href="{{ app.file.url }}" target="_blank" class="text-decoration-none" title="Faylni ko‘rish">
+                            <i class="fas fa-file-pdf fa-lg text-danger"></i>
                           </a>
-                        </td>
-                        <!-- Modal -->
-                        <div class="modal fade" id="editFileModal{{ app.id }}" tabindex="-1" aria-labelledby="editFileModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <form method="POST" enctype="multipart/form-data" action="{% url 'update_grant_file' app.id %}">
-                                {% csrf_token %}
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="editFileModalLabel">Fayllarni yangilash</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="mb-3">
-                                    <label for="file" class="form-label">Yangi akademik fayl (ixtiyoriy: .pdf, .zip, .rar)</label>
-                                    <input type="file" name="file" class="form-control" accept=".pdf, .zip, .rar">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="social_activism_field" class="form-label">Yangi ijtimoiy faoliyat fayli (ixtiyoriy: .pdf, .zip, .rar)</label>
-                                    <input type="file" name="social_activism_field" class="form-control" accept=".pdf, .zip, .rar">
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="submit" class="btn btn-primary">Saqlash</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
+                        {% else %}
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
+                            <i class="fas fa-file-pdf fa-lg text-secondary"></i>
+                          </a>
+                        {% endif %}
+                      </td>
+
+                      <!-- Ijtimoiy faoliyat fayli -->
+                      <td>
+                        {% if app.social_activism_field %}
+                          <a href="{{ app.social_activism_field.url }}" target="_blank" class="text-decoration-none" title="Faylni ko‘rish">
+                            <i class="fas fa-file-pdf fa-lg text-danger"></i>
+                          </a>
+                        {% else %}
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#noFileModal" title="Fayl yo‘q">
+                            <i class="fas fa-file-pdf fa-lg text-secondary"></i>
+                          </a>
+                        {% endif %}
+                      </td>
+
+                      <!-- Baholar -->
+                      <td class="text-start">
+                        {% if app.is_visible_to_user %}
+                          <span class="text-success">GPA:</span> {{ app.gpa_ball }}<br>
+                          <span class="text-success">Ball:</span> {{ app.ball }}<br>
+                          <strong>Jami:</strong> {{ app.total_ball }}
+                        {% else %}
+                          <span class="text-muted fst-italic">Baholar hali ko‘rsatilmagan</span>
+                        {% endif %}
+                      </td>
+
+                      <!-- Izoh -->
+                      <td class="text-start">{{ app.comments|default:"-" }}</td>
                     </tr>
                     {% endfor %}
-                    </tbody>
+                  </tbody>
                 </table>
-                </div>
+              </div>
             {% else %}
-                <p>Siz hali hech qanday ariza yubormagansiz.</p>
+              <div class="alert alert-info text-center" role="alert">
+                Siz hali hech qanday ariza yubormagansiz.
+              </div>
             {% endif %}
             <!-- Fayl topilmadi modal oynasi -->
             <div class="modal fade" id="noFileModal" tabindex="-1" aria-labelledby="noFileModalLabel" aria-hidden="true">
