@@ -45,7 +45,6 @@ class CaptureIPMiddleware:
 
         user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown')
 
-        print(f"IP: {ip}, User-Agent: {user_agent}")  # Debug maqsadida
 
         # Request obyektiga IP va User-Agent qo‘shish
         request.user_ip = ip

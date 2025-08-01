@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from decimal import Decimal
 # Create your models here.
 class UserHemis(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -16,7 +17,6 @@ class UserHemis(models.Model):
         verbose_name = "Foydalanuvchilar"
         verbose_name_plural = "Foydalanuvchilar ro'yxati"
 
- 
 class GrantApplication(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Foydalanuvchi")
     faculty = models.CharField(max_length=100, verbose_name="Fakultet", null=True, blank=True)
@@ -28,6 +28,15 @@ class GrantApplication(models.Model):
     status = models.CharField(max_length=50, choices=[('pending', 'Kutilmoqda'), ('approved', 'Tasdiqlangan'), ('rejected', 'Rad etilgan')], default='pending', verbose_name="Ariza holati")
     new_phone = models.CharField("Yangi telefon raqam", max_length=20)
     comments = models.TextField(blank=True, null=True, verbose_name="Izohlar")
+    ball = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Ball", null=True, blank=True)
+    total_ball = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Jami ball", null=True, blank=True)
+    is_visible_to_user = models.BooleanField(default=False, verbose_name="Baholar foydalanuvchiga ko‘rinsinmi")
+
+    def save(self, *args, **kwargs):
+        if self.gpa_ball is not None and self.ball is not None:
+            # Ikkalasi ham Decimal bo'lishi kerak
+            self.total_ball = (self.gpa_ball * Decimal('16')) + Decimal(self.ball)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user.username} - {self.status}"
@@ -35,8 +44,6 @@ class GrantApplication(models.Model):
     class Meta:
         verbose_name = "Grant arizasi"
         verbose_name_plural = "Grant arizalari"
-
-
 
 class ForeignStudent(models.Model):
     first_name = models.CharField(max_length=100, verbose_name="Ism", null=True, blank=True)

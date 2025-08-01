@@ -24,7 +24,6 @@ def get_user_info(hemis_id):
         return response.json()
     return None
 
-
 def login(request):
     if request.method == "POST":
         login_type = request.POST.get("login_type")
@@ -138,6 +137,7 @@ def get_user(request):
 
     user_info = response.json().get('data', {})
     return user_info
+
 
 @login_required
 def student(request):
@@ -332,10 +332,18 @@ def application_detail(request, application_id):
     if request.method == 'POST':
         status = request.POST.get('status')
         comments = request.POST.get('comments', '')
+        ball = request.POST.get('ball')
+        show_scores = request.POST.get('show_scores') == 'on'
 
         if status in ['approved', 'rejected']:
+            try:
+                application.ball = float(ball)
+            except (TypeError, ValueError):
+                application.ball = None
             application.status = status
             application.comments = comments
+            
+            application.is_visible_to_user = show_scores
             application.save()
             messages.success(request, "Ariza holati yangilandi.")
             return redirect('admins')
