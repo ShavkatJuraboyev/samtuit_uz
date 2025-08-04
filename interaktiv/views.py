@@ -186,11 +186,11 @@ def user_application(request):
     if users['level']['name'] == '1-kurs':
         # Foydalanuvchining arizasi mavjudmi va statusi "Kutulmoqda"mi tekshiramiz
         existing_application = GrantApplication.objects.filter(
-            user=request.user, status='pending'  # 'pending' - Kutulmoqda
+            user=request.user
         ).first()
 
         if existing_application:
-            messages.error(request, "Sizda Ko'rib chiqilayotgan ariza mavjud.")
+            messages.error(request, "Siz avval ariza yuborgansiz.")
             return redirect('student')
 
         if request.method == 'POST':
