@@ -193,6 +193,7 @@ def user_application(request):
             messages.error(request, "Siz avval ariza yuborgansiz.")
             return redirect('student')
 
+
         if request.method == 'POST':
             new_phone = request.POST.get('new_phone')
             file = request.FILES.get('file')
