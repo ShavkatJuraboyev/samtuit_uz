@@ -329,7 +329,7 @@ def application_detail(request, application_id):
     except AttributeError:
         messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
         return redirect('admins')
-
+ 
     if request.method == 'POST':
         status = request.POST.get('status')
         comments = request.POST.get('comments', '')
