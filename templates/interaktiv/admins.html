@@ -50,6 +50,7 @@
                   <th>Foydalanuvchi</th>
                   <th>Fakultet</th>
                   <th>GPA</th>
+                  <th>Jami ball</th>
                   <th>Holati</th>
                   <th>Tel</th>
                   <th>Akademik fayl</th>
@@ -67,6 +68,7 @@
                   </td>
                   <td>{{ app.faculty|default:"-" }}</td>
                   <td>{{ app.gpa_ball|default:"-" }}</td>
+                  <td>{{ app.total_ball|default:"-" }}</td>
                   <td>
                     {% if app.status == "pending" %}
                       <span class="badge bg-warning text-dark">Kutilmoqda</span>
