@@ -70,8 +70,8 @@
                   <th>Jami ball</th>
                   <th>Holati</th>
                   <th>Tel</th>
-                  <th>Akademik fayl</th>
-                  <th>Ijtimoiy fayl</th>
+                  <!-- <th>Akademik fayl</th>
+                  <th>Ijtimoiy fayl</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -96,7 +96,7 @@
                     {% endif %}
                   </td>
                   <td>{{ app.new_phone|default:"-" }}</td>
-                  <td>
+                  <!-- <td>
                     {% if app.file %}
                       <a href="{{ app.file.url }}" target="_blank" title="Faylni ko‘rish">
                         <i class="fas fa-file-pdf text-danger"></i>
@@ -117,7 +117,7 @@
                         <i class="fas fa-file-pdf text-secondary"></i>
                       </a>
                       {% endif %}
-                    </td>
+                    </td> -->
                 </tr>
                 {% empty %}
                 <tr>
