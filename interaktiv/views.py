@@ -273,6 +273,11 @@ def update_grant_file(request, pk):
 
 @login_required
 def admins(request):
+    if request.method == "POST" and "toggle_scores" in request.POST:
+        show_scores = request.POST.get("show_scores") == "on"
+        GrantApplication.objects.update(is_visible_to_user=show_scores)
+        return redirect("admins")  # qayta yuklanadi
+
     faculty = request.GET.get('faculty')
     gpa = request.GET.get('gpa')
     name = request.GET.get('name')
@@ -288,9 +293,9 @@ def admins(request):
             gpa_value = float(gpa)
             applications = applications.filter(gpa_ball__gte=gpa_value)
         except ValueError:
-            pass  # noto‘g‘ri GPA kiritilsa, filterlash o‘tmaydi
+            pass
     if name:
-        applications = applications.filter(user__first_name__icontains=name)  # yoki `icontains=user__full_name` agar mavjud bo‘lsa
+        applications = applications.filter(user__first_name__icontains=name)
 
     try:
         per_page = int(per_page)
@@ -300,7 +305,10 @@ def admins(request):
     paginator = Paginator(applications, per_page)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    per_page_choices = [10, 20, 50, 100] 
+    per_page_choices = [10, 20, 50, 100]
+
+    # umumiy holatni olish (agar bittasi ham True bo‘lsa, checked bo‘ladi)
+    visible_status = GrantApplication.objects.filter(is_visible_to_user=True).exists()
 
     context = {
         'users': page_obj,
@@ -310,8 +318,10 @@ def admins(request):
         'per_page': per_page,
         'total_count': applications.count(),
         'per_page_choices': per_page_choices,
+        'visible_status': visible_status,
     }
     return render(request, 'interaktiv/admins.html', context)
+
 
 @login_required
 def application_detail(request, application_id):

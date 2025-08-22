@@ -41,6 +41,23 @@
               </button>
             </div>
           </form>
+          <form method="post" class="mt-3">
+            {% csrf_token %}
+            <div class="col-md-6">
+              <label class="form-label fw-semibold d-block">Baholarni ko‘rsatish</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" 
+                      name="show_scores" id="show_scores"
+                      {% if visible_status %}checked{% endif %}
+                      onchange="this.form.submit()">
+                <label class="form-check-label" for="show_scores">
+                  Talabaga baholarni ko‘rsatish
+                </label>
+              </div>
+              <input type="hidden" name="toggle_scores" value="1">
+            </div>
+          </form>
+
 
           <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
