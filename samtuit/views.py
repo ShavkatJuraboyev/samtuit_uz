@@ -36,7 +36,7 @@ def home(request):
     for post in post_three:
         post.translated_title = post.get_post_title(language)
     students = Students.objects.all()
-    annos = Announcements.objects.all().order_by("-id")[:4]
+    annos = Announcements.objects.all().order_by("-id")[:3]
     for ann in annos:
         ann.translated_title = ann.get_anno_title(language)
         ann.translated_text = ann.get_anno_text(language)
