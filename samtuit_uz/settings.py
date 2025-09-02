@@ -74,14 +74,6 @@ MIDDLEWARE = [
     'news.middleware.CaptureIPMiddleware',
 ]
 
-LANGUAGE_COOKIE_NAME = 'django_language'
-LANGUAGES = [
-    ('uz', 'Uzbek'),
-    ('ru', 'Russian'),
-    ('en', 'English'),
-]
-
-
 
 ROOT_URLCONF = 'samtuit_uz.urls'
 
@@ -151,17 +143,21 @@ LANGUAGE_CODE = 'uz'
 TIME_ZONE = 'Asia/Tashkent'
 
 LANGUAGE_COOKIE_NAME = 'django_language'  # Til cookie'ining nomi
+
+LANGUAGES = [
+    ('uz', 'Uzbek'),
+    ('ru', 'Russian'),
+    ('en', 'English'),
+]
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-LANGUAGES = [
-    ('uz', _('O‘zbek')),  # O‘zbek tili
-    ('en', _('English')),  # Ingliz tili
-    ('ru', _('Русский')),  # Rus tili
-]
+
+
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',  # Tarjima fayllarini saqlash uchun joy

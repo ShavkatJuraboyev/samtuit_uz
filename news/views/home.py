@@ -14,7 +14,7 @@ def get_nested_children(list_menu):
     } for child in children]
 
 def menu_view(request, slug):
-    language = get_language()  # Hozirgi tilni oling
+    language = request.COOKIES.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
@@ -45,7 +45,7 @@ def menu_view(request, slug):
     return render(request, 'users/lists/list_page.html', ctx)
 
 def view_menu_detail(request, pk):
-    language = get_language()  # Hozirgi tilni oling
+    language = request.COOKIES.get('django_language', 'uz')  # Hozirgi tilni oling
     menu_text = TRANSLATIONS['menu'].get(language, TRANSLATIONS['menu']['uz'])
     menus = Menu.objects.filter(parent__isnull=True).prefetch_related('children').order_by('id')
     quickmmenu = QuickMmenu.objects.all()[:7]
