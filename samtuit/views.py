@@ -170,3 +170,4 @@ def foreign_student(request):
         'form': form
     }
     return render(request, 'users/foreign_student.html', ctx)
+
