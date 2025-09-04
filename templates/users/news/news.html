@@ -47,13 +47,9 @@
                                 {% for post in posts %}
                                 <div class="item col-sm-6 leading-{{ forloop.counter0 }}">
                                     <figure class="pull-none item-image">
-                                        <img src="{{post.get_post_img}}"  alt="{{ post.translated_title }}">
+                                        <img src="{{post.get_post_img}}" alt="{{ post.translated_title }}" >
                                         <aside class="article-aside">
                                             <dl class="article-info  muted">
-                                                <dt></dt>
-                                                <dd class="createdby" itemprop="author" itemscope="" itemtype="">
-                                                 </dd>
-                                                <dt></dt>
                                                 <dd class="category-name">
                                                     {{menu_text.categories}}: <a href="{% url 'new' pk=post.id %}" itemprop="genre">{{menu_text.news}}</a>
                                                 </dd>

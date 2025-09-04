@@ -140,7 +140,7 @@
 			SqueezeBox.close();
 		}
 	</script>
-	<script>
+	<!-- <script>
 		document.addEventListener("contextmenu", function(e){
 		e.preventDefault();
 		}, false);
@@ -150,26 +150,6 @@
 		if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
 		if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
 		}
-	</script>
-	<!-- <script>
-		(function() {
-			const checkDevTools = () => {
-				const widthThreshold = window.outerWidth - window.innerWidth > 160;
-				const heightThreshold = window.outerHeight - window.innerHeight > 160;
-				if (widthThreshold || heightThreshold) {
-					document.body.innerHTML = `
-						<div style="display:flex;align-items:center;justify-content:center;height:100vh;">
-							<div style="text-align:center;">
-								<h1 style="color:red;">⚠ Diqqat!</h1>
-								<p>Bu sahifa faqat tizim orqali ko‘rish uchun mo‘ljallangan.</p>
-								<p>To‘g‘ridan-to‘g‘ri ochish cheklangan.</p>
-							</div>
-						</div>`;
-				}
-			};
-
-			setInterval(checkDevTools, 1000);
-		})();
 	</script> -->
 </body>
 </html>
