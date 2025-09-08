@@ -239,9 +239,11 @@ def user_application(request):
 def grant_application_list(request):
     users = get_user(request)
     applications = GrantApplication.objects.filter(user=request.user).order_by('-application_date')
+    re_application = Re_Application.objects.filter(user=request.user).order_by('-id')
     context = {
         'users': users,
         'applications': applications,
+        're_application': re_application,
     }
     return render(request, 'interaktiv/grant_application_list.html',context)
 

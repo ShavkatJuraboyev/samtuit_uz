@@ -95,6 +95,43 @@
                 Siz hali hech qanday ariza yubormagansiz.
               </div>
             {% endif %}
+
+            <hr class="my-4">
+            {% if re_application %}
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle shadow-sm">
+                  <thead class="table-primary text-center">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Holati</th>
+                      <th scope="col">Izoh</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    {% for app in re_application %}
+                    <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>
+                        {% if app.status == "pending" %}
+                          <span class="badge bg-warning text-dark">Kutilmoqda</span>
+                        {% elif app.status == "approved" %}
+                          <span class="badge bg-success">Tasdiqlangan</span>
+                        {% else %}
+                          <span class="badge bg-danger">Rad etilgan</span>
+                        {% endif %}
+                      </td>
+                      <!-- Izoh -->
+                      <td class="text-start">{{ app.comments|default:"-" }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% else %}
+              <div class="alert alert-info text-center" role="alert">
+                Siz hali hech qanday ariza yubormagansiz.
+              </div>
+            {% endif %}
             <!-- Fayl topilmadi modal oynasi -->
             <div class="modal fade" id="noFileModal" tabindex="-1" aria-labelledby="noFileModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
