@@ -45,6 +45,22 @@ class GrantApplication(models.Model):
         verbose_name = "Grant arizasi"
         verbose_name_plural = "Grant arizalari"
 
+class Re_Application(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Foydalanuvchi")
+    reason = models.TextField(verbose_name="Qayta ariza sababini tushuntirish")
+    is_gpa_updated = models.BooleanField(default=False, verbose_name="GPA yangilanganmi")
+    is_manaviyat_updated = models.BooleanField(default=False, verbose_name="Ijtimoiy faoliyat yangilanganmi")
+    file = models.FileField(upload_to='re_applications/', verbose_name="Qayta ariza fayli", null=True, blank=True)
+    status = models.CharField(max_length=50, choices=[('pending', 'Kutilmoqda'), ('approved', 'Tasdiqlangan'), ('rejected', 'Rad etilgan')], default='pending', verbose_name="Ariza holati")
+    comments = models.TextField(blank=True, null=True, verbose_name="Izohlar")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.status}"
+
+    class Meta:
+        verbose_name = "Qayta ariza"
+        verbose_name_plural = "Qayta arizalar"
+
 class ForeignStudent(models.Model):
     first_name = models.CharField(max_length=100, verbose_name="Ism", null=True, blank=True)
     last_name = models.CharField(max_length=100, verbose_name="Familiya", null=True, blank=True)
