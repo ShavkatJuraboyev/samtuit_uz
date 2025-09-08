@@ -97,6 +97,7 @@
             {% endif %}
 
             <hr class="my-4">
+            <h4 class="mb-4">Qayta yuborilgan grant arizalari</h4>
             {% if re_application %}
               <div class="table-responsive">
                 <table class="table table-bordered table-hover align-middle shadow-sm">
@@ -105,6 +106,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Holati</th>
                       <th scope="col">Izoh</th>
+                      <th scope="col">Yangilangan ma'lumotlar</th>
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -120,13 +122,28 @@
                           <span class="badge bg-danger">Rad etilgan</span>
                         {% endif %}
                       </td>
+
                       <!-- Izoh -->
                       <td class="text-start">{{ app.comments|default:"-" }}</td>
+
+                      <!-- Faqat tanlanganlarini chiqarish -->
+                      <td>
+                        {% if app.is_gpa_updated %}
+                          <span class="badge bg-info text-dark">GPA yangilangan</span>
+                        {% endif %}
+                        {% if app.is_manaviyat_updated %}
+                          <span class="badge bg-secondary">Ma'naviyat yangilangan</span>
+                        {% endif %}
+                        {% if not app.is_gpa_updated and not app.is_manaviyat_updated %}
+                          <span class="text-muted">-</span>
+                        {% endif %}
+                      </td>
                     </tr>
                     {% endfor %}
                   </tbody>
                 </table>
               </div>
+
             {% else %}
               <div class="alert alert-info text-center" role="alert">
                 Siz hali hech qanday ariza yubormagansiz.
