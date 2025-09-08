@@ -277,7 +277,7 @@ def re_application(request):
     users = get_user(request)
 
     # Qayta ariza topshirish muddati (masalan, 2024-06-10 gacha)
-    deadline = datetime(2025, 9, 30)
+    deadline = datetime(2025, 8, 1)
     if datetime.now() > deadline:
         messages.error(request, "Qayta ariza topshirish muddati tugadi.")
         return redirect('student')
