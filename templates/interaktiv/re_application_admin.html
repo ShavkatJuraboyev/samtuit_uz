@@ -36,6 +36,7 @@
                   <th>Foydalanuvchi</th>
                   <th>Ijtimoiy faolligi va gpa ball</th>
                   <th>Holati</th>
+                  <th>Izoh</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,6 +68,7 @@
                       <span class="badge bg-danger">Rad etilgan</span>
                     {% endif %}
                   </td>
+                   <td class="text-start">{{ app.comments|default:"-" }}</td>
                 </tr>
                 {% empty %}
                 <tr>
