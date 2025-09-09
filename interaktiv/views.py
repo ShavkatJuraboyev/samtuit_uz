@@ -277,33 +277,38 @@ def re_application(request):
     users = get_user(request)
 
     # Qayta ariza topshirish muddati (masalan, 2024-06-10 gacha)
-    deadline = datetime(2025, 8, 1)
+    deadline = datetime(2025, 11, 1)
     if datetime.now() > deadline:
         messages.error(request, "Qayta ariza topshirish muddati tugadi.")
         return redirect('student')
 
-    if request.method == 'POST':
-        reason = request.POST.get('reason')
-        is_gpa_updated = request.POST.get('is_gpa_updated') == 'on'
-        is_manaviyat_updated = request.POST.get('is_manaviyat_updated') == 'on'
+    if users['level']['name'] == '1-kurs':
+        if request.method == 'POST':
+            reason = request.POST.get('reason')
+            is_gpa_updated = request.POST.get('is_gpa_updated') == 'on'
+            is_manaviyat_updated = request.POST.get('is_manaviyat_updated') == 'on'
 
-        if not reason:
-            messages.error(request, "Iltimos, sababni tushuntiring.")
-            return redirect('re_application')
+            if not reason:
+                messages.error(request, "Iltimos, sababni tushuntiring.")
+                return redirect('re_application')
 
-        existing_reapplication = Re_Application.objects.filter(user=request.user).first()
-        if existing_reapplication:
-            messages.error(request, "Siz avval qayta ariza yuborgansiz.")
+            existing_reapplication = Re_Application.objects.filter(user=request.user).first()
+            if existing_reapplication:
+                messages.error(request, "Siz avval qayta ariza yuborgansiz.")
+                return redirect('student')
+
+            Re_Application.objects.create(
+                user=request.user,
+                reason=reason,
+                is_gpa_updated=is_gpa_updated,
+                is_manaviyat_updated=is_manaviyat_updated
+            )
+            messages.success(request, "Qayta arizangiz muvaffaqiyatli yuborildi!")
             return redirect('student')
-
-        Re_Application.objects.create(
-            user=request.user,
-            reason=reason,
-            is_gpa_updated=is_gpa_updated,
-            is_manaviyat_updated=is_manaviyat_updated
-        )
-        messages.success(request, "Qayta arizangiz muvaffaqiyatli yuborildi!")
+    else:
+        messages.error(request, "Faqat 1-kurs talabalar qayta ariza yuborishi mumkin.")
         return redirect('student')
+    
     context = {
         'users': users,
     }
