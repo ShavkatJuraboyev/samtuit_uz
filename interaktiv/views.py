@@ -479,7 +479,7 @@ def re_application_admin(request):
 @login_required
 def re_application_detail(request, re_application_id):
     try:
-        re_application = Re_Application.objects.get(id=re_application_id)
+        re_application = Re_Application.objects.get(user=re_application_id)
         hemis_id = re_application.user.userhemis.hemis_id  # UserHemis orqali hemis_id
         user_info = get_user_info(hemis_id)  # HEMIS API dan ma'lumot
         if user_info.get('success'):
@@ -489,12 +489,6 @@ def re_application_detail(request, re_application_id):
 
         # GrantApplication dan ushbu userga tegishli arizalarni olish
         grant_applications = GrantApplication.objects.filter(user=re_application.user).last()
-    except Re_Application.DoesNotExist:
-        messages.error(request, "Qayta ariza topilmadi.")
-        return redirect('re_application_admin')
-    except AttributeError:
-        messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
-        return redirect('re_application_admin')
     except Re_Application.DoesNotExist:
         messages.error(request, "Qayta ariza topilmadi.")
         return redirect('re_application_admin')
