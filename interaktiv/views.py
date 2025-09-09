@@ -488,7 +488,7 @@ def re_application_detail(request, re_application_id):
             user_data = None
 
         # GrantApplication dan ushbu userga tegishli arizalarni olish
-        grant_applications = GrantApplication.objects.filter(user=re_application.user)
+        grant_applications = GrantApplication.objects.filter(user=re_application.user).last()
     except Re_Application.DoesNotExist:
         messages.error(request, "Qayta ariza topilmadi.")
         return redirect('re_application_admin')
