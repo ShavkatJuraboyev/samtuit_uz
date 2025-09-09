@@ -23,7 +23,7 @@ urlpatterns = [
     path('admins/', admins, name='admins'),
     path('application-list/<int:application_id>/', application_detail, name='application_detail'),
     path('re-application-admin/', re_application_admin, name='re_application_admin'),
-    path('re-application-detail/<int:re_application_id>/', re_application_detail, name='re_application_detail'),
+    path('re-application-detail/<int:application_id>/', re_application_detail, name='re_application_detail'),
     path('application-list/export-excel/', export_applications_excel, name='export_applications_excel'),
 
 
