@@ -492,8 +492,8 @@ def re_application_detail(request, application_id):
     user_info = get_user_info(hemis_id)
     user_data = user_info['data'] if user_info.get('success') else None
 
-    # GrantApplication dan ushbu userga tegishli oxirgi arizani olish
-    grant_applications = GrantApplication.objects.filter(user=re_application.user)
+    # Shu userga tegishli barcha grant arizalarini olish
+    grant_applications = GrantApplication.objects.filter(user=re_application.user).order_by('-application_date')
 
     # POST bo‘lsa — status yangilash
     if request.method == 'POST':

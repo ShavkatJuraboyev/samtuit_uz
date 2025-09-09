@@ -31,29 +31,36 @@
                     <div class="col-md-6"><strong>Semestr:</strong> {{ user.semester.name|default:"-" }}</div>
                     <div class="col-md-6"><strong>O'quv yili:</strong> {{ user.educationYear.name|default:"-" }}</div>
                     <div class="col-md-6"><strong>Ta'lim shakli:</strong> {{ user.paymentForm.name|default:"-" }}</div>
-                    {% for app in grant_applications %}
-                        <div class="col-md-6"><strong>Telefon:</strong> {{ app.new_phone|default:"-" }}</div>
-                        <div class="col-md-6">
-                        <strong>Akademik fayl:</strong>
-                        {% if app.file %}
-                            <a href="{{ app.file.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
-                        {% else %}
-                            <span class="text-muted">Fayl mavjud emas</span>
-                        {% endif %}
-                        </div>
-                        <div class="col-md-6">
-                        <strong>Ijtimoiy fayl:</strong>
-                        {% if app.social_activism_field %}
-                            <a href="{{ app.social_activism_field.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
-                        {% else %}
-                            <span class="text-muted">Fayl mavjud emas</span>
-                        {% endif %}
-                        </div>
-                        
-                        <div class="col-md-6"><strong>GPA ball:</strong> {{ app.gpa_ball|default:"-" }}-({{user.avg_gpa}})</div>
-                        <div class="col-md-6"><strong>Ijtimoiy faolligi ball:</strong> {{ app.ball|default:"-" }}</div>
-                        <div class="col-md-6"><strong>Jami ball:</strong> {{ app.total_ball|default:"-" }}</div>
-                    {% endfor %}
+                    <h5>Foydalanuvchining grant arizalari:</h5>
+                    {% if grant_applications %}
+                        {% for app in grant_applications %}
+                            <div class="col-md-6"><strong>Sana:</strong> {{ app.application_date|date:"Y-m-d" }} <br></div>
+                            <div class="col-md-6"><strong>Telefon:</strong> {{ app.new_phone|default:"-" }}</div>
+                            <div class="col-md-6">
+                            <strong>Akademik fayl:</strong>
+                            {% if app.file %}
+                                <a href="{{ app.file.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
+                            {% else %}
+                                <span class="text-muted">Fayl mavjud emas</span>
+                            {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                            <strong>Ijtimoiy fayl:</strong>
+                            {% if app.social_activism_field %}
+                                <a href="{{ app.social_activism_field.url }}" target="_blank" class="btn btn-sm btn-outline-primary">Faylni ko‘rish</a>
+                            {% else %}
+                                <span class="text-muted">Fayl mavjud emas</span>
+                            {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6"><strong>GPA ball:</strong> {{ app.gpa_ball|default:"-" }}-({{user.avg_gpa}})</div>
+                            <div class="col-md-6"><strong>Ijtimoiy faolligi ball:</strong> {{ app.ball|default:"-" }}</div>
+                            <div class="col-md-6"><strong>Jami ball:</strong> {{ app.total_ball|default:"-" }}</div>
+                            <div class="col-md-6"><strong>Holat:</strong> {{ app.get_status_display }}</div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Grant ariza topilmadi.</p>
+                    {% endif %}
                   </div>
                   {% else %}
                   <div class="alert alert-warning mb-0">
