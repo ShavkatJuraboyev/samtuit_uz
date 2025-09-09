@@ -44,7 +44,7 @@
                 <tr>
                   <td>{{ forloop.counter }}</td>
                   <td>
-                    <a href="#" class="text-decoration-none text-dark">
+                    <a href="{% url 're_application_detail' app.user %}" class="text-decoration-none text-dark">
                       {{ app.user.get_full_name|default:app.user.username }}
                     </a>
                   </td>

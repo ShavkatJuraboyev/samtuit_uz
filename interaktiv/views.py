@@ -475,3 +475,47 @@ def re_application_admin(request):
         'total_count': re_applications.count(),
     }
     return render(request, 'interaktiv/re_application_admin.html', context)
+
+@login_required
+def re_application_detail(request, re_application_id):
+    try:
+        re_application = Re_Application.objects.get(id=re_application_id)
+        hemis_id = re_application.user.userhemis.hemis_id  # UserHemis orqali hemis_id
+        user_info = get_user_info(hemis_id)  # HEMIS API dan ma'lumot
+        if user_info.get('success'):
+            user_data = user_info['data']
+        else:
+            user_data = None
+
+        # GrantApplication dan ushbu userga tegishli arizalarni olish
+        grant_applications = GrantApplication.objects.filter(user=re_application.user)
+    except Re_Application.DoesNotExist:
+        messages.error(request, "Qayta ariza topilmadi.")
+        return redirect('re_application_admin')
+    except AttributeError:
+        messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
+        return redirect('re_application_admin')
+    except Re_Application.DoesNotExist:
+        messages.error(request, "Qayta ariza topilmadi.")
+        return redirect('re_application_admin')
+    except AttributeError:
+        messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
+        return redirect('re_application_admin')
+ 
+    if request.method == 'POST':
+        status = request.POST.get('status')
+        comments = request.POST.get('comments', '')
+
+        if status in ['approved', 'rejected']:
+            re_application.status = status
+            re_application.comments = comments
+            re_application.save()
+            messages.success(request, "Qayta ariza holati yangilandi.")
+            return redirect('re_application_admin')
+
+    context = {
+        're_application': re_application,
+        'user': user_data,  # faqat data bo'limini templatega yuboramiz
+        'grant_applications': grant_applications,
+    }
+    return render(request, 'interaktiv/re_application_detail.html', context)
