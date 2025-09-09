@@ -3,7 +3,7 @@ from interaktiv.views import (
     student, login, callback,logout, 
     get_user, profile, location, education, user_application,
     grant_application_list, admins, application_detail, export_applications_excel,
-    update_grant_file, re_application
+    update_grant_file, re_application, re_application_admin
     )
  
 urlpatterns = [
@@ -22,6 +22,7 @@ urlpatterns = [
     
     path('admins/', admins, name='admins'),
     path('application-list/<int:application_id>/', application_detail, name='application_detail'),
+    path('re-application-admin/', re_application_admin, name='re_application_admin'),
     path('application-list/export-excel/', export_applications_excel, name='export_applications_excel'),
 
 
