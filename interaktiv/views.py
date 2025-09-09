@@ -477,25 +477,25 @@ def re_application_admin(request):
     return render(request, 'interaktiv/re_application_admin.html', context)
 
 @login_required
-def re_application_detail(request, re_application_id):
-    try:
-        re_application = Re_Application.objects.get(user=re_application_id)
-        hemis_id = re_application.user.userhemis.hemis_id  # UserHemis orqali hemis_id
-        user_info = get_user_info(hemis_id)  # HEMIS API dan ma'lumot
-        if user_info.get('success'):
-            user_data = user_info['data']
-        else:
-            user_data = None
+def re_application_detail(request, application_id):
+    # Qayta arizani olish
+    re_application = get_object_or_404(Re_Application, id=application_id)
 
-        # GrantApplication dan ushbu userga tegishli arizalarni olish
-        grant_applications = GrantApplication.objects.filter(user=re_application.user).last()
-    except Re_Application.DoesNotExist:
-        messages.error(request, "Qayta ariza topilmadi.")
-        return redirect('re_application_admin')
+    # HEMIS ID olish
+    try:
+        hemis_id = re_application.user.userhemis.hemis_id
     except AttributeError:
         messages.error(request, "Foydalanuvchining HEMIS IDsi topilmadi.")
         return redirect('re_application_admin')
- 
+
+    # HEMIS API dan ma’lumot olish
+    user_info = get_user_info(hemis_id)
+    user_data = user_info['data'] if user_info.get('success') else None
+
+    # GrantApplication dan ushbu userga tegishli oxirgi arizani olish
+    grant_application = GrantApplication.objects.filter(user=re_application.user).last()
+
+    # POST bo‘lsa — status yangilash
     if request.method == 'POST':
         status = request.POST.get('status')
         comments = request.POST.get('comments', '')
@@ -509,7 +509,7 @@ def re_application_detail(request, re_application_id):
 
     context = {
         're_application': re_application,
-        'user': user_data,  # faqat data bo'limini templatega yuboramiz
-        'grant_applications': grant_applications,
+        'user': user_data,               # HEMIS dan olingan ma’lumot
+        'grant_application': grant_application,  # oxirgi grant ariza
     }
     return render(request, 'interaktiv/re_application_detail.html', context)
