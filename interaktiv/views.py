@@ -448,3 +448,24 @@ def export_applications_excel(request):
     response['Content-Disposition'] = 'attachment; filename=grant_arizalari.xlsx'
     wb.save(response)
     return response
+
+# Qayta arizalar uchun admin paneli
+@login_required
+def re_application_admin(request):
+    per_page = request.GET.get('per_page', 20)
+    re_applications = Re_Application.objects.all().order_by('-id')
+
+    try:
+        per_page = int(per_page)
+    except ValueError:
+        per_page = 20
+
+    paginator = Paginator(re_applications, per_page)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    per_page_choices = [10, 20, 50, 100]
+    context = {
+        're_applications': page_obj,
+        'per_page_choices': per_page_choices,
+    }
+    return render(request, 'interaktiv/re_application_admin.html', context)
