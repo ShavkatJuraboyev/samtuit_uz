@@ -493,7 +493,7 @@ def re_application_detail(request, application_id):
     user_data = user_info['data'] if user_info.get('success') else None
 
     # GrantApplication dan ushbu userga tegishli oxirgi arizani olish
-    grant_application = GrantApplication.objects.filter(user=re_application.user).last()
+    grant_applications = GrantApplication.objects.filter(user=re_application.user)
 
     # POST bo‘lsa — status yangilash
     if request.method == 'POST':
@@ -510,6 +510,6 @@ def re_application_detail(request, application_id):
     context = {
         're_application': re_application,
         'user': user_data,               # HEMIS dan olingan ma’lumot
-        'grant_application': grant_application,  # oxirgi grant ariza
+        'grant_applications': grant_applications,  # oxirgi grant ariza
     }
     return render(request, 'interaktiv/re_application_detail.html', context)
