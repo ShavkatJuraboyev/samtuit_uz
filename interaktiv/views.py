@@ -467,5 +467,6 @@ def re_application_admin(request):
     context = {
         're_applications': page_obj,
         'per_page_choices': per_page_choices,
+        'total_count': re_applications.count(),
     }
     return render(request, 'interaktiv/re_application_admin.html', context)
