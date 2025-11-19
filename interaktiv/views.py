@@ -17,7 +17,7 @@ from django.http import HttpResponse
 def get_user_info(hemis_id):
     """Hemis id kiritilishi lozim"""
     url = f"https://student.samtuit.uz/rest/v1/data/student-info?student_id_number={hemis_id}"
-    token = "Y-R36P1BY-eLfuCwQbcbAlvt9GAMk-WP"
+    token = ""
     headers = {"Authorization": "Bearer " + token}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
@@ -512,4 +512,5 @@ def re_application_detail(request, application_id):
         'user': user_data,               # HEMIS dan olingan ma’lumot
         'grant_applications': grant_applications,  # oxirgi grant ariza
     }
+
     return render(request, 'interaktiv/re_application_detail.html', context)
