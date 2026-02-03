@@ -4614,25 +4614,29 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-readmore:hover {
   background: #3f444e;
 }
-div.sj-k2slickslider .slickslider-items.bg-style1,
-div.sj-k2slickslider .slickslider-items.bg-style1 {
-  height: 65em;
-  background: #000;   /* bo'sh joy ko'rinmasin desangiz rang bering */
 
+div.sj-k2slickslider 
+.slickslider-items.bg-style1 
+.slickslider-item 
+.images-slideshow {
+  width: 100%;
+  height: 65em;
+  overflow: hidden;
 }
 
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow{
-  height: 65em;
-  background: #000;   /* bo'sh joy ko'rinmasin desangiz rang bering */
-}
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
+div.sj-k2slickslider 
+.slickslider-items.bg-style1 
+.slickslider-item 
+.images-slideshow img {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  object-fit: contain;  /* kesilmaydi */
+  max-width: none;
+  object-fit: cover;      /* MUHIM */
   object-position: center;
+  display: block;
 }
+
+
 @media (max-width: 768px) {
   div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
     height: auto;
