@@ -4617,28 +4617,28 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items.bg-style1,
 div.sj-k2slickslider .slickslider-items.bg-style1 {
   height: 65em;
-  background: #000;   /* bo'sh joy ko'rinmasin desangiz rang bering */
-
-}
-div.sj-k2slickslider 
-.slickslider-items.bg-style1 
-.slickslider-item 
-.images-slideshow {
-  width: 100%;
-  height: 65em;
-  overflow: hidden;
+  background: transparent;
 }
 
-div.sj-k2slickslider 
-.slickslider-items.bg-style1 
-.slickslider-item 
-.images-slideshow img {
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img{
   width: 100%;
   height: 100%;
-  max-width: none;
-  object-fit: cover;      /* MUHIM */
+  object-fit: cover;      /* qutini to'ldiradi */
   object-position: center;
   display: block;
+
+  /* TINIQ chiqishi uchun */
+  transform: translateZ(0);          /* GPU qatlamda tiniqroq chizadi */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  image-rendering: auto;
+}
+
+div.sj-k2slickslider .slickslider-items.bg-style1,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item *{
+  -webkit-transform: none !important;
+  transform: none !important;
 }
 
 
@@ -4649,6 +4649,7 @@ div.sj-k2slickslider
     object-fit: contain; /* Rasm kesilmasdan chiqadi */
   }
 }
+
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title {
   animation: mymove2 1.2s ease-in-out infinite;
