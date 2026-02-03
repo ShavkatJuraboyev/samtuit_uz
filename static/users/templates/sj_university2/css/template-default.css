@@ -4616,18 +4616,22 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 }
 div.sj-k2slickslider .slickslider-items.bg-style1,
 div.sj-k2slickslider .slickslider-items.bg-style1 {
-  background: none;
+  height: 65em;
+  background: #000;   /* bo'sh joy ko'rinmasin desangiz rang bering */
+
 }
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
-  position: relative;
+
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow{
+  height: 65em;
+  background: #000;   /* bo'sh joy ko'rinmasin desangiz rang bering */
 }
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
-  height: 65em;
-  max-width: none;
   width: 100%;
-  /* object-fit: cover; */
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;  /* kesilmaydi */
+  object-position: center;
 }
 @media (max-width: 768px) {
   div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
