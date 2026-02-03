@@ -4628,7 +4628,7 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items.bg-style1,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
   width: 100%;
-  height: clamp(280px, 55vh, 720px); /* min, responsive(vh), max */
+  height: 65vh; /* min, responsive(vh), max */
   overflow: hidden;
   position: relative;
 
