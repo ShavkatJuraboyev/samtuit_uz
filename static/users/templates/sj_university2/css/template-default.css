@@ -4614,52 +4614,32 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-readmore:hover {
   background: #3f444e;
 }
-
-
-/* ====== RESPONSIVE SLIDER (FULL WIDTH + IMAGE 100% VISIBLE) ====== */
-
-/* Section full width bo'lsin */
-#yt_spotlight1.slider-wrap {
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Slider height: ekran bo'yicha moslashadi */
 div.sj-k2slickslider .slickslider-items.bg-style1,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
-  width: 100%;
-  height: 65vh; /* min, responsive(vh), max */
-  overflow: hidden;
-  position: relative;
+div.sj-k2slickslider .slickslider-items.bg-style1 {
+  height: 65em;
+  background: transparent;
 
-  /* bo'sh joy qolsa chiroyli fon */
-  background: radial-gradient(circle at center, #f4f6f8 0%, #e6eaee 60%, #dfe5ea 100%);
+}
+div.sj-k2slickslider 
+.slickslider-items.bg-style1 
+.slickslider-item 
+.images-slideshow {
+  width: 100%;
+  height: 65em;
+  overflow: hidden;
 }
 
-/* RASM: 100% ko'rinsin, cho'zilmasin, kesilmasin */
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
+div.sj-k2slickslider 
+.slickslider-items.bg-style1 
+.slickslider-item 
+.images-slideshow img {
   width: 100%;
   height: 100%;
-  display: block;
-
-  object-fit: contain;        /* MUHIM: rasm 100% ko'rinadi */
-  /* object-fit: cover;  */   /* MUHIM: rasm kesiladi, lekin bo'sh joy qolmaydi */
+  max-width: none;
+  object-fit: cover;      /* MUHIM */
   object-position: center;
-
-  /* tiniq chiqishi uchun */
-  image-rendering: auto;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  display: block;
 }
-
-/* Bootstrap paddinglarni tozalash (full width ko'rinishi uchun) */
-#yt_spotlight1 .container-fluid,
-#yt_spotlight1 .row,
-#yt_spotlight1 #slideshow {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
 
 
 @media (max-width: 768px) {
