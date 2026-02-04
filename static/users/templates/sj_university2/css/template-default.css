@@ -4617,30 +4617,20 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items.bg-style1,
 div.sj-k2slickslider .slickslider-items.bg-style1 {
   height: 65em;
-  background: transparent;
-
+  background: none;
 }
-div.sj-k2slickslider 
-.slickslider-items.bg-style1 
-.slickslider-item 
-.images-slideshow {
+
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
   width: 100%;
   height: 65em;
-  overflow: hidden;
+  position: relative;
 }
 
-div.sj-k2slickslider 
-.slickslider-items.bg-style1 
-.slickslider-item 
-.images-slideshow img {
-  width: 100%;
-  height: 100%;
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
   max-width: none;
-  object-fit: cover;      /* MUHIM */
-  object-position: center;
-  display: block;
 }
-
 
 @media (max-width: 768px) {
   div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
