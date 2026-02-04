@@ -4638,7 +4638,7 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slid
 div.sj-k2slickslider .slickslider-items.bg-style1 .images-slideshow img{
   height: 100%;
   display: block;
-  object-fit: contain;     /* rasm 100% ko'rinadi */
+  object-fit: cover;     /* rasm 100% ko'rinadi */
   object-position: center; /* markazda turadi */
 }
 
