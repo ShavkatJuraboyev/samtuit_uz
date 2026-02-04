@@ -4614,31 +4614,37 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
 div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-readmore:hover {
   background: #3f444e;
 }
-div.sj-k2slickslider .slickslider-items.bg-style1,
-div.sj-k2slickslider .slickslider-items.bg-style1 {
-  height: 65em;
+
+/* Slayder umumiy balandligi: responsiv (ekranga mos) */
+div.sj-k2slickslider .slickslider-items.bg-style1{
+  height: clamp(260px, 55vh, 700px); /* min 260px, normal 55vh, max 700px */
   background: none;
 }
 
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
+/* Har bir slayd va rasm o'rnashadigan blok ham shu balandlikni oladi */
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow{
   width: 100%;
-  height: 65em;
+  height: 100%;
   position: relative;
 }
 
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
-  max-width: none;
-  /* height: 65em; */
+/* ENG MUHIM QISM: rasm to'liq ko'rinadi, cho'zilmaydi, kesilmaydi */
+div.sj-k2slickslider .slickslider-items.bg-style1 .images-slideshow img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;     /* rasm 100% ko'rinadi */
+  object-position: center; /* markazda turadi */
 }
 
-@media (max-width: 768px) {
-  div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
-    max-width: 100%;
-    object-fit: contain; /* Rasm kesilmasdan chiqadi */
+/* mobil uchun balandlikni biroz pasaytirish (xohlasangiz) */
+@media (max-width: 768px){
+  div.sj-k2slickslider .slickslider-items.bg-style1{
+    height: clamp(220px, 40vh, 420px);
   }
 }
+
 
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title {
