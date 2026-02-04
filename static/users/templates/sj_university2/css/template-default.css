@@ -4628,12 +4628,7 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slid
   max-width: none;
 }
 
-/* mobil uchun balandlikni biroz pasaytirish (xohlasangiz) */
-@media (max-width: 768px){
-  div.sj-k2slickslider .slickslider-items.bg-style1{
-    height: 70vh;
-  }
-}
+
 
 
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item.active .item-content .item-title,
