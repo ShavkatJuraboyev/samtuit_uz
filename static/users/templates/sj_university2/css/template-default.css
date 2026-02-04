@@ -4615,11 +4615,17 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
   background: #3f444e;
 }
 
+#sj_k2slickslider346{
+  width: 100vw;              /* butun ekran eni */
+  margin-left: calc(-50vw + 50%);
+}
+
 /* Slayder umumiy balandligi: responsiv (ekranga mos) */
 div.sj-k2slickslider .slickslider-items.bg-style1{
-  height: clamp(260px, 55vh, 700px); /* min 260px, normal 55vh, max 700px */
-  background: none;
+  width: 100%;
+  height: 90vh;              /* ekran bo'yining 90% */
 }
+
 
 /* Har bir slayd va rasm o'rnashadigan blok ham shu balandlikni oladi */
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item,
@@ -4641,7 +4647,7 @@ div.sj-k2slickslider .slickslider-items.bg-style1 .images-slideshow img{
 /* mobil uchun balandlikni biroz pasaytirish (xohlasangiz) */
 @media (max-width: 768px){
   div.sj-k2slickslider .slickslider-items.bg-style1{
-    height: clamp(220px, 40vh, 420px);
+    height: 70vh;
   }
 }
 
