@@ -4615,29 +4615,17 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
   background: #3f444e;
 }
 
-
-
-/* Slayder umumiy balandligi: responsiv (ekranga mos) */
-div.sj-k2slickslider .slickslider-items.bg-style1{
-
-  height: 90vh;              /* ekran bo'yining 90% */
+div.sj-k2slickslider .slickslider-items.bg-style1,
+div.sj-k2slickslider .slickslider-items.bg-style1 {
+  background: none;
 }
-
-
-/* Har bir slayd va rasm o'rnashadigan blok ham shu balandlikni oladi */
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item,
-div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow{
- 
-  height: 100%;
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
   position: relative;
 }
-
-/* ENG MUHIM QISM: rasm to'liq ko'rinadi, cho'zilmaydi, kesilmaydi */
-div.sj-k2slickslider .slickslider-items.bg-style1 .images-slideshow img{
-  height: 100%;
-  display: block;
-  object-fit: cover;     /* rasm 100% ko'rinadi */
-  object-position: center; /* markazda turadi */
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
+div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
+  max-width: none;
 }
 
 /* mobil uchun balandlikni biroz pasaytirish (xohlasangiz) */
