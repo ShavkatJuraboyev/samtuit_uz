@@ -4615,14 +4615,13 @@ div.sj-k2slickslider .slickslider-items .item-content .item-content-inner .item-
   background: #3f444e;
 }
 
-#sj_k2slickslider346{
-  width: 100vw;              /* butun ekran eni */
+#sj_k2slickslider346{            /* butun ekran eni */
   margin-left: calc(-50vw + 50%);
 }
 
 /* Slayder umumiy balandligi: responsiv (ekranga mos) */
 div.sj-k2slickslider .slickslider-items.bg-style1{
-  width: 100%;
+
   height: 90vh;              /* ekran bo'yining 90% */
 }
 
@@ -4630,14 +4629,13 @@ div.sj-k2slickslider .slickslider-items.bg-style1{
 /* Har bir slayd va rasm o'rnashadigan blok ham shu balandlikni oladi */
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow{
-  width: 100%;
+ 
   height: 100%;
   position: relative;
 }
 
 /* ENG MUHIM QISM: rasm to'liq ko'rinadi, cho'zilmaydi, kesilmaydi */
 div.sj-k2slickslider .slickslider-items.bg-style1 .images-slideshow img{
-  width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;     /* rasm 100% ko'rinadi */
