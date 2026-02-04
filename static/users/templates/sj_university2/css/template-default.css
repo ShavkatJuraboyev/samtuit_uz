@@ -4623,13 +4623,14 @@ div.sj-k2slickslider .slickslider-items.bg-style1 {
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow {
   width: 100%;
-  height: 65em;
+  /* height: 65em; */
   position: relative;
 }
 
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img,
 div.sj-k2slickslider .slickslider-items.bg-style1 .slickslider-item .images-slideshow img {
   max-width: none;
+  height: 65em;
 }
 
 @media (max-width: 768px) {
